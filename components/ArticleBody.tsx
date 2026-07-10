@@ -1,0 +1,22 @@
+import "@/app/sqs-article.css";
+
+interface ArticleBodyProps {
+  html: string;
+}
+
+/**
+ * Renders migrated Squarespace article body HTML (bodyHtml from
+ * content/blog/**\/*.json). Layout is handled by app/sqs-article.css,
+ * scoped under the .sqs-article-body class used here.
+ */
+export default function ArticleBody({ html }: ArticleBodyProps) {
+  if (!html) return null;
+
+  return (
+    <div
+      className="sqs-article-body"
+      // eslint-disable-next-line react/no-danger -- trusted, pre-migrated local content
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
+}

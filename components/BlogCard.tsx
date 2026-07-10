@@ -19,11 +19,12 @@ function formatDate(dateString: string): string {
 }
 
 export default function BlogCard({ post }: { post: BlogPost }) {
-  const { slug, title, date, excerpt, thumbnail } = post;
+  const { slug, title, date, excerpt, thumbnail, region } = post;
+  const href = region === "jp" ? `/jp/news/${slug}` : `/news/${slug}`;
 
   return (
     <Link
-      href={`/news/${slug}`}
+      href={href}
       className="group flex flex-col gap-4 text-inherit no-underline"
     >
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-(--light-accent)">
