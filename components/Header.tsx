@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface NavLink {
   label: string;
@@ -19,8 +20,19 @@ const NAV_LINKS: NavLink[] = [
   { label: "Customer Service", href: LINE_URL, external: true },
 ];
 
+// Japanese nav labels/links, matching the original /top-jp header.
+const NAV_LINKS_JP: NavLink[] = [
+  { label: "Saiensについて", href: "/jp#ourbrand" },
+  { label: "ニュース", href: "/jp#news" },
+  { label: "店舗へ", href: "/visit-us-jp" },
+  { label: "お問い合わせ", href: LINE_URL, external: true },
+];
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isJp = pathname === "/jp" || pathname.startsWith("/jp/") || pathname.startsWith("/visit-us-jp") || pathname.startsWith("/japan-");
+  const navLinks = isJp ? NAV_LINKS_JP : NAV_LINKS;
 
   return (
     <header className="sticky top-0 z-50 bg-(--black) text-(--white)">
@@ -36,7 +48,7 @@ export default function Header() {
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <NavItem key={link.label} link={link} />
           ))}
         </nav>
@@ -72,7 +84,7 @@ export default function Header() {
         }`}
       >
         <nav className="flex flex-col gap-4 px-6 pb-6">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <NavItem
               key={link.label}
               link={link}
