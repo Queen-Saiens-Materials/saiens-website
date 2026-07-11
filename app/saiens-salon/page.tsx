@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { SAIENS_SALON } from "@/config/site";
 
 const TITLE =
   "這是一場邀請制的VIP私人晚宴，山恩團隊將親自下廚招待各位。";
@@ -46,8 +47,8 @@ export default function SaiensSalonPage() {
           <p className="text-sm uppercase tracking-[0.3em] text-(--accent)">
             Location
           </p>
-          <p>Saiens 山恩台北展間</p>
-          <p>台北市南港區松河街616 號 1 樓</p>
+          <p>{SAIENS_SALON.location}</p>
+          <p>{SAIENS_SALON.address}</p>
         </div>
         <div className="flex flex-col gap-2">
           <p className="text-sm uppercase tracking-[0.3em] text-(--accent)">
@@ -86,8 +87,8 @@ export default function SaiensSalonPage() {
 
       <section className="mx-auto flex w-full max-w-2xl flex-col gap-2 px-6 py-16 text-center text-(--white)/85">
         <p>若有任何問題，請不吝致電</p>
-        <p>聯絡人：Elaine 陳珊慧 小姐</p>
-        <p>聯絡電話：0919-483-180</p>
+        <p>聯絡人：{SAIENS_SALON.contactName}</p>
+        <p>聯絡電話：{SAIENS_SALON.contactPhone}</p>
       </section>
     </main>
   );

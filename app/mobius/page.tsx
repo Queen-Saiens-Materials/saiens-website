@@ -155,6 +155,7 @@ export default function MobiusPage() {
           填寫表單預約好感之夜席次
         </h2>
 
+        {/* Form UI replicated from the original Squarespace site. Submission is intentionally disabled until a backend (planned: Vercel Function + Resend email) is wired up. Do not remove the disabled state without adding the backend. */}
         <form className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <label htmlFor="rsvp-org" className="text-sm text-(--accent)">
@@ -164,7 +165,6 @@ export default function MobiusPage() {
               id="rsvp-org"
               name="organization"
               type="text"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
@@ -178,7 +178,6 @@ export default function MobiusPage() {
               id="rsvp-name"
               name="name"
               type="text"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
@@ -192,7 +191,6 @@ export default function MobiusPage() {
               id="rsvp-phone"
               name="phone"
               type="tel"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
@@ -206,7 +204,6 @@ export default function MobiusPage() {
               id="rsvp-title"
               name="job-title"
               type="text"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />

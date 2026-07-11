@@ -4,14 +4,13 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LINE_URL } from "@/config/site";
 
 interface NavLink {
   label: string;
   href: string;
   external?: boolean;
 }
-
-const LINE_URL = "https://line.me/R/ti/p/@154cxzgk?oat_content=url";
 
 const NAV_LINKS: NavLink[] = [
   { label: "Our Brand", href: "/#ourbrand" },

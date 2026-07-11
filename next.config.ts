@@ -1,26 +1,21 @@
+import fs from "fs";
+import path from "path";
 import type { NextConfig } from "next";
 
-const TW_SLUGS = [
-  "blog-post01",
-  "blog-post02",
-  "blog-post03",
-  "blog-post04",
-  "blog-post05",
-  "blog-post06",
-  "blog-post07",
-  "blog-post08",
-  "blog-post09",
-  "blog-post10",
-];
+function getSlugsFromDir(dirPath: string): string[] {
+  return fs
+    .readdirSync(dirPath)
+    .filter((file) => file.endsWith(".json"))
+    .map((file) => file.replace(/\.json$/, ""));
+}
 
-const JP_SLUGS = [
-  "blog-post-jp01",
-  "blog-post-jp02",
-  "blog-post-jp03-g3p3l",
-  "blog-post-jp05-5arr7",
-  "blog-post-jp05-5arr7-l4tmc",
-  "blog-post-jp05-lppet",
-];
+const TW_SLUGS = getSlugsFromDir(
+  path.join(process.cwd(), "content", "blog", "tw"),
+);
+
+const JP_SLUGS = getSlugsFromDir(
+  path.join(process.cwd(), "content", "blog", "jp"),
+);
 
 const nextConfig: NextConfig = {
   async redirects() {

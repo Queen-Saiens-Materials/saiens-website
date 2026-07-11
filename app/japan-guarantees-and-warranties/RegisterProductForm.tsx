@@ -1,6 +1,7 @@
 export default function RegisterProductForm() {
   return (
     <section className="w-full bg-(--light-accent) pt-8 pb-24 md:pt-10">
+      {/* Form UI replicated from the original Squarespace site. Submission is intentionally disabled until a backend (planned: Vercel Function + Resend email) is wired up. Do not remove the disabled state without adding the backend. */}
       <form className="mx-auto flex w-full max-w-xl flex-col gap-8 px-6">
         <div className="flex flex-col gap-2">
           <label htmlFor="reg-name" className="text-sm text-(--dark-accent)">
@@ -11,7 +12,6 @@ export default function RegisterProductForm() {
             name="name"
             type="text"
             placeholder="Name"
-            required
             disabled
             className="border border-(--accent) bg-transparent px-4 py-2 text-(--black) placeholder:text-(--dark-accent)/60 disabled:opacity-60"
           />
@@ -26,7 +26,6 @@ export default function RegisterProductForm() {
             name="phone"
             type="tel"
             placeholder="Phone Number"
-            required
             disabled
             className="border border-(--accent) bg-transparent px-4 py-2 text-(--black) placeholder:text-(--dark-accent)/60 disabled:opacity-60"
           />
@@ -41,7 +40,6 @@ export default function RegisterProductForm() {
             name="email"
             type="email"
             placeholder="Email"
-            required
             disabled
             className="border border-(--accent) bg-transparent px-4 py-2 text-(--black) placeholder:text-(--dark-accent)/60 disabled:opacity-60"
           />
@@ -84,7 +82,6 @@ export default function RegisterProductForm() {
             name="feedback"
             placeholder="Feedback"
             rows={4}
-            required
             disabled
             className="border border-(--accent) bg-transparent px-4 py-2 text-(--black) placeholder:text-(--dark-accent)/60 disabled:opacity-60"
           />

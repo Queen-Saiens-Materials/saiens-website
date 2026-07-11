@@ -53,6 +53,7 @@ export default function MobiusContactPage() {
           專業團隊將依據您的需求提供材料建議、應用方向與合作評估，協助您將再生材實際導入建築與空間設計之中。
         </p>
 
+        {/* Form UI replicated from the original Squarespace site. Submission is intentionally disabled until a backend (planned: Vercel Function + Resend email) is wired up. Do not remove the disabled state without adding the backend. */}
         <form className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <label htmlFor="full-name" className="text-sm text-(--accent)">
@@ -62,7 +63,6 @@ export default function MobiusContactPage() {
               id="full-name"
               name="full-name"
               type="text"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
@@ -76,7 +76,6 @@ export default function MobiusContactPage() {
               id="phone"
               name="phone"
               type="tel"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
@@ -90,7 +89,6 @@ export default function MobiusContactPage() {
               id="line-id"
               name="line-id"
               type="text"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
@@ -125,7 +123,6 @@ export default function MobiusContactPage() {
             <select
               id="identity"
               name="identity"
-              required
               disabled
               defaultValue=""
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
@@ -150,7 +147,6 @@ export default function MobiusContactPage() {
               name="company-name"
               type="text"
               placeholder="若無則填「無」"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
@@ -165,7 +161,6 @@ export default function MobiusContactPage() {
               name="company-tax-id"
               type="text"
               placeholder="若無則填「無」"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
@@ -178,7 +173,6 @@ export default function MobiusContactPage() {
             <select
               id="company-size"
               name="company-size"
-              required
               disabled
               defaultValue=""
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"

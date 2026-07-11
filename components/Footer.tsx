@@ -1,21 +1,20 @@
 import Image from "next/image";
-
-const LINE_URL = "https://line.me/R/ti/p/@154cxzgk?oat_content=url";
+import { LINE_URL, SOCIAL_LINKS as SOCIAL_URLS } from "@/config/site";
 
 const SOCIAL_LINKS = [
   {
     label: "Facebook",
-    href: "https://www.facebook.com/p/Saiens-%E5%B1%B1%E6%81%A9-61563602324496/",
+    href: SOCIAL_URLS.facebook,
     icon: FacebookIcon,
   },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/saiens.tw/",
+    href: SOCIAL_URLS.instagram,
     icon: InstagramIcon,
   },
   {
     label: "YouTube",
-    href: "https://www.youtube.com/@saienstaiwan/featured",
+    href: SOCIAL_URLS.youtube,
     icon: YouTubeIcon,
   },
   {

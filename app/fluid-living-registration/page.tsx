@@ -28,6 +28,7 @@ export default function FluidLivingRegistrationPage() {
           Register Now
         </h2>
 
+        {/* Form UI replicated from the original Squarespace site. Submission is intentionally disabled until a backend (planned: Vercel Function + Resend email) is wired up. Do not remove the disabled state without adding the backend. */}
         <form className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <label htmlFor="name" className="text-sm text-(--accent)">
@@ -37,7 +38,6 @@ export default function FluidLivingRegistrationPage() {
               id="name"
               name="name"
               type="text"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
@@ -50,7 +50,6 @@ export default function FluidLivingRegistrationPage() {
             <select
               id="occupation"
               name="occupation"
-              required
               disabled
               defaultValue=""
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
@@ -73,7 +72,6 @@ export default function FluidLivingRegistrationPage() {
             <select
               id="region"
               name="region"
-              required
               disabled
               defaultValue=""
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
@@ -97,7 +95,6 @@ export default function FluidLivingRegistrationPage() {
               id="phone"
               name="phone"
               type="tel"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
@@ -111,7 +108,6 @@ export default function FluidLivingRegistrationPage() {
               id="email"
               name="email"
               type="email"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />

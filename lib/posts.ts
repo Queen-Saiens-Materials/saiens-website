@@ -28,9 +28,27 @@ export function getPosts(region: string): BlogPost[] {
 
   const files = fs.readdirSync(dir).filter((file) => file.endsWith(".json"));
 
-  const posts = files
-    .map((file) => readPostFile(path.join(dir, file)))
-    .filter((post): post is BlogPost => post !== null);
+  const parsed = files
+    .map((file) => ({ file, post: readPostFile(path.join(dir, file)) }))
+    .filter(
+      (entry): entry is { file: string; post: BlogPost } => entry.post !== null
+    );
+
+  const seenSlugs = new Map<string, string>();
+  const posts: BlogPost[] = [];
+
+  for (const { file, post } of parsed) {
+    const existingFile = seenSlugs.get(post.slug);
+    if (existingFile) {
+      console.warn(
+        `[lib/posts] Duplicate slug "${post.slug}" in region "${region}": ` +
+          `"${file}" duplicates "${existingFile}". Keeping "${existingFile}", skipping "${file}".`
+      );
+      continue;
+    }
+    seenSlugs.set(post.slug, file);
+    posts.push(post);
+  }
 
   return posts.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -65,26 +83,73 @@ export function getPost(region: string, slug: string): BlogPost | null {
   return null;
 }
 
+const DATE_FORMAT = /^\d{4}-\d{2}-\d{2}$/;
+
+function isValidCalendarDate(dateStr: string): boolean {
+  const [year, month, day] = dateStr.split("-").map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+  return (
+    date.getUTCFullYear() === year &&
+    date.getUTCMonth() === month - 1 &&
+    date.getUTCDate() === day
+  );
+}
+
 function readPostFile(filePath: string): BlogPost | null {
+  const fileName = path.basename(filePath);
+  let raw: string;
+
   try {
-    const raw = fs.readFileSync(filePath, "utf-8");
-    const parsed = JSON.parse(raw);
-
-    if (!parsed.slug || !parsed.title || !parsed.date) {
-      return null;
-    }
-
-    return {
-      slug: parsed.slug,
-      region: parsed.region ?? "",
-      originalUrl: parsed.originalUrl,
-      title: parsed.title,
-      date: parsed.date,
-      excerpt: parsed.excerpt ?? "",
-      thumbnail: parsed.thumbnail ?? "",
-      bodyHtml: parsed.bodyHtml,
-    };
-  } catch {
+    raw = fs.readFileSync(filePath, "utf-8");
+  } catch (error) {
+    console.warn(
+      `[lib/posts] Failed to read "${fileName}": ${
+        error instanceof Error ? error.message : String(error)
+      }`
+    );
     return null;
   }
+
+  let parsed: Record<string, unknown>;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (error) {
+    console.warn(
+      `[lib/posts] Malformed JSON in "${fileName}": ${
+        error instanceof Error ? error.message : String(error)
+      }`
+    );
+    return null;
+  }
+
+  const missingFields = ["slug", "title", "date"].filter(
+    (field) => !parsed[field]
+  );
+  if (missingFields.length > 0) {
+    console.warn(
+      `[lib/posts] Missing required field(s) [${missingFields.join(
+        ", "
+      )}] in "${fileName}".`
+    );
+    return null;
+  }
+
+  const date = String(parsed.date);
+  if (!DATE_FORMAT.test(date) || !isValidCalendarDate(date)) {
+    console.warn(
+      `[lib/posts] Invalid date "${date}" in "${fileName}" (expected YYYY-MM-DD).`
+    );
+    return null;
+  }
+
+  return {
+    slug: String(parsed.slug),
+    region: (parsed.region as string) ?? "",
+    originalUrl: parsed.originalUrl as string | undefined,
+    title: String(parsed.title),
+    date,
+    excerpt: (parsed.excerpt as string) ?? "",
+    thumbnail: (parsed.thumbnail as string) ?? "",
+    bodyHtml: parsed.bodyHtml as string | undefined,
+  };
 }

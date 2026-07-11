@@ -109,6 +109,7 @@ export default function MobiusContact02Page() {
           遠雄 × 山恩｜好感之夜 2
         </h2>
 
+        {/* Form UI replicated from the original Squarespace site. Submission is intentionally disabled until a backend (planned: Vercel Function + Resend email) is wired up. Do not remove the disabled state without adding the backend. */}
         <form className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <label htmlFor="org-name" className="text-sm text-(--accent)">
@@ -118,7 +119,6 @@ export default function MobiusContact02Page() {
               id="org-name"
               name="org-name"
               type="text"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
@@ -132,7 +132,6 @@ export default function MobiusContact02Page() {
               id="name"
               name="name"
               type="text"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
@@ -146,7 +145,6 @@ export default function MobiusContact02Page() {
               id="phone"
               name="phone"
               type="tel"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
@@ -173,7 +171,6 @@ export default function MobiusContact02Page() {
               id="headcount"
               name="headcount"
               type="text"
-              required
               disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
