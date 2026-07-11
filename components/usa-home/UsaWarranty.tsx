@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function UsaWarranty() {
   return (
-    <section className="bg-(--white) px-6 py-24 text-(--foreground) sm:px-10">
+    <section className="bg-(--light-accent) px-6 py-24 text-(--foreground) sm:px-10">
       <div className="mx-auto max-w-4xl text-center">
         <h2 className="font-(family-name:--font-jost) text-3xl font-semibold tracking-tight sm:text-4xl">
           You can <strong className="font-semibold">depend on us</strong> for

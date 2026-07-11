@@ -25,7 +25,7 @@ const SERVICES: ServiceItem[] = [
 
 export default function UsaOneStopService() {
   return (
-    <section className="bg-(--light-accent) px-6 py-24 text-(--foreground) sm:px-10">
+    <section className="bg-(--white) px-6 py-24 text-(--foreground) sm:px-10">
       <div className="mx-auto max-w-6xl">
         <p className="text-center text-xs uppercase tracking-[0.2em] text-(--dark-accent)">
           One Stop Service

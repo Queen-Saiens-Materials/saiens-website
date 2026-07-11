@@ -6,7 +6,7 @@ export default function UsaBrand() {
   return (
     <section
       id="ourbrand"
-      className="bg-(--white) px-6 py-24 text-(--foreground) sm:px-10"
+      className="bg-(--light-accent) px-6 py-24 text-(--foreground) sm:px-10"
     >
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col items-center gap-4 text-center">
