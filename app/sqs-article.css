@@ -18,6 +18,18 @@
   color: var(--foreground);
 }
 
+/* The source markup's outer wrapper carries Squarespace's own
+ * "columns-12" class (meaning "12-column grid system", handled by the
+ * .sqs-row/.sqs-col rules below) - but Tailwind v4 also ships a
+ * `columns-12` utility (CSS multi-column layout: `columns: 12`). Because
+ * both frameworks use the identical class name, Tailwind's utility wins
+ * and splits the entire article into 12 CSS-multicol columns, shredding
+ * every image and paragraph into narrow overlapping slivers. Explicitly
+ * reset it back to Squarespace's intended (non-multicol) meaning. */
+.sqs-article-body .sqs-layout.columns-12 {
+  columns: auto;
+}
+
 .sqs-article-body .sqs-layout {
   width: 100%;
 }
@@ -170,15 +182,39 @@
   margin: 0 0 1.5rem;
 }
 
-/* Gallery grid blocks */
-.sqs-article-body .sqs-gallery-block-grid {
+/* Gallery grid blocks: markup nests as
+ *   .sqs-gallery-block-grid > .sqs-gallery > .slide > .margin-wrapper
+ *     > a.image-slide-anchor > img.thumb-image
+ * so the grid must apply to .sqs-gallery (the actual parent of the
+ * repeated .slide items), not to .sqs-gallery-block-grid itself -
+ * applying display:grid to the outer wrapper (which has a single child,
+ * .sqs-gallery) is a no-op and lets slides stack full-width instead. */
+.sqs-article-body .sqs-gallery-block-grid .sqs-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 0.75rem;
   margin: 0 0 1.5rem;
 }
-.sqs-article-body .sqs-gallery-block-grid img {
+.sqs-article-body .sqs-gallery-block-grid.sqs-gallery-thumbnails-per-row-2 .sqs-gallery {
+  grid-template-columns: repeat(2, 1fr);
+}
+.sqs-article-body .sqs-gallery-block-grid .slide {
+  position: relative;
+  overflow: hidden;
+}
+.sqs-article-body .sqs-gallery-block-grid.sqs-gallery-aspect-ratio-square .slide {
+  aspect-ratio: 1 / 1;
+}
+.sqs-article-body .sqs-gallery-block-grid .margin-wrapper,
+.sqs-article-body .sqs-gallery-block-grid .image-slide-anchor {
+  display: block;
   width: 100%;
   height: 100%;
+}
+.sqs-article-body .sqs-gallery-block-grid img.thumb-image {
+  width: 100%;
+  height: 100%;
+  max-width: none;
   object-fit: cover;
+  display: block;
 }
