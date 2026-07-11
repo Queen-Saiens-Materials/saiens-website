@@ -1,30 +1,31 @@
-import Image from "next/image";
-
 interface HeroBannerProps {
-  /** Public path to the hero image (e.g. "/images/.../hero-poster.jpg"). */
-  src: string;
-  alt: string;
+  /** Public path to the looping background video (e.g. "/videos/hero.mp4"). */
+  videoSrc: string;
+  /** Poster frame shown before the video loads. */
+  posterSrc: string;
 }
 
 /**
- * Full-bleed photo banner used at the very top of each homepage, before the
+ * Full-bleed banner used at the very top of each homepage, before the
  * "Bless Every Home&Family" text block. Mirrors the ~875px tall hero section
- * on the original Squarespace site (rendered there as a looping background
- * video; here as a static frame since video assets weren't archived).
+ * on the original Squarespace site: a muted, looping background video
+ * (downloaded from the original site's HLS stream) with a poster fallback.
  */
 export default function HeroBanner({
-  src,
-  alt,
+  videoSrc,
+  posterSrc,
 }: HeroBannerProps): React.JSX.Element {
   return (
-    <section className="relative h-[50vh] max-h-[875px] min-h-[320px] w-full sm:h-[70vh] lg:h-[875px]">
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
+    <section className="relative h-[50vh] max-h-[875px] min-h-[320px] w-full overflow-hidden sm:h-[70vh] lg:h-[875px]">
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        src={videoSrc}
+        poster={posterSrc}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
       />
     </section>
   );

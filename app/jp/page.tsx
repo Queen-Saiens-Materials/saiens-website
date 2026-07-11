@@ -23,8 +23,8 @@ export default async function JpHomePage(): Promise<React.JSX.Element> {
   return (
     <main className="flex flex-1 flex-col">
       <HeroBanner
-        src="/images/1752483347162-YN8Z4OF1BMHYG447WBN7/hero-poster.jpg"
-        alt="Saiens マテリアルショーケース"
+        videoSrc="/videos/hero.mp4"
+        posterSrc="/images/1752483347162-YN8Z4OF1BMHYG447WBN7/hero-poster.jpg"
       />
       <Hero />
       <Products />
