@@ -40,6 +40,11 @@ export default function Process(): React.JSX.Element {
           className="object-cover"
         />
       </div>
+      <h2 className="relative mx-auto mb-16 max-w-7xl px-6 text-center text-2xl font-bold tracking-tight sm:px-10 sm:text-3xl">
+        One Stop Service
+        <br />
+        ワンストップサービス
+      </h2>
       <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-6 sm:px-10 md:grid-cols-2 lg:grid-cols-4">
         {PROCESS_STEPS.map((step) => (
           <div key={step.title} className="flex flex-col gap-3">

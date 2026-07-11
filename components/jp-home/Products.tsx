@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Carousel from "@/components/Carousel";
 
 interface ProductItem {
   title: string;
@@ -32,11 +33,14 @@ const PRODUCTS: ProductItem[] = [
 export default function Products(): React.JSX.Element {
   return (
     <section className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 py-20 sm:px-10">
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
+      <h2 className="text-center text-xs uppercase tracking-[0.2em] text-(--dark-accent)">
+        コレクションをもっと見る
+      </h2>
+      <Carousel label="製品">
         {PRODUCTS.map((product) => (
           <ProductCard key={product.title} product={product} />
         ))}
-      </div>
+      </Carousel>
     </section>
   );
 }
@@ -47,7 +51,7 @@ interface ProductCardProps {
 
 function ProductCard({ product }: ProductCardProps): React.JSX.Element {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex w-56 flex-col gap-3 sm:w-64">
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-(--light-accent)">
         <Image
           src={product.image}
@@ -58,6 +62,9 @@ function ProductCard({ product }: ProductCardProps): React.JSX.Element {
         />
       </div>
       <p className="text-sm tracking-wide text-(--black)">{product.title}</p>
+      <span className="text-xs uppercase tracking-wide text-(--dark-accent)">
+        もっと詳しく知る
+      </span>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import HeroBanner from "@/components/HeroBanner";
 import UsaHero from "@/components/usa-home/UsaHero";
 import UsaCollection from "@/components/usa-home/UsaCollection";
 import UsaOneStopService from "@/components/usa-home/UsaOneStopService";
@@ -16,6 +17,10 @@ export const metadata: Metadata = {
 export default function UsaHome() {
   return (
     <main className="flex flex-1 flex-col">
+      <HeroBanner
+        src="/images/1752483347162-YN8Z4OF1BMHYG447WBN7/hero-poster.jpg"
+        alt="Saiens materials showcase"
+      />
       <UsaHero />
       <UsaCollection />
       <UsaOneStopService />

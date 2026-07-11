@@ -1,3 +1,4 @@
+import HeroBanner from "@/components/HeroBanner";
 import Hero from "@/components/home/Hero";
 import OneStopService from "@/components/home/OneStopService";
 import ProductShowcase from "@/components/home/ProductShowcase";
@@ -9,6 +10,10 @@ import News from "@/components/home/News";
 export default function Home() {
   return (
     <main className="flex flex-1 flex-col">
+      <HeroBanner
+        src="/images/1752483347162-YN8Z4OF1BMHYG447WBN7/hero-poster.jpg"
+        alt="Saiens materials showcase"
+      />
       <Hero />
       <OneStopService />
       <ProductShowcase />

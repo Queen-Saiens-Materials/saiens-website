@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Carousel from "@/components/Carousel";
 
 interface CollectionItem {
   title: string;
@@ -39,9 +40,12 @@ export default function UsaCollection() {
         <p className="text-center text-xs uppercase tracking-[0.2em] text-(--dark-accent)">
           More Collection
         </p>
-        <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <Carousel label="collection" className="mt-12">
           {ITEMS.map((item) => (
-            <div key={item.title} className="group flex flex-col gap-4">
+            <div
+              key={item.title}
+              className="group flex w-72 flex-col gap-4 sm:w-80"
+            >
               <div className="relative aspect-[4/5] w-full overflow-hidden bg-(--light-accent)">
                 <Image
                   src={item.image}
@@ -61,7 +65,7 @@ export default function UsaCollection() {
               </div>
             </div>
           ))}
-        </div>
+        </Carousel>
       </div>
     </section>
   );

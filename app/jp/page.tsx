@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getPosts } from "@/lib/posts";
+import HeroBanner from "@/components/HeroBanner";
 import Hero from "@/components/jp-home/Hero";
 import Products from "@/components/jp-home/Products";
 import Process from "@/components/jp-home/Process";
@@ -21,6 +22,10 @@ export default async function JpHomePage(): Promise<React.JSX.Element> {
 
   return (
     <main className="flex flex-1 flex-col">
+      <HeroBanner
+        src="/images/1752483347162-YN8Z4OF1BMHYG447WBN7/hero-poster.jpg"
+        alt="Saiens マテリアルショーケース"
+      />
       <Hero />
       <Products />
       <Process />

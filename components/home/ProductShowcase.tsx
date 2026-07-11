@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Carousel from "@/components/Carousel";
 
 interface Product {
   code: string;
@@ -46,10 +47,10 @@ export default function ProductShowcase() {
     <section className="bg-(--black) px-6 py-24 text-(--light-accent) sm:px-10">
       <div className="mx-auto max-w-6xl">
         <h2 className="font-(family-name:--font-jost) text-center text-3xl font-semibold tracking-tight sm:text-4xl">
-          Products
+          More Collection
         </h2>
 
-        <div className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <Carousel label="products" className="mt-16">
           {PRODUCTS.map((product) => (
             <a
               key={product.code}
@@ -60,7 +61,7 @@ export default function ProductShowcase() {
                   ? "noopener noreferrer"
                   : undefined
               }
-              className="group flex flex-col gap-4"
+              className="group flex w-72 flex-col gap-4 sm:w-80"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-(--dark-accent)">
                 <Image
@@ -77,9 +78,12 @@ export default function ProductShowcase() {
                   {product.name}
                 </span>
               </h3>
+              <span className="text-xs uppercase tracking-wide text-(--dark-accent)">
+                Discover More
+              </span>
             </a>
           ))}
-        </div>
+        </Carousel>
       </div>
     </section>
   );
