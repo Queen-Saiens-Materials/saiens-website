@@ -1,4 +1,7 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
 
 interface Brand {
   name: string;
@@ -16,7 +19,7 @@ const BRANDS: Brand[] = [
     thickness: "1.5cm",
     scope: "廚房檯面、浴室檯面、牆面、地面",
     features: "抗菌抗污、抗刮耐磨、抗酸鹼、不吸水、抗衝擊、透體花紋",
-    href: "#",
+    href: "https://qjquartzstone.com.tw/index.php",
   },
   {
     name: "Mikado Quartz 帝雉石",
@@ -44,66 +47,94 @@ const BRANDS: Brand[] = [
 ];
 
 export default function BrandCards() {
+  // Squarespace original uses data-should-allow-multiple-open-items="false",
+  // i.e. only one row expanded at a time.
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
-    <section id="ourbrand" className="bg-(--black) px-6 py-24 text-(--light-accent) sm:px-10">
-      <div className="mx-auto max-w-6xl">
-        <h2 className="font-(family-name:--font-jost) text-center text-3xl font-semibold tracking-tight sm:text-4xl">
-          我們的品牌
-          <span className="mt-2 block text-lg font-normal text-(--accent)">
-            Our Brand
-          </span>
-        </h2>
-
-        <div className="relative mx-auto mt-12 aspect-[16/9] w-full max-w-3xl overflow-hidden">
-          <Image
-            src="/images/1752483347189-VC4PBASC72Q7C9I1LQZB/3D_MQL422_3.jpg"
-            alt="Mikado Quartz 帝雉石"
-            fill
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="object-cover"
-          />
+    <section id="ourbrand" className="bg-(--white) px-6 py-24 text-(--black) sm:px-10">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-2">
+        <div className="flex flex-col gap-8">
+          <h2 className="font-(family-name:--font-jost) text-3xl font-semibold tracking-tight sm:text-4xl">
+            我們的品牌
+            <span className="mt-2 block text-lg font-normal text-(--dark-accent)">
+              Our Brand
+            </span>
+          </h2>
+          <Link
+            href="/visit-us"
+            className="inline-block w-fit bg-(--black) px-6 py-3 text-sm uppercase tracking-wide text-(--white) transition-colors hover:bg-(--dark-accent)"
+          >
+            Visit Us
+          </Link>
         </div>
 
-        <p className="mx-auto mt-12 max-w-3xl text-center text-base leading-relaxed">
-          您可以放心交給 Saiens
-          <br />
-          美感恆久，品質如一。
-        </p>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-(--accent)">
-          在 Saiens，我們相信真正的工藝，是設計與耐用的完美結合。
-          我們不只是在打造表面，更希望成為您長久信賴的夥伴，
-          陪伴每一個家的日常與未來。因為每一個家，都值得被祝福。
-        </p>
+        <ul className="flex flex-col border-t border-(--accent)">
+          {BRANDS.map((brand, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <li key={brand.name} className="border-b border-(--accent)">
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="flex w-full items-center justify-between gap-4 py-5 text-left"
+                >
+                  <span className="font-(family-name:--font-jost) text-lg tracking-tight">
+                    {brand.name}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className={`relative h-4 w-4 shrink-0 transition-transform duration-200 ${
+                      isOpen ? "rotate-45" : ""
+                    }`}
+                  >
+                    <span className="absolute top-1/2 left-0 h-px w-4 -translate-y-1/2 bg-(--black)" />
+                    <span className="absolute top-0 left-1/2 h-4 w-px -translate-x-1/2 bg-(--black)" />
+                  </span>
+                </button>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2">
-          {BRANDS.map((brand) => (
-            <a
-              key={brand.name}
-              href={brand.href}
-              target={brand.href.startsWith("http") ? "_blank" : undefined}
-              rel={brand.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="flex flex-col gap-3 border border-(--dark-accent) p-6 transition-colors hover:border-(--accent)"
-            >
-              <h3 className="font-(family-name:--font-jost) text-xl tracking-tight">
-                {brand.name}
-              </h3>
-              <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm text-(--accent)">
-                <dt className="text-(--dark-accent)">規格｜</dt>
-                <dd>{brand.spec}</dd>
-                <dt className="text-(--dark-accent)">厚度｜</dt>
-                <dd>{brand.thickness}</dd>
-                {brand.scope ? (
-                  <>
-                    <dt className="text-(--dark-accent)">適用範圍｜</dt>
-                    <dd>{brand.scope}</dd>
-                  </>
-                ) : null}
-                <dt className="text-(--dark-accent)">特色｜</dt>
-                <dd>{brand.features}</dd>
-              </dl>
-            </a>
-          ))}
-        </div>
+                <div
+                  className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ${
+                    isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                  }`}
+                >
+                  <div className="min-h-0 overflow-hidden">
+                    <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 pb-6 text-sm text-(--black)/80">
+                      <dt className="text-(--dark-accent)">規格｜</dt>
+                      <dd>{brand.spec}</dd>
+                      <dt className="text-(--dark-accent)">厚度｜</dt>
+                      <dd>{brand.thickness}</dd>
+                      {brand.scope ? (
+                        <>
+                          <dt className="text-(--dark-accent)">適用範圍｜</dt>
+                          <dd>{brand.scope}</dd>
+                        </>
+                      ) : null}
+                      <dt className="text-(--dark-accent)">特色｜</dt>
+                      <dd>{brand.features}</dd>
+                      <dt className="text-(--dark-accent)">官網｜</dt>
+                      <dd>
+                        <a
+                          href={brand.href}
+                          target={brand.href.startsWith("http") ? "_blank" : undefined}
+                          rel={
+                            brand.href.startsWith("http")
+                              ? "noopener noreferrer"
+                              : undefined
+                          }
+                          className="underline underline-offset-2 hover:text-(--black)"
+                        >
+                          官網»
+                        </a>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </section>
   );

@@ -39,11 +39,11 @@ const SERVICES: ServiceItem[] = [
 
 export default function OneStopService() {
   return (
-    <section className="bg-(--black) px-6 py-24 text-(--light-accent) sm:px-10">
+    <section className="bg-(--white) px-6 py-24 text-(--black) sm:px-10">
       <div className="mx-auto max-w-6xl">
         <h2 className="font-(family-name:--font-jost) text-center text-3xl font-semibold tracking-tight sm:text-4xl">
           One Stop Service
-          <span className="mt-2 block text-lg font-normal text-(--accent)">
+          <span className="mt-2 block text-lg font-normal text-(--dark-accent)">
             一站式服務
           </span>
         </h2>
@@ -69,7 +69,7 @@ export default function OneStopService() {
                   {service.titleEn}
                 </span>
               </h3>
-              <p className="text-sm leading-relaxed text-(--accent)">
+              <p className="text-sm leading-relaxed text-(--black)/80">
                 {service.bodyZh}
               </p>
               <p className="text-xs leading-relaxed text-(--dark-accent)">

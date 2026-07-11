@@ -29,10 +29,10 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-(--black) text-(--white)">
+    <footer className="bg-(--white) text-(--black)">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 py-12 sm:px-10">
         <Image
-          src="/images/4e5eb5e9-ee4f-4310-8968-239e6d312f1d/logo+white+small.png"
+          src="/images/26e0957c-b1be-47b8-a31a-275504f344dd/logo+black.png"
           alt="Saiens"
           width={120}
           height={21}
@@ -46,7 +46,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="text-(--white) transition-colors hover:text-(--accent)"
+              className="text-(--black) transition-colors hover:text-(--dark-accent)"
             >
               <Icon />
             </a>

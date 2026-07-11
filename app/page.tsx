@@ -3,7 +3,9 @@ import Hero from "@/components/home/Hero";
 import OneStopService from "@/components/home/OneStopService";
 import ProductShowcase from "@/components/home/ProductShowcase";
 import BrandCards from "@/components/home/BrandCards";
+import TrustBand from "@/components/home/TrustBand";
 import QualityAssurance from "@/components/home/QualityAssurance";
+import CleaningIntro from "@/components/home/CleaningIntro";
 import Maintenance from "@/components/home/Maintenance";
 import News from "@/components/home/News";
 
@@ -18,7 +20,9 @@ export default function Home() {
       <OneStopService />
       <ProductShowcase />
       <BrandCards />
+      <TrustBand />
       <QualityAssurance />
+      <CleaningIntro />
       <Maintenance />
       <News />
     </main>

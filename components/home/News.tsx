@@ -5,11 +5,11 @@ export default function News() {
   const posts = getPosts("tw");
 
   return (
-    <section id="news" className="bg-(--black) px-6 py-24 text-(--light-accent) sm:px-10">
+    <section id="news" className="bg-(--white) px-6 py-24 text-(--black) sm:px-10">
       <div className="mx-auto max-w-6xl">
         <h2 className="font-(family-name:--font-jost) text-center text-3xl font-semibold tracking-tight sm:text-4xl">
           What&rsquo;s New,
-          <span className="mt-2 block text-lg font-normal text-(--accent)">
+          <span className="mt-2 block text-lg font-normal text-(--dark-accent)">
             What&rsquo;s Beautiful
           </span>
         </h2>

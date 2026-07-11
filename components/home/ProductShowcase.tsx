@@ -44,7 +44,7 @@ const PRODUCTS: Product[] = [
 
 export default function ProductShowcase() {
   return (
-    <section className="bg-(--black) px-6 py-24 text-(--light-accent) sm:px-10">
+    <section className="bg-(--light-accent) px-6 py-24 text-(--black) sm:px-10">
       <div className="mx-auto max-w-6xl">
         <h2 className="font-(family-name:--font-jost) text-center text-3xl font-semibold tracking-tight sm:text-4xl">
           More Collection
@@ -63,7 +63,7 @@ export default function ProductShowcase() {
               }
               className="group flex w-72 flex-col gap-4 sm:w-80"
             >
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-(--dark-accent)">
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-(--accent)">
                 <Image
                   src={product.image}
                   alt={`${product.code} ${product.name}`}
@@ -78,7 +78,7 @@ export default function ProductShowcase() {
                   {product.name}
                 </span>
               </h3>
-              <span className="text-xs uppercase tracking-wide text-(--dark-accent)">
+              <span className="inline-block w-fit bg-(--black) px-4 py-2 text-xs uppercase tracking-wide text-(--white)">
                 Discover More
               </span>
             </a>

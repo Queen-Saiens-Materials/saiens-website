@@ -54,7 +54,7 @@ export default function Carousel({
           type="button"
           aria-label={`Previous ${label}`}
           onClick={() => scrollByAmount("prev")}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-current transition-opacity hover:opacity-70"
+          className="flex h-11 w-11 items-center justify-center rounded-full bg-(--black) text-(--white) transition-opacity hover:opacity-80"
         >
           <svg
             viewBox="0 0 24 24"
@@ -68,7 +68,7 @@ export default function Carousel({
           type="button"
           aria-label={`Next ${label}`}
           onClick={() => scrollByAmount("next")}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-current transition-opacity hover:opacity-70"
+          className="flex h-11 w-11 items-center justify-center rounded-full bg-(--black) text-(--white) transition-opacity hover:opacity-80"
         >
           <svg
             viewBox="0 0 24 24"
