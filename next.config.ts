@@ -33,6 +33,8 @@ const nextConfig: NextConfig = {
         destination: `/jp/news/${slug}`,
         permanent: true,
       })),
+      // Duplicate Squarespace page variant → canonical page
+      { source: "/saiens-salon-1", destination: "/saiens-salon", permanent: true },
       // Retired placeholder/test pages
       { source: "/new-page", destination: "/", permanent: true },
       { source: "/new-page-1", destination: "/", permanent: true },
