@@ -74,34 +74,40 @@ export default function MobiusContact02Page() {
         </h3>
       </section>
 
-      <section className="mx-auto flex w-full max-w-2xl flex-col gap-3 px-6 py-8">
-        <ul className="flex flex-col gap-3 text-center text-(--white)/85">
-          {HIGHLIGHTS.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-        <p className="mt-4 text-center text-(--white)/80">
-          在展場中，你可以看到：
-        </p>
-      </section>
+      <section className="relative isolate overflow-hidden px-6 py-16">
+        {/*
+          Original site uses this photo as a tall full-bleed backdrop behind the
+          highlights list and event info (not a standalone framed image), so we
+          render it the same way here rather than as an isolated square.
+        */}
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/images/beb0b35b-4ceb-4712-a1a7-adb4a2828346/_-2.jpg"
+            alt="好感之夜"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-(--black)/55" />
+        </div>
 
-      <section className="relative mx-auto aspect-[3/4] w-full max-w-md overflow-hidden">
-        <Image
-          src="/images/beb0b35b-4ceb-4712-a1a7-adb4a2828346/_-2.jpg"
-          alt="好感之夜"
-          fill
-          sizes="(max-width: 768px) 100vw, 500px"
-          className="object-cover"
-        />
-      </section>
+        <div className="mx-auto flex w-full max-w-2xl flex-col gap-3">
+          <p className="text-center text-(--white)/80">在展場中，你可以看到：</p>
+          <ul className="mt-4 flex flex-col gap-3 text-center text-(--white)/85">
+            {HIGHLIGHTS.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
 
-      <section className="mx-auto flex w-full max-w-3xl flex-col gap-2 px-6 py-16 text-center">
-        <p className="font-semibold">活動資訊：</p>
-        <p className="font-semibold">日期｜2026.07.03（五）</p>
-        <p className="font-semibold">時間｜18：00 報到入場 18：30 開始用餐</p>
-        <p className="font-semibold">地點｜ 大台南會展中心 ICC TAINAN</p>
-        <p className="font-semibold">711臺南市歸仁區歸仁十二路3號 3樓</p>
-        <p className="font-semibold">大員A廳</p>
+        <div className="mx-auto flex w-full max-w-3xl flex-col gap-2 pt-16 text-center">
+          <p className="font-semibold">活動資訊：</p>
+          <p className="font-semibold">日期｜2026.07.03（五）</p>
+          <p className="font-semibold">時間｜18：00 報到入場 18：30 開始用餐</p>
+          <p className="font-semibold">地點｜ 大台南會展中心 ICC TAINAN</p>
+          <p className="font-semibold">711臺南市歸仁區歸仁十二路3號 3樓</p>
+          <p className="font-semibold">大員A廳</p>
+        </div>
       </section>
 
       <section className="mx-auto flex w-full max-w-xl flex-col gap-8 px-6 pb-24">

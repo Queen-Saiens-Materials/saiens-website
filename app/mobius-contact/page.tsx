@@ -23,27 +23,31 @@ const INTEREST_OPTIONS = [
 
 export default function MobiusContactPage() {
   return (
-    <main className="flex flex-1 flex-col bg-(--black) text-(--white)">
-      <section className="relative flex min-h-[60vh] w-full flex-col items-center justify-center gap-4 overflow-hidden px-6 py-24 text-center">
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="/images/02719835-4f0a-4bb2-9876-baddb6c00521/_.png"
-            alt="背景"
-            fill
-            sizes="100vw"
-            className="object-cover opacity-70"
-            priority
-          />
-        </div>
+    <main className="relative isolate flex flex-1 flex-col bg-(--black) text-(--white)">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/02719835-4f0a-4bb2-9876-baddb6c00521/_.png"
+          alt="背景"
+          fill
+          sizes="100vw"
+          className="object-cover opacity-70"
+          priority
+        />
+      </div>
 
-        <h1 className="font-(family-name:--font-jost) text-3xl tracking-tight md:text-5xl">
-          {TITLE}
+      <section className="flex min-h-[60vh] w-full flex-col items-center justify-center gap-4 px-6 py-24 text-center">
+        <h1 className="font-(family-name:--font-jost) text-3xl font-bold tracking-tight md:text-5xl">
+          Mindful Choices,
+          <br />
+          Sustainable Future.
         </h1>
-        <h2 className="mt-2 text-xl tracking-wide text-(--accent) md:text-2xl">
+        <h2 className="mt-2 text-xl font-bold tracking-wide text-(--white) md:text-2xl">
           探索再生材的應用可能
         </h2>
-        <p className="max-w-xl text-(--white)/85">
-          從材料到空間，為您的專案提供合適的解決方案
+        <p className="max-w-xl text-lg font-bold text-(--white)">
+          從材料到空間，
+          <br />
+          為您的專案提供合適的解決方案
         </p>
       </section>
 
@@ -57,7 +61,10 @@ export default function MobiusContactPage() {
         <form className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <label htmlFor="full-name" className="text-sm text-(--accent)">
-              您的全名 <span aria-hidden="true">*</span>
+              您的全名{" "}
+              <span className="text-xs font-normal text-(--white)/60">
+                (required)
+              </span>
             </label>
             <input
               id="full-name"
@@ -70,7 +77,10 @@ export default function MobiusContactPage() {
 
           <div className="flex flex-col gap-2">
             <label htmlFor="phone" className="text-sm text-(--accent)">
-              聯絡電話 <span aria-hidden="true">*</span>
+              聯絡電話{" "}
+              <span className="text-xs font-normal text-(--white)/60">
+                (required)
+              </span>
             </label>
             <input
               id="phone"
@@ -83,7 +93,10 @@ export default function MobiusContactPage() {
 
           <div className="flex flex-col gap-2">
             <label htmlFor="line-id" className="text-sm text-(--accent)">
-              Line ID <span aria-hidden="true">*</span>
+              Line ID{" "}
+              <span className="text-xs font-normal text-(--white)/60">
+                (required)
+              </span>
             </label>
             <input
               id="line-id"
@@ -118,7 +131,10 @@ export default function MobiusContactPage() {
 
           <div className="flex flex-col gap-2">
             <label htmlFor="identity" className="text-sm text-(--accent)">
-              您的身份 <span aria-hidden="true">*</span>
+              您的身份{" "}
+              <span className="text-xs font-normal text-(--white)/60">
+                (required)
+              </span>
             </label>
             <select
               id="identity"
@@ -140,7 +156,10 @@ export default function MobiusContactPage() {
 
           <div className="flex flex-col gap-2">
             <label htmlFor="company-name" className="text-sm text-(--accent)">
-              公司名稱 <span aria-hidden="true">*</span>
+              公司名稱{" "}
+              <span className="text-xs font-normal text-(--white)/60">
+                (required)
+              </span>
             </label>
             <input
               id="company-name"
@@ -154,7 +173,10 @@ export default function MobiusContactPage() {
 
           <div className="flex flex-col gap-2">
             <label htmlFor="company-tax-id" className="text-sm text-(--accent)">
-              公司統編 <span aria-hidden="true">*</span>
+              公司統編{" "}
+              <span className="text-xs font-normal text-(--white)/60">
+                (required)
+              </span>
             </label>
             <input
               id="company-tax-id"
@@ -168,7 +190,10 @@ export default function MobiusContactPage() {
 
           <div className="flex flex-col gap-2">
             <label htmlFor="company-size" className="text-sm text-(--accent)">
-              公司規模 <span aria-hidden="true">*</span>
+              公司規模{" "}
+              <span className="text-xs font-normal text-(--white)/60">
+                (required)
+              </span>
             </label>
             <select
               id="company-size"
