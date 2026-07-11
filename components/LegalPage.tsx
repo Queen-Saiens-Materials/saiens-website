@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 
 export type LegalSection =
@@ -14,6 +15,10 @@ interface LegalPageProps {
   /** Localized secondary tagline from the source hero (h4) */
   heroSubtitle: string;
   sections: LegalSection[];
+  /** Optional photo background for the hero section */
+  heroImage?: { src: string; alt: string };
+  /** Optional content rendered below the sections (e.g. a form) */
+  children?: ReactNode;
 }
 
 const headingClasses: Record<2 | 3 | 4, string> = {
@@ -114,10 +119,25 @@ export default function LegalPage({
   heroTagline,
   heroSubtitle,
   sections,
+  heroImage,
+  children,
 }: LegalPageProps) {
   return (
     <main className="flex flex-1 flex-col bg-(--white) text-(--black)">
-      <section className="bg-(--black) px-6 py-20 text-(--white) sm:px-10 md:py-28">
+      <section className="relative isolate overflow-hidden bg-(--black) px-6 py-20 text-(--white) sm:px-10 md:py-28">
+        {heroImage ? (
+          <div className="absolute inset-0 -z-10">
+            <Image
+              src={heroImage.src}
+              alt={heroImage.alt}
+              fill
+              sizes="100vw"
+              className="object-cover opacity-90"
+              priority
+            />
+            <div className="absolute inset-0 bg-(--black)/30" />
+          </div>
+        ) : null}
         <div className="mx-auto flex max-w-3xl flex-col gap-4">
           <h1 className="font-(family-name:--font-jost) whitespace-pre-line text-3xl leading-tight tracking-tight md:text-5xl">
             {heroTagline}
@@ -133,6 +153,8 @@ export default function LegalPage({
           <LegalSectionBlock key={i} section={section} />
         ))}
       </div>
+
+      {children}
     </main>
   );
 }

@@ -41,10 +41,13 @@ const PARTNERS = [
   },
 ];
 
+const MEAL_OPTIONS = ["葷食", "素食"];
+const INVITED_BY_OPTIONS = ["山恩實業", "遠雄建設", "集力門 X 喬城五金", "虹牌油漆"];
+
 export default function MobiusPage() {
   return (
     <main className="flex flex-1 flex-col bg-(--black) text-(--white)">
-      <section className="relative flex min-h-[70vh] w-full flex-col items-center justify-center gap-4 overflow-hidden px-6 py-24 text-center">
+      <section className="relative isolate flex min-h-[70vh] w-full flex-col items-center justify-center gap-4 overflow-hidden px-6 py-24 text-center">
         <div className="absolute inset-0 -z-10">
           <Image
             src="/images/437e8c28-8a6c-432a-9197-b5a722a6d1e7/fluidliving.png"
@@ -73,26 +76,45 @@ export default function MobiusPage() {
         </p>
       </section>
 
-      <section className="mx-auto flex w-full max-w-4xl flex-col gap-14 px-6 py-16">
-        {PARTNERS.map((partner) => (
-          <div
-            key={partner.alt}
-            className="flex flex-col items-center gap-4 text-center"
-          >
-            <Image
-              src={partner.logo}
-              alt={partner.alt}
-              width={partner.width}
-              height={partner.height}
-              className="h-auto max-h-16 w-auto object-contain"
-            />
-            <p className="text-sm text-(--white)/80">{partner.copy}</p>
-          </div>
-        ))}
+      <section className="relative isolate overflow-hidden px-6 py-20">
+        {/*
+          Single source photo already composites the sunset/bridge background
+          with four glowing stone/gem graphics floating above it — display it
+          as a tall backdrop rather than a low-opacity fill so both layers
+          stay visible behind the sponsor logos.
+        */}
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/images/782888b5-eff5-4b2c-92d6-49b8e5e84540/157c0d37-ec29-4683-a56a-f8904764f64e.png"
+            alt="夕陽橋樑與四顆發光寶石圖像背景"
+            fill
+            sizes="100vw"
+            className="object-cover object-top opacity-80"
+          />
+          <div className="absolute inset-0 bg-(--black)/40" />
+        </div>
+
+        <div className="relative mx-auto grid w-full max-w-3xl grid-cols-1 gap-x-10 gap-y-14 sm:grid-cols-2">
+          {PARTNERS.map((partner) => (
+            <div
+              key={partner.alt}
+              className="flex flex-col items-center gap-4 text-center"
+            >
+              <Image
+                src={partner.logo}
+                alt={partner.alt}
+                width={partner.width}
+                height={partner.height}
+                className="h-auto max-h-16 w-auto object-contain"
+              />
+              <p className="text-sm text-(--white)/80">{partner.copy}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="flex flex-col items-center gap-3 px-6 py-16 text-center">
-        <h1 className="font-(family-name:--font-jost) text-4xl tracking-tight md:text-6xl">
+        <h1 className="font-(family-name:--font-jost) border-b border-(--accent) pb-4 text-4xl tracking-tight md:text-6xl">
           YOU&rsquo;RE INVITED
         </h1>
         <h3 className="text-base md:text-lg">
@@ -128,19 +150,150 @@ export default function MobiusPage() {
         <p>19:00－21:00 自在餐敘・微醺夜談</p>
       </section>
 
-      <section className="mx-auto flex w-full max-w-md flex-col items-center gap-4 px-6 py-8 text-center">
-        <p>填寫表單預約好感之夜席次</p>
-        <button
-          type="button"
-          disabled
-          aria-disabled="true"
-          className="w-full cursor-not-allowed bg-(--white)/40 px-8 py-3 text-sm uppercase tracking-wide text-(--black)"
-        >
-          Submit
-        </button>
-        <p className="text-sm text-(--accent)">
-          Coming soon — 表單尚未開放送出，敬請期待。
-        </p>
+      <section className="mx-auto flex w-full max-w-xl flex-col gap-8 px-6 py-16">
+        <h2 className="text-center font-(family-name:--font-jost) text-2xl tracking-tight md:text-3xl">
+          填寫表單預約好感之夜席次
+        </h2>
+
+        <form className="flex flex-col gap-6">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="rsvp-org" className="text-sm text-(--accent)">
+              公司／組織名稱 <span aria-hidden="true">*</span>
+            </label>
+            <input
+              id="rsvp-org"
+              name="organization"
+              type="text"
+              required
+              disabled
+              className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label htmlFor="rsvp-name" className="text-sm text-(--accent)">
+              姓名 <span aria-hidden="true">*</span>
+            </label>
+            <input
+              id="rsvp-name"
+              name="name"
+              type="text"
+              required
+              disabled
+              className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label htmlFor="rsvp-phone" className="text-sm text-(--accent)">
+              聯絡電話 <span aria-hidden="true">*</span>
+            </label>
+            <input
+              id="rsvp-phone"
+              name="phone"
+              type="tel"
+              required
+              disabled
+              className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label htmlFor="rsvp-title" className="text-sm text-(--accent)">
+              職稱 <span aria-hidden="true">*</span>
+            </label>
+            <input
+              id="rsvp-title"
+              name="job-title"
+              type="text"
+              required
+              disabled
+              className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label htmlFor="rsvp-count" className="text-sm text-(--accent)">
+              人數
+            </label>
+            <input
+              id="rsvp-count"
+              name="attendee-count"
+              type="text"
+              disabled
+              className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label htmlFor="rsvp-companion" className="text-sm text-(--accent)">
+              同行夥伴姓名/公司/職稱
+            </label>
+            <input
+              id="rsvp-companion"
+              name="companion"
+              type="text"
+              disabled
+              className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label htmlFor="rsvp-meal" className="text-sm text-(--accent)">
+              葷食或素食
+            </label>
+            <select
+              id="rsvp-meal"
+              name="meal"
+              disabled
+              defaultValue=""
+              className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
+            >
+              <option value="" disabled>
+                Select an option
+              </option>
+              {MEAL_OPTIONS.map((option) => (
+                <option key={option} value={option} className="text-(--black)">
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label htmlFor="rsvp-invited-by" className="text-sm text-(--accent)">
+              邀請人
+            </label>
+            <select
+              id="rsvp-invited-by"
+              name="invited-by"
+              disabled
+              defaultValue=""
+              className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
+            >
+              <option value="" disabled>
+                Select an option
+              </option>
+              {INVITED_BY_OPTIONS.map((option) => (
+                <option key={option} value={option} className="text-(--black)">
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <button
+            type="button"
+            disabled
+            aria-disabled="true"
+            className="w-full cursor-not-allowed bg-(--white)/40 px-8 py-3 text-sm uppercase tracking-wide text-(--black)"
+          >
+            Submit
+          </button>
+          <p className="text-center text-sm text-(--accent)">
+            Coming soon — 表單尚未開放送出，敬請期待。
+          </p>
+        </form>
       </section>
 
       <section className="mx-auto flex w-full max-w-md flex-col items-center gap-4 px-6 py-16 text-center">
