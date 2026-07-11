@@ -54,24 +54,26 @@ export default function FluidLivingLandingPage() {
         </Link>
       </section>
 
-      <section className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-6 py-20 text-center">
-        <h2 className="font-(family-name:--font-jost) text-3xl tracking-tight md:text-4xl">
-          當空間不再被定義， 而是持續回應生活
-        </h2>
-        <p className="text-sm uppercase tracking-[0.3em] text-(--accent)">
-          The Vision
-        </p>
-        <div className="flex flex-col gap-4 text-left text-(--white)/85 md:text-center">
-          <p>
-            過去，我們習慣將空間視為固定不變的存在，隨著工作與生活交織、家庭關係持續轉變、空間使用方式不斷被重新定義，我們需要的，不再是一個靜止的容器，而是一個能夠隨著需求、關係與時間持續流動的空間系統。
+      <section className="w-full bg-(--light-accent) text-(--black)">
+        <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-6 py-20 text-center">
+          <h2 className="font-(family-name:--font-jost) text-3xl tracking-tight md:text-4xl">
+            當空間不再被定義， 而是持續回應生活
+          </h2>
+          <p className="text-sm uppercase tracking-[0.3em] text-(--dark-accent)">
+            The Vision
           </p>
-          <p>
-            《流動的生活 Fluid Living》由遠雄建設、山恩 × COVE Living
-            、集力門共同策展，從建築、結構到材料三個尺度出發，重新思考人與空間的關係。
-            這是一場關於未來生活的提問。
-          </p>
-          <p>當生活持續改變，我們是否能創造一個更有彈性、更有連結，也更能陪伴人們成長的空間？</p>
-          <p>而這，正是我們所想像的——流動的生活。</p>
+          <div className="flex flex-col gap-4 text-left text-(--black)/85 md:text-center">
+            <p>
+              過去，我們習慣將空間視為固定不變的存在，隨著工作與生活交織、家庭關係持續轉變、空間使用方式不斷被重新定義，我們需要的，不再是一個靜止的容器，而是一個能夠隨著需求、關係與時間持續流動的空間系統。
+            </p>
+            <p>
+              《流動的生活 Fluid Living》由遠雄建設、山恩 × COVE Living
+              、集力門共同策展，從建築、結構到材料三個尺度出發，重新思考人與空間的關係。
+              這是一場關於未來生活的提問。
+            </p>
+            <p>當生活持續改變，我們是否能創造一個更有彈性、更有連結，也更能陪伴人們成長的空間？</p>
+            <p>而這，正是我們所想像的——流動的生活。</p>
+          </div>
         </div>
       </section>
 
@@ -104,44 +106,46 @@ export default function FluidLivingLandingPage() {
         </div>
       </section>
 
-      <section className="mx-auto flex w-full max-w-4xl flex-col gap-16 px-6 py-20">
-        <p className="text-center text-sm uppercase tracking-[0.3em] text-(--accent)">
-          Exhibition Highlights
-        </p>
+      <section className="w-full bg-(--white) text-(--black)">
+        <div className="mx-auto flex w-full max-w-4xl flex-col gap-16 px-6 py-20">
+          <p className="text-center text-sm uppercase tracking-[0.3em] text-(--dark-accent)">
+            Exhibition Highlights
+          </p>
 
-        <div className="flex flex-col gap-4 text-left">
-          <h2 className="font-(family-name:--font-jost) text-2xl tracking-tight md:text-3xl">
-            遠雄建設 Farglory Land
-          </h2>
-          <p className="text-(--white)/85">
-            遠雄建設以「永續共享」為核心價值，自 2018 年展開「未來居住實驗」，攜手 META
-            Design 與小智研發 MINIWIZ，透過「好室智造所」行動展間，以全台巡迴形式推動綠色居住文化落地。
-          </p>
-          <p className="text-(--white)/85">
-            展間運用工地廢棄帆布與塑膠安全網轉化而成的再生建材，展現建築生命週期中的循環可能，也促成遠雄與山恩在循環材料與永續實踐上的合作，共同探索未來建築的更多可能。
-          </p>
-        </div>
+          <div className="flex flex-col gap-4 text-left">
+            <h2 className="font-(family-name:--font-jost) text-2xl tracking-tight md:text-3xl">
+              遠雄建設 Farglory Land
+            </h2>
+            <p className="text-(--black)/85">
+              遠雄建設以「永續共享」為核心價值，自 2018 年展開「未來居住實驗」，攜手 META
+              Design 與小智研發 MINIWIZ，透過「好室智造所」行動展間，以全台巡迴形式推動綠色居住文化落地。
+            </p>
+            <p className="text-(--black)/85">
+              展間運用工地廢棄帆布與塑膠安全網轉化而成的再生建材，展現建築生命週期中的循環可能，也促成遠雄與山恩在循環材料與永續實踐上的合作，共同探索未來建築的更多可能。
+            </p>
+          </div>
 
-        <div className="flex flex-col gap-4 text-left">
-          <h2 className="font-(family-name:--font-jost) text-2xl tracking-tight md:text-3xl">
-            Saiens 山恩
-          </h2>
-          <p className="text-(--white)/85">
-            本次展覽Saiens
-            山恩以「材料之島」的概念，透過石材、再生材料與創新工藝的展示，呈現材料從天然礦物到空間應用的完整旅程。展區中央長達七公尺的中島，如同一座被壓縮的建築，引導觀者從材料的視角重新理解空間的形成；而旗下家飾品牌
-            COVE
-            Living，則進一步將石材工藝轉化為燈具、桌几與生活物件，展現材料從建築尺度走向生活尺度的更多可能。從廚房檯面、建築壁面到日常生活，山恩希望讓觀者看見材料不只是空間的表面，而是連結工藝、設計與未來生活的重要媒介。
-          </p>
-        </div>
+          <div className="flex flex-col gap-4 text-left">
+            <h2 className="font-(family-name:--font-jost) text-2xl tracking-tight md:text-3xl">
+              Saiens 山恩
+            </h2>
+            <p className="text-(--black)/85">
+              本次展覽Saiens
+              山恩以「材料之島」的概念，透過石材、再生材料與創新工藝的展示，呈現材料從天然礦物到空間應用的完整旅程。展區中央長達七公尺的中島，如同一座被壓縮的建築，引導觀者從材料的視角重新理解空間的形成；而旗下家飾品牌
+              COVE
+              Living，則進一步將石材工藝轉化為燈具、桌几與生活物件，展現材料從建築尺度走向生活尺度的更多可能。從廚房檯面、建築壁面到日常生活，山恩希望讓觀者看見材料不只是空間的表面，而是連結工藝、設計與未來生活的重要媒介。
+            </p>
+          </div>
 
-        <div className="flex flex-col gap-4 text-left">
-          <h2 className="font-(family-name:--font-jost) text-2xl tracking-tight md:text-3xl">
-            Gili 集力門
-          </h2>
-          <p className="text-(--white)/85">
-            集力門以「All About
-            Door」為核心，將滑動、折疊、旋轉等門體系統帶入展場，讓觀者體驗空間在開放與私密之間的流動關係。從五金工藝出發，集力門重新定義「門」的角色，透過結構的靈活變化，回應當代生活對彈性與自由的需求，也呼應《流動的生活》所探討的人、空間與生活之間不斷變化的關係。
-          </p>
+          <div className="flex flex-col gap-4 text-left">
+            <h2 className="font-(family-name:--font-jost) text-2xl tracking-tight md:text-3xl">
+              Gili 集力門
+            </h2>
+            <p className="text-(--black)/85">
+              集力門以「All About
+              Door」為核心，將滑動、折疊、旋轉等門體系統帶入展場，讓觀者體驗空間在開放與私密之間的流動關係。從五金工藝出發，集力門重新定義「門」的角色，透過結構的靈活變化，回應當代生活對彈性與自由的需求，也呼應《流動的生活》所探討的人、空間與生活之間不斷變化的關係。
+            </p>
+          </div>
         </div>
       </section>
 

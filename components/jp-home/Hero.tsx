@@ -1,6 +1,6 @@
 export default function Hero(): React.JSX.Element {
   return (
-    <section className="relative flex min-h-[80vh] flex-col items-center justify-center gap-8 bg-(--black) px-6 py-24 text-center text-(--white) sm:px-10">
+    <section className="relative flex flex-col items-center justify-center gap-8 bg-(--black) px-6 py-28 text-center text-(--white) sm:px-10 sm:py-36">
       <p className="text-sm tracking-[0.3em] text-(--accent) uppercase">
         BLESS EVERY HOME&amp;FAMILY
       </p>

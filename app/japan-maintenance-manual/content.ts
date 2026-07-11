@@ -6,6 +6,7 @@ export const heroSubtitle =
 
 export const sections: LegalSection[] = [
   { type: "heading", level: 3, text: "お手入れガイド" },
+  { type: "heading", level: 4, text: "ようこそ、Saiens お手入れガイドへ。" },
   {
     type: "paragraph",
     text: "信頼できるカウンターマテリアルのパートナーとして、Saiens の使命は、簡単なお手入れと清掃でシミや傷の悩みから解放し、ストレスのない住空間をお届けすることです。もう汚れたカウンターに眉をひそめたり、キッチンを神経質に扱ったりする必要はありません。毎日をもっと自由に、もっと心地よく楽しんでください。",
@@ -18,7 +19,7 @@ export const sections: LegalSection[] = [
     type: "paragraph",
     text: "長く快適にご使用いただくため、以下の正しい方法でお手入れをお願いいたします。",
   },
-  { type: "heading", level: 4, text: "ようこそ、Saiens お手入れガイドへ。" },
+  { type: "heading", level: 4, text: "日常のお手入れについて" },
   {
     type: "paragraph",
     text: "長く快適にご使用いただくため、以下の正しい方法でお手入れをお願いいたします。",
@@ -32,12 +33,18 @@ export const sections: LegalSection[] = [
       "衝撃に注意してください：エッジ部分は特に衝撃に弱いため、硬い物や鈍器での打撃を避けてください。万が一欠けた場合は、破片を保管し、専門スタッフにご相談ください。専用の樹脂で補修することで、見た目も美しく修復できる場合があります。Saiens からのお願い：日頃の正しいお手入れと使い方で、カウンターはより長く美しく保たれます。Saiens は、皆さまの快適な暮らしを応援しています。",
     ],
   },
-  { type: "heading", level: 4, text: "日常のお手入れについて" },
   {
     type: "heading",
     level: 2,
     text: "色が染み込まないのに、\nどうしてお手入れが必要なの？",
     center: true,
+  },
+  {
+    type: "image",
+    src: "/images/0b335ab5-88a2-4830-a31d-6e0fe3f8ffde/9a6c690e--2023_11g80uo000000000000028.png",
+    alt: "お手入れガイド図示 1",
+    width: 1880,
+    height: 1104,
   },
   { type: "heading", level: 3, text: "汚れ対策" },
   {
@@ -51,22 +58,8 @@ export const sections: LegalSection[] = [
   { type: "paragraph", text: "3分でできるお手入れデモ", center: true },
   {
     type: "image",
-    src: "/images/65243e86-787e-4b13-bcbd-a0be87cb3b9e/_+3_.png",
-    alt: "3分でできるお手入れデモ 動画サムネイル",
-    width: 896,
-    height: 182,
-  },
-  {
-    type: "image",
-    src: "/images/0b335ab5-88a2-4830-a31d-6e0fe3f8ffde/9a6c690e--2023_11g80uo000000000000028.png",
-    alt: "お手入れガイド図示 1",
-    width: 1880,
-    height: 1104,
-  },
-  {
-    type: "image",
     src: "/images/3bc2f299-4895-428b-acdb-8a4ca9860793/a4ff4e3b--2023_116e0jw000000000000028.png",
-    alt: "お手入れガイド図示 2",
+    alt: "Saiens クリーナーパウダー使用方法（3ステップ）",
     width: 1526,
     height: 716,
   },

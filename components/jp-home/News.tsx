@@ -63,31 +63,32 @@ function JpBlogCard({ post }: JpBlogCardProps): React.JSX.Element {
 
 export default function News({ posts }: NewsProps): React.JSX.Element {
   return (
-    <section id="news" className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-6 py-24 sm:px-10">
-      <div className="flex flex-col items-center gap-4 text-center">
-        <h1 className="font-(family-name:--font-jost) text-3xl tracking-tight sm:text-4xl">
-          <strong>
+    <section id="news" className="bg-(--white) px-6 py-24 text-(--black) sm:px-10">
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-col items-center gap-4 text-center">
+          <h2 className="font-(family-name:--font-jost) text-center text-3xl font-semibold tracking-tight sm:text-4xl">
             新しい発見、
-            <br />
-            美しい暮らし。
-          </strong>
-        </h1>
-        <h4 className="text-lg text-(--dark-accent)">
-          <strong>– 最新の情報、そして美しい祝福。</strong>
-        </h4>
-      </div>
-
-      {posts.length > 0 ? (
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => (
-            <JpBlogCard key={post.slug} post={post} />
-          ))}
+            <span className="mt-2 block text-lg font-normal text-(--dark-accent)">
+              美しい暮らし。
+            </span>
+          </h2>
+          <p className="text-center text-sm text-(--dark-accent)">
+            最新の情報、そして美しい祝福。
+          </p>
         </div>
-      ) : (
-        <p className="text-center text-sm text-(--dark-accent)">
-          最新情報は近日公開予定です。
-        </p>
-      )}
+
+        {posts.length > 0 ? (
+          <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post) => (
+              <JpBlogCard key={post.slug} post={post} />
+            ))}
+          </div>
+        ) : (
+          <p className="mt-16 text-center text-sm text-(--dark-accent)">
+            最新情報は近日公開予定です。
+          </p>
+        )}
+      </div>
     </section>
   );
 }

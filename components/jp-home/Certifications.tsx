@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Carousel from "@/components/Carousel";
 
 interface Certification {
   title: string;
@@ -28,25 +28,20 @@ const CERTIFICATIONS: Certification[] = [
 
 export default function Certifications(): React.JSX.Element {
   return (
-    <section className="relative overflow-hidden bg-(--black) py-24 text-(--white)">
-      <div className="absolute inset-0 opacity-30">
-        <Image
-          src="/images/5a5e0231-a71d-436e-bbbc-bd96cd3198be/DSC08731.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-      </div>
-      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-6 sm:px-10 sm:grid-cols-2 lg:grid-cols-4">
-        {CERTIFICATIONS.map((cert) => (
-          <div key={cert.title} className="flex flex-col gap-3">
-            <p className="text-lg font-semibold tracking-wide">{cert.title}</p>
-            <p className="text-sm leading-relaxed text-(--accent)">
-              {cert.description}
-            </p>
-          </div>
-        ))}
+    <section className="bg-(--light-accent) px-6 py-24 text-(--black) sm:px-10">
+      <div className="mx-auto max-w-6xl">
+        <Carousel label="certifications">
+          {CERTIFICATIONS.map((cert) => (
+            <div key={cert.title} className="w-72 sm:w-80">
+              <h3 className="font-(family-name:--font-jost) text-base font-semibold">
+                <span aria-hidden="true">・</span> {cert.title}
+              </h3>
+              <p className="mt-2 text-sm text-(--black)/80">
+                {cert.description}
+              </p>
+            </div>
+          ))}
+        </Carousel>
       </div>
     </section>
   );

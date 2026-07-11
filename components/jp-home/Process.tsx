@@ -30,8 +30,8 @@ const PROCESS_STEPS: ProcessStep[] = [
 
 export default function Process(): React.JSX.Element {
   return (
-    <section className="relative overflow-hidden bg-(--black) py-24 text-(--white)">
-      <div className="absolute inset-0 opacity-30">
+    <section className="relative overflow-hidden bg-(--black) px-6 py-24 text-(--white) sm:px-10">
+      <div className="absolute inset-0">
         <Image
           src="/images/1752483347185-ENXAUFO7XV8W4O0SWBJI/DSC00088.JPG"
           alt=""
@@ -39,23 +39,29 @@ export default function Process(): React.JSX.Element {
           sizes="100vw"
           className="object-cover"
         />
+        <div className="absolute inset-0 bg-(--black)/60" />
       </div>
-      <h2 className="relative mx-auto mb-16 max-w-7xl px-6 text-center text-2xl font-bold tracking-tight sm:px-10 sm:text-3xl">
-        One Stop Service
-        <br />
-        ワンストップサービス
-      </h2>
-      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-6 sm:px-10 md:grid-cols-2 lg:grid-cols-4">
-        {PROCESS_STEPS.map((step) => (
-          <div key={step.title} className="flex flex-col gap-3">
-            <h2 className="font-(family-name:--font-jost) text-2xl tracking-tight">
-              {step.title}
-            </h2>
-            <p className="text-sm leading-relaxed text-(--accent)">
-              {step.description}
-            </p>
-          </div>
-        ))}
+
+      <div className="relative mx-auto max-w-6xl">
+        <h2 className="font-(family-name:--font-jost) text-center text-3xl font-semibold tracking-tight sm:text-4xl">
+          One Stop Service
+          <span className="mt-2 block text-lg font-normal text-(--accent)">
+            ワンストップサービス
+          </span>
+        </h2>
+
+        <div className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {PROCESS_STEPS.map((step) => (
+            <div key={step.title} className="flex flex-col gap-3">
+              <h3 className="font-(family-name:--font-jost) text-2xl tracking-tight">
+                {step.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-(--white)/90">
+                {step.description}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

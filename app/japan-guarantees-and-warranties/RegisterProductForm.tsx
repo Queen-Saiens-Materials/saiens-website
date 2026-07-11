@@ -1,7 +1,7 @@
 export default function RegisterProductForm() {
   return (
-    <section className="mx-auto flex w-full max-w-xl flex-col gap-8 px-6 pb-24">
-      <form className="flex flex-col gap-6">
+    <section className="w-full bg-(--light-accent) pt-8 pb-24 md:pt-10">
+      <form className="mx-auto flex w-full max-w-xl flex-col gap-8 px-6">
         <div className="flex flex-col gap-2">
           <label htmlFor="reg-name" className="text-sm text-(--dark-accent)">
             お名前 <span aria-hidden="true">*</span>
