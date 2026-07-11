@@ -41,37 +41,40 @@ const FOLLOW_LINKS: FollowLink[] = [
   },
 ];
 
+// Layout matches the live page (www.saiens.group/follow-us): full-bleed
+// blue→grey→warm gradient background at full opacity, white heading
+// top-left, and a narrow left-aligned column of white brand cards.
 export default function FollowUsPage() {
   return (
     <main className="relative flex w-full flex-1 flex-col overflow-hidden bg-(--black) text-(--white)">
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0">
         <Image
           src="/images/e12de6d4-6bd4-4406-80cf-e9676e232119/usethis.png"
           alt=""
           fill
           sizes="100vw"
-          className="object-cover opacity-40"
+          className="object-cover"
           priority
         />
       </div>
 
-      <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-12 px-6 py-16 text-center md:py-24">
-        <header className="flex flex-col gap-1">
-          <h2 className="font-(family-name:--font-jost) text-3xl tracking-tight md:text-4xl">
+      <div className="relative z-10 flex w-full max-w-xl flex-col items-start gap-10 px-8 py-16 md:px-16 md:py-20">
+        <header className="flex flex-col gap-1 text-left">
+          <h2 className="font-(family-name:--font-jost) text-4xl font-bold tracking-tight md:text-5xl">
             追蹤我們
           </h2>
-          <h2 className="font-(family-name:--font-jost) text-3xl tracking-tight md:text-4xl">
+          <h2 className="font-(family-name:--font-jost) text-4xl font-bold tracking-tight md:text-5xl">
             請你喝一杯 ☕
           </h2>
         </header>
 
-        <div className="flex w-full flex-col gap-10 sm:flex-row sm:justify-center sm:gap-8">
+        <div className="mt-8 flex w-full max-w-sm flex-col gap-8">
           {FOLLOW_LINKS.map((link) => (
             <div
               key={link.brand}
-              className="flex flex-1 flex-col items-center gap-4"
+              className="flex w-full flex-col items-center gap-5 bg-(--light-accent) px-8 py-9"
             >
-              <div className="relative h-16 w-full max-w-[220px]">
+              <div className="relative h-14 w-full max-w-[260px]">
                 <Image
                   src={link.logoSrc}
                   alt={link.brand}
@@ -84,7 +87,7 @@ export default function FollowUsPage() {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center bg-(--white) px-8 py-3 text-sm font-medium text-(--black) transition-opacity hover:opacity-80"
+                className="inline-flex w-full items-center justify-center bg-(--black) px-8 py-3 text-sm font-medium text-(--white) transition-opacity hover:opacity-80"
               >
                 追蹤 IG
               </a>
@@ -92,16 +95,18 @@ export default function FollowUsPage() {
           ))}
         </div>
 
-        <h3 className="font-(family-name:--font-jost) text-xl tracking-tight md:text-2xl">
-          完成追蹤後，請點擊下方按鈕
-        </h3>
+        <div className="mt-4 flex w-full max-w-sm flex-col items-start gap-4">
+          <h3 className="w-full text-center font-(family-name:--font-jost) text-base font-bold tracking-tight md:text-lg">
+            完成追蹤後，請點擊下方按鈕
+          </h3>
 
-        <Link
-          href="/follow-complete"
-          className="inline-flex items-center justify-center bg-(--white) px-8 py-3 text-sm font-medium text-(--black) transition-opacity hover:opacity-80"
-        >
-          [ 完成追蹤，領取飲品 → ]
-        </Link>
+          <Link
+            href="/follow-complete"
+            className="inline-flex w-full items-center justify-center bg-(--black) px-8 py-3 text-sm font-medium text-(--white) transition-opacity hover:opacity-80"
+          >
+            [ 完成追蹤，領取飲品 → ]
+          </Link>
+        </div>
       </div>
     </main>
   );

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 // here verbatim. Rendering the page shell with the real brand mark only.
 export default function GroupEventsPage() {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center gap-6 bg-(--black) px-6 py-32 text-center text-(--white)">
+    <main className="flex flex-1 flex-col items-center justify-center gap-6 bg-(--white) px-6 py-32 text-center text-(--black)">
       <div className="relative h-16 w-40">
         <Image
           src="/images/6e71d0ec-be92-4f81-97d7-fb5737ace005/Saiens.png"
