@@ -153,6 +153,25 @@
   color: var(--dark-accent);
 }
 
+/* Squarespace text blocks sometimes export paragraphs wrapped in
+ * <pre><code>. Left unstyled, the browser default `white-space: pre` on
+ * <pre> prevents wrapping entirely, so a single long paragraph renders as
+ * one unbroken line and blows out the page width. Treat it as a normal
+ * wrapped paragraph in the body font, matching how the source site
+ * actually displays this text. */
+.sqs-article-body pre {
+  margin: 0 0 1rem;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1.75;
+}
+.sqs-article-body pre code {
+  white-space: inherit;
+  font-family: inherit;
+}
+
 /* Generic image fallback: never overflow the column */
 .sqs-article-body img {
   max-width: 100%;
@@ -189,7 +208,8 @@
  * repeated .slide items), not to .sqs-gallery-block-grid itself -
  * applying display:grid to the outer wrapper (which has a single child,
  * .sqs-gallery) is a no-op and lets slides stack full-width instead. */
-.sqs-article-body .sqs-gallery-block-grid .sqs-gallery {
+.sqs-article-body .sqs-gallery-block-grid .sqs-gallery,
+.sqs-article-body .sqs-gallery-block-slideshow .sqs-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 0.75rem;
@@ -198,23 +218,36 @@
 .sqs-article-body .sqs-gallery-block-grid.sqs-gallery-thumbnails-per-row-2 .sqs-gallery {
   grid-template-columns: repeat(2, 1fr);
 }
-.sqs-article-body .sqs-gallery-block-grid .slide {
+.sqs-article-body .sqs-gallery-block-grid .slide,
+.sqs-article-body .sqs-gallery-block-slideshow .slide {
   position: relative;
   overflow: hidden;
-}
-.sqs-article-body .sqs-gallery-block-grid.sqs-gallery-aspect-ratio-square .slide {
   aspect-ratio: 1 / 1;
 }
 .sqs-article-body .sqs-gallery-block-grid .margin-wrapper,
-.sqs-article-body .sqs-gallery-block-grid .image-slide-anchor {
+.sqs-article-body .sqs-gallery-block-grid .image-slide-anchor,
+.sqs-article-body .sqs-gallery-block-slideshow .margin-wrapper,
+.sqs-article-body .sqs-gallery-block-slideshow .image-slide-anchor {
   display: block;
   width: 100%;
   height: 100%;
 }
-.sqs-article-body .sqs-gallery-block-grid img.thumb-image {
+.sqs-article-body .sqs-gallery-block-grid img.thumb-image,
+.sqs-article-body .sqs-gallery-block-slideshow img.thumb-image {
   width: 100%;
   height: 100%;
   max-width: none;
   object-fit: cover;
   display: block;
+}
+
+/* Slideshow galleries also export a separate thumbnail-strip nav
+ * (`.sqs-gallery-thumbnails`, small duplicate 120x80 crops of the same
+ * images) meant to be driven by Squarespace's carousel JS, which this
+ * static rebuild does not run. It renders as a *sibling* of
+ * `.sqs-gallery-container` (both under `.sqs-block-content`), not a
+ * descendant, so it must be targeted directly. With the main slides now
+ * shown as a full grid above, the duplicate strip is redundant - hide it. */
+.sqs-article-body .sqs-gallery-thumbnails {
+  display: none;
 }

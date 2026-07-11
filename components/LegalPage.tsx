@@ -6,7 +6,7 @@ export type LegalSection =
   | { type: "paragraph"; text: string; center?: boolean; small?: boolean }
   | { type: "list"; ordered?: boolean; items: string[] }
   | { type: "table"; headers: string[]; rows: string[][] }
-  | { type: "image"; src: string; alt: string; width: number; height: number }
+  | { type: "image"; src: string; alt: string; width: number; height: number; small?: boolean }
   | { type: "contact"; lines: string[] };
 
 interface LegalPageProps {
@@ -92,7 +92,7 @@ function LegalSectionBlock({ section }: { section: LegalSection }) {
       );
     case "image":
       return (
-        <div className="mx-auto w-full max-w-sm">
+        <div className={`mx-auto w-full ${section.small ? "max-w-[130px]" : "max-w-sm"}`}>
           <Image
             src={section.src}
             alt={section.alt}

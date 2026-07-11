@@ -45,6 +45,7 @@ export const sections: LegalSection[] = [
     alt: "品質保証図示25年",
     width: 873,
     height: 839,
+    small: true,
   },
   { type: "heading", level: 4, text: "15年保証" },
   {
@@ -57,6 +58,7 @@ export const sections: LegalSection[] = [
     alt: "品質保証図示15年",
     width: 873,
     height: 839,
+    small: true,
   },
   { type: "heading", level: 4, text: "1年保証" },
   {
@@ -69,6 +71,7 @@ export const sections: LegalSection[] = [
     alt: "品質保証図示1年",
     width: 873,
     height: 839,
+    small: true,
   },
   { type: "heading", level: 4, text: "加工保証" },
   {
@@ -126,6 +129,7 @@ export const sections: LegalSection[] = [
     alt: "紙の保証書を保管する煩わしさから解放 図示",
     width: 591,
     height: 592,
+    small: true,
   },
   { type: "heading", level: 3, text: "紙の保証書を保管する煩わしさから解放", center: true },
   {
@@ -139,6 +143,7 @@ export const sections: LegalSection[] = [
     alt: "安心のコンタクト窓口 図示",
     width: 592,
     height: 592,
+    small: true,
   },
   { type: "heading", level: 3, text: "安心のコンタクト窓口", center: true },
   {
@@ -152,6 +157,7 @@ export const sections: LegalSection[] = [
     alt: "VIPアフターサービスを体験 図示",
     width: 591,
     height: 592,
+    small: true,
   },
   { type: "heading", level: 3, text: "VIPアフターサービスを体験", center: true },
   {

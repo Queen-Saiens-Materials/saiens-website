@@ -44,6 +44,7 @@ export const sections: LegalSection[] = [
     alt: "品質保證圖示25年",
     width: 873,
     height: 839,
+    small: true,
   },
   { type: "heading", level: 4, text: "15年品質保證" },
   {
@@ -56,6 +57,7 @@ export const sections: LegalSection[] = [
     alt: "品質保證圖示15年",
     width: 873,
     height: 839,
+    small: true,
   },
   { type: "heading", level: 4, text: "1年品質保證" },
   {
@@ -68,6 +70,7 @@ export const sections: LegalSection[] = [
     alt: "品質保證圖示1年",
     width: 873,
     height: 839,
+    small: true,
   },
   {
     type: "paragraph",
@@ -159,6 +162,7 @@ export const sections: LegalSection[] = [
     alt: "解決保存紙本保固卡的煩惱圖示",
     width: 591,
     height: 592,
+    small: true,
   },
   { type: "heading", level: 3, text: "解決保存紙本保固卡的煩惱", center: true },
   {
@@ -172,6 +176,7 @@ export const sections: LegalSection[] = [
     alt: "安心有保障的聯絡管道圖示",
     width: 592,
     height: 592,
+    small: true,
   },
   { type: "heading", level: 3, text: "安心有保障的聯絡管道", center: true },
   {
@@ -185,6 +190,7 @@ export const sections: LegalSection[] = [
     alt: "享受VIP的售後服務圖示",
     width: 591,
     height: 592,
+    small: true,
   },
   { type: "heading", level: 3, text: "享受VIP的售後服務", center: true },
   {
