@@ -81,7 +81,11 @@ const SHOWROOMS: Showroom[] = [
 const LINK_CLASS =
   "underline underline-offset-4 transition-colors hover:text-(--dark-accent)";
 
-const MARQUEE_ITEMS = Array.from({ length: 12 }, (_, i) => i);
+const MARQUEE_ITEMS = Array.from({ length: 16 }, (_, i) => i);
+
+// Display order matches the original site's side-by-side arch layout:
+// Taichung (left) / Taipei (center, larger) / Kaohsiung (right).
+const DISPLAY_ORDER = [1, 0, 2];
 
 export default function VisitUsJpPage() {
   return (
@@ -101,71 +105,79 @@ export default function VisitUsJpPage() {
         </a>
       </p>
 
-      <ShowroomPhoto image={SHOWROOMS[0].image} priority />
-
-      <MarqueeBand />
-
-      {SHOWROOMS.map((showroom, index) => (
-        <section key={showroom.city} className="flex flex-col">
-          {index > 0 ? <ShowroomPhoto image={showroom.image} /> : null}
-
-          <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-6 py-16 text-center">
-            <h1 className="font-(family-name:--font-jost) text-4xl tracking-tight md:text-5xl">
-              {showroom.city}
-            </h1>
-            <h4 className="font-(family-name:--font-jost) text-lg text-(--dark-accent)">
-              {showroom.label}
-            </h4>
-            <p className="whitespace-pre-wrap font-(family-name:--font-noto-tc) text-base leading-relaxed">
-              <a
-                href={showroom.mapUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={LINK_CLASS}
-              >
-                {showroom.address}
-              </a>
-              <br />
-              {showroom.details.map((line, i) => (
-                <span key={line}>
-                  {line}
-                  {i < showroom.details.length - 1 ? <br /> : null}
-                </span>
-              ))}
-            </p>
-          </div>
-        </section>
-      ))}
+      <ShowroomSection />
     </main>
   );
 }
 
-function ShowroomPhoto({
-  image,
-  priority = false,
-}: {
-  image: ShowroomImage;
-  priority?: boolean;
-}) {
+function ShowroomSection() {
   return (
-    <div className="mx-auto mt-10 w-full max-w-6xl px-6">
-      <div className="relative aspect-[3/2] w-full overflow-hidden bg-(--light-accent)">
-        <Image
-          src={image.src}
-          alt={image.alt}
-          fill
-          sizes="(max-width: 1152px) 100vw, 1104px"
-          priority={priority}
-          className="object-cover"
-        />
+    <section className="relative mt-10 overflow-hidden bg-(--black) py-20 text-(--white)">
+      <MarqueeBand />
+
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-20 px-6 md:flex-row md:items-start md:justify-center md:gap-6">
+        {DISPLAY_ORDER.map((index) => {
+          const showroom = SHOWROOMS[index];
+          const isTaipei = showroom.city === "TAIPEI";
+
+          return (
+            <div
+              key={showroom.city}
+              className={`flex flex-col items-center text-center ${
+                isTaipei ? "md:-mt-12 md:w-80" : "md:mt-10 md:w-64"
+              }`}
+            >
+              <div
+                className={`relative aspect-[3/4] w-56 overflow-hidden rounded-t-full bg-(--light-accent) ${
+                  isTaipei ? "md:w-72" : "md:w-56"
+                }`}
+              >
+                <Image
+                  src={showroom.image.src}
+                  alt={showroom.image.alt}
+                  fill
+                  sizes="(max-width: 768px) 224px, 288px"
+                  priority={isTaipei}
+                  className="object-cover"
+                />
+              </div>
+
+              <div className="mx-auto mt-8 flex w-full max-w-xs flex-col gap-4">
+                <h1 className="font-(family-name:--font-jost) text-4xl tracking-tight md:text-5xl">
+                  {showroom.city}
+                </h1>
+                <h4 className="font-(family-name:--font-jost) text-lg text-(--dark-accent)">
+                  {showroom.label}
+                </h4>
+                <p className="whitespace-pre-wrap font-(family-name:--font-noto-tc) text-base leading-relaxed">
+                  <a
+                    href={showroom.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={LINK_CLASS}
+                  >
+                    {showroom.address}
+                  </a>
+                  <br />
+                  {showroom.details.map((line, i) => (
+                    <span key={line}>
+                      {line}
+                      {i < showroom.details.length - 1 ? <br /> : null}
+                    </span>
+                  ))}
+                </p>
+              </div>
+            </div>
+          );
+        })}
       </div>
-    </div>
+    </section>
   );
 }
 
 function MarqueeBand() {
   return (
-    <div className="my-16 overflow-hidden whitespace-nowrap bg-(--black) py-4 text-(--white)">
+    <div className="pointer-events-none absolute inset-x-0 top-14 z-0 overflow-hidden whitespace-nowrap py-4 text-(--white) md:top-20">
       <style>{`
         @keyframes visit-us-marquee {
           from { transform: translateX(0); }
@@ -180,7 +192,7 @@ function MarqueeBand() {
         {MARQUEE_ITEMS.map((i) => (
           <span
             key={i}
-            className="px-8 font-(family-name:--font-jost) text-2xl uppercase tracking-widest"
+            className="px-8 font-(family-name:--font-jost) text-2xl uppercase tracking-widest opacity-60"
           >
             #VISIT US
           </span>
