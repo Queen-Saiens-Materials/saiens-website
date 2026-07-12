@@ -2,75 +2,34 @@
 
 import { useState } from "react";
 import Link from "next/link";
-
-interface Brand {
-  name: string;
-  spec: string;
-  thickness: string;
-  scope?: string;
-  features: string;
-  href: string;
-}
-
-const BRANDS: Brand[] = [
-  {
-    name: "QJ Quartz Stone 闊石",
-    spec: "320 x 160cm",
-    thickness: "1.5cm",
-    scope: "廚房檯面、浴室檯面、牆面、地面",
-    features: "抗菌抗污、抗刮耐磨、抗酸鹼、不吸水、抗衝擊、透體花紋",
-    href: "https://qjquartzstone.com.tw/index.php",
-  },
-  {
-    name: "Mikado Quartz 帝雉石",
-    spec: "320 x 160cm",
-    thickness: "2cm（3cm可依專案詢問）",
-    features: "抗菌抗污、抗刮耐磨、抗酸鹼、不吸水、抗衝擊、透體花紋",
-    href: "https://web.mikadoquartz.tw/",
-  },
-  {
-    name: "ETERNOS 永恆石",
-    spec: "320 x 160cm",
-    thickness: "2cm / 1.2cm",
-    scope: "廚房檯面、浴室檯面、牆面、地面",
-    features: "抗菌抗污、抗刮耐磨、抗酸鹼、不吸水、抗衝擊、透體/單體",
-    href: "https://www.eternos.tw/",
-  },
-  {
-    name: "Atlas Plan 亞特蘭石",
-    spec: "324 x 162cm",
-    thickness: "1.5cm",
-    scope: "室內外空間、浴室檯面、電視牆、牆面",
-    features: "抗菌抗污、抗刮耐磨、抗酸鹼、不吸水",
-    href: "#",
-  },
-];
+import content from "@/content/pages/home-tw.json";
 
 export default function BrandCards() {
   // Squarespace original uses data-should-allow-multiple-open-items="false",
   // i.e. only one row expanded at a time.
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { headingZh, headingEn, ctaLabel, ctaHref, items } = content.brands;
 
   return (
     <section id="ourbrand" className="bg-(--white) px-6 py-24 text-(--black) sm:px-10">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-2">
         <div className="flex flex-col gap-8">
           <h2 className="font-(family-name:--font-jost) text-3xl font-semibold tracking-tight sm:text-4xl">
-            我們的品牌
+            {headingZh}
             <span className="mt-2 block text-lg font-normal text-(--dark-accent)">
-              Our Brand
+              {headingEn}
             </span>
           </h2>
           <Link
-            href="/visit-us"
+            href={ctaHref}
             className="inline-block w-fit bg-(--black) px-6 py-3 text-sm uppercase tracking-wide text-(--white) transition-colors hover:bg-(--dark-accent)"
           >
-            Visit Us
+            {ctaLabel}
           </Link>
         </div>
 
         <ul className="flex flex-col border-t border-(--accent)">
-          {BRANDS.map((brand, index) => {
+          {items.map((brand, index) => {
             const isOpen = openIndex === index;
             return (
               <li key={brand.name} className="border-b border-(--accent)">

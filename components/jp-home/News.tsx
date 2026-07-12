@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { BlogPost } from "@/lib/posts";
+import content from "@/content/pages/home-jp.json";
 
 interface NewsProps {
   posts: BlogPost[];
@@ -62,18 +63,20 @@ function JpBlogCard({ post }: JpBlogCardProps): React.JSX.Element {
 }
 
 export default function News({ posts }: NewsProps): React.JSX.Element {
+  const { headingLine1, headingLine2, subhead, emptyStateText } = content.news;
+
   return (
     <section id="news" className="bg-(--white) px-6 py-24 text-(--black) sm:px-10">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col items-center gap-4 text-center">
           <h2 className="font-(family-name:--font-jost) text-center text-3xl font-semibold tracking-tight sm:text-4xl">
-            新しい発見、
+            {headingLine1}
             <span className="mt-2 block text-lg font-normal text-(--dark-accent)">
-              美しい暮らし。
+              {headingLine2}
             </span>
           </h2>
           <p className="text-center text-sm text-(--dark-accent)">
-            最新の情報、そして美しい祝福。
+            {subhead}
           </p>
         </div>
 
@@ -85,7 +88,7 @@ export default function News({ posts }: NewsProps): React.JSX.Element {
           </div>
         ) : (
           <p className="mt-16 text-center text-sm text-(--dark-accent)">
-            最新情報は近日公開予定です。
+            {emptyStateText}
           </p>
         )}
       </div>

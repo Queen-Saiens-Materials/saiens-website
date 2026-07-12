@@ -8,13 +8,14 @@ import QualityAssurance from "@/components/home/QualityAssurance";
 import CleaningIntro from "@/components/home/CleaningIntro";
 import Maintenance from "@/components/home/Maintenance";
 import News from "@/components/home/News";
+import content from "@/content/pages/home-tw.json";
 
 export default function Home() {
   return (
     <main className="flex flex-1 flex-col">
       <HeroBanner
-        videoSrc="/videos/hero.mp4"
-        posterSrc="/images/1752483347162-YN8Z4OF1BMHYG447WBN7/hero-poster.jpg"
+        videoSrc={content.heroBanner.videoSrc}
+        posterSrc={content.heroBanner.posterSrc}
       />
       <Hero />
       <OneStopService />

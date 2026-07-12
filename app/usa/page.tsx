@@ -7,6 +7,7 @@ import UsaBrand from "@/components/usa-home/UsaBrand";
 import UsaCertifications from "@/components/usa-home/UsaCertifications";
 import UsaWarranty from "@/components/usa-home/UsaWarranty";
 import UsaCertificationDetails from "@/components/usa-home/UsaCertificationDetails";
+import content from "@/content/pages/home-usa.json";
 
 export const metadata: Metadata = {
   title: "saiens US | Explore Premium Materials Now — Saiens",
@@ -18,8 +19,8 @@ export default function UsaHome() {
   return (
     <main className="flex flex-1 flex-col">
       <HeroBanner
-        videoSrc="/videos/hero.mp4"
-        posterSrc="/images/1752483347162-YN8Z4OF1BMHYG447WBN7/hero-poster.jpg"
+        videoSrc={content.heroBanner.videoSrc}
+        posterSrc={content.heroBanner.posterSrc}
       />
       <UsaHero />
       <UsaCollection />

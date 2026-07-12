@@ -2,72 +2,32 @@
 
 import { useState } from "react";
 import Link from "next/link";
-
-interface Brand {
-  name: string;
-  spec: string;
-  thickness: string;
-  scope?: string;
-  features: string;
-  href?: string;
-}
-
-const BRANDS: Brand[] = [
-  {
-    name: "QJ Quartz Stone（クォーツストーン・闊石）",
-    spec: "320×160cm",
-    thickness: "1.5cm",
-    scope: "キッチンカウンター、浴室カウンター、壁、床",
-    features: "抗菌・防汚、耐傷・耐摩耗、耐酸・耐アルカリ、非吸水、耐衝撃、半透明パターン",
-    href: "https://qjquartzstone.com.tw/index.php",
-  },
-  {
-    name: "Mikado Quartz（帝雉石／テイチセキ）",
-    spec: "320×160cm",
-    thickness: "2cm（ご希望により3cm）",
-    features: "抗菌、防汚、防傷、耐摩耗、耐酸、非吸水、耐衝撃、半透明柄",
-    href: "https://web.mikadoquartz.tw/",
-  },
-  {
-    name: "ETERNOS（永恆石／エタノス）",
-    spec: "320 x 160cm",
-    thickness: "2cm / 1.2cm",
-    scope: "キッチンカウンター、バスルームカウンター、壁、床",
-    features: "抗菌・防汚、耐傷・耐摩耗、耐酸・耐アルカリ、非吸水、耐衝撃、半透明・モノブロック。",
-    href: "https://www.eternos.us/",
-  },
-  {
-    name: "nexea（ネクシア）",
-    spec: "324 x 162cm",
-    thickness: "1.2cm",
-    scope: "屋内外、浴室カウンター、テレビ壁面、壁面",
-    features: "抗菌・防汚、耐傷性・耐摩耗性、耐酸性・耐アルカリ性、非吸水性",
-  },
-];
+import content from "@/content/pages/home-jp.json";
 
 export default function Brands(): React.JSX.Element {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { headingJa, headingEn, ctaLabel, ctaHref, items } = content.brands;
 
   return (
     <section id="ourbrand" className="bg-(--white) px-6 py-24 text-(--black) sm:px-10">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-2">
         <div className="flex flex-col gap-8">
           <h2 className="font-(family-name:--font-jost) text-3xl font-semibold tracking-tight sm:text-4xl">
-            ブランド紹介
+            {headingJa}
             <span className="mt-2 block text-lg font-normal text-(--dark-accent)">
-              Our Brand
+              {headingEn}
             </span>
           </h2>
           <Link
-            href="/visit-us-jp"
+            href={ctaHref}
             className="inline-block w-fit bg-(--black) px-6 py-3 text-sm uppercase tracking-wide text-(--white) transition-colors hover:bg-(--dark-accent)"
           >
-            ショールームへ
+            {ctaLabel}
           </Link>
         </div>
 
         <ul className="flex flex-col border-t border-(--accent)">
-          {BRANDS.map((brand, index) => {
+          {items.map((brand, index) => {
             const isOpen = openIndex === index;
             return (
               <li key={brand.name} className="border-b border-(--accent)">

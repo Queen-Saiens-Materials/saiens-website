@@ -10,6 +10,7 @@ import QualityGuarantee from "@/components/jp-home/QualityGuarantee";
 import Certifications from "@/components/jp-home/Certifications";
 import Cleaning from "@/components/jp-home/Cleaning";
 import News from "@/components/jp-home/News";
+import content from "@/content/pages/home-jp.json";
 
 export const metadata: Metadata = {
   title: "Saiens | すべての家と家族に祝福を",
@@ -23,8 +24,8 @@ export default async function JpHomePage(): Promise<React.JSX.Element> {
   return (
     <main className="flex flex-1 flex-col">
       <HeroBanner
-        videoSrc="/videos/hero.mp4"
-        posterSrc="/images/1752483347162-YN8Z4OF1BMHYG447WBN7/hero-poster.jpg"
+        videoSrc={content.heroBanner.videoSrc}
+        posterSrc={content.heroBanner.posterSrc}
       />
       <Hero />
       <Products />
