@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# tinacms (generated at build/dev time)
+/tina/__generated__
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
