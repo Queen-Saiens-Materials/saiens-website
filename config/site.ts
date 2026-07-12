@@ -1,43 +1,23 @@
 // Site-wide constants shared across pages and components.
 // Single source of truth — update here, not at each call site.
+//
+// Data lives in content/settings/site.json (editable via Tina CMS);
+// this module re-exports the same named constants/types the rest of
+// the codebase already imports, so no call site needs to change.
 
-export const LINE_URL = "https://line.me/R/ti/p/@154cxzgk?oat_content=url";
+import siteData from "@/content/settings/site.json";
 
-export const SOCIAL_LINKS = {
-  facebook:
-    "https://www.facebook.com/p/Saiens-%E5%B1%B1%E6%81%A9-61563602324496/",
-  instagram: "https://www.instagram.com/saiens.tw/",
-  youtube: "https://www.youtube.com/@saienstaiwan/featured",
-} as const;
+export const LINE_URL = siteData.lineUrl;
 
-// Google Maps place links, shared between the TW/EN and JP showroom pages.
-const MAP_TAIPEI =
-  "https://www.google.com/maps/place/%E5%8F%B0%E5%8C%97%EF%BD%9CSaiens%E5%B1%B1%E6%81%A9%EF%BD%9CMikado+Quartz%E5%B8%9D%E9%9B%89%E7%9F%B3%EF%BD%9CQJ+Quartz+Stone%E9%97%8A%E7%9F%B3%EF%BD%9C%E5%A4%A7%E7%90%86%E7%9F%B3%E7%B4%8B%E7%9F%B3%E8%8B%B1%E7%9F%B3/@25.0582903,121.5986306,17z/data=!3m1!4b1!4m6!3m5!1s0x3442ab6d22a39d13:0xff06d8343f329fb1!8m2!3d25.0582903!4d121.6012109!16s%2Fg%2F11n2tgwcp_?entry=ttu";
-const MAP_TAICHUNG =
-  "https://www.google.com/maps/place/408%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%8D%97%E5%B1%AF%E5%8D%80%E6%83%A0%E4%B8%AD%E8%B7%AF%E4%BA%8C%E6%AE%B5152%E8%99%9F/@24.1541264,120.6403112,17z/data=!3m1!4b1!4m6!3m5!1s0x34693deb088502a9:0x53deb2ea8200a2d2!8m2!3d24.1541264!4d120.6403112!16s%2Fg%2F11jd9flg6s?hl=zh-TW&entry=ttu&g_ep=EgoyMDI1MDUxNS4xIKXMDSoASAFQAw%3D%3D";
-const MAP_KAOHSIUNG =
-  "https://www.google.com/maps/place/%E6%99%82%E4%BB%A3%E5%AF%8C%E8%B1%AA%E5%84%AA%E7%94%9F%E4%BC%81%E6%A5%AD%E5%A4%A7%E6%A8%93/@22.6650703,120.3035751,17z/data=!3m1!4b1!4m6!3m5!1s0x346e050421ec5ee7:0xdf18b2dfb045e9c0!8m2!3d22.6650703!4d120.3035751!16s%2Fg%2F11gfcycwqb?hl=zh-TW&entry=ttu&g_ep=EgoyMDI1MDUxNS4xIKXMDSoASAFQAw%3D%3D";
+export const SOCIAL_LINKS = siteData.socialLinks;
 
 export interface ShowroomImage {
   src: string;
   alt: string;
 }
 
-// Showroom photos, identical between the TW/EN and JP pages.
-const SHOWROOM_IMAGES: Record<"TAIPEI" | "TAICHUNG" | "KAOHSIUNG", ShowroomImage> = {
-  TAIPEI: {
-    src: "/images/1752483355394-S7BQJS9E2WDWS4K5L0Z7/20240427-DSC02520+_.jpg",
-    alt: "Modern interior of a building with white and black design elements, large windows, a marble table, chairs, and decorative lighting.",
-  },
-  TAICHUNG: {
-    src: "/images/1752483355397-IKXIVP1M269EKLDAI5QY/DSC02212.jpg",
-    alt: "Modern minimalist waiting area with a long beige sofa, orange headboard-style cushions, a small black Marshall speaker, and a set of minimalist white and gray tiered coffee tables.",
-  },
-  KAOHSIUNG: {
-    src: "/images/1752483355401-9MF2AH9D83UD0DUXWEAE/2023-03-15.png",
-    alt: "Interior display of large marble and stone slabs in a showroom, with modern ceiling lights and a marble countertop.",
-  },
-};
+const SHOWROOM_IMAGES: Record<"TAIPEI" | "TAICHUNG" | "KAOHSIUNG", ShowroomImage> =
+  siteData.showroomImages;
 
 export interface Showroom {
   city: string;
@@ -51,38 +31,16 @@ export interface Showroom {
 }
 
 // TW/EN showroom info, used on /visit-us.
-export const SHOWROOMS: Showroom[] = [
-  {
-    city: "TAIPEI",
-    label: "台北展間 (預約制）",
-    mapUrl: MAP_TAIPEI,
-    address: "台北市南港區松河街 616 號 1樓",
-    telHref: "tel:02-2745-8089",
-    telLabel: "02-2745-8089",
-    hours: ["週一至週五", "10:00 a.m. - 5:30 p.m.", "週六", "10:30 a.m - 5:30 p.m."],
-    image: SHOWROOM_IMAGES.TAIPEI,
-  },
-  {
-    city: "TAICHUNG",
-    label: "台中展間 (預約制）",
-    mapUrl: MAP_TAICHUNG,
-    address: "台中市南屯區惠中路二段152號",
-    telHref: "tel:0422511850",
-    telLabel: "04-2251-1850",
-    hours: ["週一至週五", "10:00 a.m. - 5:30 p.m.", "週六", "欲參觀，請提前預約"],
-    image: SHOWROOM_IMAGES.TAICHUNG,
-  },
-  {
-    city: "KAOHSIUNG",
-    label: "高雄展間 (預約制）",
-    mapUrl: MAP_KAOHSIUNG,
-    address: "高雄市左營區博愛二路366號2樓",
-    telHref: "tel:0422511850",
-    telLabel: "04-2251-1850",
-    hours: ["週一至週五", "10:00 a.m. - 5:30 p.m.", "週六", "欲參觀，請提前預約"],
-    image: SHOWROOM_IMAGES.KAOHSIUNG,
-  },
-];
+export const SHOWROOMS: Showroom[] = siteData.showrooms.map((showroom) => ({
+  city: showroom.city,
+  label: showroom.label,
+  mapUrl: showroom.mapUrl,
+  address: showroom.address,
+  telHref: showroom.telHref,
+  telLabel: showroom.telLabel,
+  hours: showroom.hours,
+  image: SHOWROOM_IMAGES[showroom.imageKey as keyof typeof SHOWROOM_IMAGES],
+}));
 
 export interface ShowroomJa {
   city: string;
@@ -97,51 +55,16 @@ export interface ShowroomJa {
 // SHOWROOMS because the JP copy uses different phrasing/formatting
 // (e.g. phone numbers are plain text, not a `tel:` link) rather than a
 // literal translation of the same fields.
-export const SHOWROOMS_JA: ShowroomJa[] = [
-  {
-    city: "TAIPEI",
-    label: "台北ショールーム（予約制）",
-    mapUrl: MAP_TAIPEI,
-    address: "台北市南港区松河街616号 1階",
-    details: [
-      "TEL：02-2745-8089",
-      "営業時間：月曜～金曜 10:00～17:30",
-      "土曜 10:30～17:30",
-    ],
-    image: SHOWROOM_IMAGES.TAIPEI,
-  },
-  {
-    city: "TAICHUNG",
-    label: "台中ショールーム（予約制）",
-    mapUrl: MAP_TAICHUNG,
-    address: "台中市南屯区惠中路二段152号",
-    details: [
-      "TEL：04-2251-1850",
-      "営業時間：月曜～金曜 10:00～17:30",
-      "土曜：ご見学をご希望の方は、事前にご予約ください。",
-    ],
-    image: SHOWROOM_IMAGES.TAICHUNG,
-  },
-  {
-    city: "KAOHSIUNG",
-    label: "高雄ショールーム（予約制）",
-    mapUrl: MAP_KAOHSIUNG,
-    address: "高雄市左営区博愛二路366号 2階",
-    details: [
-      "TEL：04-2251-1850",
-      "営業時間：月曜～金曜 10:00～17:30",
-      "土曜：ご見学をご希望の方は、事前にご予約ください。",
-    ],
-    image: SHOWROOM_IMAGES.KAOHSIUNG,
-  },
-];
+export const SHOWROOMS_JA: ShowroomJa[] = siteData.showroomsJa.map((showroom) => ({
+  city: showroom.city,
+  label: showroom.label,
+  mapUrl: showroom.mapUrl,
+  address: showroom.address,
+  details: showroom.details,
+  image: SHOWROOM_IMAGES[showroom.imageKey as keyof typeof SHOWROOM_IMAGES],
+}));
 
 // Contact info for the invite-only Saiens Salon event, kept distinct from
 // SHOWROOMS[0] because the address/phone text there differs in wording
 // and spacing from the Taipei showroom entry above.
-export const SAIENS_SALON = {
-  location: "Saiens 山恩台北展間",
-  address: "台北市南港區松河街616 號 1 樓",
-  contactName: "Elaine 陳珊慧 小姐",
-  contactPhone: "0919-483-180",
-} as const;
+export const SAIENS_SALON = siteData.saiensSalon;
