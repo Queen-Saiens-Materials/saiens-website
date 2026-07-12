@@ -1,0 +1,161 @@
+{
+  "hero": {
+    "heading": "Bless Every Home&Family",
+    "body": "Saiens 山恩集團致力於成為頂尖的材料科學整合商，自 2019 年創辦以來，以「科學」結合「美學」創造出兼具實用性與藝術性的卓越材料。\n結合本地生產的美國石英石品牌 Mikado Quartz 帝雉石、平價大眾石英石 QJ Quartz Stone 闊石、創新材料 Eternos 永恆石、代理義大利知名陶板品牌 atlasPLAN 亞特蘭陶瓷薄板，山恩提供客戶全方位的材料，透過研發技術、材料整合和專業知識，以高品質、高規格的品牌概念，成為客戶最值得信賴的材料夥伴。"
+  },
+  "oneStopService": {
+    "headingZh": "One Stop Service",
+    "headingEn": "一站式服務",
+    "services": [
+      {
+        "icon": "/images/3480781c-fcb4-4581-85f4-5507bc9a971b/atom+_1_.png",
+        "iconAlt": "R&D icon",
+        "titleZh": "研發",
+        "titleEn": "R&D",
+        "bodyZh": "山恩擁有自有礦源與實驗室，研發團隊持續創新，為市場打造獨特且實用的產品。",
+        "bodyEn": "Innovative R&D tailored to real market and customer needs."
+      },
+      {
+        "icon": "/images/c1f3eaa7-c30a-42d6-b70c-6faac542b7fb/tube.png",
+        "iconAlt": "Manufacturing & Fabrication icon",
+        "titleZh": "製造與加工",
+        "titleEn": "Manufacturing & Fabrication",
+        "bodyZh": "從原料到成品，山恩自建生產與加工體系，嚴格控管品質，靈活實現多樣化設計需求。",
+        "bodyEn": "Integrated production and fabrication for precision, flexibility, and quality assurance."
+      },
+      {
+        "icon": "/images/c4e789e0-936b-4939-9ac3-b8bf1bc41eff/user.png",
+        "iconAlt": "Service icon",
+        "titleZh": "服務",
+        "titleEn": "Service",
+        "bodyZh": "山恩提供完善的售前與售後支援以及最長 25 年品質保證，讓每一次合作都安心無虞。",
+        "bodyEn": "Comprehensive service ensuring confidence and long-term satisfaction."
+      }
+    ]
+  },
+  "products": {
+    "heading": "More Collection",
+    "ctaLabel": "Discover More",
+    "items": [
+      {
+        "code": "MQ-737",
+        "name": "Tranquilty Gold",
+        "image": "/images/1752483347170-Z8H6QP7PSP40LT3NYEH3/4803876482117202834.b30f005f6a2bf0eb7ff895d7412550c8.22100916.jpg",
+        "link": "https://web.mikadoquartz.tw/zh-TW/products/tranquility-gold"
+      },
+      {
+        "code": "QJ-3L323",
+        "name": "Terrazo",
+        "image": "/images/1752483347173-V6IABIZ721GYVOS85SF9/__QJ3L323_2JPG.JPG",
+        "link": "/#ourbrand"
+      },
+      {
+        "code": "MQ-759",
+        "name": "Infinity",
+        "image": "/images/1752483347175-WQ8N0YW2UMK6IFI1EFCS/DSC02248+_1_.jpg",
+        "link": "https://web.mikadoquartz.tw/zh-TW/products/infinity"
+      },
+      {
+        "code": "ET-6015",
+        "name": "Calacatta Gold",
+        "image": "/images/1752483347179-V7YIBVXI41V1L9MM8EUT/ET-6015.jpg",
+        "link": "https://www.eternos.tw/et-6005/"
+      },
+      {
+        "code": "ET-6005",
+        "name": "Statuario Antique",
+        "image": "/images/1752483347182-8JRLWJMEKE292AYQO79E/ET-6005.jpg",
+        "link": "https://www.eternos.tw/et-6005/"
+      }
+    ]
+  },
+  "brands": {
+    "headingZh": "我們的品牌",
+    "headingEn": "Our Brand",
+    "ctaLabel": "Visit Us",
+    "ctaHref": "/visit-us",
+    "items": [
+      {
+        "name": "QJ Quartz Stone 闊石",
+        "spec": "320 x 160cm",
+        "thickness": "1.5cm",
+        "scope": "廚房檯面、浴室檯面、牆面、地面",
+        "features": "抗菌抗污、抗刮耐磨、抗酸鹼、不吸水、抗衝擊、透體花紋",
+        "href": "https://qjquartzstone.com.tw/index.php"
+      },
+      {
+        "name": "Mikado Quartz 帝雉石",
+        "spec": "320 x 160cm",
+        "thickness": "2cm（3cm可依專案詢問）",
+        "features": "抗菌抗污、抗刮耐磨、抗酸鹼、不吸水、抗衝擊、透體花紋",
+        "href": "https://web.mikadoquartz.tw/"
+      },
+      {
+        "name": "ETERNOS 永恆石",
+        "spec": "320 x 160cm",
+        "thickness": "2cm / 1.2cm",
+        "scope": "廚房檯面、浴室檯面、牆面、地面",
+        "features": "抗菌抗污、抗刮耐磨、抗酸鹼、不吸水、抗衝擊、透體/單體",
+        "href": "https://www.eternos.tw/"
+      },
+      {
+        "name": "Atlas Plan 亞特蘭石",
+        "spec": "324 x 162cm",
+        "thickness": "1.5cm",
+        "scope": "室內外空間、浴室檯面、電視牆、牆面",
+        "features": "抗菌抗污、抗刮耐磨、抗酸鹼、不吸水",
+        "href": "#"
+      }
+    ]
+  },
+  "trustBand": {
+    "backgroundImage": "/images/1752483347189-VC4PBASC72Q7C9I1LQZB/3D_MQL422_3.jpg",
+    "heading": "您可以放心交給 Saiens\n美感恆久，品質如一。",
+    "body": "在 Saiens，我們相信真正的工藝，是設計與耐用的完美結合。\n我們不只是在打造表面，更希望成為您長久信賴的夥伴，\n陪伴每一個家的日常與未來。因為每一個家，都值得被祝福。"
+  },
+  "qualityAssurance": {
+    "headingZh": "品質保證",
+    "headingEn": "為您帶來更多數十年如一日的美。",
+    "body": "Saiens旗下產品皆有通過 NSF、SGS 硬度測試報告與吸水率報告，符合我們對品質和耐用度的嚴格要求，並符合一般家庭的日常使用標準，我們的產品提供了材料保固及加工保固，各項產品品質保證的涵蓋範圍，請參考每項產品之細項說明。",
+    "ctaLabel": "查看更多品質保證服務說明",
+    "ctaHref": "/guarantees-and-warranties",
+    "certifications": [
+      {
+        "name": "UL GREENGUARD",
+        "description": "金牌認證，認定材料對人體健康不會造成任何傷害。"
+      },
+      {
+        "name": "美國國家衛生基金會 NSF",
+        "description": "認證材料適用於所有的區域，可與食品直接接觸。"
+      },
+      {
+        "name": "歐洲合格認證 CE",
+        "description": "材料符合相應的歐洲聯盟指令，且已完成相應的評估程序。"
+      },
+      {
+        "name": "全球檢驗機構 SGS檢驗認證",
+        "description": "檢驗認證，材料之各項優良物理特性。"
+      }
+    ]
+  },
+  "cleaning": {
+    "heading": "Saiens 讓清潔更簡單，美感耐久不費力。",
+    "body": "在saiens，我們重視每個家的細節。以高品質檯面材質，揮別吃色、刮傷困擾，讓生活不再充滿顧慮。saiens以零煩惱美學，賦予空間耐用與潔淨價值，讓家始終保持理想樣貌。"
+  },
+  "maintenance": {
+    "headingLine1": "揮別檯面吃色、刮傷的困擾",
+    "headingLine2": "擁抱零煩惱居家美學。",
+    "body": "作為您最值得信賴的檯面材料夥伴，我們的使命是透過簡單的清潔和保養來幫助您擺脫檯面吃色和刮傷的煩惱。藉此，您可以享受無煩惱的居家美學，不再需要對著污染吃色的檯面皺眉，也不需要提心吊膽地苛護你的廚房，讓您的每一天都更專注於享受生活！",
+    "ctaLabel": "查看更多清潔指南服務說明",
+    "ctaHref": "/maintenance-manual/"
+  },
+  "news": {
+    "headingLine1": "What’s New,",
+    "headingLine2": "What’s Beautiful",
+    "subhead": "最新的消息，也是最美的祝福"
+  },
+  "heroBanner": {
+    "videoSrc": "/videos/hero.mp4",
+    "posterSrc": "/images/1752483347162-YN8Z4OF1BMHYG447WBN7/hero-poster.jpg"
+  }
+}

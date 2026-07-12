@@ -1,0 +1,112 @@
+{
+  "hero": {
+    "heading": "Bless Every Home&Family",
+    "body": "Saiens 山恩集團致力於成為頂尖的材料科學整合商，自 2019 年創辦以來，以「科學」結合「美學」創造出兼具實用性與藝術性的卓越材料。\n結合本地生產的美國石英石品牌 Mikado Quartz 帝雉石、平價大眾石英石 QJ Quartz Stone 闊石、創新材料 Eternos 永恆石、代理義大利知名陶板品牌 atlasPLAN 亞特蘭陶瓷薄板，山恩提供客戶全方位的材料，透過研發技術、材料整合和專業知識，以高品質、高規格的品牌概念，成為客戶最值得信賴的材料夥伴。"
+  },
+  "collection": {
+    "eyebrow": "More Collection",
+    "ctaLabel": "Discover More",
+    "items": [
+      {
+        "title": "Dream it.",
+        "image": "/images/1618497259178-6XJGK9GR6YAVBQL5L519/20140301_Trade-151_012-2.jpg",
+        "alt": "Dream it — quartz countertop in a modern kitchen"
+      },
+      {
+        "title": "Build it.",
+        "image": "/images/1607694583486-2PQT0LQ193RL7MCB6DX4/20140228_Trade+151_0046.jpg",
+        "alt": "Build it — quartz surface installation"
+      },
+      {
+        "title": "Grow it.",
+        "image": "/images/1607694644871-IC85FNH781UNZSZEGHDR/Aro+Ha_0428.jpg",
+        "alt": "Grow it — quartz surface in a living space"
+      },
+      {
+        "title": "Sell it.",
+        "image": "/images/1589847767761-J2M1HI20BXRQ9XCR0HUD/Large+JPG-Aro+Ha_0387.jpg",
+        "alt": "Sell it — quartz surface showroom display"
+      }
+    ]
+  },
+  "oneStopService": {
+    "eyebrow": "One Stop Service",
+    "services": [
+      {
+        "title": "R&D",
+        "description": "Innovative R&D tailored to real market and customer needs."
+      },
+      {
+        "title": "Manufacturing",
+        "description": "Precision-driven production for consistent quality and scale."
+      },
+      {
+        "title": "Fabrication",
+        "description": "Versatile fabrication built to meet any design challenge."
+      },
+      {
+        "title": "Service",
+        "description": "End-to-end service focused on quality and satisfaction."
+      }
+    ]
+  },
+  "brand": {
+    "heading": "Our Brand",
+    "ctaLabel": "Visit Us",
+    "ctaHref": "/visit-us",
+    "names": ["Mikado Surface", "ETERNOS", "nexea"]
+  },
+  "certifications": {
+    "items": [
+      {
+        "title": "UL GREENGUARD Gold Certification",
+        "description": "Certified that the material does not pose any harm to human health."
+      },
+      {
+        "title": "NSF Certification",
+        "description": "Certified that the material is suitable for all applications and safe for direct contact with food."
+      },
+      {
+        "title": "CE Certification (Conformité Européenne)",
+        "description": "Certified that the material complies with relevant European Union directives and has completed the required assessment procedures."
+      },
+      {
+        "title": "SGS Certification (Global Testing Organization)",
+        "description": "Certified by SGS, verifying the material's excellent physical properties."
+      }
+    ]
+  },
+  "warranty": {
+    "headingPrefix": "You can ",
+    "headingStrong": "depend on us",
+    "headingSuffix": " for quality. At all times.",
+    "body": "At Saiens, design and durability go together. As your reliable partner, we're looking to build countertops – and relationships – that last a lifetime.",
+    "ctaLabel": "Our Life Time Warranty",
+    "ctaHref": "/guarantees-and-warranties"
+  },
+  "certificationDetails": [
+    {
+      "image": "/images/63708724-1b26-4689-91fc-8f3896eacb78/4-Greenguard.png",
+      "alt": "Green UL Greenguard product label for low chemical emissions, featuring a leaf symbol and the word 'GOLD' at the bottom.",
+      "heading": "GREENGUARD",
+      "paragraphs": [
+        "GREENGUARD: All Caesarstone quartz surfaces comply with GREENGUARD certification, verifying that Caesarstone products meet the most stringent indoor air emission standards.",
+        "GREENGUARD GOLD: All Caesarstone quartz surfaces comply with the GREENGUARD GOLD standard (formerly known as GREENGUARD Children & Schools Certification), which evaluates the sensitive nature of school populations combined with the unique building characteristics found in schools, and presents the most rigorous product emissions criteria to date."
+      ]
+    },
+    {
+      "image": "/images/bc44ec55-f26b-4dce-8c49-6040daa276b9/images.png",
+      "alt": "SGS logo in gray with orange lines",
+      "heading": "SCS Global Services",
+      "paragraphs": [
+        "As a global leader in independent certification and verification of environmental and sustainable stewardship, SCS Global Services has developed internationally recognized standards and certification programs to achieve the highest environmental performance and social accountability level.",
+        "Some Caesarstone models are SCS-certified for recycled content, made with up to 50% pre-consumer recycled crushed glass content.",
+        "For specific percentage and type of recycled materials used, download and review the certification below."
+      ]
+    }
+  ],
+  "heroBanner": {
+    "videoSrc": "/videos/hero.mp4",
+    "posterSrc": "/images/1752483347162-YN8Z4OF1BMHYG447WBN7/hero-poster.jpg"
+  }
+}

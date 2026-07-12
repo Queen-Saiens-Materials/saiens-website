@@ -1,0 +1,172 @@
+{
+  "hero": {
+    "eyebrow": "BLESS EVERY HOME&FAMILY",
+    "heading": "すべての\n家と家族に祝福を",
+    "bodyParagraphs": [
+      "Saiens（山恩グループ）は、トップクラスのマテリアルサイエンス統合企業を目指しています。2019年の創業以来、「科学」と「美学」を融合させ、実用性と芸術性を兼ね備えた卓越したマテリアルを生み出してきました。",
+      "自社生産のアメリカ産クォーツブランド Mikado Quartz（帝雉石）、手頃で幅広く使えるクォーツブランド QJ Quartz Stone（闊石）、革新的なマテリアル Eternos（永恆石）、そしてイタリアの著名タイルブランド atlasPLAN（亞特蘭陶瓷薄板） の代理を通じて、Saiensはお客様にあらゆるマテリアルを提供します。",
+      "研究開発技術、マテリアル統合、専門知識を駆使し、高品質・ハイスタンダードなブランドコンセプトで、お客様にとって最も信頼できるマテリアルパートナーとなることを目指しています。"
+    ]
+  },
+  "products": {
+    "heading": "コレクションをもっと見る",
+    "ctaLabel": "もっと詳しく知る",
+    "items": [
+      {
+        "title": "MQ-737 Tranquilty Gold",
+        "image": "/images/1752483347170-Z8H6QP7PSP40LT3NYEH3/4803876482117202834.b30f005f6a2bf0eb7ff895d7412550c8.22100916.jpg",
+        "link": "https://web.mikadoquartz.tw/zh-TW/products/tranquility-gold"
+      },
+      {
+        "title": "QJ-3L323 Terrazo",
+        "image": "/images/1752483347173-V6IABIZ721GYVOS85SF9/__QJ3L323_2JPG.JPG",
+        "link": "https://qjquartzstone.com.tw/product_detail.php?id=15"
+      },
+      {
+        "title": "MQ-759 Infinity",
+        "image": "/images/1752483347175-WQ8N0YW2UMK6IFI1EFCS/DSC02248+_1_.jpg",
+        "link": "https://web.mikadoquartz.tw/zh-TW/products/infinity"
+      },
+      {
+        "title": "ET-6015 Calacatta Gold",
+        "image": "/images/1752483347179-V7YIBVXI41V1L9MM8EUT/ET-6015.jpg",
+        "link": "https://www.eternos.us/et-6015/"
+      },
+      {
+        "title": "ET-6005 Statuario Antique",
+        "image": "/images/1752483347182-8JRLWJMEKE292AYQO79E/ET-6005.jpg",
+        "link": "https://www.eternos.tw/et-6005/"
+      }
+    ]
+  },
+  "process": {
+    "headingJa": "One Stop Service",
+    "headingEn": "ワンストップサービス",
+    "backgroundImage": "/images/1752483347185-ENXAUFO7XV8W4O0SWBJI/DSC00088.JPG",
+    "steps": [
+      {
+        "title": "研究開発",
+        "description": "Saiens は自社の「Saiensラボ」を有し、研究開発チームが常に革新を追求。市場や顧客のニーズに応える、独自で実用的な製品ソリューションを生み出します。"
+      },
+      {
+        "title": "生産",
+        "description": "Saiens は自社の原料鉱山と生産工場を有し、専門チームが品質を厳重に管理。すべての生産工程を徹底的にコントロールし、安定した耐久性のある品質を保証します。"
+      },
+      {
+        "title": "加工",
+        "description": "Saiens は自社の加工・施工チームを擁し、柔軟な加工力と専門的な施工サービスで、あらゆるカスタマイズやデザインニーズにお応えします。"
+      },
+      {
+        "title": "サービス",
+        "description": "Saiens 旗下ブランドは、1〜25年の品質保証と万全のサポートで、安心のパートナーです。"
+      }
+    ]
+  },
+  "brands": {
+    "headingJa": "ブランド紹介",
+    "headingEn": "Our Brand",
+    "ctaLabel": "ショールームへ",
+    "ctaHref": "/visit-us-jp",
+    "items": [
+      {
+        "name": "QJ Quartz Stone（クォーツストーン・闊石）",
+        "spec": "320×160cm",
+        "thickness": "1.5cm",
+        "scope": "キッチンカウンター、浴室カウンター、壁、床",
+        "features": "抗菌・防汚、耐傷・耐摩耗、耐酸・耐アルカリ、非吸水、耐衝撃、半透明パターン",
+        "href": "https://qjquartzstone.com.tw/index.php"
+      },
+      {
+        "name": "Mikado Quartz（帝雉石／テイチセキ）",
+        "spec": "320×160cm",
+        "thickness": "2cm（ご希望により3cm）",
+        "features": "抗菌、防汚、防傷、耐摩耗、耐酸、非吸水、耐衝撃、半透明柄",
+        "href": "https://web.mikadoquartz.tw/"
+      },
+      {
+        "name": "ETERNOS（永恆石／エタノス）",
+        "spec": "320 x 160cm",
+        "thickness": "2cm / 1.2cm",
+        "scope": "キッチンカウンター、バスルームカウンター、壁、床",
+        "features": "抗菌・防汚、耐傷・耐摩耗、耐酸・耐アルカリ、非吸水、耐衝撃、半透明・モノブロック。",
+        "href": "https://www.eternos.us/"
+      },
+      {
+        "name": "nexea（ネクシア）",
+        "spec": "324 x 162cm",
+        "thickness": "1.2cm",
+        "scope": "屋内外、浴室カウンター、テレビ壁面、壁面",
+        "features": "抗菌・防汚、耐傷性・耐摩耗性、耐酸性・耐アルカリ性、非吸水性"
+      }
+    ]
+  },
+  "brandPromise": {
+    "backgroundImage": "/images/1752483347189-VC4PBASC72Q7C9I1LQZB/3D_MQL422_3.jpg",
+    "heading": "Saiensに託せば、\n変わらぬ美しさと確かな品質を。",
+    "body": "Saiensは、デザインの美しさと耐久性の確かさが響き合うときに、本当のクラフトマンシップが生まれると信じています。\n私たちはただ表面をつくるのではなく、長く信頼されるパートナーとして、日々の暮らしや未来に寄り添います。\nすべての家庭が祝福される存在だからこそ。"
+  },
+  "qualityGuarantee": {
+    "headingJa": "品質保証",
+    "headingEn": "さらに数十年の美をお届けします。",
+    "body": "Saiensの製品はNSF・SGS硬度試験や吸水試験に合格し、耐久性と品質基準をクリアしています。\n家庭での日常使用にも適し、材料保証と加工保証が付帯。詳細な品質保証内容は各製品の説明をご参照ください。",
+    "ctaLabel": "品質保証サービスの詳細を見る",
+    "ctaHref": "/japan-guarantees-and-warranties",
+    "badges": [
+      {
+        "alt": "japan saiens web MQ25年品質保證",
+        "image": "/images/ffa7097a-666c-4641-bac0-e869633a2909/japan+saiens+web+MQ25_.png"
+      },
+      {
+        "alt": "japan saiens web ET15年品質保證",
+        "image": "/images/ab7b0bed-8b09-4938-af0c-45f772c492d9/japan+saiens+web+ET15_.png"
+      },
+      {
+        "alt": "japansaiens web QJ15年品質保證",
+        "image": "/images/6fc7ce25-722a-47fa-a25b-0356ae48bdb8/japansaiens+web+QJ15_.png"
+      }
+    ]
+  },
+  "certifications": {
+    "items": [
+      {
+        "title": "UL GREENGUARD",
+        "description": "ゴールド認証。この認証は、素材が人の健康に害を与えないことを証明するものです。"
+      },
+      {
+        "title": "全米保健財団NSF",
+        "description": "認証された素材は、食品と直接接触するあらゆる場所に適している。"
+      },
+      {
+        "title": "欧州適合証明書 CE",
+        "description": "材料は対応する欧州連合指令に適合しており、対応する評価手続きは完了している。"
+      },
+      {
+        "title": "世界基準 SGS認証取得",
+        "description": "SGS認証により、素材の高い物理性能が裏付けられています"
+      }
+    ]
+  },
+  "cleaning": {
+    "section1": {
+      "heading": "Saiensで掃除はもっと簡単に。美しさは、手間なく長持ち。",
+      "body": "サイエンスでは、真のクラフトマンシップとはデザインと耐久性の完璧な融合であると信じています。\n私たちは単に表面を作るだけでなく、すべての住まいの日常と未来のための信頼できるパートナーでありたいと考えています。\nなぜなら、すべての家は祝福されるに値するからです。"
+    },
+    "section2": {
+      "headingLine1": "傷や汚れを気にせず、",
+      "headingLine2": "心地よい暮らしを。",
+      "body": "私たちは、信頼できるカウンターパートナーとして、簡単なお手入れで汚れや傷の悩みから解放します。\n気を遣いすぎることなく、美しいキッチンと暮らしを長く楽しめるように。毎日をもっと自由に、もっと心地よく。",
+      "ctaLabel": "清掃ガイドとサービスの詳細を見る",
+      "ctaHref": "/japan-maintenance-manual"
+    }
+  },
+  "news": {
+    "headingLine1": "新しい発見、",
+    "headingLine2": "美しい暮らし。",
+    "subhead": "最新の情報、そして美しい祝福。",
+    "emptyStateText": "最新情報は近日公開予定です。"
+  },
+  "heroBanner": {
+    "videoSrc": "/videos/hero.mp4",
+    "posterSrc": "/images/1752483347162-YN8Z4OF1BMHYG447WBN7/hero-poster.jpg"
+  }
+}
