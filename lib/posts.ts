@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import matter from "gray-matter";
 
 export interface BlogPost {
   slug: string;
@@ -9,13 +10,13 @@ export interface BlogPost {
   date: string;
   excerpt: string;
   thumbnail: string;
-  bodyHtml?: string;
+  body?: string;
 }
 
 const CONTENT_ROOT = path.join(process.cwd(), "content", "blog");
 
 /**
- * Reads all blog post JSON files for a given region (e.g. "tw", "jp"),
+ * Reads all blog post MDX files for a given region (e.g. "tw", "jp"),
  * sorted by date descending. Never throws — returns [] if the region
  * directory doesn't exist or files fail to parse.
  */
@@ -26,7 +27,7 @@ export function getPosts(region: string): BlogPost[] {
     return [];
   }
 
-  const files = fs.readdirSync(dir).filter((file) => file.endsWith(".json"));
+  const files = fs.readdirSync(dir).filter((file) => file.endsWith(".mdx"));
 
   const parsed = files
     .map((file) => ({ file, post: readPostFile(path.join(dir, file)) }))
@@ -66,13 +67,13 @@ export function getPost(region: string, slug: string): BlogPost | null {
     return null;
   }
 
-  const directPath = path.join(dir, `${slug}.json`);
+  const directPath = path.join(dir, `${slug}.mdx`);
   if (fs.existsSync(directPath)) {
     const post = readPostFile(directPath);
     if (post) return post;
   }
 
-  const files = fs.readdirSync(dir).filter((file) => file.endsWith(".json"));
+  const files = fs.readdirSync(dir).filter((file) => file.endsWith(".mdx"));
   for (const file of files) {
     const post = readPostFile(path.join(dir, file));
     if (post && post.slug === slug) {
@@ -97,6 +98,7 @@ function isValidCalendarDate(dateStr: string): boolean {
 
 function readPostFile(filePath: string): BlogPost | null {
   const fileName = path.basename(filePath);
+  const slug = fileName.replace(/\.mdx$/, "");
   let raw: string;
 
   try {
@@ -110,21 +112,22 @@ function readPostFile(filePath: string): BlogPost | null {
     return null;
   }
 
-  let parsed: Record<string, unknown>;
+  let data: Record<string, unknown>;
+  let content: string;
   try {
-    parsed = JSON.parse(raw);
+    const parsed = matter(raw);
+    data = parsed.data;
+    content = parsed.content;
   } catch (error) {
     console.warn(
-      `[lib/posts] Malformed JSON in "${fileName}": ${
+      `[lib/posts] Malformed frontmatter in "${fileName}": ${
         error instanceof Error ? error.message : String(error)
       }`
     );
     return null;
   }
 
-  const missingFields = ["slug", "title", "date"].filter(
-    (field) => !parsed[field]
-  );
+  const missingFields = ["title", "date"].filter((field) => !data[field]);
   if (missingFields.length > 0) {
     console.warn(
       `[lib/posts] Missing required field(s) [${missingFields.join(
@@ -134,7 +137,7 @@ function readPostFile(filePath: string): BlogPost | null {
     return null;
   }
 
-  const date = String(parsed.date);
+  const date = String(data.date);
   if (!DATE_FORMAT.test(date) || !isValidCalendarDate(date)) {
     console.warn(
       `[lib/posts] Invalid date "${date}" in "${fileName}" (expected YYYY-MM-DD).`
@@ -142,14 +145,16 @@ function readPostFile(filePath: string): BlogPost | null {
     return null;
   }
 
+  const region = path.basename(path.dirname(filePath));
+
   return {
-    slug: String(parsed.slug),
-    region: (parsed.region as string) ?? "",
-    originalUrl: parsed.originalUrl as string | undefined,
-    title: String(parsed.title),
+    slug,
+    region,
+    originalUrl: data.originalUrl as string | undefined,
+    title: String(data.title),
     date,
-    excerpt: (parsed.excerpt as string) ?? "",
-    thumbnail: (parsed.thumbnail as string) ?? "",
-    bodyHtml: parsed.bodyHtml as string | undefined,
+    excerpt: (data.excerpt as string) ?? "",
+    thumbnail: (data.thumbnail as string) ?? "",
+    body: content.trim(),
   };
 }

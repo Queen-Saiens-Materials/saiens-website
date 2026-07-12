@@ -14,10 +14,6 @@ interface PageProps {
   params: Promise<PageParams>;
 }
 
-function stripHtml(html: string): string {
-  return html.replace(/<[^>]*>/g, "").trim();
-}
-
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
   if (Number.isNaN(date.getTime())) return dateString;
@@ -42,11 +38,9 @@ export async function generateMetadata({
     return { title: "找不到文章 | Saiens" };
   }
 
-  const description = stripHtml(post.excerpt);
-
   return {
     title: `${post.title} | Saiens`,
-    description,
+    description: post.excerpt,
   };
 }
 
@@ -79,7 +73,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
         </h1>
       </header>
 
-      <ArticleBody html={post.bodyHtml ?? ""} />
+      <ArticleBody markdown={post.body ?? ""} />
     </main>
   );
 }

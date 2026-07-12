@@ -5,8 +5,8 @@ import type { NextConfig } from "next";
 function getSlugsFromDir(dirPath: string): string[] {
   return fs
     .readdirSync(dirPath)
-    .filter((file) => file.endsWith(".json"))
-    .map((file) => file.replace(/\.json$/, ""));
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => file.replace(/\.mdx$/, ""));
 }
 
 const TW_SLUGS = getSlugsFromDir(

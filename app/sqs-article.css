@@ -1,16 +1,16 @@
 /*
- * Layout rules for rendering migrated Squarespace article bodies
- * (bodyHtml from content/blog/**\/*.json).
+ * Layout rules for rendering migrated blog article bodies
+ * (content/blog/**\/*.mdx, converted from the original Squarespace
+ * bodyHtml by scripts/convert-posts-to-mdx.mjs and rendered as plain
+ * Markdown via components/ArticleBody.tsx + react-markdown).
  *
- * Source markup uses Squarespace's legacy grid classes:
- *   .sqs-layout.sqs-grid-12 > .sqs-row (aka "row sqs-row")
- *     > .sqs-col-N.span-N (aka "col sqs-col-N span-N")
- *
- * The original site.css (archive/site.css, 1.27MB) implements this with a
- * float-based nested-percentage grid. We re-implement the same visual
- * contract (12 equal columns, single column on mobile) with flexbox
- * instead of porting the float hacks. All rules are scoped under
- * .sqs-article-body so they cannot leak into the rest of the site.
+ * The .sqs-row/.sqs-col/.sqs-gallery-* rules below targeted Squarespace's
+ * legacy grid/gallery markup, which no longer exists post-conversion
+ * (multi-column and gallery blocks are linearized into a plain sequence
+ * of images by the conversion script). They're kept here, inert, in case
+ * any not-yet-migrated bodyHtml still needs them; the typography/image
+ * rules further down (p/h1-h6/a/blockquote/pre/img) are what actually
+ * apply to react-markdown's output today.
  */
 
 .sqs-article-body {
