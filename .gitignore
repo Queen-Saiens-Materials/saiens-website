@@ -37,8 +37,8 @@ yarn-error.log*
 .vercel
 
 # tinacms (generated at build/dev time)
+# note: tina/tina-lock.json is intentionally committed — TinaCloud requires it to index content
 /tina/__generated__
-/tina/tina-lock.json
 /public/admin
 
 # typescript
