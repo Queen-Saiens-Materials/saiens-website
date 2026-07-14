@@ -2,8 +2,7 @@
 
 import { FormEvent, useState } from "react";
 
-// TODO: Replace with the official Saiens LINE OA URL when provided.
-const LINE_OA_URL = "https://lin.ee/PLACEHOLDER";
+const LINE_OA_URL = "https://lin.ee/poXsa4y";
 
 type RegistrationFormProps = {
   token: string;
@@ -120,6 +119,16 @@ export default function RegistrationForm({
         >
           加入 Saiens 客服 LINE
         </a>
+        <div className="flex flex-col gap-2">
+          <img
+            src="/line-oa-qr.png"
+            alt="Saiens 客服 LINE 加好友 QR code"
+            width={160}
+            height={160}
+            className="h-40 w-40 border border-(--accent) bg-white p-2"
+          />
+          <p className="text-sm text-(--dark-accent)">使用電腦者可以手機掃描 QR code 加入</p>
+        </div>
       </div>
     );
   }
