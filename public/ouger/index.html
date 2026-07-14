@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="OUGER woven vinyl acoustic floor tile combines modular design, acoustic comfort, and durable performance for architectural interiors.">
+  <meta name="theme-color" content="#ffffff">
+  <title>OUGER — Woven Vinyl Acoustic Floor Tile</title>
+  <link rel="icon" href="/ouger-assets/ouger-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: oklch(1 0 0);
+      --surface: oklch(0.965 0.004 95);
+      --ink: oklch(0.18 0.012 95);
+      --muted: oklch(0.43 0.012 95);
+      --gold: oklch(0.72 0.105 88);
+      --gold-dark: oklch(0.55 0.085 88);
+      --dark: oklch(0.12 0.008 95);
+      --dark-soft: oklch(0.18 0.009 95);
+      --white: oklch(0.985 0 0);
+      --rule: oklch(0.85 0.006 95);
+      --max: 1440px;
+      --gutter: clamp(1.25rem, 4vw, 4.75rem);
+      --section: clamp(5.5rem, 10vw, 10rem);
+      --ease: cubic-bezier(.16, 1, .3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Archivo", Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button { font: inherit; }
+    ::selection { background: var(--gold); color: var(--dark); }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: 1rem;
+      left: 1rem;
+      padding: .75rem 1rem;
+      background: var(--gold);
+      color: var(--dark);
+      transform: translateY(-180%);
+      transition: transform .2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .shell { width: min(100%, var(--max)); margin-inline: auto; padding-inline: var(--gutter); }
+    .section { padding-block: var(--section); }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 7fr) minmax(18rem, 4fr);
+      gap: clamp(2rem, 7vw, 8rem);
+      align-items: end;
+      margin-bottom: clamp(3rem, 6vw, 6rem);
+    }
+    .section-head h2, .statement h2, .applications h2 {
+      margin: 0;
+      font-size: clamp(2.6rem, 6vw, 5.6rem);
+      line-height: .96;
+      letter-spacing: -.04em;
+      font-variation-settings: "wdth" 88;
+      text-wrap: balance;
+    }
+    .section-head p { margin: 0; max-width: 55ch; color: var(--muted); font-size: clamp(1rem, 1.3vw, 1.2rem); text-wrap: pretty; }
+    .label { margin: 0; font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+
+    .masthead {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      height: 78px;
+      background: color-mix(in oklch, var(--bg) 94%, transparent);
+      border-bottom: 1px solid var(--rule);
+      backdrop-filter: blur(12px);
+    }
+    .masthead-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+    .brand { display: inline-flex; align-items: center; flex: none; }
+    .brand img { width: 132px; height: auto; }
+    .nav { display: flex; align-items: center; gap: clamp(1rem, 2.2vw, 2.25rem); }
+    .nav a { font-size: .78rem; font-weight: 650; text-decoration: none; }
+    .nav a:hover { color: var(--gold-dark); }
+    .menu-button {
+      display: none;
+      align-items: center;
+      gap: .6rem;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .menu-icon, .menu-icon::before { width: 24px; height: 1px; display: block; background: currentColor; transition: transform .25s var(--ease); content: ""; }
+    .menu-icon::before { transform: translateY(7px); }
+
+    .hero { min-height: calc(100svh - 78px); display: grid; grid-template-columns: minmax(0, 46%) minmax(0, 54%); background: var(--dark); color: var(--white); }
+    .hero-copy { display: flex; flex-direction: column; justify-content: space-between; padding: clamp(3rem, 7vw, 7rem) var(--gutter) clamp(2.5rem, 5vw, 5rem) max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter))); }
+    .hero-copy .label { color: var(--gold); }
+    .hero h1 {
+      max-width: 9ch;
+      margin: 1.5rem 0 2rem;
+      font-size: clamp(3.4rem, 7.2vw, 6rem);
+      line-height: .91;
+      letter-spacing: -.04em;
+      font-weight: 500;
+      font-variation-settings: "wdth" 84;
+      text-wrap: balance;
+    }
+    .hero-intro { max-width: 48ch; margin: 0; color: oklch(0.78 0.005 95); font-size: clamp(1.05rem, 1.45vw, 1.3rem); text-wrap: pretty; }
+    .hero-foot { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem; padding-top: 3rem; }
+    .hero-foot span { max-width: 27ch; font-size: .78rem; color: oklch(0.67 0.008 95); }
+    .scroll-cue { display: inline-flex; align-items: center; gap: .65rem; color: var(--white); font-size: .75rem; text-decoration: none; }
+    .scroll-cue::before { content: ""; width: 2.5rem; height: 1px; background: var(--gold); }
+    .hero-visual { position: relative; overflow: hidden; min-height: 40rem; background: var(--dark-soft); }
+    .hero-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center 82%; transform: scale(1.015); animation: hero-reveal 1.3s var(--ease) both; }
+    .hero-visual::after { position: absolute; inset: 0; content: ""; background: linear-gradient(90deg, oklch(0.12 0.008 95 / .22), transparent 30%); pointer-events: none; }
+    .hero-tag { position: absolute; z-index: 2; right: clamp(1rem, 3vw, 3rem); bottom: clamp(1rem, 3vw, 3rem); padding: .8rem 1rem; background: var(--white); color: var(--dark); font-size: .72rem; font-weight: 700; letter-spacing: .08em; }
+    @keyframes hero-reveal { from { clip-path: inset(0 0 100% 0); transform: scale(1.06); } to { clip-path: inset(0); transform: scale(1.015); } }
+
+    .performance { background: var(--surface); }
+    .performance-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); }
+    .performance-item { min-height: 9rem; padding: 1.5rem 1rem 1.5rem 0; border-bottom: 1px solid var(--rule); position: relative; }
+    .performance-item:nth-child(-n+4) { border-bottom-color: var(--ink); }
+    .performance-item span { display: block; margin-bottom: 2.25rem; color: var(--gold-dark); font-size: .72rem; font-weight: 700; }
+    .performance-item strong { display: block; max-width: 12ch; font-size: clamp(1.15rem, 1.8vw, 1.55rem); line-height: 1.15; font-weight: 520; }
+    .performance-copy { max-width: 67ch; margin: 3rem 0 0 auto; color: var(--muted); }
+
+    .construction { background: var(--dark); color: var(--white); overflow: hidden; }
+    .construction .section-head p { color: oklch(0.72 0.005 95); }
+    .construction-grid { display: grid; grid-template-columns: minmax(20rem, 5fr) minmax(0, 7fr); gap: clamp(4rem, 9vw, 10rem); align-items: center; }
+    .layer-stage { min-height: 33rem; display: grid; place-items: center; perspective: 900px; }
+    .layer-stack { position: relative; width: min(28rem, 85%); height: 25rem; transform: rotateX(57deg) rotateZ(-28deg); transform-style: preserve-3d; }
+    .layer { position: absolute; inset: 0; border: 1px solid oklch(0.75 0.01 95 / .45); box-shadow: 0 6px 6px oklch(0 0 0 / .3); }
+    .layer::after { position: absolute; inset: 0; content: ""; opacity: .28; background-image: radial-gradient(circle at 20% 30%, white 0 1px, transparent 1.5px); background-size: 6px 6px; }
+    .layer-1 { transform: translateZ(150px); background: url("/ouger-assets/weave-texture.jpg") center / cover; }
+    .layer-2 { transform: translateZ(98px); background: oklch(0.87 0.01 95); }
+    .layer-3 { transform: translateZ(46px); background: oklch(0.72 0.01 95); }
+    .layer-3::after { opacity: .55; background-image: linear-gradient(45deg, transparent 46%, oklch(0.42 0 0) 48% 52%, transparent 54%), linear-gradient(-45deg, transparent 46%, oklch(0.42 0 0) 48% 52%, transparent 54%); background-size: 14px 14px; }
+    .layer-4 { transform: translateZ(0); background: oklch(0.30 0.006 95); }
+    .layer-4::after { opacity: .55; background-image: radial-gradient(circle, oklch(0.62 0 0) 0 1px, transparent 1.5px); background-size: 5px 5px; }
+    .layer-list { margin: 0; padding: 0; list-style: none; counter-reset: layers; border-top: 1px solid oklch(0.38 0.008 95); }
+    .layer-list li { counter-increment: layers; display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; padding: 1.5rem 0; border-bottom: 1px solid oklch(0.38 0.008 95); }
+    .layer-list li::before { content: "0" counter(layers); color: var(--gold); font-size: .72rem; font-weight: 700; }
+    .layer-list strong { display: block; margin-bottom: .35rem; font-size: 1.1rem; line-height: 1.25; font-weight: 560; }
+    .layer-list p { margin: 0; color: oklch(0.69 0.006 95); font-size: .92rem; }
+
+    .collections { overflow: hidden; }
+    .collection-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(1rem, 2vw, 2rem); }
+    .collection { min-width: 0; }
+    .collection:nth-child(1) { grid-column: span 7; }
+    .collection:nth-child(2) { grid-column: span 5; padding-top: 8rem; }
+    .collection:nth-child(3) { grid-column: span 4; }
+    .collection:nth-child(4) { grid-column: span 4; padding-top: 5rem; }
+    .collection:nth-child(5) { grid-column: span 4; }
+    .collection-image { position: relative; overflow: hidden; background: var(--surface); aspect-ratio: 4 / 3; }
+    .collection:nth-child(n+3) .collection-image { aspect-ratio: 3 / 4; }
+    .collection-image img { position: absolute; inset: auto 0 0; width: 100%; height: 123%; object-fit: cover; object-position: center bottom; transition: transform .7s var(--ease); }
+    .collection:hover img { transform: scale(1.025); }
+    .collection-meta { display: grid; grid-template-columns: 2.5rem 1fr; gap: .75rem; padding-top: 1rem; }
+    .collection-meta span { color: var(--gold-dark); font-size: .7rem; font-weight: 700; }
+    .collection-meta h3 { margin: 0; font-size: clamp(1.2rem, 2vw, 1.75rem); line-height: 1.15; font-weight: 520; }
+    .collection-meta p { grid-column: 2; margin: .25rem 0 0; color: var(--muted); font-size: .9rem; }
+
+    .statement { padding: clamp(5rem, 11vw, 11rem) var(--gutter); background: var(--gold); color: var(--dark); }
+    .statement-inner { width: min(100%, var(--max)); margin-inline: auto; display: grid; grid-template-columns: 4fr 8fr; gap: 3rem; }
+    .statement .label { padding-top: .7rem; }
+    .statement h2 { max-width: 13ch; }
+
+    .applications-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(20rem, 5fr); gap: clamp(3rem, 7vw, 8rem); align-items: start; }
+    .applications h2 { margin-bottom: clamp(2.5rem, 6vw, 5rem); }
+    .application-list { display: grid; grid-template-columns: 1fr 1fr; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--ink); }
+    .application-list li { padding: 1.05rem 0; border-bottom: 1px solid var(--rule); font-size: clamp(1rem, 1.5vw, 1.25rem); }
+    .application-list li:nth-child(odd) { padding-right: 1.5rem; }
+    .application-image { position: sticky; top: 110px; aspect-ratio: 4 / 5; overflow: hidden; }
+    .application-image img { width: 100%; height: 100%; object-fit: cover; }
+    .application-note { margin: 1.2rem 0 0; max-width: 50ch; color: var(--muted); font-size: .9rem; }
+
+    .projects { background: var(--surface); }
+    .project-mosaic { display: grid; grid-template-columns: 1.2fr .8fr .8fr; grid-template-rows: 20rem 20rem; gap: clamp(.75rem, 1.5vw, 1.5rem); }
+    .project { position: relative; overflow: hidden; background: var(--rule); }
+    .project:first-child { grid-row: span 2; }
+    .project:nth-child(2) { grid-column: span 2; }
+    .project img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+    .project:hover img { transform: scale(1.025); }
+    .project figcaption { position: absolute; inset: auto 0 0 0; padding: 3rem 1rem 1rem; background: linear-gradient(transparent, oklch(0.08 0 0 / .78)); color: white; font-size: .75rem; }
+
+    .faq-grid { display: grid; grid-template-columns: 4fr 8fr; gap: clamp(3rem, 8vw, 9rem); }
+    .faq-intro h2 { position: sticky; top: 120px; margin: 0; font-size: clamp(2.8rem, 5.5vw, 5rem); line-height: .96; letter-spacing: -.04em; font-variation-settings: "wdth" 88; }
+    .faq-list { border-top: 1px solid var(--ink); }
+    details { border-bottom: 1px solid var(--rule); }
+    summary { display: grid; grid-template-columns: 1fr 1.5rem; gap: 1.5rem; padding: 1.7rem 0; cursor: pointer; font-size: clamp(1.05rem, 1.5vw, 1.3rem); font-weight: 560; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--gold-dark); font-size: 1.5rem; line-height: 1; font-weight: 350; transition: transform .25s var(--ease); }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { max-width: 68ch; margin: -.4rem 0 1.8rem; color: var(--muted); text-wrap: pretty; }
+
+    .notice { padding-block: 2.25rem; border-top: 1px solid var(--rule); }
+    .notice p { max-width: 95ch; margin: 0; color: var(--muted); font-size: .78rem; }
+    footer { padding-block: 3rem; background: var(--dark); color: var(--white); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: end; gap: 2rem; }
+    .footer-wordmark { margin: 0; font-size: clamp(3rem, 9vw, 8rem); line-height: .75; letter-spacing: -.04em; font-weight: 650; }
+    .footer-meta { text-align: right; color: oklch(0.66 0.005 95); font-size: .78rem; }
+    .footer-meta a { color: var(--white); text-underline-offset: .25em; }
+
+    @media (max-width: 980px) {
+      .menu-button { display: inline-flex; }
+      .nav { position: fixed; inset: 78px 0 auto; display: none; padding: 1.5rem var(--gutter) 2rem; flex-direction: column; align-items: flex-start; gap: 1rem; background: var(--bg); border-bottom: 1px solid var(--rule); }
+      .nav[data-open="true"] { display: flex; }
+      .nav a { font-size: 1rem; }
+      .menu-button[aria-expanded="true"] .menu-icon { transform: rotate(45deg) translateY(4px); }
+      .menu-button[aria-expanded="true"] .menu-icon::before { transform: rotate(-90deg); }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-copy { min-height: 38rem; }
+      .hero-visual { min-height: 45rem; }
+      .section-head, .construction-grid, .applications-grid, .faq-grid { grid-template-columns: 1fr; }
+      .construction-grid { gap: 1rem; }
+      .application-image, .faq-intro h2 { position: static; }
+      .statement-inner { grid-template-columns: 1fr; }
+      .project-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: 28rem 17rem 17rem; }
+      .project:first-child { grid-column: span 2; grid-row: auto; }
+      .project:nth-child(2) { grid-column: span 2; }
+    }
+
+    @media (max-width: 680px) {
+      .masthead { height: 68px; }
+      .nav { inset-block-start: 68px; }
+      .brand img { width: 112px; }
+      .hero-copy { min-height: 35rem; padding-top: 3.5rem; }
+      .hero h1 { font-size: clamp(3rem, 15vw, 4.7rem); }
+      .hero-visual { min-height: 33rem; }
+      .performance-grid { grid-template-columns: 1fr 1fr; }
+      .performance-item:nth-child(-n+6) { border-bottom-color: var(--ink); }
+      .layer-stage { min-height: 25rem; }
+      .layer-stack { width: 85%; height: 18rem; }
+      .layer-1 { transform: translateZ(120px); }
+      .layer-2 { transform: translateZ(80px); }
+      .layer-3 { transform: translateZ(40px); }
+      .collection-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scrollbar-width: thin; }
+      .collection, .collection:nth-child(n) { flex: 0 0 82vw; padding-top: 0; scroll-snap-align: start; }
+      .collection-image, .collection:nth-child(n+3) .collection-image { aspect-ratio: 4 / 5; }
+      .statement { padding-inline: var(--gutter); }
+      .application-list { grid-template-columns: 1fr; }
+      .application-list li:nth-child(odd) { padding-right: 0; }
+      .project-mosaic { display: flex; flex-direction: column; }
+      .project { min-height: 18rem; }
+      .project:first-child { min-height: 30rem; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+      .footer-meta { text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <div class="masthead-inner shell">
+      <a class="brand" href="#top" aria-label="OUGER home">
+        <img src="/ouger-assets/ouger-logo.png" alt="OUGER Acoustic Floor Tile" width="484" height="162">
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span>Menu</span><span class="menu-icon" aria-hidden="true"></span>
+      </button>
+      <nav class="nav" id="site-nav" aria-label="Primary navigation" data-open="false">
+        <a href="#performance">Performance</a>
+        <a href="#construction">Construction</a>
+        <a href="#collections">Collections</a>
+        <a href="#applications">Applications</a>
+        <a href="#projects">Projects</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <div>
+          <p class="label">Woven Vinyl Acoustic Floor Tile</p>
+          <h1>Acoustic flooring, woven for architecture.</h1>
+          <p class="hero-intro">OUGER brings finely woven texture, modular geometry, and practical performance together in a floor tile system designed to shape quieter, more expressive interiors.</p>
+        </div>
+        <div class="hero-foot">
+          <a class="scroll-cue" href="#performance">Explore the system</a>
+          <span>Design-led surfaces for commercial, public, hospitality, and residential environments.</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="/ouger-assets/case-office.jpg" alt="A contemporary workplace finished with modular OUGER floor tiles" width="1300" height="650" fetchpriority="high">
+        <div class="hero-tag">MODULAR / ACOUSTIC / RESILIENT</div>
+      </div>
+    </section>
+
+    <section class="section performance" id="performance">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Function is part of the pattern.</h2>
+          <p>Precision weaving gives OUGER its tactile surface character. Beneath it, a resilient layered construction supports the everyday demands of active interiors.</p>
+        </div>
+        <div class="performance-grid" aria-label="OUGER performance characteristics">
+          <div class="performance-item"><span>01</span><strong>Sound Absorption</strong></div>
+          <div class="performance-item"><span>02</span><strong>Stain Resistance</strong></div>
+          <div class="performance-item"><span>03</span><strong>Slip Resistance</strong></div>
+          <div class="performance-item"><span>04</span><strong>Mold Resistance</strong></div>
+          <div class="performance-item"><span>05</span><strong>Scratch Resistance</strong></div>
+          <div class="performance-item"><span>06</span><strong>Water Resistance</strong></div>
+          <div class="performance-item"><span>07</span><strong>Fire Resistance</strong></div>
+          <div class="performance-item"><span>08</span><strong>Environmentally Considered</strong></div>
+        </div>
+        <p class="performance-copy">The result is a stable floor surface that balances decorative range with efficient maintenance and dependable day-to-day use.</p>
+      </div>
+    </section>
+
+    <section class="section construction" id="construction">
+      <div class="shell">
+        <div class="section-head">
+          <h2>A material system, not a surface treatment.</h2>
+          <p>OUGER combines high-performance polyvinyl chloride, woven structure, and polymer technology in a four-part assembly designed for texture, stability, and acoustic comfort.</p>
+        </div>
+        <div class="construction-grid">
+          <div class="layer-stage" role="img" aria-label="Exploded diagram of OUGER's four-layer floor tile construction">
+            <div class="layer-stack" aria-hidden="true">
+              <div class="layer layer-1"></div>
+              <div class="layer layer-2"></div>
+              <div class="layer layer-3"></div>
+              <div class="layer layer-4"></div>
+            </div>
+          </div>
+          <ol class="layer-list">
+            <li><div><strong>Woven Vinyl Surface</strong><p>A richly textured decorative layer designed for water and fire resistance and treated to manage thermal expansion and contraction.</p></div></li>
+            <li><div><strong>300°C Heat-Fused Vinyl Composite</strong><p>An environmentally considered, low-odor formulation made with imported raw materials for strong bonding and resistance to breakage.</p></div></li>
+            <li><div><strong>Fiberglass Stabilizing Layer</strong><p>Reinforces dimensional stability and helps control the effects of temperature-related movement.</p></div></li>
+            <li><div><strong>Heat-Fused Vinyl Composite + Felt Backing</strong><p>A resilient bonding layer paired with felt to complete the stable, sound-absorbing tile construction.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section collections" id="collections">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Five systems. A broad design language.</h2>
+          <p>OUGER's modular families move from essential geometry to flowing contours and composite layouts, giving designers control over rhythm, scale, direction, and color.</p>
+        </div>
+        <div class="collection-grid">
+          <article class="collection">
+            <div class="collection-image"><img src="/ouger-assets/collection-geometric.jpg" alt="Geometric Foundations tiles arranged in a linear interior pattern" width="718" height="1024" loading="lazy"></div>
+            <div class="collection-meta"><span>01</span><h3>Geometric Foundations</h3><p>Square, Honeycomb, Corner, and Peak.</p></div>
+          </article>
+          <article class="collection">
+            <div class="collection-image"><img src="/ouger-assets/collection-architectural.jpg" alt="Architectural Structures tiles forming an angular lounge floor" width="718" height="1024" loading="lazy"></div>
+            <div class="collection-meta"><span>02</span><h3>Architectural Structures</h3><p>Slab, Eave, Diamond, and Block.</p></div>
+          </article>
+          <article class="collection">
+            <div class="collection-image"><img src="/ouger-assets/collection-angular.jpg" alt="Angular Design tiles creating a faceted floor composition" width="718" height="1024" loading="lazy"></div>
+            <div class="collection-meta"><span>03</span><h3>Angular Design</h3><p>Gem, Dart, Wing, and Geometric Bloom.</p></div>
+          </article>
+          <article class="collection">
+            <div class="collection-image"><img src="/ouger-assets/collection-flow.jpg" alt="Flow Forms tiles creating an undulating floor and wall pattern" width="718" height="1024" loading="lazy"></div>
+            <div class="collection-meta"><span>04</span><h3>Flow Forms</h3><p>Ripple, Fan, Clover, and Arch.</p></div>
+          </article>
+          <article class="collection">
+            <div class="collection-image"><img src="/ouger-assets/collection-composite.jpg" alt="Composite Patterns tiles arranged in a green geometric interior" width="718" height="1024" loading="lazy"></div>
+            <div class="collection-meta"><span>05</span><h3>Composite Patterns</h3><p>Mixed modules composed as one continuous field.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement" aria-label="Design statement">
+      <div class="statement-inner">
+        <p class="label">A modular design tool</p>
+        <h2>Color, shape, and direction become part of the floor plan.</h2>
+      </div>
+    </section>
+
+    <section class="section applications" id="applications">
+      <div class="shell applications-grid">
+        <div>
+          <h2>Designed to move between typologies.</h2>
+          <ul class="application-list">
+            <li>Schools &amp; Libraries</li>
+            <li>Workplaces</li>
+            <li>Exhibition Spaces</li>
+            <li>Hotels</li>
+            <li>Airports</li>
+            <li>Shared Spaces</li>
+            <li>Brand Retail</li>
+            <li>Residential Interiors</li>
+            <li>Department Stores</li>
+            <li>Medical &amp; Beauty</li>
+          </ul>
+          <p class="application-note">Dry-area bathroom and stair installations are possible. Wall and ceiling applications require project-specific evaluation and must satisfy the applicable fire requirements.</p>
+        </div>
+        <div class="application-image"><img src="/ouger-assets/case-lounge.jpg" alt="Bright lounge with OUGER geometric acoustic floor tiles" width="650" height="650" loading="lazy"></div>
+      </div>
+    </section>
+
+    <section class="section projects" id="projects">
+      <div class="shell">
+        <div class="section-head">
+          <h2>From module to occupied space.</h2>
+          <p>Installed projects show how OUGER can organize circulation, define zones, and introduce visual movement without adding another object to the room.</p>
+        </div>
+        <div class="project-mosaic">
+          <figure class="project"><img src="/ouger-assets/case-detail.jpg" alt="Close view of blue, gray, and white triangular OUGER floor tiles" width="768" height="1024" loading="lazy"><figcaption>Angular modules / detail study</figcaption></figure>
+          <figure class="project"><img src="/ouger-assets/collection-architectural.jpg" alt="Contemporary workplace with gray modular OUGER flooring" width="718" height="1024" loading="lazy"><figcaption>Workplace / tonal zoning</figcaption></figure>
+          <figure class="project"><img src="/ouger-assets/case-lounge.jpg" alt="Lounge seating over a neutral geometric OUGER floor pattern" width="650" height="650" loading="lazy"><figcaption>Lounge / geometric field</figcaption></figure>
+          <figure class="project"><img src="/ouger-assets/case-workplace.jpg" alt="Open office commons with light acoustic floor tiles" width="650" height="650" loading="lazy"><figcaption>Shared space / quiet surface</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq">
+      <div class="shell faq-grid">
+        <div class="faq-intro"><h2>Architect's FAQ</h2></div>
+        <div class="faq-list">
+          <details>
+            <summary>How is OUGER flooring cleaned?</summary>
+            <p>OUGER flooring is designed for straightforward care. A vacuum, brush, and stain remover can address approximately 99% of routine cleaning needs.</p>
+          </details>
+          <details>
+            <summary>Can a small damaged area be repaired?</summary>
+            <p>Yes. A localized damaged section can be repaired or replaced without removing the full installation.</p>
+          </details>
+          <details>
+            <summary>Can it be installed in bathrooms, on stairs, walls, or ceilings?</summary>
+            <p>OUGER is suitable for dry bathroom areas, but not inside showers. It can be installed on stairs. Wall and ceiling applications should be confirmed only after OUGER has evaluated the installation conditions and the assembly satisfies the fire requirements of the specific project.</p>
+          </details>
+          <details>
+            <summary>Does OUGER flooring contain hazardous substances?</summary>
+            <p>According to OUGER, the flooring does not contain harmful plasticizers or stabilizers such as phthalates and heavy metals, and emissions remain very low throughout the product's service life.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <aside class="notice">
+      <div class="shell"><p>Performance descriptions on this page reflect information published by OUGER. Project teams should request current test reports, installation requirements, and jurisdiction-specific compliance documentation before specification.</p></div>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="footer-inner shell">
+      <p class="footer-wordmark">OUGER</p>
+      <div class="footer-meta">Woven Vinyl Acoustic Floor Tile<br>Designed in Taiwan<br><a href="https://ouger.tw/" lang="zh-Hant">Original brand website</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const nav = document.querySelector('#site-nav');
+
+    menuButton.addEventListener('click', () => {
+      const open = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!open));
+      nav.dataset.open = String(!open);
+    });
+
+    nav.addEventListener('click', (event) => {
+      if (event.target.matches('a')) {
+        menuButton.setAttribute('aria-expanded', 'false');
+        nav.dataset.open = 'false';
+      }
+    });
+  </script>
+</body>
+</html>

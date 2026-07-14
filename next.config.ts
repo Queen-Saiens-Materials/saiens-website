@@ -18,6 +18,13 @@ const JP_SLUGS = getSlugsFromDir(
 );
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    return [
+      // Standalone OUGER architect-facing brand page. Keep the public URL clean
+      // while serving the self-contained document without the Saiens site chrome.
+      { source: "/ouger", destination: "/ouger/index.html" },
+    ];
+  },
   async redirects() {
     return [
       // saiens.tw（原 Squarespace 轉址網域）→ saiens.group，保留路徑
