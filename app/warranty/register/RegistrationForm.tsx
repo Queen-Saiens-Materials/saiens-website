@@ -153,7 +153,9 @@ export default function RegistrationForm({
       <div className="flex flex-col gap-3 border border-(--accent) px-4 py-5">
         <p className="text-sm text-(--dark-accent)">保固案場</p>
         <p className="text-lg leading-relaxed text-(--black)">{address}</p>
-        <p className="text-sm text-(--dark-accent)">保固年限：{warrantyYears} 年</p>
+        {warrantyYears ? (
+          <p className="text-sm text-(--dark-accent)">保固年限：{warrantyYears} 年</p>
+        ) : null}
       </div>
 
       <div className="flex flex-col gap-2">
