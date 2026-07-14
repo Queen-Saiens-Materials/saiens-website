@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import ContactForm from "@/app/ContactForm";
 import { SAIENS_SALON } from "@/config/site";
 
 const TITLE =
@@ -101,8 +102,11 @@ export default function SaiensSalonPage() {
         </div>
 
         <div className="mx-auto flex w-full max-w-xl flex-col gap-8 px-6 py-16">
-          {/* Form UI replicated from the original Squarespace site. Submission is intentionally disabled until a backend (planned: Vercel Function + Resend email) is wired up. Do not remove the disabled state without adding the backend. */}
-          <form className="flex flex-col gap-6">
+          <ContactForm
+            formId="saiens-salon"
+            className="flex flex-col gap-6"
+            buttonClassName="mt-2 w-full bg-(--white)/80 px-8 py-3 text-sm uppercase tracking-wide text-(--black) transition hover:bg-(--white) disabled:cursor-not-allowed disabled:opacity-60"
+          >
             <fieldset className="flex flex-col gap-3">
               <legend className="text-sm text-(--accent)">
                 參加場次 <span aria-hidden="true">(required)</span>
@@ -113,7 +117,6 @@ export default function SaiensSalonPage() {
                     type="checkbox"
                     name="salonDate"
                     value={date}
-                    disabled
                     className="disabled:opacity-60"
                   />
                   {date}
@@ -129,7 +132,6 @@ export default function SaiensSalonPage() {
                 id="fullName"
                 name="fullName"
                 type="text"
-                disabled
                 className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
               />
             </div>
@@ -142,7 +144,6 @@ export default function SaiensSalonPage() {
                 id="preferredName"
                 name="preferredName"
                 type="text"
-                disabled
                 className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
               />
             </div>
@@ -155,7 +156,6 @@ export default function SaiensSalonPage() {
                 id="organization"
                 name="organization"
                 type="text"
-                disabled
                 className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
               />
             </div>
@@ -168,7 +168,6 @@ export default function SaiensSalonPage() {
                 id="phone"
                 name="phone"
                 type="tel"
-                disabled
                 className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
               />
             </div>
@@ -181,7 +180,6 @@ export default function SaiensSalonPage() {
                 id="title"
                 name="title"
                 type="text"
-                disabled
                 className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
               />
             </div>
@@ -194,7 +192,6 @@ export default function SaiensSalonPage() {
                 id="referrer"
                 name="referrer"
                 type="text"
-                disabled
                 className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
               />
             </div>
@@ -207,7 +204,6 @@ export default function SaiensSalonPage() {
                 id="calendarEmail"
                 name="calendarEmail"
                 type="email"
-                disabled
                 className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
               />
             </div>
@@ -220,7 +216,6 @@ export default function SaiensSalonPage() {
                 id="dietaryRestrictions"
                 name="dietaryRestrictions"
                 rows={4}
-                disabled
                 className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
               />
             </div>
@@ -232,7 +227,6 @@ export default function SaiensSalonPage() {
               <select
                 id="startTime"
                 name="startTime"
-                disabled
                 defaultValue=""
                 className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
               >
@@ -254,7 +248,6 @@ export default function SaiensSalonPage() {
               <select
                 id="endTime"
                 name="endTime"
-                disabled
                 defaultValue=""
                 className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
               >
@@ -269,18 +262,7 @@ export default function SaiensSalonPage() {
               </select>
             </div>
 
-            <button
-              type="button"
-              disabled
-              aria-disabled="true"
-              className="mt-2 w-full cursor-not-allowed bg-(--white)/40 px-8 py-3 text-sm uppercase tracking-wide text-(--black)"
-            >
-              Submit
-            </button>
-            <p className="text-center text-sm text-(--accent)">
-              Coming soon — 表單尚未開放送出，敬請期待。
-            </p>
-          </form>
+          </ContactForm>
         </div>
       </section>
 

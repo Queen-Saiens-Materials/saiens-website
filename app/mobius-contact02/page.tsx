@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import ContactForm from "@/app/ContactForm";
 
 const TITLE = "這是一場邀請制的VIP私人晚宴，山恩團隊將親自下廚招待各位。";
 
@@ -115,8 +116,12 @@ export default function MobiusContact02Page() {
           遠雄 × 山恩｜好感之夜 2
         </h2>
 
-        {/* Form UI replicated from the original Squarespace site. Submission is intentionally disabled until a backend (planned: Vercel Function + Resend email) is wired up. Do not remove the disabled state without adding the backend. */}
-        <form className="flex flex-col gap-6">
+        <ContactForm
+          formId="mobius-contact02"
+          fallbackEmail="service@saiens.tw"
+          className="flex flex-col gap-6"
+          buttonClassName="mt-2 w-full bg-(--white)/80 px-8 py-3 text-sm uppercase tracking-wide text-(--black) transition hover:bg-(--white) disabled:cursor-not-allowed disabled:opacity-60"
+        >
           <div className="flex flex-col gap-2">
             <label htmlFor="org-name" className="text-sm text-(--accent)">
               公司／組織名稱 <span aria-hidden="true">*</span>
@@ -125,7 +130,6 @@ export default function MobiusContact02Page() {
               id="org-name"
               name="org-name"
               type="text"
-              disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -138,7 +142,6 @@ export default function MobiusContact02Page() {
               id="name"
               name="name"
               type="text"
-              disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -151,7 +154,6 @@ export default function MobiusContact02Page() {
               id="phone"
               name="phone"
               type="tel"
-              disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -164,7 +166,6 @@ export default function MobiusContact02Page() {
               id="title"
               name="title"
               type="text"
-              disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -177,7 +178,6 @@ export default function MobiusContact02Page() {
               id="headcount"
               name="headcount"
               type="text"
-              disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -190,7 +190,6 @@ export default function MobiusContact02Page() {
               id="companions"
               name="companions"
               type="text"
-              disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -202,7 +201,6 @@ export default function MobiusContact02Page() {
             <select
               id="meal"
               name="meal"
-              disabled
               defaultValue=""
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
             >
@@ -224,7 +222,6 @@ export default function MobiusContact02Page() {
             <select
               id="session"
               name="session"
-              disabled
               defaultValue=""
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
             >
@@ -239,18 +236,7 @@ export default function MobiusContact02Page() {
             </select>
           </div>
 
-          <button
-            type="button"
-            disabled
-            aria-disabled="true"
-            className="mt-2 w-full cursor-not-allowed bg-(--white)/40 px-8 py-3 text-sm uppercase tracking-wide text-(--black)"
-          >
-            Submit
-          </button>
-          <p className="text-center text-sm text-(--accent)">
-            Coming soon — 表單尚未開放送出，敬請期待。
-          </p>
-        </form>
+        </ContactForm>
       </section>
     </main>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import ContactForm from "@/app/ContactForm";
 
 const TITLE = "山恩 Saiens · 2025 建材展";
 const DESCRIPTION =
@@ -76,8 +77,12 @@ export default function TaipeibexPage() {
       </section>
 
       <section className="mx-auto flex w-full max-w-xl flex-col gap-8 px-6 pb-24">
-        {/* Form UI replicated from the original Squarespace site. Submission is intentionally disabled until a backend (planned: Vercel Function + Resend email) is wired up. Do not remove the disabled state without adding the backend. */}
-        <form className="flex flex-col gap-6">
+        <ContactForm
+          formId="taipeibex"
+          fallbackEmail="service@saiens.tw"
+          className="flex flex-col gap-6"
+          buttonClassName="mt-2 w-full bg-(--white)/80 px-8 py-3 text-sm uppercase tracking-wide text-(--black) transition hover:bg-(--white) disabled:cursor-not-allowed disabled:opacity-60"
+        >
           <div className="flex flex-col gap-2">
             <label htmlFor="name" className="text-sm text-(--accent)">
               怎麼稱呼您？ <span aria-hidden="true">*</span>
@@ -86,7 +91,6 @@ export default function TaipeibexPage() {
               id="name"
               name="name"
               type="text"
-              disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -98,7 +102,6 @@ export default function TaipeibexPage() {
             <select
               id="identity"
               name="identity"
-              disabled
               defaultValue=""
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
             >
@@ -121,7 +124,6 @@ export default function TaipeibexPage() {
               id="company"
               name="company"
               type="text"
-              disabled
               placeholder="若無則填「無」"
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
@@ -135,7 +137,6 @@ export default function TaipeibexPage() {
               id="phone"
               name="phone"
               type="tel"
-              disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -148,7 +149,6 @@ export default function TaipeibexPage() {
               id="region"
               name="region"
               type="text"
-              disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -170,7 +170,6 @@ export default function TaipeibexPage() {
                   name="request"
                   type="checkbox"
                   value={option}
-                  disabled
                   className="disabled:opacity-60"
                 />
                 {option.trim()}
@@ -186,7 +185,6 @@ export default function TaipeibexPage() {
               id="note"
               name="note"
               type="text"
-              disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -198,7 +196,6 @@ export default function TaipeibexPage() {
             <select
               id="reception"
               name="reception"
-              disabled
               defaultValue=""
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
             >
@@ -213,18 +210,7 @@ export default function TaipeibexPage() {
             </select>
           </div>
 
-          <button
-            type="button"
-            disabled
-            aria-disabled="true"
-            className="mt-2 w-full cursor-not-allowed bg-(--white)/40 px-8 py-3 text-sm uppercase tracking-wide text-(--black)"
-          >
-            Submit
-          </button>
-          <p className="text-center text-sm text-(--accent)">
-            Coming soon — 表單尚未開放送出，敬請期待。
-          </p>
-        </form>
+        </ContactForm>
       </section>
     </main>
   );
