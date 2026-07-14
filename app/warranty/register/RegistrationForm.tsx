@@ -8,7 +8,7 @@ const LINE_OA_URL = "https://lin.ee/PLACEHOLDER";
 type RegistrationFormProps = {
   token: string;
   address: string;
-  warrantyYears: number;
+  warrantyYears: string;
 };
 
 type FormState = {

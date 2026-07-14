@@ -8,7 +8,7 @@ export type VerifyWarrantyData =
   | {
       status: "valid";
       address: string;
-      warranty_years: number;
+      warranty_years: string;
     }
   | {
       status: "already_registered";
@@ -43,10 +43,27 @@ function getOdooApiUrl() {
 
 async function parseJson(response: Response) {
   try {
-    return await response.json();
+    return unwrapEnvelope(await response.json());
   } catch {
     return { error: "invalid_response" };
   }
+}
+
+// Odoo saiens_react_api 的回應信封：
+// 成功 {"success": true, "data": {...}}；失敗 {"success": false, "error": {"code", "message"}}
+function unwrapEnvelope(body: unknown): unknown {
+  if (typeof body !== "object" || body === null || !("success" in body)) {
+    return body;
+  }
+  const envelope = body as {
+    success: boolean;
+    data?: unknown;
+    error?: { code?: string; message?: string };
+  };
+  if (envelope.success) {
+    return envelope.data ?? {};
+  }
+  return { error: envelope.error?.code?.toLowerCase() ?? "unknown_error" };
 }
 
 export async function verifyWarrantyToken(
