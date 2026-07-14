@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import ContactForm from "@/app/ContactForm";
 
 const TITLE = "Mindful Choices, Sustainable Future.";
 
@@ -57,8 +58,12 @@ export default function MobiusContactPage() {
           專業團隊將依據您的需求提供材料建議、應用方向與合作評估，協助您將再生材實際導入建築與空間設計之中。
         </p>
 
-        {/* Form UI replicated from the original Squarespace site. Submission is intentionally disabled until a backend (planned: Vercel Function + Resend email) is wired up. Do not remove the disabled state without adding the backend. */}
-        <form className="flex flex-col gap-6">
+        <ContactForm
+          formId="mobius-contact"
+          fallbackEmail="service@saiens.tw"
+          className="flex flex-col gap-6"
+          buttonClassName="mt-2 w-full bg-(--white)/80 px-8 py-3 text-sm uppercase tracking-wide text-(--black) transition hover:bg-(--white) disabled:cursor-not-allowed disabled:opacity-60"
+        >
           <div className="flex flex-col gap-2">
             <label htmlFor="full-name" className="text-sm text-(--accent)">
               您的全名{" "}
@@ -70,7 +75,6 @@ export default function MobiusContactPage() {
               id="full-name"
               name="full-name"
               type="text"
-              disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -86,7 +90,6 @@ export default function MobiusContactPage() {
               id="phone"
               name="phone"
               type="tel"
-              disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -102,7 +105,6 @@ export default function MobiusContactPage() {
               id="line-id"
               name="line-id"
               type="text"
-              disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -114,7 +116,6 @@ export default function MobiusContactPage() {
             <select
               id="region"
               name="region"
-              disabled
               defaultValue=""
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
             >
@@ -139,7 +140,6 @@ export default function MobiusContactPage() {
             <select
               id="identity"
               name="identity"
-              disabled
               defaultValue=""
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
             >
@@ -166,7 +166,6 @@ export default function MobiusContactPage() {
               name="company-name"
               type="text"
               placeholder="若無則填「無」"
-              disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -183,7 +182,6 @@ export default function MobiusContactPage() {
               name="company-tax-id"
               type="text"
               placeholder="若無則填「無」"
-              disabled
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -198,7 +196,6 @@ export default function MobiusContactPage() {
             <select
               id="company-size"
               name="company-size"
-              disabled
               defaultValue=""
               className="border border-(--accent) bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
             >
@@ -224,7 +221,6 @@ export default function MobiusContactPage() {
                   type="checkbox"
                   name="interest"
                   value={option}
-                  disabled
                   className="mt-1 disabled:opacity-60"
                 />
                 <span>{option}</span>
@@ -232,18 +228,7 @@ export default function MobiusContactPage() {
             ))}
           </fieldset>
 
-          <button
-            type="button"
-            disabled
-            aria-disabled="true"
-            className="mt-2 w-full cursor-not-allowed bg-(--white)/40 px-8 py-3 text-sm uppercase tracking-wide text-(--black)"
-          >
-            submit
-          </button>
-          <p className="text-center text-sm text-(--accent)">
-            Coming soon — 表單尚未開放送出，敬請期待。
-          </p>
-        </form>
+        </ContactForm>
       </section>
     </main>
   );

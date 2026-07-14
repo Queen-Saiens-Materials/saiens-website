@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import ContactForm from "@/app/ContactForm";
 
 const TITLE = "Fluid Living Register Page";
 
@@ -42,8 +43,11 @@ export default function FluidLivingRegistrationPage() {
           Register Now
         </h2>
 
-        {/* Form UI replicated from the original Squarespace site. Submission is intentionally disabled until a backend (planned: Vercel Function + Resend email) is wired up. Do not remove the disabled state without adding the backend. */}
-        <form className="flex w-full max-w-md flex-col gap-6">
+        <ContactForm
+          formId="fluid-living-registration"
+          className="flex w-full max-w-md flex-col gap-6"
+          buttonClassName="mt-2 w-fit bg-(--accent) px-8 py-3 text-sm text-(--black) transition hover:bg-(--white) disabled:cursor-not-allowed disabled:opacity-60"
+        >
           <div className="flex flex-col gap-2">
             <label htmlFor="name" className="text-sm">
               姓名 <span className="text-(--white)/60">(required)</span>
@@ -52,7 +56,6 @@ export default function FluidLivingRegistrationPage() {
               id="name"
               name="name"
               type="text"
-              disabled
               className="border border-(--white)/70 bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -64,7 +67,6 @@ export default function FluidLivingRegistrationPage() {
             <select
               id="occupation"
               name="occupation"
-              disabled
               defaultValue=""
               className="border border-(--white)/70 bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
             >
@@ -86,7 +88,6 @@ export default function FluidLivingRegistrationPage() {
             <select
               id="region"
               name="region"
-              disabled
               defaultValue=""
               className="border border-(--white)/70 bg-transparent px-4 py-2 text-(--white) disabled:opacity-60"
             >
@@ -109,7 +110,6 @@ export default function FluidLivingRegistrationPage() {
               id="phone"
               name="phone"
               type="tel"
-              disabled
               className="border border-(--white)/70 bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
@@ -122,20 +122,11 @@ export default function FluidLivingRegistrationPage() {
               id="email"
               name="email"
               type="email"
-              disabled
               className="border border-(--white)/70 bg-transparent px-4 py-2 text-(--white) placeholder:text-(--white)/50 disabled:opacity-60"
             />
           </div>
 
-          <button
-            type="button"
-            disabled
-            aria-disabled="true"
-            className="mt-2 w-fit cursor-not-allowed bg-(--accent) px-8 py-3 text-sm text-(--black)"
-          >
-            Submit
-          </button>
-        </form>
+        </ContactForm>
       </div>
     </main>
   );
