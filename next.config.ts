@@ -23,6 +23,8 @@ const nextConfig: NextConfig = {
       // Standalone OUGER architect-facing brand page. Keep the public URL clean
       // while serving the self-contained document without the Saiens site chrome.
       { source: "/ouger", destination: "/ouger/index.html" },
+      // Standalone piko Japan partner landing page (same pattern as /ouger).
+      { source: "/project-piko", destination: "/project-piko/index.html" },
     ];
   },
   async redirects() {
