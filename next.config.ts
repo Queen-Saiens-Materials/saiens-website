@@ -25,6 +25,8 @@ const nextConfig: NextConfig = {
       { source: "/ouger", destination: "/ouger/index.html" },
       // Standalone piko Japan partner landing page (same pattern as /ouger).
       { source: "/project-piko", destination: "/project-piko/index.html" },
+      // 山恩未來說明會（內部簡報頁，meta noindex＋robots disallow；same pattern as /ouger）。
+      { source: "/future", destination: "/future/index.html" },
     ];
   },
   async redirects() {
