@@ -603,7 +603,7 @@ footer .saiens{font-size:14px;color:var(--text-primary);font-weight:500}
   });
 
   /* ---- contact form ---- */
-  var FORM_ENDPOINT = ""; /* Apps Script Web App URL（apps-script/DEPLOY.md 参照）。空なら mailto フォールバック */
+  var FORM_ENDPOINT = "/api/piko-lead"; /* Apps Script Web App URL（apps-script/DEPLOY.md 参照）。空なら mailto フォールバック */
   var form=document.getElementById("contactForm"),
       thanks=document.getElementById("formThanks"),
       errBox=document.getElementById("formError"),
