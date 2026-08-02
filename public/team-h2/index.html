@@ -317,9 +317,12 @@ if ('IntersectionObserver' in window) {
   }), { threshold: 0.05, rootMargin: '0px 0px -5% 0px' });
   els.forEach(el => io.observe(el));
   // 保險絲：捲動時仍未觸發的元素（投影機/舊瀏覽器/縮放情境）直接顯示
-  const fuse = () => els.forEach(el => {
-    if (!el.classList.contains('in') && el.getBoundingClientRect().top < innerHeight) show(el);
-  });
+  const fuse = () => {
+    const atBottom = scrollY + innerHeight >= document.documentElement.scrollHeight - 80;
+    els.forEach(el => {
+      if (!el.classList.contains('in') && (atBottom || el.getBoundingClientRect().top < innerHeight)) show(el);
+    });
+  };
   addEventListener('scroll', fuse, { passive: true });
   addEventListener('load', fuse);
 } else {
