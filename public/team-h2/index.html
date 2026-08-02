@@ -32,7 +32,8 @@ h2 { font-size:clamp(30px,4.5vw,48px); font-weight:600; letter-spacing:-0.015em;
 h3 { font-size:24px; font-weight:600; letter-spacing:-0.015em; }
 .eyebrow { font-size:14px; font-weight:500; color:var(--acc); margin-bottom:16px; }
 .dark .eyebrow { color:#6ab0f3; }
-.lede { font-size:21px; color:var(--ts); max-width:653px; }
+.lede { font-size:21px; color:var(--ts); max-width:653px; text-wrap:pretty; }
+p, li { text-wrap:pretty; }
 .dark .lede { color:var(--dark-sub); }
 .nw { white-space:nowrap; }
 .reveal { opacity:0; transform:translateY(24px); transition:opacity 700ms ease-out, transform 700ms ease-out; }
@@ -191,7 +192,7 @@ footer { background:var(--bgg); padding:32px 0; font-size:12px; color:var(--tt);
   <div class="wrap">
     <p class="eyebrow reveal">產品整合</p>
     <h2 class="reveal">一個客戶，三次成交。</h2>
-    <p class="lede reveal">山恩要成為強而有力的品牌通路。石英石工程贏得信任之後，軟石接立面、家飾接完工——在同一個客戶身上完成更多的家，客單價自然長高。</p>
+    <p class="lede reveal">山恩要成為強而有力的品牌通路。石英石工程贏得信任之後，<span class="nw">軟石接立面</span>、<span class="nw">家飾接完工</span>——在同一個客戶身上完成更多的家，客單價<span class="nw">自然長高</span>。</p>
     <div class="tiers">
       <div class="tier reveal" style="background:#fff">
         <h3>石英石工程</h3>
