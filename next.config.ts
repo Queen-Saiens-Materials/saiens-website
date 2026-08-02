@@ -27,6 +27,8 @@ const nextConfig: NextConfig = {
       { source: "/project-piko", destination: "/project-piko/index.html" },
       // 山恩未來說明會（內部簡報頁，meta noindex＋robots disallow；same pattern as /ouger）。
       { source: "/future", destination: "/future/index.html" },
+      // 山恩業務團隊 2026 H2 策略會議頁（內部簡報頁，same pattern as /future）。
+      { source: "/team-h2", destination: "/team-h2/index.html" },
     ];
   },
   async redirects() {

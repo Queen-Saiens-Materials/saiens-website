@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>山恩業務策略 2026 H2 — 團隊會議</title>
+<meta property="og:title" content="山恩業務策略 2026 H2 — 團隊會議">
+<meta property="og:description" content="從 89 到 175，靠結構不靠蠻力：目標分層・大單 pipeline・方法複利・AI 隊友。">
+<meta property="og:image" content="https://saiens.group/team-h2/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" type="image/svg+xml" href="/team-h2/favicon.svg">
+<link rel="apple-touch-icon" href="/team-h2/apple-touch-icon.png">
+<style>
+:root {
+  --tp:#1d1d1f; --tb:#393c41; --ts:#86868b; --tt:#6e6e73;
+  --bgg:#f5f5f7; --acc:#0071e3; --bd:#d2d2d7; --on-dark:#f5f5f7; --dark-sub:#a1a1a6;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans TC",sans-serif;
+  color:var(--tp); background:#fff; font-size:17px; line-height:1.47;
+}
+.wrap { max-width:980px; margin:0 auto; padding:0 22px; width:100%; }
+.narrow { max-width:653px; }
+section { padding:120px 0; }
+section.dark { background:#000; color:var(--on-dark); }
+h1 { font-size:clamp(38px,7vw,72px); font-weight:600; letter-spacing:-0.02em; line-height:1.05; text-wrap:balance; }
+h2 { font-size:clamp(30px,4.5vw,48px); font-weight:600; letter-spacing:-0.015em; line-height:1.1; margin-bottom:16px; text-wrap:balance; }
+h3 { font-size:24px; font-weight:600; letter-spacing:-0.015em; }
+.eyebrow { font-size:14px; font-weight:500; color:var(--acc); margin-bottom:16px; }
+.dark .eyebrow { color:#6ab0f3; }
+.lede { font-size:21px; color:var(--ts); max-width:653px; }
+.dark .lede { color:var(--dark-sub); }
+.nw { white-space:nowrap; }
+.reveal { opacity:0; transform:translateY(24px); transition:opacity 700ms ease-out, transform 700ms ease-out; }
+.reveal.in { opacity:1; transform:none; }
+@media (prefers-reduced-motion:reduce) { .reveal { opacity:1; transform:none; transition:none; } }
+
+/* hero */
+header { min-height:88vh; display:flex; flex-direction:column; justify-content:center; text-align:center; padding:80px 0 48px; }
+header .sub { font-size:clamp(19px,2.5vw,24px); color:var(--ts); margin-top:24px; }
+header .meta { font-size:14px; color:var(--tt); margin-top:48px; }
+
+/* spec trio */
+.trio { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:64px; }
+.trio > div { background:var(--bgg); border-radius:18px; padding:40px 20px; text-align:center; }
+.dark .trio > div { background:#161617; }
+.trio b { display:block; font-size:clamp(28px,4vw,48px); font-weight:600; letter-spacing:-0.015em; }
+.trio small { font-size:14px; color:var(--ts); display:block; margin-top:8px; }
+.trio .acc { color:var(--acc); }
+
+/* findings */
+.duo { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:64px; }
+.duo > div { background:var(--bgg); border-radius:18px; padding:40px 32px; }
+.duo h3 { margin-bottom:12px; }
+.duo p { font-size:15px; color:var(--tb); }
+.duo .big { font-size:clamp(26px,3.5vw,38px); font-weight:600; letter-spacing:-0.015em; margin:16px 0 4px; }
+.duo small { color:var(--ts); font-size:13px; }
+
+/* lever cards */
+.cards { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:64px; }
+.cards > div { background:#161617; border-radius:18px; padding:40px 32px; }
+.cards .num { font-size:13px; color:#6ab0f3; font-weight:500; margin-bottom:12px; }
+.cards h3 { margin-bottom:12px; color:var(--on-dark); }
+.cards p { font-size:15px; color:var(--dark-sub); }
+
+/* focus metric */
+.focus { background:var(--bgg); border-radius:18px; padding:64px 32px; text-align:center; margin-top:64px; }
+.focus .metric { font-size:clamp(30px,5vw,52px); font-weight:600; letter-spacing:-0.015em; color:var(--acc); margin:12px 0; }
+.focus p { color:var(--tb); max-width:560px; margin:0 auto; font-size:15px; }
+
+/* tiers */
+.tiers { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:64px; }
+.tier { background:var(--bgg); border-radius:18px; padding:40px 28px; }
+.tier h3 { margin-bottom:4px; }
+.tier .goal { font-size:15px; color:var(--acc); font-weight:500; margin-bottom:20px; }
+.chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+.chip { background:#fff; border-radius:980px; padding:5px 14px; font-size:13px; white-space:nowrap; }
+.tier p { font-size:14px; color:var(--tb); }
+.tiernote { margin-top:24px; font-size:14px; color:var(--ts); text-align:center; }
+
+/* roadmap */
+.steps { margin-top:64px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; position:relative; }
+.step { background:#fff; border-radius:18px; padding:40px 28px; }
+.step .mon { font-size:14px; font-weight:500; color:var(--acc); margin-bottom:8px; }
+.step h3 { font-size:21px; margin-bottom:16px; }
+.step ul { list-style:none; }
+.step li { font-size:14px; color:var(--tb); padding-left:20px; position:relative; margin-bottom:10px; }
+.step li::before { content:""; position:absolute; left:0; top:7px; width:8px; height:8px; border-radius:50%; background:var(--acc); }
+
+/* closing */
+.closing { text-align:center; padding:160px 0; }
+.closing h2 { font-size:clamp(34px,6vw,64px); }
+.closing .culture { display:flex; gap:clamp(16px,4vw,48px); justify-content:center; margin-top:64px; flex-wrap:wrap; }
+.closing .culture span { font-size:clamp(15px,2.2vw,21px); font-weight:500; letter-spacing:0.02em; color:var(--dark-sub); white-space:nowrap; }
+.closing .goalline { margin-top:48px; font-size:clamp(19px,3vw,28px); color:var(--on-dark); font-weight:600; letter-spacing:-0.015em; }
+
+footer { background:var(--bgg); padding:32px 0; font-size:12px; color:var(--tt); }
+
+@media (max-width:734px) {
+  section { padding:64px 0; }
+  header { min-height:auto; padding:96px 0 48px; }
+  .trio, .duo, .cards, .tiers, .steps { grid-template-columns:1fr; margin-top:40px; }
+  .focus { padding:48px 24px; margin-top:40px; }
+  .closing { padding:96px 0; }
+}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <p class="eyebrow">山恩業務團隊會議・2026-08-05</p>
+  <h1>從 89 到 175，<br>靠結構，不靠蠻力。</h1>
+  <p class="sub">人均月營收翻倍的路徑：<span class="nw">目標分層</span>・<span class="nw">大單 pipeline</span>・<span class="nw">方法複利</span>・<span class="nw">AI 隊友</span></p>
+  <p class="meta">內部文件・簽單口徑未稅・資料來源 Odoo（2026-08-02 產出）</p>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow reveal">我們在哪裡</p>
+    <h2 class="reveal">基本盤是穩的，<br>差的是天花板。</h2>
+    <p class="lede reveal">2026 年 1–7 月，設計師 AM 團隊簽單 5,004 萬。每個人的小單基本盤都很健康——決定每個月成敗的，從來都是大單。</p>
+    <div class="trio">
+      <div class="reveal"><b><span class="nw">NT$50,039,027</span></b><small>團隊 1–7 月簽單額</small></div>
+      <div class="reveal"><b><span class="nw">715 萬</span>／月</b><small>團隊月均</small></div>
+      <div class="reveal"><b class="acc"><span class="nw">79 萬</span> → <span class="nw">175 萬</span></b><small>人均月營收・現況 → 北極星</small></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bgg)">
+  <div class="wrap">
+    <p class="eyebrow reveal">兩個發現</p>
+    <h2 class="reveal">數據只說了兩件事。</h2>
+    <div class="duo">
+      <div class="reveal" style="background:#fff">
+        <h3>大單決定月份</h3>
+        <p class="big">2–3 筆 ≥15 萬</p>
+        <small>達標月與未達標月的唯一差別</small>
+        <p style="margin-top:16px">小單是地板，人人都穩；15 萬以上的案子是天花板。全隊 ≥30 萬的單只佔筆數 4%，卻貢獻近三分之一營收。</p>
+      </div>
+      <div class="reveal" style="background:#fff">
+        <h3>差距是方法，不是市場</h3>
+        <p class="big">119 萬 vs 57 萬</p>
+        <small>北區與中南區人均月營收</small>
+        <p style="margin-top:16px">台中、高雄的設計師市場並不小。2 倍的差距來自大單客戶的經營方法——方法可以學，這是好消息。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap">
+    <p class="eyebrow reveal">下半年怎麼打</p>
+    <h2 class="reveal">四個槓桿，一起拉。</h2>
+    <p class="lede reveal">不加班、不加人。改變目標的設法、案子的管法、方法的傳法、工具的用法。</p>
+    <div class="cards">
+      <div class="reveal">
+        <p class="num">01</p>
+        <h3>目標分層，各爬各的坡</h3>
+        <p>不齊頭。每個人依現況領一條夠得著、也夠張力的爬坡線——衝刺、成長、蓄力三層，儲備夥伴走里程碑制。</p>
+      </div>
+      <div class="reveal">
+        <p class="num">02</p>
+        <h3>週會管 pipeline，不管結果</h3>
+        <p>結果交給報表。週會只看一個數字：你手上有幾個 30 萬級的在談案。案子在，數字自然到。</p>
+      </div>
+      <div class="reveal">
+        <p class="num">03</p>
+        <h3>把最強的打法變成全隊的</h3>
+        <p>北區的大單客戶經營、高頻回頭客網絡，編成 playbook 配訓練官帶飛。一個人的方法，複利成十一個人的。</p>
+      </div>
+      <div class="reveal">
+        <p class="num">04</p>
+        <h3>AI 隊友上場</h3>
+        <p>Pipeline Agent 掃出 913 筆真商機、1.3 億流失池，按區推播到你手上；AM 超級助理接走行政雜事，時間還給客戶。</p>
+      </div>
+    </div>
+    <div class="focus reveal" style="background:#161617">
+      <p class="eyebrow">每個人唯一要背的週會指標</p>
+      <p class="metric"><span class="nw">30 萬級在談案 ≥ 3</span></p>
+      <p style="color:var(--dark-sub)">三成成交率之下，手上永遠有三個 30 萬級的案子在談，就等於每月穩拿一筆大單。這是領先指標——它亮，月底的數字才會亮。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow reveal">目標分層</p>
+    <h2 class="reveal">三條爬坡線。</h2>
+    <p class="lede reveal">以 1–7 月實績分層。層不是標籤，是起跑點——季度檢視，往上走就換線。</p>
+    <div class="tiers">
+      <div class="tier reveal">
+        <h3>衝刺層</h3>
+        <p class="goal">月簽單 150 萬</p>
+        <div class="chips"><span class="chip">Ivy</span><span class="chip">Nico</span><span class="chip">Anne</span></div>
+        <p>月均已破百萬。缺的只是大單穩定度——每月一筆 30 萬以上，就站上 150。</p>
+      </div>
+      <div class="tier reveal">
+        <h3>成長層</h3>
+        <p class="goal">月簽單 100 → 120 萬</p>
+        <div class="chips"><span class="chip">Murphy</span><span class="chip">Patricia</span><span class="chip">Melody</span></div>
+        <p>基本盤穩、單量夠。用衝刺層的 playbook 把客單拉起來，先過 100 再攻 120。Melody 同步承接南區移轉客戶，案源加厚。</p>
+      </div>
+      <div class="tier reveal">
+        <h3>蓄力層</h3>
+        <p class="goal">90 天站回 60 萬線</p>
+        <div class="chips"><span class="chip">Mike</span><span class="chip">Debby</span><span class="chip">Eason</span></div>
+        <p>配訓練官帶案、流失池商機優先分派。60 萬線是全隊透明的船規，站回來就往上走。</p>
+      </div>
+    </div>
+    <p class="tiernote reveal">儲備夥伴 Joan 走里程碑制：首單成交 → 案源建立 → 進蓄力層起算。</p>
+    <div class="focus reveal" style="margin-top:24px; padding:48px 32px">
+      <p class="eyebrow">編制調整</p>
+      <p style="max-width:640px; margin:0 auto; font-size:15px; color:var(--tb)">
+        Kelly 自 8 月起轉入玉禮，現有專案<span class="nw">繼續執行到交接完成</span>；9 月高雄加工廠開幕後轉任 PM，在交付端繼續與大家並肩。
+        Josephine 與 Kelly 的設計師客戶<span class="nw">全數移轉 Melody</span>——南區窗口單一化，客戶服務不斷線。
+      </p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bgg)">
+  <div class="wrap">
+    <p class="eyebrow reveal">90 天行動</p>
+    <h2 class="reveal">三個月，三步棋。</h2>
+    <div class="steps">
+      <div class="step reveal">
+        <p class="mon">8 月</p>
+        <h3>開局</h3>
+        <ul>
+          <li>分層目標進週報，達成率自動對照</li>
+          <li>流失池 LINE 推播上線，商機按區分派</li>
+          <li>超級助理試點啟動（Ivy・Melody）</li>
+        </ul>
+      </div>
+      <div class="step reveal">
+        <p class="mon">9 月</p>
+        <h3>複製</h3>
+        <ul>
+          <li>大單經營 playbook 第一版發布</li>
+          <li>訓練官帶案制度上線（蓄力層優先）</li>
+          <li>週會全面改追 pipeline 指標</li>
+        </ul>
+      </div>
+      <div class="step reveal">
+        <p class="mon">10 月</p>
+        <h3>驗收</h3>
+        <ul>
+          <li>Q3 分層檢視：達線換層、缺口補策</li>
+          <li>超級助理試點結算，決定全隊推開</li>
+          <li>設計師社群經營指標納入管理</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark closing">
+  <div class="wrap">
+    <p class="eyebrow reveal">為什麼值得</p>
+    <h2 class="reveal">方法會複利，<br>AI 會放大，<br>而市場在等我們。</h2>
+    <p class="goalline reveal">11 人 × 人均 175 萬 —— 山恩要用最小的隊伍，打出最大的仗。</p>
+    <div class="culture reveal">
+      <span>DREAM BIG</span><span>WORK SMART</span><span>HAVE FUN</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">山恩實業・內部策略文件・數據口徑：Odoo 確認訂單簽單額（未稅），2026-01-01 至 2026-07-31・北極星 175 萬為 S2 階段人均目標・本頁不含個人明細，逐人數據見每週三週報</div>
+</footer>
+
+<script>
+const els = document.querySelectorAll('.reveal');
+const show = el => el.classList.add('in');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { show(e.target); io.unobserve(e.target); }
+  }), { threshold: 0.05, rootMargin: '0px 0px -5% 0px' });
+  els.forEach(el => io.observe(el));
+  // 保險絲：捲動時仍未觸發的元素（投影機/舊瀏覽器/縮放情境）直接顯示
+  const fuse = () => els.forEach(el => {
+    if (!el.classList.contains('in') && el.getBoundingClientRect().top < innerHeight) show(el);
+  });
+  addEventListener('scroll', fuse, { passive: true });
+  addEventListener('load', fuse);
+} else {
+  els.forEach(show);
+}
+</script>
+</body>
+</html>

@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      // 內部說明會頁不進索引（頁內另有 meta noindex 雙保險）
-      disallow: "/future",
+      // 內部頁不進索引（頁內另有 meta noindex 雙保險）
+      disallow: ["/future", "/team-h2"],
     },
     sitemap: "https://www.saiens.group/sitemap.xml",
   };
