@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Odoo 開發規劃 — QSM 技術簡報</title>
 <meta property="og:title" content="Odoo 開發規劃 — QSM 技術簡報">
-<meta property="og:description" content="山恩發展策略 × Odoo ERP 開發藍圖：現況盤點、AIOS 架構、P0–P2 路線圖與 Odoo 19 升級評估。">
+<meta property="og:description" content="山恩發展策略 × Odoo ERP 開發藍圖：現況盤點、AIOS 架構、路線圖，與山恩 Odoo 19.4 AI Native 新建（2026-10-01 切換）。">
 <meta property="og:image" content="https://saiens.group/odoo-development/og.png">
 <link rel="icon" type="image/svg+xml" href="/odoo-development/favicon.svg">
 <link rel="apple-touch-icon" href="/odoo-development/apple-touch-icon.png">
@@ -206,7 +206,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
 <header class="hero">
   <p class="eyebrow">技術簡報 · 2026-08-03</p>
   <h1>Odoo 開發規劃</h1>
-  <p class="subhead">山恩發展策略 × ERP 系統藍圖 — 現況、架構、路線圖，與 Odoo 19 升級評估。</p>
+  <p class="subhead">山恩發展策略 × ERP 系統藍圖 — 現況、架構、路線圖，與山恩 Odoo 19.4 AI Native 新建計畫。</p>
   <p class="meta">內部文件 · 依 qsm-ai-lab vault 整理 · 供 AI 架構師蘇Sir 討論用</p>
   <div class="cta-pair">
     <a class="btn btn-primary" href="#roadmap">看開發路線圖</a>
@@ -273,7 +273,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
       <li>
         <div>
           <h3>分治後的系統邊界</h3>
-          <p>維持一套 AIOS，主體定錨山恩；vault 與 registry 以 Saiens／QSM玉禮／Shared 三種 entity 劃分，玉禮營運明細不進山恩生態。不做 repo 物理分家，交割後再議。玉禮實業在同一 db 的拆分後處置，是待決事項之一。</p>
+          <p>維持一套 AIOS，主體定錨山恩；vault 與 registry 以 Saiens／QSM玉禮／Shared 三種 entity 劃分，玉禮營運明細不進山恩生態。2026-08-03 進一步定案：Odoo 資料層由多公司邏輯分區走向<strong>物理分離</strong>——舊 17 db 留玉禮作中控／庫存，山恩新建 19.4 實例（見下方定案節）。</p>
         </div>
       </li>
       <li>
@@ -340,7 +340,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
           <li>事件流＋對帳 agent（L2 主戰場）</li>
           <li>內轉月結機制（SO 作 SSOT；設計凍結待批）</li>
           <li>三層口徑報表；CRM pipeline 資料清整（清整前不得用於管理決策）</li>
-          <li>Enterprise／OCA 評估、Odoo UI 優化重啟 <span class="note">— 與 Odoo 19 評估合併討論，見下節</span></li>
+          <li>山恩 19.4 平行期（主資料遷移實跑＋影子驗證＋跨 db 介面聯調）→ <span class="nowrap">2026-10-01</span> 切換 <span class="note">— 定案內容見下節</span></li>
         </ul>
       </div>
     </div>
@@ -354,7 +354,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
           <tr><td>Odoo Agent Farm</td><td>五治理身分常駐 Mac Mini，Discord workbench → OpenClaw gateway；v1 = read + draft，寫入封鎖</td><td><span class="status active">Active</span></td></tr>
           <tr><td>財會建置（鼎新承接）</td><td>staging 完成實測，production 已上線稽核與對帳 v2</td><td><span class="status active">Active</span></td></tr>
           <tr><td>Persistent task／audit store</td><td>任務與稽核事件持久化至 Postgres（現為 in-memory，重啟即失）</td><td><span class="status planned">未開工 0/23</span></td></tr>
-          <tr><td>內轉月結機制</td><td>山恩⇄玉禮供應定價與鏡射，影子跑一季再定</td><td><span class="status frozen">凍結待批</span></td></tr>
+          <tr><td>內轉月結機制</td><td>原同 db 鏡射設計因 db 分家作廢，改為跨實例整合介面（玉禮 17 ⇄ 山恩 19.4）重新設計</td><td><span class="status planned">重開</span></td></tr>
           <tr><td>Odoo UI 優化／React 前端</td><td>saiens_react_api 為前端 REST 層；多公司切換等體驗優化</td><td><span class="status planned">Planned</span></td></tr>
           <tr><td>Quote Agent（報價助理）</td><td>Michael 個人業務助理，已遷出至 openclaw repo，與 Agent Farm 嚴格分界</td><td><span class="status frozen">外部專案</span></td></tr>
         </tbody>
@@ -367,32 +367,37 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
 <section class="dark" id="odoo19">
   <div class="container">
     <div class="section-head reveal">
-      <h2>Odoo 19 升級評估</h2>
-      <p class="lede">誠實起點：vault 目前沒有既定的大版升級計畫。這一節是「評估議程」，不是已核定的 roadmap——正是要與蘇Sir 討論定案的部分。</p>
+      <h2>山恩 Odoo 19.4 新建（已定案）</h2>
+      <p class="lede">2026-08-03 Michael × 蘇Sir 共識定案：藉分治一次把山恩 ERP 做到位。山恩 db 獨立、新建 Odoo 19.4 AI Native 實例（準備未來 Odoo 20）；舊 17 db 保留給玉禮作中控／庫存。目標：支撐 10 位業務 5 倍業績成長。</p>
+    </div>
+    <div class="stack reveal" style="margin-top:0">
+      <div class="layer"><span class="layer-name">玉禮 · Odoo 17（現行 db）</span><span class="layer-desc">中控／庫存續用；資料債（草稿單 7,690、堆積商機 4,089）就地歸檔，<em>不搬家</em></span></div>
+      <div class="layer"><span class="layer-name">跨實例整合介面</span><span class="layer-desc">事件流／API 同步層：山恩下單 → 玉禮工程進度與庫存回報 → 山恩驗收開票（取代原同 db 鏡射設計）</span></div>
+      <div class="layer highlight"><span class="layer-name">山恩 · Odoo 19.4（新建）</span><span class="layer-desc"><em>七大模組域：客戶資料／商機管理／訂單管理／採購管理／工程進度及庫存追蹤／財會帳務／人事資料</em> — 一切以山恩業務策略規劃</span></div>
     </div>
     <div class="decision-list reveal">
       <li>
         <div>
-          <h3>為什麼考慮升級</h3>
-          <p>17 → 19 帶來 ORM 與前端框架演進、原生 AI 功能與長期支援週期。但現行 Enterprise 缺口已由 OCA／第三方模組補齊（票據、電子發票、資產、預算、tier validation），「短期不需升 Enterprise」已是既定評估結論——升 19 的動機需要獨立論證，不能與 Enterprise 議題混談。</p>
+          <h3>Greenfield，不走 in-place 升級</h3>
+          <p>不用 OpenUpgrade 17→18→19 逐版升級，直接新建 19.4 實例＋選擇性資料遷移。紅利：資料債留在玉禮 db 歸檔，山恩主資料（客戶／產品／價格表／未結案件）清洗後入新實例，從乾淨 schema 起步。AI Native 是出廠標配而非事後補課：agent 分權、guarded executor、auditlog、API-first、事件流第一天內建。</p>
         </div>
       </li>
       <li>
         <div>
-          <h3>主要風險：模組相依</h3>
-          <p>OCA 模組升級綁大版（此顧慮已寫入月結機制設計，因此鏡射方案改用排程腳本影子跑）；三家電子發票模組（amego／ecpay／ezpay）、台灣票據模組、自訂 addons 與 saiens_react_api 都要逐一確認 19 相容版本或改寫成本。這是升級評估書的核心工作量。</p>
+          <h3>三項配套決策（已拍板）</h3>
+          <p>① 8 月財會落點＝現行 17 db 先完成鼎新承接與首次月結（月結不能斷），19.4 並行建置；② 切換基準日＝<strong>2026-10-01</strong>（8–9 月建置＋平行驗證，Q4 初配合 11 人穩態底盤）；③ 授權路線＝Community＋OCA 重拼（延續 17 模式、零授權費）。原未決事項「玉禮在此 db 的處置」「Community vs Enterprise」同步結案。</p>
         </div>
       </li>
       <li>
         <div>
-          <h3>前置條件（未完成不啟動升級）</h3>
-          <p>① P1–P2 財會地基完成且跑過至少兩次乾淨月結；② 四個未決人工決策點結案（採購／應付截轉基準日、玉禮在此 db 的處置、Community vs Enterprise、帳簿去重與鎖帳日）；③ 資料清理 backlog 第一批完成——帶著 7,690 筆草稿單升級只是把債搬家。</p>
+          <h3>Blocking 前置：模組 19 相容盤點</h3>
+          <p>山恩新實例要能開票——l10n_tw、電子發票（ezpay／amego／ecpay）、台灣票據 yc_note_*_tw、常用 OCA 模組的 Odoo 19 相容版必須逐一確認；沒有 19 版的要改寫或換方案。saiens_react_api 前端層須對 19 重新對接（ORM／OWL 架構差異）。此項升為 W1–W2 最高優先。</p>
         </div>
       </li>
       <li>
         <div>
-          <h3>建議路徑</h3>
-          <p>2026 Q4 產出升級評估書（模組相依盤點＋成本估算）→ training／staging 環境以 OpenUpgrade 路徑演練（17→18→19 逐版）→ 驗收自訂模組與 agent API 層 → 2027 擇機切換。全程沿用現有 Kamal 藍綠部署與備份機制，production 切換須具名核准。</p>
+          <h3>切換路徑與回退</h3>
+          <p>8 月：staging 起機＋blocking 盤點＋建置藍圖與資料遷移計畫書。9 月：主資料遷移實跑＋雙軌平行期（17 記帳、19.4 影子驗證）＋跨 db 介面聯調。10-01 正式切換——沿用 Kamal 藍綠部署與備份機制，production 切換須具名核准，平行期即回退方案。</p>
         </div>
       </li>
     </div>
@@ -422,7 +427,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
   <div class="container">
     <div class="section-head reveal">
       <h2>協作架構與四週分工</h2>
-      <p class="lede">目標：8/3–8/31 一個月完成 P1 全部＋P2 起步＋Odoo 19 評估書（不含升級本身）。架構沿用集團三角協作模型：Michael＝Planner、蘇Sir＝Executor、AI agent＝Consultant 兼第二驗證者。</p>
+      <p class="lede">目標：8/3–8/31 完成 P1（17 db 財會不能斷）＋山恩 19.4 staging 驗證與建置藍圖；9 月平行期，<span class="nowrap">2026-10-01</span> 正式切換。架構沿用集團三角協作模型：Michael＝Planner、蘇Sir＝Executor、AI agent＝Consultant 兼第二驗證者。</p>
     </div>
     <div class="table-wrap reveal">
       <table>
@@ -438,34 +443,40 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
       <div class="phase">
         <div class="phase-key">W1<span class="when">8/3–8/9</span></div>
         <ul>
-          <li>蘇Sir：guarded executor 常態化——XML-RPC 全面收斂到 agent-readonly／writer＋核准閘</li>
-          <li>Michael：拍板兩個卡住的決策——財會人選（月結掛此位）、應付截轉基準日；寫月結流程規格</li>
+          <li>蘇Sir：guarded executor 常態化（17 db，同套設計直接成為 19.4 規格）；19.4 部署架構＋模組相容盤點啟動</li>
+          <li>Michael：拍板兩個卡住的決策——財會人選、應付截轉基準日；山恩業務流程 → 七大模組域映射清單</li>
         </ul>
       </div>
       <div class="phase">
         <div class="phase-key">W2<span class="when">8/10–8/16</span></div>
         <ul>
-          <li>蘇Sir：persistent task／audit store 落 Postgres（OpenSpec 23 項任務已備）</li>
-          <li>Michael：進銷存切換 SOP 與驗收腳本；staging 陪跑第一次月結演練</li>
+          <li>蘇Sir：19.4 staging 實例起機＋台灣本地化模組驗證（l10n_tw／電子發票／票據——blocking 優先）</li>
+          <li>Michael：主資料遷移規則定義（客戶／產品／價格表：搬什麼、洗什麼、棄什麼）；17 db 月結演練陪跑</li>
         </ul>
       </div>
       <div class="phase">
         <div class="phase-key">W3<span class="when">8/17–8/23</span></div>
         <ul>
-          <li>蘇Sir：事件流＋對帳 agent（L2 主戰場）；CI workflow 接上 Mac Mini runner</li>
-          <li>Michael：React 前端 UI/UX 規格（公司切換、AM 高頻動線）＋截圖驗收；CRM 清整規則定義（agent 執行）</li>
+          <li>蘇Sir：跨 db 整合介面設計（玉禮工程／庫存 → 山恩）；persistent audit store 落新實例；CI workflow 接上 Mac Mini runner</li>
+          <li>Michael：AM 動線 UI/UX 規格（19 前端）＋staging 截圖驗收；CRM 清整規則定義（agent 執行）</li>
         </ul>
       </div>
       <div class="phase">
         <div class="phase-key">W4<span class="when">8/24–8/31</span></div>
         <ul>
-          <li>蘇Sir：Odoo 19 評估書技術半——OCA／電子發票／自訂 addons 相依盤點、OpenUpgrade 演練計畫</li>
-          <li>Michael：評估書業務半——停機窗口、風險承受度、切換時點；8 月月結正式實跑驗收</li>
+          <li>蘇Sir＋Michael：交付「山恩 19.4 建置藍圖＋資料遷移計畫書」——10-01 切換、平行期規則、回退方案（技術半／業務半分工）</li>
+          <li>Michael：8 月月結在 17 db 正式實跑驗收</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-key">9 月<span class="when">平行期</span></div>
+        <ul>
+          <li>主資料遷移實跑＋雙軌平行（17 記帳、19.4 影子驗證）＋跨 db 介面聯調 → <span class="nowrap">2026-10-01</span> 具名核准後正式切換</li>
         </ul>
       </div>
     </div>
     <div class="card-grid three reveal" style="margin-top:64px">
-      <div class="card"><span class="tag">關鍵 1</span><h3>W1 決策不能拖</h3><p>財會人選與截轉基準日卡住整條 P1。這是 Planner 的球，第一週必須出手。</p></div>
+      <div class="card"><span class="tag">關鍵 1</span><h3>W1–W2 不能拖的兩件事</h3><p>財會人選與截轉基準日卡住整條 P1（Planner 的球）；台灣本地化模組的 19 相容盤點卡住整條 19.4 線（Executor 的球）。兩條線第一、二週必須同時出手。</p></div>
       <div class="card"><span class="tag">關鍵 2</span><h3>驗收標準前置</h3><p>契約介面用 OpenSpec：每個 change 動工前，驗收條件已寫死在規格裡。「說完成」不算完成——staging 實跑＋Planner 或第二 agent 驗過才算。</p></div>
       <div class="card"><span class="tag">關鍵 3</span><h3>UI/UX 短循環</h3><p>規格 → 實作 → 截圖驗收。每個畫面出 staging 截圖就地審，不等整包完成，縮短來回。</p></div>
     </div>
@@ -480,13 +491,13 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
   <div class="container narrow">
     <div class="section-head reveal" style="margin-bottom:0">
       <h2>給蘇Sir 的接球點</h2>
-      <p class="lede">四件事，依優先序，已一一對應上方 W1–W4 的技術線。定案後回寫 vault 決策紀錄。</p>
+      <p class="lede">四件事，依優先序，已一一對應上方 W1–W4 的技術線。定案內容已入 vault 決策紀錄（saiens-erp-odoo19-split-2026-08）。</p>
     </div>
     <ol class="handoff reveal">
-      <li><div><h3>Guarded executor 常態化</h3><p>把 XML-RPC 腳本從 admin 帳號全面收斂到 agent-readonly／agent-writer 分權＋核准閘——最優先技術債，也是 L4 的前提。</p></div></li>
-      <li><div><h3>Persistent task／audit store</h3><p>OpenSpec 規格已備（23 項任務未開工）：任務與稽核事件落地 Postgres，解決 in-memory 重啟即失的問題。</p></div></li>
-      <li><div><h3>CI workflow 接手</h3><p>Mac Mini self-hosted runner 已上線，GitHub Actions workflow 改造待定案（build、測試、Kamal 部署管線）。</p></div></li>
-      <li><div><h3>Odoo 19 升級評估書</h3><p>共同定義評估範圍與時點：模組相依盤點、OpenUpgrade 演練計畫、成本與風險估算，目標 2026 Q4 產出。</p></div></li>
+      <li><div><h3>模組 19 相容盤點（blocking）</h3><p>l10n_tw、電子發票（ezpay／amego／ecpay）、台灣票據、常用 OCA 模組逐一確認 Odoo 19 相容版；沒有 19 版的提改寫或替代方案。19.4 線的成敗閘門。</p></div></li>
+      <li><div><h3>Guarded executor 常態化</h3><p>把 XML-RPC 腳本從 admin 帳號全面收斂到 agent-readonly／agent-writer 分權＋核准閘——17 db 立即生效，同套設計直接成為 19.4 出廠規格。</p></div></li>
+      <li><div><h3>19.4 staging 起機＋跨 db 介面</h3><p>新實例部署架構（沿用 Kamal 藍綠模式）、persistent audit store 落新實例（OpenSpec 23 項規格已備）、玉禮工程／庫存 → 山恩的事件流／API 同步層設計。</p></div></li>
+      <li><div><h3>建置藍圖＋資料遷移計畫書</h3><p>W4 交付：主資料遷移規則、10-01 切換程序、9 月平行期規則與回退方案；CI workflow（Mac Mini runner）一併定案。</p></div></li>
     </ol>
     <div class="cta-pair reveal" style="margin-top:56px">
       <a class="btn btn-primary" href="#roadmap">回到路線圖</a>
