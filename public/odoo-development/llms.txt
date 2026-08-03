@@ -1,0 +1,153 @@
+# Odoo 開發規劃 — QSM 技術簡報（AI 可讀完整版）
+
+> 本文件是 https://saiens.group/odoo-development 的完整內容 machine-readable 版本。
+> 用途：供 AI agent 完整讀取，作為 Odoo 開發協作（Michael × 蘇Sir）的共同脈絡。
+> 屬性：QSM 內部技術文件（noindex），依 qsm-ai-lab vault 整理，日期 2026-08-03。
+> 資料原則：財務數字為 Odoo 快照；一切財會與營運資料的 SSOT 是 Odoo，本文件僅為衍生展示。
+
+## 1. 現況盤點
+
+### 版本與模組
+- Odoo 17.0 Community（無 account_accountant / web_enterprise），已裝 143 模組。
+- Enterprise 缺口由 OCA／第三方拼裝補足：om_account_accountant/asset/budget、account_reconcile_oca、base_tier_validation、purchase_request/deposit、stock_no_negative、台灣票據 yc_note_*_tw、三家電子發票（amego/ecpay/ezpay）。
+
+### 部署架構
+- Docker 化自訂 Dockerfile，Kamal 2 部署至 GCP VM；image 走 GCP Artifact Registry；DB 在 Cloud SQL。
+- Production：system.saiens.tw（db saiens_production，LIST_DB=False）；另有 staging（saiens_staging）與隔離 training 環境（saiens_training）。
+- CI：GitHub Actions 付費停用，已改 Mac Mini self-hosted runner；workflow 改造待接手。
+
+### 公司主體（多公司）
+- 3 家公司皆 TWD：山恩實業（啟用，id=1）／玉禮實業（啟用，id=3）／鉑山（停用，id=2）。多幣別未啟用。
+- 僅山恩設鎖帳日 2023-12-31；科目表 402 筆、日記帳 17 筆（INV×2、STJ×2 重複命名，去重為待辦）。
+
+### 資料規模（2026-07 實查）
+- 銷售訂單 11,544 筆（已確認 3,591 筆／NT$3.53 億；草稿 7,690 筆／10.9 億）。
+- CRM 商機 11,083 筆（「已報價」堆積 4,089 筆）；客戶 3,056；產品模板 1,959。
+- 會計傳票 13,782 筆（期間 2022-03 至 2026-07；銷項 5,743／進項僅 2）。
+- 已知資料債：草稿單 7,690 筆、供應商主檔僅 2 筆、進項傳票僅 2 筆、HR 37 筆未歸部門。
+
+### 已上線防護
+- OCA auditlog 17.0.1.1.1 上線 production，6 條規則：account.move、account.payment、res.partner、purchase.order、sale.order、res.users。
+- Agent 服務帳號分權：production agent-readonly（uid 118）／agent-writer（uid 119）；staging uid 102/103；建置腳本含 --allow-production 核准閘。
+- 每日 07:00（台北）日結對帳 cron：AR 帳齡（鐵則：所有 AR 查詢必濾 state='posted'）／銷項勾稽／草稿堆積。
+
+### 最優先技術債
+- Guarded executor 尚未常態化：XML-RPC 腳本預設仍用 admin 帳號。
+- 教訓（2026-07-31）：小額 PO 自動確認與自動開票規則全數廢除——production 1,946 張 draft PO 中 99.6% 是 sale.order.poline 報價副產品而非採購行為。結論：自動化必須先懂業務語意。實際開票路徑＝訂金憑單→驗收單 submit→應收憑單→ezpay。
+
+## 2. 策略脈絡（為什麼現在動 Odoo）
+
+- 2026-08-01 玉禮／山恩分治生效：玉禮走量（全屋定製／廚具通路／大板批發）、山恩精緻化（設計師＋個人業主雙主引擎）。
+- 山恩團隊：2026-10 穩態 11 人底盤；人均月營收實測 89 萬；北極星鐵律＝人均月營收 ≥175 萬。
+- 增員鐵律：必須先證明 Agent 無法承接該職能才可加人——AIOS 成熟度（L3/L4）是 175 萬的前提。
+- Odoo＝唯一事實來源（SSOT，2026-07-29 定案）：外部表格只能是匯入來源或唯讀展示層；成長系統實驗數據一律由 agent 自 Odoo（posted）自動採集，不接受人填。
+- 分治後系統邊界：維持一套 AIOS、主體定錨山恩；vault/registry 以 Saiens／QSM玉禮／Shared 三 entity 劃分；玉禮營運明細不進山恩生態；不做 repo 物理分家。玉禮實業在同一 db 的拆分後處置為待決事項。
+
+## 3. AIOS 架構中的 Odoo
+
+五層控制平面：
+1. 最高治理層 qsm-aios — 願景、憲法、專案／Agent 註冊、資料主權
+2. 知識中樞 qsm-ai-lab — 組織知識、SOP、制度、決策紀錄（vault）
+3. 企業資料層 Odoo（saiens-platform）— 客戶、報價、訂單、專案、發票、付款、庫存、人事＝唯一 SSOT
+4. 治理 Runtime qsm-core — 任務、事件、升級、審批與稽核記錄
+5. Agent 調度 OpenClaw — 意圖辨識、工作流調度、Agent lifecycle（Mac Mini gateway，非獨立系統）
+
+AIOS 成熟度階梯：
+- L1 報表（完成）：日結對帳、AR 帳齡、KPI 頁自動生成
+- L2 主動推播（現在主戰場）：事件流＋對帳 agent，異常主動通知
+- L3 對話助理（2026 H2）：LINE 為 AM 唯一入口，七幕僚 agent
+- L4 受監督自主（2027）：guarded executor 寫入，人簽核紅線不變
+
+## 4. 開發路線圖（主軸：8 月鼎新拆分承接）
+
+### P0（8 月拆分前，已大致完成）
+- [done] 進項流程＋供應商主檔建置（鼎新截轉）
+- [done] 科目表審定、帳簿去重（INV／STJ 重複命名）
+- [done] staging 全流程實測就緒
+
+### P1（2026-08，進行中）
+- 進銷存全流程切換：sale → stock → invoice ／ purchase → receipt → bill
+- 第一次 Odoo 月結（財會人選 8 月中定案，月結機制掛此位）
+- [done] agent 服務帳號＋唯讀查詢層、OCA auditlog 上線
+- 應付流程遷移（Google Sheet＋鼎新 → Odoo），建議截轉基準日 2026-09-01
+
+### P2（2026-09 起）
+- 事件流＋對帳 agent（L2 主戰場）
+- 內轉月結機制（SO 作 SSOT；設計凍結待批）
+- 三層口徑報表；CRM pipeline 資料清整（清整前不得用於管理決策）
+- Enterprise／OCA 評估、Odoo UI 優化重啟（與 Odoo 19 評估合併討論）
+
+### 進行中的 agent 開發
+| 專案 | 定位 | 狀態 |
+|---|---|---|
+| Odoo Agent Farm | 五治理身分常駐 Mac Mini，Discord workbench → OpenClaw gateway；v1 = read + draft，寫入封鎖 | Active |
+| 財會建置（鼎新承接） | staging 完成實測，production 已上線稽核與對帳 v2 | Active |
+| Persistent task／audit store | 任務與稽核事件持久化至 Postgres（現為 in-memory，重啟即失） | 未開工（OpenSpec 0/23） |
+| 內轉月結機制 | 山恩⇄玉禮供應定價與鏡射，影子跑一季再定 | 凍結待批 |
+| Odoo UI 優化／React 前端 | saiens_react_api 為前端 REST 層；多公司切換等體驗優化 | Planned |
+| Quote Agent（報價助理） | Michael 個人業務助理，已遷出至 openclaw repo，與 Agent Farm 嚴格分界 | 外部專案 |
+
+## 5. Odoo 19 升級評估（評估議程，非已核定 roadmap）
+
+誠實起點：vault 目前沒有既定的大版升級計畫。本節為待討論定案的評估議程。
+
+1. 為什麼考慮升級：17→19 帶來 ORM 與前端框架演進、原生 AI 功能與長期支援週期。但 Enterprise 缺口已由 OCA 補齊，「短期不需升 Enterprise」已是既定評估結論——升 19 的動機需獨立論證，不與 Enterprise 議題混談。
+2. 主要風險＝模組相依：OCA 模組升級綁大版；三家電子發票模組（amego/ecpay/ezpay）、台灣票據模組、自訂 addons 與 saiens_react_api 都要逐一確認 19 相容版本或改寫成本。這是升級評估書的核心工作量。
+3. 前置條件（未完成不啟動升級）：
+   ① P1–P2 財會地基完成且跑過至少兩次乾淨月結；
+   ② 四個未決人工決策點結案（採購／應付截轉基準日、玉禮在此 db 的處置、Community vs Enterprise、帳簿去重與鎖帳日）；
+   ③ 資料清理 backlog 第一批完成——帶著 7,690 筆草稿單升級只是把債搬家。
+4. 建議路徑：2026 Q4 產出升級評估書（模組相依盤點＋成本估算）→ training／staging 以 OpenUpgrade 演練（17→18→19 逐版）→ 驗收自訂模組與 agent API 層 → 2027 擇機切換。全程沿用 Kamal 藍綠部署與備份機制，production 切換須具名核准。
+
+## 6. 治理紅線（所有開發與升級不可妥協）
+
+- 寫入需具名核准：財務記錄、發票、付款、定價、HR 與一切 Odoo 寫入，執行前須具名人工核准；AI 不可自主執行財務操作。
+- 稽核不可修改：任務啟動與完成都寫稽核記錄，write-once append-only；財務／人事保存至少 24 個月。
+- 驗證不自驗：agent 產出須由第二 agent 或人工抽核；verifier 未過不得標記 deployment-ready。
+- 範疇宣告：所有 agent 部署前須宣告 scope manifest；自我擴展範疇即停權。
+- 單次生成原則：提示詞執行前必須完整規格化——一個 prompt、一份完整產出，不做迭代式修補。
+- 專案邊界：報價計算、SO 建立、對客定價與折扣屬外部 Quote Agent 專案；Odoo Agent Farm 必須阻擋這類請求。
+- 實證：2026-07-31 兩個 subagent 因無法驗證轉述授權而拒絕 production 寫入——防護設計已被實證有效。
+
+## 7. 協作架構與四週分工（Michael × 蘇Sir，8/3–8/31）
+
+目標：一個月完成 P1 全部＋P2 起步＋Odoo 19 評估書（不含升級本身）。
+架構：集團三角協作模型——Michael＝Planner、蘇Sir＝Executor、AI agent＝Consultant 兼第二驗證者。
+契約介面：OpenSpec change（qsm-ai-lab repo 既有慣例）——Planner 寫需求與驗收條件，Executor 依規格實作，不做口頭交辦（符合單次生成原則）。
+
+### 角色分工
+| 角色 | 負責 | 不碰 |
+|---|---|---|
+| Michael（Planner） | 業務流程規格、驗收腳本、UI/UX 規格與驗收、決策點拍板、production 具名核准 | 不寫程式、不直接改 db |
+| 蘇Sir（Executor） | DB schema、guarded executor、audit store、CI workflow、Odoo 19 模組相依盤點 | 不自行發明業務規則——規則不明就回拋 Planner |
+| AI agent（Consultant） | 資料清理批次、測試生成、staging 驗證、第二意見 review、文件回寫 vault | 不碰 production 寫入 |
+
+### 四週計畫
+- W1（8/3–8/9）
+  - 蘇Sir：guarded executor 常態化——XML-RPC 全面收斂到 agent-readonly／writer＋核准閘
+  - Michael：拍板兩個卡住的決策（財會人選、應付截轉基準日）；寫月結流程規格
+- W2（8/10–8/16）
+  - 蘇Sir：persistent task／audit store 落 Postgres（OpenSpec 23 項任務已備）
+  - Michael：進銷存切換 SOP 與驗收腳本；staging 陪跑第一次月結演練
+- W3（8/17–8/23）
+  - 蘇Sir：事件流＋對帳 agent（L2 主戰場）；CI workflow 接上 Mac Mini runner
+  - Michael：React 前端 UI/UX 規格（公司切換、AM 高頻動線）＋截圖驗收；CRM 清整規則定義（agent 執行）
+- W4（8/24–8/31）
+  - 蘇Sir：Odoo 19 評估書技術半——OCA／電子發票／自訂 addons 相依盤點、OpenUpgrade 演練計畫
+  - Michael：評估書業務半——停機窗口、風險承受度、切換時點；8 月月結正式實跑驗收
+
+### 三個成敗關鍵
+1. W1 決策不能拖：財會人選與截轉基準日卡住整條 P1，Planner 第一週必須出手。
+2. 驗收標準前置：每個 change 動工前，驗收條件已寫死在 OpenSpec 規格裡；「說完成」不算完成——staging 實跑＋Planner 或第二 agent 驗過才算。
+3. UI/UX 短循環：規格→實作→截圖驗收，每個畫面出 staging 截圖就地審，不等整包完成。
+
+### 協作節奏
+- 每日非同步 standup（Discord workbench 或 LINE）：昨天完成／今天做／卡在哪，三句話。
+- 每週五 60 分鐘驗收會：staging 實跑通過，才排 production（具名核准）。
+
+## 8. 給蘇Sir 的接球點（依優先序，對應 W1–W4 技術線）
+
+1. Guarded executor 常態化：XML-RPC 腳本從 admin 帳號全面收斂到 agent-readonly／agent-writer 分權＋核准閘——最優先技術債，也是 L4 的前提。
+2. Persistent task／audit store：OpenSpec 規格已備（23 項任務未開工），任務與稽核事件落地 Postgres，解決 in-memory 重啟即失。
+3. CI workflow 接手：Mac Mini self-hosted runner 已上線，GitHub Actions workflow 改造待定案（build、測試、Kamal 部署管線）。
+4. Odoo 19 升級評估書：模組相依盤點、OpenUpgrade 演練計畫、成本與風險估算，目標 2026 Q4 產出。

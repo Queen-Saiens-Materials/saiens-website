@@ -167,6 +167,7 @@ td .status{font-size:12px;font-weight:500;white-space:nowrap}
 
 footer{background:var(--bg-gray);padding:48px 22px;text-align:center}
 footer p{font-size:12px;color:var(--text-tertiary);line-height:1.6}
+footer a{display:inline-flex;align-items:center;min-height:44px}
 
 @media (max-width:734px){
   nav .links{display:none}
@@ -196,6 +197,7 @@ footer p{font-size:12px;color:var(--text-tertiary);line-height:1.6}
       <a href="#aios">AIOS 架構</a>
       <a href="#roadmap">路線圖</a>
       <a href="#odoo19">Odoo 19</a>
+      <a href="#collab">協作分工</a>
       <a href="#next">下一步</a>
     </div>
   </div>
@@ -415,12 +417,70 @@ footer p{font-size:12px;color:var(--text-tertiary);line-height:1.6}
   </div>
 </section>
 
+<!-- 協作架構 -->
+<section id="collab">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>協作架構與四週分工</h2>
+      <p class="lede">目標：8/3–8/31 一個月完成 P1 全部＋P2 起步＋Odoo 19 評估書（不含升級本身）。架構沿用集團三角協作模型：Michael＝Planner、蘇Sir＝Executor、AI agent＝Consultant 兼第二驗證者。</p>
+    </div>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th>角色</th><th>負責</th><th>不碰</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Michael</strong><br><span class="status planned">Planner</span></td><td>業務流程規格、驗收腳本、UI/UX 規格與驗收、決策點拍板、production 具名核准</td><td>不寫程式、不直接改 db</td></tr>
+          <tr><td><strong>蘇Sir</strong><br><span class="status planned">Executor</span></td><td>DB schema、guarded executor、audit store、CI workflow、Odoo 19 模組相依盤點</td><td>不自行發明業務規則——規則不明就回拋 Planner</td></tr>
+          <tr><td><strong>AI agent</strong><br><span class="status planned">Consultant</span></td><td>資料清理批次、測試生成、staging 驗證、第二意見 review、文件回寫 vault</td><td>不碰 production 寫入（防護已實證有效）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="reveal" style="margin-top:64px">
+      <div class="phase">
+        <div class="phase-key">W1<span class="when">8/3–8/9</span></div>
+        <ul>
+          <li>蘇Sir：guarded executor 常態化——XML-RPC 全面收斂到 agent-readonly／writer＋核准閘</li>
+          <li>Michael：拍板兩個卡住的決策——財會人選（月結掛此位）、應付截轉基準日；寫月結流程規格</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-key">W2<span class="when">8/10–8/16</span></div>
+        <ul>
+          <li>蘇Sir：persistent task／audit store 落 Postgres（OpenSpec 23 項任務已備）</li>
+          <li>Michael：進銷存切換 SOP 與驗收腳本；staging 陪跑第一次月結演練</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-key">W3<span class="when">8/17–8/23</span></div>
+        <ul>
+          <li>蘇Sir：事件流＋對帳 agent（L2 主戰場）；CI workflow 接上 Mac Mini runner</li>
+          <li>Michael：React 前端 UI/UX 規格（公司切換、AM 高頻動線）＋截圖驗收；CRM 清整規則定義（agent 執行）</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-key">W4<span class="when">8/24–8/31</span></div>
+        <ul>
+          <li>蘇Sir：Odoo 19 評估書技術半——OCA／電子發票／自訂 addons 相依盤點、OpenUpgrade 演練計畫</li>
+          <li>Michael：評估書業務半——停機窗口、風險承受度、切換時點；8 月月結正式實跑驗收</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-grid three reveal" style="margin-top:64px">
+      <div class="card"><span class="tag">關鍵 1</span><h3>W1 決策不能拖</h3><p>財會人選與截轉基準日卡住整條 P1。這是 Planner 的球，第一週必須出手。</p></div>
+      <div class="card"><span class="tag">關鍵 2</span><h3>驗收標準前置</h3><p>契約介面用 OpenSpec：每個 change 動工前，驗收條件已寫死在規格裡。「說完成」不算完成——staging 實跑＋Planner 或第二 agent 驗過才算。</p></div>
+      <div class="card"><span class="tag">關鍵 3</span><h3>UI/UX 短循環</h3><p>規格 → 實作 → 截圖驗收。每個畫面出 staging 截圖就地審，不等整包完成，縮短來回。</p></div>
+    </div>
+    <div class="section-head reveal" style="margin:80px 0 0">
+      <p class="lede">協作節奏：每日非同步 standup（Discord workbench 或 LINE，三句話：昨天完成／今天做／卡在哪）＋每週五 60 分鐘驗收會——staging 實跑通過，才排 production（具名核准）。</p>
+    </div>
+  </div>
+</section>
+
 <!-- 下一步 -->
-<section id="next">
+<section class="gray" id="next">
   <div class="container narrow">
     <div class="section-head reveal" style="margin-bottom:0">
       <h2>給蘇Sir 的接球點</h2>
-      <p class="lede">四件事，依優先序。定案後回寫 vault 決策紀錄。</p>
+      <p class="lede">四件事，依優先序，已一一對應上方 W1–W4 的技術線。定案後回寫 vault 決策紀錄。</p>
     </div>
     <ol class="handoff reveal">
       <li><div><h3>Guarded executor 常態化</h3><p>把 XML-RPC 腳本從 admin 帳號全面收斂到 agent-readonly／agent-writer 分權＋核准閘——最優先技術債，也是 L4 的前提。</p></div></li>
@@ -437,7 +497,8 @@ footer p{font-size:12px;color:var(--text-tertiary);line-height:1.6}
 
 <footer>
   <p>QSM · Queen Saiens Materials — 內部技術文件，非對外資訊。<br>
-  內容依 qsm-ai-lab vault 整理（2026-08-03）；財務數字為 Odoo 快照，SSOT 以 Odoo 為準。</p>
+  內容依 qsm-ai-lab vault 整理（2026-08-03）；財務數字為 Odoo 快照，SSOT 以 Odoo 為準。<br>
+  AI 可讀完整版：<a href="/odoo-development/llms.txt">/odoo-development/llms.txt</a></p>
 </footer>
 
 <script>
