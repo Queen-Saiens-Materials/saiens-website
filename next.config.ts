@@ -58,6 +58,9 @@ const nextConfig: NextConfig = {
       })),
       // Duplicate Squarespace page variant → canonical page
       { source: "/saiens-salon-1", destination: "/saiens-salon", permanent: true },
+      // 已印製的 QR code 指向底線版網址，實體物件改不了，必須永久保留這條。
+      // 原站與站內連結一律是連字號版，底線版從未存在過。
+      { source: "/maintenance_manual", destination: "/maintenance-manual", permanent: true },
       // Retired placeholder/test pages
       { source: "/new-page", destination: "/", permanent: true },
       { source: "/new-page-1", destination: "/", permanent: true },
