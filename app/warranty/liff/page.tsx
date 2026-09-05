@@ -47,12 +47,16 @@ function DisabledPage() {
 
 export default async function WarrantyLiffPage({ searchParams }: WarrantyLiffPageProps) {
   const liffId = process.env.NEXT_PUBLIC_LIFF_ID?.trim();
-  const odooApiUrl = process.env.NEXT_PUBLIC_ODOO_API_URL?.trim() || "https://quote.saiens.tw";
+  const productionApiUrl = process.env.NEXT_PUBLIC_ODOO_API_URL?.trim() || "https://quote.saiens.tw";
+  const stagingApiUrl = process.env.NEXT_PUBLIC_ODOO_STAGING_API_URL?.trim();
 
   if (!liffId) return <DisabledPage />;
 
   const params = await searchParams;
   const token = getSingleParam(params.token)?.trim() || "";
+  // 內部測試：?env=staging 且有設定 staging URL 時，改打 staging Odoo（LIFF endpoint 綁在正式網域，只能這樣測）
+  const useStaging = getSingleParam(params.env) === "staging" && Boolean(stagingApiUrl);
+  const odooApiUrl = useStaging ? (stagingApiUrl as string) : productionApiUrl;
 
   return (
     <main className="flex flex-1 flex-col">
