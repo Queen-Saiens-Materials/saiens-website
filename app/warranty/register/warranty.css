@@ -1053,6 +1053,30 @@
   height: auto;
 }
 
+.wr .care-diagram {
+  margin: 0 0 28px;
+  padding: 20px 20px 16px;
+  border-radius: 20px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+
+.wr .care-diagram figcaption {
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.wr .care-diagram figcaption .t {
+  display: block;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
 .wr .care-why-notes {
   margin-top: 24px;
   display: grid;
