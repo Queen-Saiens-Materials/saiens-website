@@ -1,0 +1,42 @@
+{
+  "brand": "Saiens",
+  "style": "photorealistic, editorial interior photography, calm and warm, white and light grey palette with warm graphite accents, soft diffused natural daylight, shallow depth of field, subtle real-world imperfections, no blue tones, no people faces, no text, no letters, no logos, no watermark",
+  "images": [
+    {
+      "file": "hero.png",
+      "purpose": "清潔指南首屏 hero 圖框（21:9 顯示，上方無疊字，圖框圓角）。要傳達安心、被照顧的日常感。",
+      "aspect": "landscape 16:9",
+      "prompt": "Wide shot of a bright, quiet modern kitchen in the morning\nSubject: a long white quartz countertop with faint grey veining, a folded light-grey linen cloth and a small ceramic cup resting on it\nDetails: soft window light from the left, gentle shadows, matte white cabinetry, a single stem of green in a clear glass\nConstraints: countertop occupies the lower two thirds, no people, no appliances with screens\nIntent: warranty care guide hero, editorial calm"
+    },
+    {
+      "file": "care-neutral-cleaner.png",
+      "purpose": "日常清潔三步之一：中性清潔劑。方形小圖，下方會有 HTML 標題。",
+      "aspect": "square",
+      "prompt": "Close-up on a white quartz countertop\nSubject: an unlabeled frosted-white spray bottle and a soft light-grey microfiber cloth, a few fine water droplets on the stone\nDetails: top-down three-quarter angle, soft daylight, subtle quartz speckle texture\nConstraints: bottle has no label and no text, no hands\nIntent: step illustration for daily cleaning with neutral detergent"
+    },
+    {
+      "file": "care-water-soap.png",
+      "purpose": "日常清潔三步之二：清水加沙拉脫去油汙。方形小圖。",
+      "aspect": "square",
+      "prompt": "Close-up on a white quartz countertop beside a matte white sink\nSubject: a shallow ceramic bowl of clear water with a few soap bubbles, a damp light-grey cloth laid flat next to it\nDetails: soft daylight, faint reflections on the polished stone, quiet composition\nConstraints: no bottles with labels, no hands\nIntent: step illustration for removing grease with water and mild dish soap"
+    },
+    {
+      "file": "care-alcohol.png",
+      "purpose": "日常清潔三步之三：需要消毒用酒精。方形小圖。",
+      "aspect": "square",
+      "prompt": "Close-up on a white quartz countertop\nSubject: a small clear glass bottle of clear liquid with a plain white cap, a folded white cotton pad beside it, a faint sheen where the surface was just wiped\nDetails: soft daylight, minimal styling, calm\nConstraints: bottle has no label and no text, no hands\nIntent: step illustration for sanitizing with alcohol"
+    },
+    {
+      "file": "avoid-heat-trivet.png",
+      "purpose": "「請避開這五件事」段落的側圖：表達用隔熱墊保護檯面，而不是描繪損壞。",
+      "aspect": "landscape 3:2",
+      "prompt": "Medium shot of a white quartz kitchen counter\nSubject: a matte black cast-iron pot resting on a light oak wooden trivet, steam gently rising\nDetails: warm side light, the quartz surface clean and cool-toned around the trivet, a linen towel folded nearby\nConstraints: no people, no stove flames in frame, no text\nIntent: illustrate protecting the surface from direct heat"
+    },
+    {
+      "file": "edge-detail.png",
+      "purpose": "「邊角缺損怎麼辦」段落的側圖：檯面邊角的細節特寫，乾淨完好。",
+      "aspect": "landscape 3:2",
+      "prompt": "Macro close-up of the polished edge of a white quartz countertop\nSubject: a clean eased edge profile catching soft light, fine quartz speckle visible, the corner of a light wood cabinet below\nDetails: shallow depth of field, calm neutral tones\nConstraints: no damage, no chips, no hands, no text\nIntent: show the edge that the guide asks owners to protect"
+    }
+  ]
+}
