@@ -34,7 +34,7 @@ type Errors = Partial<Record<keyof FormState, string>>;
 
 type Props = {
   liffId: string;
-  odooApiUrl: string;
+  endpoint: string;
   token: string;
 };
 
@@ -53,7 +53,7 @@ function validate(form: FormState): Errors {
   return errors;
 }
 
-export default function WarrantyLiffClient({ liffId, odooApiUrl, token }: Props) {
+export default function WarrantyLiffClient({ liffId, endpoint, token }: Props) {
   const [form, setForm] = useState<FormState>(EMPTY);
   const [errors, setErrors] = useState<Errors>({});
   const [idToken, setIdToken] = useState("");
@@ -136,7 +136,7 @@ export default function WarrantyLiffClient({ liffId, odooApiUrl, token }: Props)
         name: form.name.trim(),
         phone: form.phone.trim(),
         token,
-        odooApiUrl,
+        endpoint,
       });
       setResult(data);
     } catch (error) {

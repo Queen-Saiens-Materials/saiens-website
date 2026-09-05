@@ -1,10 +1,14 @@
-export const DEFAULT_ODOO_API_URL = "https://quote.saiens.tw";
-export const WARRANTY_LIFF_REGISTER_PATH = "/api/saiens/warranty/liff/register";
+// 同網域代理路由（app/api/warranty/liff/register/route.ts），由伺服器轉送到 Odoo
+export const WARRANTY_LIFF_REGISTER_PATH = "/api/warranty/liff/register";
+
+export function registrationEndpoint(env) {
+  return env === "staging" ? `${WARRANTY_LIFF_REGISTER_PATH}?env=staging` : WARRANTY_LIFF_REGISTER_PATH;
+}
 
 /**
  * @typedef {"bound" | "pending_review" | "no_match"} RegistrationStatus
  * @typedef {{ status: "bound", address: string, warranty_years: string } | { status: "pending_review" } | { status: "no_match" }} RegistrationResult
- * @typedef {{ idToken: string, address: string, name: string, phone: string, token?: string, odooApiUrl?: string }} RegistrationPayload
+ * @typedef {{ idToken: string, address: string, name: string, phone: string, token?: string, endpoint?: string }} RegistrationPayload
  */
 
 export function errorMessageForCode(code) {
@@ -18,8 +22,7 @@ export function errorMessageForCode(code) {
  * @returns {Promise<RegistrationResult>}
  */
 export async function submitRegistration(payload, fetchImpl = fetch) {
-  const baseUrl = (payload.odooApiUrl || DEFAULT_ODOO_API_URL).replace(/\/+$/, "");
-  const response = await fetchImpl(`${baseUrl}${WARRANTY_LIFF_REGISTER_PATH}`, {
+  const response = await fetchImpl(payload.endpoint || WARRANTY_LIFF_REGISTER_PATH, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

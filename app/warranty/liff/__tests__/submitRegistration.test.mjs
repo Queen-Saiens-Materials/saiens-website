@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { errorMessageForCode, submitRegistration } from "../submitRegistration.js";
+import { errorMessageForCode, registrationEndpoint, submitRegistration } from "../submitRegistration.js";
 
 function mockFetch(envelope, options = {}) {
   return async (url, request) => {
@@ -20,7 +20,7 @@ const payload = {
   name: "陳小姐",
   phone: "0912345678",
   token: "warranty-token",
-  odooApiUrl: "https://odoo.example.test/",
+  endpoint: "/api/warranty/liff/register?env=staging",
 };
 
 test("submitRegistration posts the LIFF registration payload and returns bound", async () => {
@@ -37,7 +37,7 @@ test("submitRegistration posts the LIFF registration payload and returns bound",
   const result = await submitRegistration(payload, fetchImpl);
 
   assert.deepEqual(result, data);
-  assert.equal(captured.url, "https://odoo.example.test/api/saiens/warranty/liff/register");
+  assert.equal(captured.url, "/api/warranty/liff/register?env=staging");
   assert.deepEqual(JSON.parse(captured.request.body), {
     id_token: "id-token",
     address: payload.address,
@@ -84,4 +84,10 @@ test("other API errors map to the generic submit error", async () => {
     ),
     /送出時發生問題，請稍後再試/,
   );
+});
+
+test("registrationEndpoint routes staging only when asked", () => {
+  assert.equal(registrationEndpoint("staging"), "/api/warranty/liff/register?env=staging");
+  assert.equal(registrationEndpoint(undefined), "/api/warranty/liff/register");
+  assert.equal(registrationEndpoint("prod"), "/api/warranty/liff/register");
 });
