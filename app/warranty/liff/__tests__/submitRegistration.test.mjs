@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { errorMessageForCode, registrationEndpoint, submitRegistration } from "../submitRegistration.js";
+import { errorMessageForCode, registrationEndpoint, resolveEnv, submitRegistration } from "../submitRegistration.js";
 
 function mockFetch(envelope, options = {}) {
   return async (url, request) => {
@@ -90,4 +90,15 @@ test("registrationEndpoint routes staging only when asked", () => {
   assert.equal(registrationEndpoint("staging"), "/api/warranty/liff/register?env=staging");
   assert.equal(registrationEndpoint(undefined), "/api/warranty/liff/register");
   assert.equal(registrationEndpoint("prod"), "/api/warranty/liff/register");
+});
+
+test("resolveEnv reads env from direct query, liff.state, and storage fallback", () => {
+  const mem = new Map();
+  const storage = { getItem: (k) => mem.get(k) ?? null, setItem: (k, v) => mem.set(k, v) };
+  assert.equal(resolveEnv("?env=staging", storage), "staging");
+  mem.clear();
+  assert.equal(resolveEnv("?liff.state=%3Fenv%3Dstaging", storage), "staging");
+  assert.equal(resolveEnv("", storage), "staging");
+  mem.clear();
+  assert.equal(resolveEnv("?token=abc", storage), undefined);
 });

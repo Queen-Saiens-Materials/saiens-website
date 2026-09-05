@@ -6,6 +6,32 @@ export function registrationEndpoint(env) {
 }
 
 /**
+ * 從目前網址找出 env 參數。LIFF 開啟／登入導回時會把原始 query 塞進 `liff.state`，
+ * 直接的 `?env=` 也支援；找到就記到 sessionStorage，之後的導回都沿用。
+ * @param {string} search  window.location.search
+ * @param {{ getItem(k: string): string | null, setItem(k: string, v: string): void } | null} storage
+ */
+export function resolveEnv(search, storage) {
+  const KEY = "wr-liff-env";
+  const params = new URLSearchParams(search || "");
+  let env = params.get("env");
+  if (!env) {
+    const state = params.get("liff.state");
+    if (state) {
+      const inner = state.startsWith("?") ? state : state.includes("?") ? state.slice(state.indexOf("?")) : `?${state}`;
+      env = new URLSearchParams(inner).get("env");
+    }
+  }
+  try {
+    if (env) storage?.setItem(KEY, env);
+    else env = storage?.getItem(KEY) || null;
+  } catch {
+    // storage unavailable
+  }
+  return env || undefined;
+}
+
+/**
  * @typedef {"bound" | "pending_review" | "no_match"} RegistrationStatus
  * @typedef {{ status: "bound", address: string, warranty_years: string } | { status: "pending_review" } | { status: "no_match" }} RegistrationResult
  * @typedef {{ idToken: string, address: string, name: string, phone: string, token?: string, endpoint?: string }} RegistrationPayload

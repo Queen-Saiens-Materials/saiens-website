@@ -2,7 +2,7 @@
 
 import Script from "next/script";
 import { FormEvent, useMemo, useState } from "react";
-import { errorMessageForCode, submitRegistration } from "./submitRegistration.js";
+import { errorMessageForCode, registrationEndpoint, resolveEnv, submitRegistration } from "./submitRegistration.js";
 
 const LINE_OA_URL = "https://lin.ee/poXsa4y";
 
@@ -130,13 +130,22 @@ export default function WarrantyLiffClient({ liffId, endpoint, token }: Props) {
 
     setIsSubmitting(true);
     try {
+      // 以瀏覽器端解析為準：LIFF 登入導回可能丟掉 server 端看到的 ?env=
+      let storage: Storage | null = null;
+      try {
+        storage = window.sessionStorage;
+      } catch {
+        storage = null;
+      }
+      const env = resolveEnv(window.location.search, storage);
+      const resolvedEndpoint = env ? registrationEndpoint(env) : endpoint;
       const data = await submitRegistration({
         idToken,
         address: form.address.trim(),
         name: form.name.trim(),
         phone: form.phone.trim(),
         token,
-        endpoint,
+        endpoint: resolvedEndpoint,
       });
       setResult(data);
     } catch (error) {
