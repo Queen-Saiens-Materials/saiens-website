@@ -965,3 +965,156 @@
 .wr .next a.btn-ghost {
   color: var(--text-primary);
 }
+
+/* ---------- care guide: imagery ---------- */
+
+.wr .care-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 56px;
+}
+
+.wr .care-card .k {
+  margin-top: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--accent-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.wr .care-card .v {
+  margin-top: 8px;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.wr .care-card .d {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.wr .care-card-media {
+  margin: 0;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--bg-alt);
+}
+
+.wr .care-card-media img,
+.wr .care-round img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wr .care-avoid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.wr .care-avoid .rules {
+  margin-top: 40px;
+}
+
+.wr .care-avoid-media {
+  position: sticky;
+  top: 96px;
+  margin-top: 40px;
+}
+
+.wr .care-frame figcaption {
+  padding: 14px 4px 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.wr .care-why {
+  margin-top: 8px;
+}
+
+.wr .care-why .col-h {
+  margin-bottom: 20px;
+}
+
+.wr .quartz-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.wr .care-why-notes {
+  margin-top: 24px;
+  display: grid;
+  gap: 20px;
+}
+
+.wr .care-why-notes .t {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.wr .care-why-notes .s {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.wr .care-powder {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 56px;
+}
+
+.wr .care-round {
+  margin: 0;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.wr .care-powder-step .no {
+  margin-top: 24px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--accent-soft);
+}
+
+.wr .care-powder-step .t {
+  margin-top: 8px;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.wr .care-powder-step .s {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 734px) {
+  .wr .care-cards { grid-template-columns: 1fr; gap: 40px; margin-top: 40px; }
+  .wr .care-avoid { grid-template-columns: 1fr; gap: 32px; }
+  .wr .care-avoid-media { position: static; margin-top: 8px; }
+  .wr .care-powder { grid-template-columns: 1fr; gap: 40px; margin-top: 40px; }
+  .wr .care-round { max-width: 260px; margin: 0 auto; }
+  .wr .care-powder-step { text-align: center; }
+}
