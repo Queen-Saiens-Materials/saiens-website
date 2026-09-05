@@ -33,16 +33,16 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // saiens.tw（原 Squarespace 轉址網域）→ saiens.group，保留路徑
+      // 2026-09-05 Michael 指示：台灣官網主網域改為 saiens.tw；saiens.group 保留給全球事業，
+      // 現階段整站轉址到 saiens.tw 並保留路徑。www.saiens.tw 也收斂到 saiens.tw。
       // MX 在 GoDaddy 維持 Google Workspace，此處只處理 HTTP
-      ...["saiens.tw", "www.saiens.tw"].map((host) => ({
+      ...["saiens.group", "www.saiens.group", "www.saiens.tw"].map((host) => ({
         source: "/:path*",
         has: [{ type: "host" as const, value: host }],
-        destination: "https://saiens.group/:path*",
+        destination: "https://saiens.tw/:path*",
         permanent: true,
       })),
-      // 教材可印的保固短網址
-      { source: "/warranty", destination: "/guarantees-and-warranties", permanent: true },
+      // /warranty 現在是保固入口頁（app/warranty/page.tsx），舊的 → 品質保證頁轉址已移除
       // Old Squarespace URLs → new structure (preserve SEO)
       { source: "/top", destination: "/", permanent: true },
       { source: "/top-jp", destination: "/jp", permanent: true },

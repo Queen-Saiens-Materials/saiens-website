@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getPosts } from "@/lib/posts";
 
-const BASE_URL = "https://www.saiens.group";
+const BASE_URL = "https://saiens.tw";
 
 const STATIC_ROUTES = [
   "/",
