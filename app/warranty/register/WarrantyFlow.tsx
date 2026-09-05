@@ -4,7 +4,9 @@ import { FormEvent, useEffect, useState } from "react";
 import Reveal from "./Reveal";
 
 const LINE_OA_URL = "https://lin.ee/poXsa4y";
-const LIFF_ID = process.env.NEXT_PUBLIC_LIFF_ID?.trim();
+// 完成頁只有在 Odoo 端 LIFF 端點正式上線（NEXT_PUBLIC_LIFF_LIVE=1）後才深連結到 LIFF
+const LIFF_ID =
+  process.env.NEXT_PUBLIC_LIFF_LIVE === "1" ? process.env.NEXT_PUBLIC_LIFF_ID?.trim() : undefined;
 const HERO_IMAGE = "/images/1757040221622-KLLGGX2BVD9TC5ZIJ3JV/IMG_6957.JPG";
 
 type Props = {
