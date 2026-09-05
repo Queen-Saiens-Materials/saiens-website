@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "保固登記 | Saiens",
     description: "完成 Saiens 保固登記，為您的檯面留下一份長期的承諾。",
-    images: ["https://saiens.group/images/ed15e8a4-399b-4432-9039-08d1fb33feb0/Copy+of+_2-MQL422.jpg"],
+    images: ["https://saiens.tw/images/ed15e8a4-399b-4432-9039-08d1fb33feb0/Copy+of+_2-MQL422.jpg"],
   },
   robots: {
     index: false,

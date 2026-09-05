@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       // 內部頁不進索引（頁內另有 meta noindex 雙保險）
       disallow: ["/future", "/team-h2", "/odoo-development"],
     },
-    sitemap: "https://www.saiens.group/sitemap.xml",
+    sitemap: "https://saiens.tw/sitemap.xml",
   };
 }
