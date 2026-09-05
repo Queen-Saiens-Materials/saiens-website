@@ -5,6 +5,11 @@ import "../register/warranty.css";
 export const metadata: Metadata = {
   title: "LINE 保固登記 | Saiens",
   description: "透過 Saiens 客服 LINE 完成保固登記。",
+  openGraph: {
+    title: "LINE 保固登記 | Saiens",
+    description: "透過 Saiens 客服 LINE 完成保固登記。",
+    images: ["https://saiens.group/images/1757040221622-KLLGGX2BVD9TC5ZIJ3JV/IMG_6957.JPG"],
+  },
   robots: {
     index: false,
     follow: false,
