@@ -75,8 +75,26 @@ export default function WarrantyLiffClient({ liffId, odooApiUrl, token }: Props)
     try {
       await window.liff.init({ liffId });
       if (!window.liff.isLoggedIn()) {
+        // 只嘗試登入一次，避免登入失敗或使用者取消授權時無限跳轉
+        const LOGIN_FLAG = "wr-liff-login-attempted";
+        let attempted = false;
+        try {
+          attempted = sessionStorage.getItem(LOGIN_FLAG) === "1";
+          sessionStorage.setItem(LOGIN_FLAG, "1");
+        } catch {
+          attempted = false;
+        }
+        if (attempted) {
+          setInitError("請在 LINE 內開啟");
+          return;
+        }
         window.liff.login({ redirectUri: window.location.href });
         return;
+      }
+      try {
+        sessionStorage.removeItem("wr-liff-login-attempted");
+      } catch {
+        // ignore
       }
       const tokenValue = window.liff.getIDToken();
       if (!tokenValue) {
