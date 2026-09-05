@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Reveal from "../register/Reveal";
 import "../register/warranty.css";
 
-import QuartzDiagram from "./QuartzDiagram";
+import { PowderDiagram, SurfaceDiagram } from "./QuartzDiagram";
 
 const LINE_OA_URL = "https://lin.ee/poXsa4y";
 // 影像：hero／步驟／情境圖為 AI 生成（見 public/warranty/care/image-manifest.json）；
@@ -198,22 +198,20 @@ export default function WarrantyCarePage() {
         </div>
         <div className="care-why" data-reveal data-stagger="1">
           <p className="col-h">為什麼不吃色，還要清潔？</p>
-          <QuartzDiagram />
-          <div className="care-why-notes">
-            <div>
-              <p className="t">人造石英石表面示意</p>
-              <p className="s">
-                石英顆粒占 <span className="nowrap">90–93%</span>，樹酯占 <span className="nowrap">7–10%</span>。
-                表面具抗刮、耐磨、不吃色的物理特性；金屬碳粉、油污或色素只會卡在顆粒之間的縫隙表層，並非滲透石材。
-              </p>
-            </div>
-            <div>
-              <p className="t">去污原理</p>
-              <p className="s">
-                清潔粉的分子比石英顆粒更細，能深入顆粒之間把髒污帶走。手邊沒有清潔粉時，粗蠟、牙膏或牙粉也可以。
-              </p>
-            </div>
-          </div>
+          <figure className="care-diagram">
+            <SurfaceDiagram />
+            <figcaption>
+              <span className="t">人造石英石表面示意</span>
+              人造石英石具抗刮、耐磨、不吃色的物理特性。髒污會卡在石英顆粒之間的縫隙中，並非滲透石材，使用 Saiens 清潔粉即可去除。
+            </figcaption>
+          </figure>
+          <figure className="care-diagram">
+            <PowderDiagram />
+            <figcaption>
+              <span className="t">去污原理</span>
+              比石英顆粒更小的清潔分子，可深入石英顆粒間將髒污去除；也可以使用粗蠟、牙膏、牙粉。
+            </figcaption>
+          </figure>
         </div>
       </section>
 
