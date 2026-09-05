@@ -4,7 +4,7 @@ import { FormEvent, useEffect, useState } from "react";
 import Reveal from "./Reveal";
 
 const LINE_OA_URL = "https://lin.ee/poXsa4y";
-const HERO_IMAGE = "/images/ed15e8a4-399b-4432-9039-08d1fb33feb0/Copy+of+_2-MQL422.jpg";
+const HERO_IMAGE = "/images/1757040221622-KLLGGX2BVD9TC5ZIJ3JV/IMG_6957.JPG";
 
 type Props = {
   token: string;
@@ -46,15 +46,40 @@ function validate(form: FormState): Errors {
   return errors;
 }
 
-function yearsLabel(years: string) {
-  return years ? `${years} 年` : "依完工資訊確認";
-}
-
 function formatToday() {
   return new Intl.DateTimeFormat("zh-TW", { year: "numeric", month: "long", day: "numeric" }).format(
     new Date(),
   );
 }
+
+/* 保固範圍：參考 Cosentino Silestone 標準保固書（Rev. 01-05/2022）轉譯，
+   對齊山恩既有品質保證條款（/guarantees-and-warranties）。 */
+const COVERED = [
+  { t: "材料本身的製造缺陷", s: "出廠品管未能發現的材料病變，或正常家用下非外力造成的損傷。" },
+  { t: "室內平面應用", s: "永久安裝於住宅室內的檯面、牆面與立面。" },
+  { t: "加工與安裝工藝", s: "山恩自行加工、自行安裝，加工保固自施工完成日起一年。" },
+  { t: "同色同厚度修復或更換", s: "以相同花色與厚度處理；花色停產時，以當時最接近的產品替代。" },
+];
+
+const NOT_COVERED = [
+  { t: "戶外或商業空間使用", s: "陽光直射、船舶、營業場所等非住宅室內環境。" },
+  { t: "安裝後的裂痕與缺角", s: "多因熱源直接接觸、重壓、撞擊或邊角刮碰造成，非材料缺陷。" },
+  { t: "使用造成的變化", s: "未依保養指南清潔、接觸強酸強鹼、寵物抓痕，以及歲月帶來的自然色差與光澤變化。" },
+  { t: "非山恩施作的部分", s: "第三方改裝、切割或搬移；未付清款項或轉售的商品。" },
+];
+
+const SERIES = [
+  { name: "Mikado Quartz 帝雉石", years: "25 年" },
+  { name: "QJ Quartz Stone 闊石", years: "15 年" },
+  { name: "ETERNOS 永恆石", years: "15 年" },
+  { name: "加工與安裝工藝", years: "1 年" },
+];
+
+const CLAIM_STEPS = [
+  { t: "告訴我們", s: "透過客服 LINE 傳來異常處的照片或影片，我們依登記資料核對案場與購買資訊。" },
+  { t: "線上檢傷", s: "原廠技師先線上判讀，評估屬於保固範圍或需付費維修，並說明處理方式。" },
+  { t: "到府處理", s: "原廠技師到府維修或更換。保固範圍內免費；範圍外先報價，您同意後再進行。" },
+];
 
 export default function WarrantyFlow({ token, address, warrantyYears, initialStatus = "idle" }: Props) {
   const [status, setStatus] = useState<Status>(initialStatus);
@@ -123,9 +148,7 @@ export default function WarrantyFlow({ token, address, warrantyYears, initialSta
         <section className="status" aria-labelledby="t-already">
           <p className="eyebrow">Warranty Registration</p>
           <h1 id="t-already">這個案場的保固已完成登記。</h1>
-          <p>
-            無需重複填寫。若要查詢保固內容或安排維修，加入 Saiens 客服 LINE 是最快的方式。
-          </p>
+          <p>無需重複填寫。若要查詢保固內容或安排維修，加入 Saiens 客服 LINE 是最快的方式。</p>
           <div className="actions">
             <a className="btn btn-primary" href={LINE_OA_URL} target="_blank" rel="noreferrer">
               加入 Saiens 客服 LINE
@@ -150,31 +173,13 @@ export default function WarrantyFlow({ token, address, warrantyYears, initialSta
         <p className="hero-eyebrow" data-stage="1">
           Saiens Warranty · 保固登記
         </p>
-        <h1 className="hero-title">
-          {warrantyYears ? (
-            <>
-              <span className="num" data-stage="2">
-                {warrantyYears}
-              </span>
-              <span className="outline" data-stage="3">
-                YEARS
-              </span>
-            </>
-          ) : (
-            <>
-              <span className="num" data-stage="2">
-                SAIENS
-              </span>
-              <span className="outline" data-stage="3">
-                WARRANTY
-              </span>
-            </>
-          )}
+        <h1 className="hero-title" data-stage="2">
+          我們對每一片板材負責。
         </h1>
-        <p className="hero-sub" data-stage="4">
-          {warrantyYears ? `為您的檯面，留下一份 ${warrantyYears} 年的承諾。` : "為您的檯面，留下一份長期的承諾。"}
+        <p className="hero-sub" data-stage="3">
+          登記這個案場，讓 <span className="addr">{address}</span> 的檯面，
           <br />
-          <span className="addr">{address}</span>
+          在往後的每一天都有原廠照顧。
         </p>
         <div className="hero-cta-row" data-stage="4">
           <a className="btn btn-primary" href="#register">
@@ -184,91 +189,150 @@ export default function WarrantyFlow({ token, address, warrantyYears, initialSta
         </div>
         <figure className="hero-media" data-stage="4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={HERO_IMAGE} alt="Saiens 石英石檯面" width={2000} height={1333} fetchPriority="high" />
+          <img src={HERO_IMAGE} alt="山恩展間中的石英石中島檯面" width={2048} height={1365} fetchPriority="high" />
         </figure>
       </section>
 
       <p className="trust" data-reveal>
         <span>NSF・SGS 硬度與吸水率測試</span>
-        <span>原廠維修團隊</span>
-        <span>台灣本島到府服務</span>
-        <span>自安裝完工日起計算</span>
+        <span>原廠加工、原廠安裝</span>
+        <span>原廠技師到府維修</span>
+        <span>台灣本島服務</span>
       </p>
 
-      {/* 2. Spec trio */}
-      <section className="section" aria-labelledby="t-spec">
+      {/* 2. Why trust: facts */}
+      <section className="section" aria-labelledby="t-why">
         <p className="eyebrow" data-reveal>
-          Your Warranty
+          Why It Holds
         </p>
-        <h2 id="t-spec" data-reveal data-stagger="1">
-          這份保固，屬於這個家。
+        <h2 id="t-why" data-reveal data-stagger="1">
+          保固能兌現，
+          <br />
+          因為從板材到安裝都是我們。
         </h2>
+        <p className="lede" data-reveal data-stagger="2">
+          多數石材品牌只保材料，加工與安裝交給第三方，出問題時各說各話。山恩自己選板、自己加工、自己安裝，
+          所以我們能為整片檯面負責，而不只是其中一段。
+        </p>
         <div className="trio">
           <div className="trio-item" data-reveal data-stagger="1">
-            <p className="k">Coverage</p>
-            <p className="v">{yearsLabel(warrantyYears)}</p>
-            <p className="d">材料保固，自安裝完工日起計算</p>
+            <p className="k">Material</p>
+            <p className="v">通過檢測</p>
+            <p className="d">每個系列皆有 NSF、SGS 硬度與吸水率報告，符合一般家庭日常使用標準。</p>
           </div>
           <div className="trio-item" data-reveal data-stagger="2">
-            <p className="k">Site</p>
-            <p className="v">保固案場</p>
-            <p className="d">{address}</p>
+            <p className="k">Craft</p>
+            <p className="v">一條龍</p>
+            <p className="d">丈量、加工、安裝由同一個團隊完成，保固涵蓋材料與工藝。</p>
           </div>
           <div className="trio-item" data-reveal data-stagger="3">
             <p className="k">Service</p>
-            <p className="v">原廠維修</p>
-            <p className="d">非外力破壞之材料損傷，保固期內免費維修</p>
+            <p className="v">原廠技師</p>
+            <p className="d">維修不外包。線上檢傷後由原廠技師到府處理。</p>
           </div>
         </div>
       </section>
 
-      {/* 3. What it means */}
+      {/* 3. Coverage */}
       <div className="alt">
-      <section className="section" aria-labelledby="t-rules">
-        <p className="eyebrow" data-reveal>
-          The Promise
-        </p>
-        <h2 id="t-rules" data-reveal data-stagger="1">
-          登記之後，
-          <br />
-          我們為您守住三件事。
-        </h2>
-        <div className="rules">
-          <div className="rule" data-reveal data-stagger="1">
-            <span className="no">01</span>
-            <div>
-              <p className="t">材料本身的保固</p>
-              <p className="s">正常家用下，檯面破裂、刮傷等非外力造成的材料損傷，由原廠免費維修。</p>
+        <section className="section" aria-labelledby="t-cover">
+          <p className="eyebrow" data-reveal>
+            What We Stand Behind
+          </p>
+          <h2 id="t-cover" data-reveal data-stagger="1">
+            我們負責的，
+            <br />
+            與需要您留意的。
+          </h2>
+          <div className="cols">
+            <div data-reveal data-stagger="1">
+              <p className="col-h">保固涵蓋</p>
+              <ul className="list">
+                {COVERED.map((item) => (
+                  <li key={item.t}>
+                    <p className="t">{item.t}</p>
+                    <p className="s">{item.s}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div data-reveal data-stagger="2">
+              <p className="col-h">不在保固範圍</p>
+              <ul className="list">
+                {NOT_COVERED.map((item) => (
+                  <li key={item.t}>
+                    <p className="t">{item.t}</p>
+                    <p className="s">{item.s}</p>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-          <div className="rule" data-reveal data-stagger="2">
-            <span className="no">02</span>
-            <div>
-              <p className="t">安裝工藝的保固</p>
-              <p className="s">石材安裝提供專業施工的加工保固，自施工完成日起一年內有效。</p>
-            </div>
-          </div>
-          <div className="rule" data-reveal data-stagger="3">
-            <span className="no">03</span>
-            <div>
-              <p className="t">保養與客服的陪伴</p>
-              <p className="s">
-                依保養指南定期清潔即可維持保固效力。任何問題，Saiens 客服 LINE 直接為您安排。
-              </p>
-            </div>
-          </div>
-        </div>
-        <p className="lede" data-reveal data-stagger="2" style={{ fontSize: 15 }}>
-          完整條款與不適用情形，見{" "}
-          <a href="/guarantees-and-warranties" target="_blank" rel="noreferrer">
-            品質保證說明
-          </a>
-          。
-        </p>
-      </section>
+          <p className="lede small" data-reveal data-stagger="2">
+            完整條款見{" "}
+            <a href="/guarantees-and-warranties" target="_blank" rel="noreferrer">
+              品質保證說明
+            </a>
+            。保固內容參考國際石英石品牌的標準保固書，並依台灣住宅使用情境調整。
+          </p>
+        </section>
       </div>
 
-      {/* 4. Form */}
+      {/* 4. Series & term */}
+      <section className="section" aria-labelledby="t-series">
+        <p className="eyebrow" data-reveal>
+          Terms by Series
+        </p>
+        <h2 id="t-series" data-reveal data-stagger="1">
+          保固年限，依系列而定。
+        </h2>
+        <p className="lede" data-reveal data-stagger="2">
+          材料保固自安裝完工日起計算。年限是我們對材料耐久度的承諾，不是保固的全部；
+          真正重要的是有問題時，有人負責到底。
+        </p>
+        <div className="series" data-reveal data-stagger="2">
+          {SERIES.map((row) => (
+            <div className="series-row" key={row.name}>
+              <span className="n">{row.name}</span>
+              <span className="y">{row.years}</span>
+            </div>
+          ))}
+        </div>
+        {warrantyYears ? (
+          <p className="case-note" data-reveal data-stagger="3">
+            本案場適用 {warrantyYears} 年材料保固。
+          </p>
+        ) : (
+          <p className="case-note" data-reveal data-stagger="3">
+            本案場適用年限將依完工資訊確認後通知您。
+          </p>
+        )}
+      </section>
+
+      {/* 5. Claim steps */}
+      <div className="alt">
+        <section className="section" aria-labelledby="t-claim">
+          <p className="eyebrow" data-reveal>
+            When Something Happens
+          </p>
+          <h2 id="t-claim" data-reveal data-stagger="1">
+            有狀況時，三步。
+          </h2>
+          <div className="rules">
+            {CLAIM_STEPS.map((step, i) => (
+              <div className="rule" data-reveal data-stagger={i + 1} key={step.t}>
+                <span className="no">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <p className="t">{step.t}</p>
+                  <p className="s">{step.s}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      {/* 6. Form */}
       <section className="section" id="register" aria-labelledby="t-register">
         <p className="eyebrow" data-reveal>
           Register
@@ -277,7 +341,7 @@ export default function WarrantyFlow({ token, address, warrantyYears, initialSta
           留下您的聯絡方式
         </h2>
         <p className="lede" data-reveal data-stagger="2">
-          三個欄位，約一分鐘。資料僅用於本案場的保固服務與通知。
+          三個欄位，約一分鐘。資料只用於本案場的保固服務與通知，不作其他用途。
         </p>
 
         <form className="form-wrap" onSubmit={onSubmit} noValidate>
@@ -412,65 +476,54 @@ function Certificate({ address, warrantyYears }: { address: string; warrantyYear
         <h1 className="cert-title" id="t-cert" data-reveal data-stagger="1">
           登記完成。
           <br />
-          從今天起，由我們負責。
+          這個家的檯面，由山恩負責。
         </h1>
-        <p className="cert-years" data-reveal data-stagger="2" aria-label={`保固年限 ${yearsLabel(warrantyYears)}`}>
-          {warrantyYears || "—"}
-          <small>{warrantyYears ? "Years Warranty" : "年限依完工資訊確認後通知"}</small>
-        </p>
-        <div className="cert-meta" data-reveal data-stagger="3">
+        <div className="cert-meta" data-reveal data-stagger="2">
           <p className="addr">{address}</p>
-          <p>材料保固自安裝完工日起計算。確認信已寄至您留下的 Email。</p>
+          <p>
+            {warrantyYears ? `材料保固 ${warrantyYears} 年，自安裝完工日起計算。` : "材料保固年限將依完工資訊確認後通知您。"}
+            確認信已寄至您留下的 Email。
+          </p>
         </div>
       </section>
 
       <div className="alt">
-      <section className="next" aria-labelledby="t-next">
-        <p className="eyebrow" data-reveal>
-          What&apos;s Next
-        </p>
-        <h2
-          id="t-next"
-          data-reveal
-          data-stagger="1"
-          style={{
-            fontSize: "clamp(34px, 6vw, 56px)",
-            fontWeight: 600,
-            lineHeight: 1.1,
-            letterSpacing: "-0.02em",
-          }}
-        >
-          接下來，三件小事。
-        </h2>
-        <div className="steps">
-          <div className="step" data-reveal data-stagger="1">
-            <p className="no">01</p>
-            <p className="t">加入客服 LINE</p>
-            <p className="s">保固查詢、報修、保養提醒都在這裡。一對一，不需再找人轉達。</p>
-            <a className="btn btn-primary" href={LINE_OA_URL} target="_blank" rel="noreferrer">
-              加入 Saiens LINE
-            </a>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="qr" src="/line-oa-qr.png" alt="Saiens 客服 LINE QR code" width={120} height={120} loading="lazy" />
+        <section className="next" aria-labelledby="t-next">
+          <p className="eyebrow" data-reveal>
+            What&apos;s Next
+          </p>
+          <h2 id="t-next" className="next-h" data-reveal data-stagger="1">
+            接下來，三件小事。
+          </h2>
+          <div className="steps">
+            <div className="step" data-reveal data-stagger="1">
+              <p className="no">01</p>
+              <p className="t">加入客服 LINE</p>
+              <p className="s">保固查詢、報修、保養提醒都在這裡。一對一，不需再找人轉達。</p>
+              <a className="btn btn-primary" href={LINE_OA_URL} target="_blank" rel="noreferrer">
+                加入 Saiens LINE
+              </a>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="qr" src="/line-oa-qr.png" alt="Saiens 客服 LINE QR code" width={120} height={120} loading="lazy" />
+            </div>
+            <div className="step" data-reveal data-stagger="2">
+              <p className="no">02</p>
+              <p className="t">讀一遍保養指南</p>
+              <p className="s">五分鐘了解石英石的日常清潔、什麼該避開。保養得當，保固才持續有效。</p>
+              <a className="btn btn-ghost" href="/maintenance-manual">
+                保養指南
+              </a>
+            </div>
+            <div className="step" data-reveal data-stagger="3">
+              <p className="no">03</p>
+              <p className="t">把 Saiens 介紹給朋友</p>
+              <p className="s">若您滿意這次的檯面，歡迎將 Saiens 分享給正在裝修的朋友。</p>
+              <a className="btn btn-ghost" href="/visit-us">
+                預約展間參觀
+              </a>
+            </div>
           </div>
-          <div className="step" data-reveal data-stagger="2">
-            <p className="no">02</p>
-            <p className="t">讀一遍保養指南</p>
-            <p className="s">五分鐘了解石英石的日常清潔、什麼該避開。保養得當，保固才持續有效。</p>
-            <a className="btn btn-ghost" href="/maintenance-manual">
-              保養指南
-            </a>
-          </div>
-          <div className="step" data-reveal data-stagger="3">
-            <p className="no">03</p>
-            <p className="t">把 Saiens 介紹給朋友</p>
-            <p className="s">若您滿意這次的檯面，歡迎將 Saiens 分享給正在裝修的朋友。</p>
-            <a className="btn btn-ghost" href="/visit-us">
-              預約展間參觀
-            </a>
-          </div>
-        </div>
-      </section>
+        </section>
       </div>
 
       <p className="fine">
