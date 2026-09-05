@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from "react";
 import Reveal from "./Reveal";
 
 const LINE_OA_URL = "https://lin.ee/poXsa4y";
+const LIFF_ID = process.env.NEXT_PUBLIC_LIFF_ID?.trim();
 const HERO_IMAGE = "/images/1757040221622-KLLGGX2BVD9TC5ZIJ3JV/IMG_6957.JPG";
 
 type Props = {
@@ -139,7 +140,7 @@ export default function WarrantyFlow({ token, address, warrantyYears, initialSta
   }
 
   if (status === "done") {
-    return <Certificate address={address} warrantyYears={warrantyYears} />;
+    return <Certificate token={token} address={address} warrantyYears={warrantyYears} />;
   }
 
   if (status === "already_registered") {
@@ -465,7 +466,11 @@ function Field({
   );
 }
 
-function Certificate({ address, warrantyYears }: { address: string; warrantyYears: string }) {
+function Certificate({ token, address, warrantyYears }: { token: string; address: string; warrantyYears: string }) {
+  const lineHref = LIFF_ID
+    ? `https://liff.line.me/${encodeURIComponent(LIFF_ID)}?token=${encodeURIComponent(token)}`
+    : LINE_OA_URL;
+
   return (
     <div className="wr">
       <Reveal />
@@ -500,7 +505,7 @@ function Certificate({ address, warrantyYears }: { address: string; warrantyYear
               <p className="no">01</p>
               <p className="t">加入客服 LINE</p>
               <p className="s">保固查詢、報修、保養提醒都在這裡。一對一，不需再找人轉達。</p>
-              <a className="btn btn-primary" href={LINE_OA_URL} target="_blank" rel="noreferrer">
+              <a className="btn btn-primary" href={lineHref} target="_blank" rel="noreferrer">
                 加入 Saiens LINE
               </a>
               {/* eslint-disable-next-line @next/next/no-img-element */}
