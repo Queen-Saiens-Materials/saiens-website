@@ -946,3 +946,22 @@
     border-radius: 16px;
   }
 }
+
+/* `.wr .section a` 的連結樣式不得覆蓋按鈕（否則主按鈕變成藍字藍底） */
+.wr .section a.btn,
+.wr .status a.btn,
+.wr .next a.btn {
+  text-decoration: none;
+}
+
+.wr .section a.btn-primary,
+.wr .status a.btn-primary,
+.wr .next a.btn-primary {
+  color: #fff;
+}
+
+.wr .section a.btn-ghost,
+.wr .status a.btn-ghost,
+.wr .next a.btn-ghost {
+  color: var(--text-primary);
+}
