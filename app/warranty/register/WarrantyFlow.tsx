@@ -147,9 +147,6 @@ export default function WarrantyFlow({ token, address, warrantyYears, initialSta
 
       {/* 1. Hero */}
       <section className="hero" id="hero" aria-label="Saiens 保固登記">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="hero-bg" src={HERO_IMAGE} alt="" width={2000} height={1333} fetchPriority="high" />
-        <div className="hero-scrim" aria-hidden="true" />
         <p className="hero-eyebrow" data-stage="1">
           Saiens Warranty · 保固登記
         </p>
@@ -185,7 +182,18 @@ export default function WarrantyFlow({ token, address, warrantyYears, initialSta
           </a>
           <p className="hero-hint">約 1 分鐘 · 三個欄位</p>
         </div>
+        <figure className="hero-media" data-stage="4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={HERO_IMAGE} alt="Saiens 石英石檯面" width={2000} height={1333} fetchPriority="high" />
+        </figure>
       </section>
+
+      <p className="trust" data-reveal>
+        <span>NSF・SGS 硬度與吸水率測試</span>
+        <span>原廠維修團隊</span>
+        <span>台灣本島到府服務</span>
+        <span>自安裝完工日起計算</span>
+      </p>
 
       {/* 2. Spec trio */}
       <section className="section" aria-labelledby="t-spec">
@@ -215,6 +223,7 @@ export default function WarrantyFlow({ token, address, warrantyYears, initialSta
       </section>
 
       {/* 3. What it means */}
+      <div className="alt">
       <section className="section" aria-labelledby="t-rules">
         <p className="eyebrow" data-reveal>
           The Promise
@@ -257,6 +266,7 @@ export default function WarrantyFlow({ token, address, warrantyYears, initialSta
           。
         </p>
       </section>
+      </div>
 
       {/* 4. Form */}
       <section className="section" id="register" aria-labelledby="t-register">
@@ -402,7 +412,7 @@ function Certificate({ address, warrantyYears }: { address: string; warrantyYear
         <h1 className="cert-title" id="t-cert" data-reveal data-stagger="1">
           登記完成。
           <br />
-          這個家，交給我們守護。
+          從今天起，由我們負責。
         </h1>
         <p className="cert-years" data-reveal data-stagger="2" aria-label={`保固年限 ${yearsLabel(warrantyYears)}`}>
           {warrantyYears || "—"}
@@ -414,6 +424,7 @@ function Certificate({ address, warrantyYears }: { address: string; warrantyYear
         </div>
       </section>
 
+      <div className="alt">
       <section className="next" aria-labelledby="t-next">
         <p className="eyebrow" data-reveal>
           What&apos;s Next
@@ -460,6 +471,7 @@ function Certificate({ address, warrantyYears }: { address: string; warrantyYear
           </div>
         </div>
       </section>
+      </div>
 
       <p className="fine">
         Saiens 山恩 · 保固服務地區限台灣本島 ·{" "}
