@@ -2,11 +2,9 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import Reveal from "./Reveal";
+import TrackedLink from "../TrackedLink";
 
-const LINE_OA_URL = "https://lin.ee/poXsa4y";
-// 完成頁只有在 Odoo 端 LIFF 端點正式上線（NEXT_PUBLIC_LIFF_LIVE=1）後才深連結到 LIFF
-const LIFF_ID =
-  process.env.NEXT_PUBLIC_LIFF_LIVE === "1" ? process.env.NEXT_PUBLIC_LIFF_ID?.trim() : undefined;
+import { LINE_OA_URL, getLiffRegisterUrl } from "@/lib/warranty/liff";
 const HERO_IMAGE = "/images/1757040221622-KLLGGX2BVD9TC5ZIJ3JV/IMG_6957.JPG";
 
 type Props = {
@@ -123,6 +121,9 @@ export default function WarrantyFlow({ token, address, warrantyYears, initialSta
           email: form.email.trim(),
           registered_by: form.isDesignerProxy ? "designer_proxy" : "owner",
           ...(form.isDesignerProxy ? { proxy_name: form.proxyName.trim() } : {}),
+          // 只給確認信用，不會轉送到 Odoo
+          site_address: address,
+          warranty_years: warrantyYears,
         }),
       });
       if (response.ok) {
@@ -151,10 +152,15 @@ export default function WarrantyFlow({ token, address, warrantyYears, initialSta
         <section className="status" aria-labelledby="t-already">
           <p className="eyebrow">Warranty Registration</p>
           <h1 id="t-already">這個案場的保固已完成登記。</h1>
-          <p>無需重複填寫。若要查詢保固內容或安排維修，加入 Saiens 客服 LINE 是最快的方式。</p>
+          <p>
+            無需重複填寫。
+            {getLiffRegisterUrl(token)
+              ? "把這個案場綁到您的 LINE，之後查詢保固、報修與保養提醒都在 LINE 裡完成。"
+              : "若要查詢保固內容或安排維修，加入 Saiens 客服 LINE 是最快的方式。"}
+          </p>
           <div className="actions">
-            <a className="btn btn-primary" href={LINE_OA_URL} target="_blank" rel="noreferrer">
-              加入 Saiens 客服 LINE
+            <a className="btn btn-primary" href={getLiffRegisterUrl(token) ?? LINE_OA_URL} target="_blank" rel="noreferrer">
+              {getLiffRegisterUrl(token) ? "用 LINE 綁定這個案場" : "加入 Saiens 客服 LINE"}
             </a>
             <a className="link" href="mailto:service@saiens.tw">
               service@saiens.tw
@@ -469,9 +475,7 @@ function Field({
 }
 
 function Certificate({ token, address, warrantyYears }: { token: string; address: string; warrantyYears: string }) {
-  const lineHref = LIFF_ID
-    ? `https://liff.line.me/${encodeURIComponent(LIFF_ID)}?token=${encodeURIComponent(token)}`
-    : LINE_OA_URL;
+  const lineHref = getLiffRegisterUrl(token) ?? LINE_OA_URL;
 
   return (
     <div className="wr">
@@ -507,9 +511,9 @@ function Certificate({ token, address, warrantyYears }: { token: string; address
               <p className="no">01</p>
               <p className="t">加入客服 LINE</p>
               <p className="s">保固查詢、報修、保養提醒都在這裡。一對一，不需再找人轉達。</p>
-              <a className="btn btn-primary" href={lineHref} target="_blank" rel="noreferrer">
+              <TrackedLink event="warranty_cta" props={{ name: "line_bind", page: "register_done" }} className="btn btn-primary" href={lineHref} target="_blank" rel="noreferrer">
                 加入 Saiens LINE
-              </a>
+              </TrackedLink>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img className="qr" src="/line-oa-qr.png" alt="Saiens 客服 LINE QR code" width={120} height={120} loading="lazy" />
             </div>

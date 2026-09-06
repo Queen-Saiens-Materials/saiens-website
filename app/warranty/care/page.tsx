@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Reveal from "../register/Reveal";
+import TrackedLink from "../TrackedLink";
 import "../register/warranty.css";
 
 import { PowderDiagram, SurfaceDiagram } from "./QuartzDiagram";
@@ -269,9 +270,9 @@ export default function WarrantyCarePage() {
           不確定是髒污、刮痕、崩角或接縫問題時，先拍照傳來，山恩會協助判讀。
         </p>
         <div className="warranty-end-actions" data-reveal data-stagger="3">
-          <a className="btn btn-primary" href={LINE_OA_URL} target="_blank" rel="noreferrer">
+          <TrackedLink event="warranty_cta" props={{ name: "line", page: "care", pos: "closing" }} className="btn btn-primary" href={LINE_OA_URL} target="_blank" rel="noreferrer">
             聯繫 Saiens 客服 LINE
-          </a>
+          </TrackedLink>
           <a className="btn btn-ghost" href="/warranty">
             登記保固
           </a>

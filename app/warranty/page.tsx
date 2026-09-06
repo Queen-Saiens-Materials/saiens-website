@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Reveal from "./register/Reveal";
+import TrackedLink from "./TrackedLink";
 import "./register/warranty.css";
 
 const LIFF_REGISTER_URL = "https://liff.line.me/2011457580-q3RPfqSS";
@@ -64,14 +65,14 @@ export default function WarrantyPage() {
         </p>
         <div className="hero-cta-row warranty-entry-row" data-stage="4">
           <div className="warranty-entry-primary">
-            <a className="btn btn-primary" href={LIFF_REGISTER_URL} target="_blank" rel="noreferrer">
+            <TrackedLink event="warranty_cta" props={{ name: "register", page: "landing", pos: "hero" }} className="btn btn-primary" href={LIFF_REGISTER_URL} target="_blank" rel="noreferrer">
               登記保固
-            </a>
+            </TrackedLink>
             <p className="hero-hint">在 LINE 內完成，約一分鐘</p>
           </div>
-          <a className="btn btn-ghost" href="/warranty/care">
+          <TrackedLink event="warranty_cta" props={{ name: "care", page: "landing", pos: "hero" }} className="btn btn-ghost" href="/warranty/care">
             清潔使用指南
-          </a>
+          </TrackedLink>
         </div>
         <figure className="hero-media" data-stage="4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -159,9 +160,9 @@ export default function WarrantyPage() {
             這不是一份冷冰冰的條款，而是日後你需要我們時，能快速被找到、被理解、被照顧的開始。
           </p>
           <div className="warranty-end-actions" data-reveal data-stagger="3">
-            <a className="btn btn-primary" href={LIFF_REGISTER_URL} target="_blank" rel="noreferrer">
+            <TrackedLink event="warranty_cta" props={{ name: "register", page: "landing", pos: "closing" }} className="btn btn-primary" href={LIFF_REGISTER_URL} target="_blank" rel="noreferrer">
               登記保固
-            </a>
+            </TrackedLink>
           </div>
         </section>
       </div>
