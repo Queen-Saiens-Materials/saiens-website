@@ -3,7 +3,10 @@ import Reveal from "./register/Reveal";
 import TrackedLink from "./TrackedLink";
 import "./register/warranty.css";
 
-const LIFF_REGISTER_URL = "https://liff.line.me/2011457580-q3RPfqSS";
+import { LINE_OA_URL, getLiffMineUrl, getLiffRegisterUrl } from "@/lib/warranty/liff";
+
+// Odoo 端 LIFF 未上線時退回客服 LINE，由客服協助登記
+const LIFF_REGISTER_URL = getLiffRegisterUrl() ?? LINE_OA_URL;
 const HERO_IMAGE = "/images/1757040221622-KLLGGX2BVD9TC5ZIJ3JV/IMG_6957.JPG";
 
 const MEMORY = [
@@ -48,8 +51,7 @@ export const metadata: Metadata = {
 };
 
 export default function WarrantyPage() {
-  const liffId = process.env.NEXT_PUBLIC_LIFF_ID?.trim();
-  const myWarrantyUrl = liffId ? `https://liff.line.me/${liffId}/mine` : "";
+  const myWarrantyUrl = getLiffMineUrl() ?? "";
 
   return (
     <main className="wr flex flex-1 flex-col">
