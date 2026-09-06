@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import Reveal from "./register/Reveal";
+import TrackedLink from "./TrackedLink";
 import "./register/warranty.css";
 
-const LIFF_REGISTER_URL = "https://liff.line.me/2011457580-q3RPfqSS";
+import { LINE_OA_URL, getLiffMineUrl, getLiffRegisterUrl } from "@/lib/warranty/liff";
+
+// Odoo 端 LIFF 未上線時退回客服 LINE，由客服協助登記
+const LIFF_REGISTER_URL = getLiffRegisterUrl() ?? LINE_OA_URL;
 const HERO_IMAGE = "/images/1757040221622-KLLGGX2BVD9TC5ZIJ3JV/IMG_6957.JPG";
 
 const MEMORY = [
@@ -47,6 +51,8 @@ export const metadata: Metadata = {
 };
 
 export default function WarrantyPage() {
+  const myWarrantyUrl = getLiffMineUrl() ?? "";
+
   return (
     <main className="wr flex flex-1 flex-col">
       <Reveal />
@@ -64,15 +70,23 @@ export default function WarrantyPage() {
         </p>
         <div className="hero-cta-row warranty-entry-row" data-stage="4">
           <div className="warranty-entry-primary">
-            <a className="btn btn-primary" href={LIFF_REGISTER_URL} target="_blank" rel="noreferrer">
+            <TrackedLink event="warranty_cta" props={{ name: "register", page: "landing", pos: "hero" }} className="btn btn-primary" href={LIFF_REGISTER_URL} target="_blank" rel="noreferrer">
               登記保固
-            </a>
+            </TrackedLink>
             <p className="hero-hint">在 LINE 內完成，約一分鐘</p>
           </div>
-          <a className="btn btn-ghost" href="/warranty/care">
+          <TrackedLink event="warranty_cta" props={{ name: "care", page: "landing", pos: "hero" }} className="btn btn-ghost" href="/warranty/care">
             清潔使用指南
-          </a>
+          </TrackedLink>
         </div>
+        {myWarrantyUrl ? (
+          <p className="hero-hint warranty-mine-hint" data-stage="4">
+            已經登記過？
+            <a href={myWarrantyUrl} target="_blank" rel="noreferrer">
+              查看我的保固
+            </a>
+          </p>
+        ) : null}
         <figure className="hero-media" data-stage="4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={HERO_IMAGE} alt="Saiens 山恩石英石檯面安裝完成後的明亮居家空間" width={2048} height={1365} />
@@ -159,9 +173,9 @@ export default function WarrantyPage() {
             這不是一份冷冰冰的條款，而是日後你需要我們時，能快速被找到、被理解、被照顧的開始。
           </p>
           <div className="warranty-end-actions" data-reveal data-stagger="3">
-            <a className="btn btn-primary" href={LIFF_REGISTER_URL} target="_blank" rel="noreferrer">
+            <TrackedLink event="warranty_cta" props={{ name: "register", page: "landing", pos: "closing" }} className="btn btn-primary" href={LIFF_REGISTER_URL} target="_blank" rel="noreferrer">
               登記保固
-            </a>
+            </TrackedLink>
           </div>
         </section>
       </div>

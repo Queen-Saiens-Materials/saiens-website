@@ -3,6 +3,7 @@ import { after } from "next/server";
 import { submitWarrantyRegistration } from "@/lib/warranty/api";
 import { INTERNAL_NOTIFICATION_TO } from "@/lib/email/config";
 import { sendEmail } from "@/lib/email/resend";
+import { getLiffRegisterUrl } from "@/lib/warranty/liff";
 
 type RegistrationRequest = {
   token?: unknown;
@@ -11,6 +12,9 @@ type RegistrationRequest = {
   email?: unknown;
   registered_by?: unknown;
   proxy_name?: unknown;
+  // 只給確認信用，不轉送 Odoo
+  site_address?: unknown;
+  warranty_years?: unknown;
 };
 
 function getString(value: unknown) {
@@ -41,21 +45,41 @@ async function sendWarrantyEmails({
   email,
   registeredBy,
   proxyName,
+  token,
+  siteAddress,
+  warrantyYears,
 }: {
   name: string;
   phone: string;
   email: string;
   registeredBy: "owner" | "designer_proxy";
   proxyName: string;
+  token: string;
+  siteAddress: string;
+  warrantyYears: string;
 }) {
+  const liffUrl = getLiffRegisterUrl(token);
+  const yearsLine = warrantyYears
+    ? `材料保固 ${escapeHtml(warrantyYears)} 年，自安裝完工日起計算。`
+    : "材料保固年限將依完工資訊確認後另行通知。";
   const ownerEmail = await sendEmail({
     to: email,
-    subject: "Saiens 保固註冊完成通知",
+    subject: "Saiens 保固登記完成",
     html: `
-      <p>${escapeHtml(name)} 您好：</p>
-      <p>我們已收到您登記的案場保固註冊資料。</p>
-      <p>保固年限請洽客服或設計師確認。</p>
-      <p>客服 LINE：<a href="https://lin.ee/poXsa4y">https://lin.ee/poXsa4y</a><br />Email：<a href="mailto:service@saiens.tw">service@saiens.tw</a></p>
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,'Noto Sans TC',sans-serif;color:#302b27;line-height:1.7;font-size:16px;">
+        <p>${escapeHtml(name)} 您好：</p>
+        <p>您的保固登記已完成。從今天起，這個家的檯面由山恩負責。</p>
+        ${siteAddress ? `<p><strong>保固案場</strong><br />${escapeHtml(siteAddress)}</p>` : ""}
+        <p>${yearsLine}</p>
+        ${
+          liffUrl
+            ? `<p>建議把這個案場綁到您的 LINE，之後查詢保固、報修與保養提醒都在 LINE 裡完成，不需再找人轉達：<br /><a href="${liffUrl}" style="color:#274690;">用 LINE 綁定這個案場</a></p>`
+            : `<p>後續保固服務與通知，請加入 Saiens 客服 LINE：<a href="https://lin.ee/poXsa4y" style="color:#274690;">https://lin.ee/poXsa4y</a></p>`
+        }
+        <p>清潔使用指南：<a href="https://saiens.tw/warranty/care" style="color:#274690;">https://saiens.tw/warranty/care</a><br />
+        完整保固條款：<a href="https://saiens.tw/guarantees-and-warranties" style="color:#274690;">https://saiens.tw/guarantees-and-warranties</a></p>
+        <p style="color:#857f7a;font-size:14px;">Saiens 山恩 · 保固服務地區限台灣本島 · service@saiens.tw</p>
+      </div>
     `,
   });
   logEmailFailure("warranty_owner_email_failed", ownerEmail);
@@ -91,6 +115,8 @@ export async function POST(request: Request) {
   const email = getString(payload.email);
   const proxyName = getString(payload.proxy_name);
   const registeredBy = payload.registered_by;
+  const siteAddress = getString(payload.site_address).slice(0, 200);
+  const warrantyYears = getString(payload.warranty_years).slice(0, 4);
 
   if (
     !token ||
@@ -121,6 +147,9 @@ export async function POST(request: Request) {
         email,
         registeredBy,
         proxyName,
+        token,
+        siteAddress,
+        warrantyYears,
       }),
     );
   }

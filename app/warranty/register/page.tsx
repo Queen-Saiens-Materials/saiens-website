@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { verifyWarrantyToken } from "@/lib/warranty/api";
 import WarrantyFlow from "./WarrantyFlow";
+import { LINE_OA_URL, getLiffRegisterUrl } from "@/lib/warranty/liff";
 import "./warranty.css";
 
 export const metadata: Metadata = {
@@ -21,7 +22,6 @@ type WarrantyRegisterPageProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-const LINE_OA_URL = "https://lin.ee/poXsa4y";
 
 // 本機視覺檢查用：`?token=preview` 不打 Odoo。production build 一律走真實驗證。
 const PREVIEW_ENABLED = process.env.NODE_ENV !== "production";
@@ -32,16 +32,26 @@ function getSingleParam(value: string | string[] | undefined) {
 }
 
 function StatusPage({ title, message }: { title: string; message: string }) {
+  const liffUrl = getLiffRegisterUrl();
   return (
     <main className="wr flex flex-1 flex-col">
       <section className="status" aria-labelledby="t-status">
         <p className="eyebrow">Warranty Registration</p>
         <h1 id="t-status">{title}</h1>
         <p>{message}</p>
+        {liffUrl ? (
+          <p>不需要重新索取連結：在 LINE 內輸入案場地址，我們會比對施工紀錄直接完成登記。</p>
+        ) : null}
         <div className="actions">
-          <a className="btn btn-primary" href={LINE_OA_URL} target="_blank" rel="noreferrer">
-            聯繫 Saiens 客服 LINE
-          </a>
+          {liffUrl ? (
+            <a className="btn btn-primary" href={liffUrl} target="_blank" rel="noreferrer">
+              用 LINE 登記保固
+            </a>
+          ) : (
+            <a className="btn btn-primary" href={LINE_OA_URL} target="_blank" rel="noreferrer">
+              聯繫 Saiens 客服 LINE
+            </a>
+          )}
           <a className="link" href="mailto:service@saiens.tw">
             service@saiens.tw
           </a>
@@ -59,7 +69,7 @@ export default async function WarrantyRegisterPage({ searchParams }: WarrantyReg
     return (
       <StatusPage
         title="這個保固連結已失效。"
-        message="連結可能已過期或不完整。請聯繫您的設計師或 Saiens 業務，我們會重新寄一份給您。"
+        message="連結可能已過期或不完整。"
       />
     );
   }
@@ -105,7 +115,7 @@ export default async function WarrantyRegisterPage({ searchParams }: WarrantyReg
   return (
     <StatusPage
       title="這個保固連結已失效。"
-      message="連結可能已過期或不完整。請聯繫您的設計師或 Saiens 業務，我們會重新寄一份給您。"
+      message="連結可能已過期或不完整。"
     />
   );
 }

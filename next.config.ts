@@ -43,6 +43,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       })),
       // /warranty 現在是保固入口頁（app/warranty/page.tsx），舊的 → 品質保證頁轉址已移除
+      // 舊保養指南併入新的清潔使用指南（2026-09-06）；日文版 /japan-maintenance-manual 不動
+      { source: "/maintenance-manual", destination: "/warranty/care", permanent: true },
       // Old Squarespace URLs → new structure (preserve SEO)
       { source: "/top", destination: "/", permanent: true },
       { source: "/top-jp", destination: "/jp", permanent: true },

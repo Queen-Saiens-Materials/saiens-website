@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { LINE_URL, SOCIAL_LINKS as SOCIAL_URLS } from "@/config/site";
 
 const SOCIAL_LINKS = [
@@ -51,6 +52,18 @@ export default function Footer() {
             </a>
           ))}
         </div>
+
+        <nav aria-label="售後服務" className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+          <Link href="/warranty" className="py-3 text-(--black) transition-colors hover:text-(--dark-accent)">
+            保固登記
+          </Link>
+          <Link href="/warranty/care" className="py-3 text-(--black) transition-colors hover:text-(--dark-accent)">
+            清潔使用指南
+          </Link>
+          <Link href="/guarantees-and-warranties" className="py-3 text-(--black) transition-colors hover:text-(--dark-accent)">
+            品質保證
+          </Link>
+        </nav>
 
         <p className="text-xs tracking-wide text-(--dark-accent)">
           &copy; {year} Saiens Group. All rights reserved.
