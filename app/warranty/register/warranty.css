@@ -1142,3 +1142,39 @@
   .wr .care-round { max-width: 260px; margin: 0 auto; }
   .wr .care-powder-step { text-align: center; }
 }
+
+/* ---------- 中文斷行：避免最後一行孤字 ---------- */
+/* 長段落：pretty 讓瀏覽器避免孤字；短段落（副標、說明、圖說）：balance 讓各行等長 */
+.wr p,
+.wr li,
+.wr figcaption {
+  text-wrap: pretty;
+}
+
+.wr .hero-sub,
+.wr .lede,
+.wr .status p,
+.wr .cert-meta p,
+.wr .trio .d,
+.wr .rule .s,
+.wr .list .s,
+.wr .step .s,
+.wr .form-note,
+.wr .care-card .d,
+.wr .care-powder-step .s,
+.wr .care-why-notes .s,
+.wr .care-diagram figcaption,
+.wr .care-frame figcaption,
+.wr .coverage-item .s,
+.wr .warranty-closing .lede {
+  text-wrap: balance;
+}
+
+.wr .step .t,
+.wr .rule .t,
+.wr .list .t,
+.wr .trio .v,
+.wr .care-card .v,
+.wr .care-powder-step .t {
+  text-wrap: balance;
+}
