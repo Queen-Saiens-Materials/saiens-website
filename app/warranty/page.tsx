@@ -48,6 +48,9 @@ export const metadata: Metadata = {
 };
 
 export default function WarrantyPage() {
+  const liffId = process.env.NEXT_PUBLIC_LIFF_ID?.trim();
+  const myWarrantyUrl = liffId ? `https://liff.line.me/${liffId}/mine` : "";
+
   return (
     <main className="wr flex flex-1 flex-col">
       <Reveal />
@@ -74,6 +77,14 @@ export default function WarrantyPage() {
             清潔使用指南
           </TrackedLink>
         </div>
+        {myWarrantyUrl ? (
+          <p className="hero-hint warranty-mine-hint" data-stage="4">
+            已經登記過？
+            <a href={myWarrantyUrl} target="_blank" rel="noreferrer">
+              查看我的保固
+            </a>
+          </p>
+        ) : null}
         <figure className="hero-media" data-stage="4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={HERO_IMAGE} alt="Saiens 山恩石英石檯面安裝完成後的明亮居家空間" width={2048} height={1365} />
