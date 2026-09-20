@@ -92,6 +92,12 @@ p.body{font-size:17px;color:var(--text-body);max-width:653px}
 /* ---------- cards ---------- */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px}
 .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:48px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.brand-group{font-size:13px;font-weight:500;color:var(--text-tertiary);letter-spacing:.04em;margin:48px 0 12px}
+.brand-grid{margin-top:0}
+.brand-card{padding:28px 24px}
+.brand-logo{height:72px;display:flex;align-items:center;margin-bottom:20px}
+.brand-logo img{max-height:72px;max-width:82%;width:auto;height:auto;object-fit:contain}
 .card{
   background:var(--bg-gray);border-radius:18px;padding:36px 28px;text-align:left;
   transition:transform 330ms var(--ease);
@@ -162,6 +168,10 @@ p.body{font-size:17px;color:var(--text-body);max-width:653px}
 @media (max-width:734px){
   .sec{padding:64px 20px}
   .grid3,.grid2{grid-template-columns:1fr;margin-top:32px}
+  .grid4{grid-template-columns:repeat(2,1fr)}
+  .brand-grid{margin-top:0}
+  .brand-logo{height:56px}
+  .brand-logo img{max-height:56px}
   .specs{grid-template-columns:1fr;gap:32px;margin-top:40px}
   .card{padding:28px 22px}
   .stages{padding-left:24px}
@@ -247,43 +257,55 @@ p.body{font-size:17px;color:var(--text-body);max-width:653px}
 </section>
 
 <!-- 品牌 -->
-<section class="sec sec-dark" id="brands">
+<section class="sec sec-gray" id="brands">
   <div class="wrap reveal">
     <div class="kicker">品牌與產品</div>
-    <h2>六個品牌，一個家。</h2>
-    <div class="grid3">
-      <div class="card">
-        <div class="c-step">石英石</div>
+    <h2>七個品牌，一個家。</h2>
+    <p class="lead">四個石英石品牌是硬石的底盤；軟石、全屋定製與家居三個品牌，把一片檯面延伸成一個家。</p>
+
+    <div class="brand-group">石英石（硬石）</div>
+    <div class="grid4 brand-grid">
+      <div class="card brand-card">
+        <div class="brand-logo"><img src="logos/mikado.png" alt="Mikado Quartz 帝雉石" loading="lazy"></div>
         <h3>Mikado 帝雉石</h3>
         <p>主力石英石品牌，專注黑灰色系高技術難度板材，立足國際中高端市場。</p>
       </div>
-      <div class="card">
-        <div class="c-step">石英石</div>
+      <div class="card brand-card">
+        <div class="brand-logo"><img src="logos/eternos.png" alt="ETERNOS 永恆石" loading="lazy"></div>
         <h3>ETERNOS 永恆石</h3>
         <p>石英石品牌，延伸多元色系與應用選擇。</p>
       </div>
-      <div class="card">
-        <div class="c-step">石英石</div>
+      <div class="card brand-card">
+        <div class="brand-logo"><img src="logos/qj.png" alt="QJ Quartz Stone 闊石" loading="lazy"></div>
         <h3>QJ 闊石</h3>
         <p>石英石品牌，覆蓋更廣的空間與預算場景。</p>
       </div>
-      <div class="card">
-        <div class="c-step">永續材料</div>
+      <div class="card brand-card">
+        <div class="brand-logo"><img src="logos/nexea.png" alt="nexea 耐稀石" loading="lazy"></div>
         <h3>nexea 耐稀石</h3>
         <p>永續再生材料線：以建築廢料、半導體副產物、太陽能板為原料升級回收，目標市場美國與日本。</p>
       </div>
-      <div class="card">
-        <div class="c-step">全屋定製</div>
+    </div>
+
+    <div class="brand-group">軟石、全屋定製、家居</div>
+    <div class="grid3 brand-grid">
+      <div class="card brand-card">
+        <div class="brand-logo"><img src="logos/montori.png" alt="MONTORI 山織石" loading="lazy"></div>
+        <h3>MONTORI 山織石</h3>
+        <p>軟石品牌，輕薄柔韌的柔性飾面材料，從檯面走向立面與外牆，JAPANDI 風格定位。</p>
+      </div>
+      <div class="card brand-card">
+        <div class="brand-logo"><img src="logos/saiven.png" alt="Saiven 山境" loading="lazy"></div>
         <h3>Saiven 山境</h3>
         <p>全屋定製品牌，把材料能力延伸為完整的空間方案。</p>
       </div>
-      <div class="card">
-        <div class="c-step">家飾</div>
+      <div class="card brand-card">
+        <div class="brand-logo"><img src="logos/cove.png" alt="COVE Living 石在家居" loading="lazy"></div>
         <h3>COVE Living 石在家居</h3>
         <p>家飾與家居生活品牌，案子收尾時讓家一次到位。</p>
       </div>
     </div>
-    <p class="rule-note" style="color:#6e6e73">nexea 的核心精神：真實、可靠、回到材料本質。</p>
+    <p class="rule-note">nexea 的核心精神：真實、可靠、回到材料本質。</p>
   </div>
 </section>
 
