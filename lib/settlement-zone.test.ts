@@ -158,6 +158,13 @@ describe('proxySettlementZone', () => {
     expect(res.headers.get('Location')).toBe('/qsm-monthly-settlement/dashboard')
   })
 
+  it('forwards the real client ip under a dedicated header', async () => {
+    const fetchImpl = vi.fn().mockResolvedValue(new Response('ok', { status: 200 }))
+    await proxySettlementZone('/api/session', { method: 'POST', clientIp: '203.0.113.9' }, fetchImpl, ENV)
+    const headers = fetchImpl.mock.calls[0][1].headers as Headers
+    expect(headers.get('x-qsm-settlement-client-ip')).toBe('203.0.113.9')
+  })
+
   it('rewrites an absolute redirect on the zone origin to a relative path', async () => {
     const origin = ENV.QSM_SETTLEMENT_ZONE_ORIGIN as string
     const fetchImpl = vi.fn().mockResolvedValue(

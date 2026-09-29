@@ -9,6 +9,7 @@ export async function GET(request: Request): Promise<Response> {
   return proxySettlementZone('', {
     cookie: request.headers.get('Cookie'),
     accept: request.headers.get('Accept'),
+    clientIp: request.headers.get('x-real-ip') ?? request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? null,
   })
 }
 
@@ -20,6 +21,7 @@ export async function POST(request: Request): Promise<Response> {
     contentType: request.headers.get('Content-Type'),
     cookie: request.headers.get('Cookie'),
     accept: request.headers.get('Accept'),
+    clientIp: request.headers.get('x-real-ip') ?? request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? null,
   })
 }
 

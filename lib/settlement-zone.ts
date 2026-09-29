@@ -43,6 +43,7 @@ export interface ZoneRequestOptions {
   contentType?: string | null
   cookie?: string | null
   accept?: string | null
+  clientIp?: string | null
 }
 
 export async function proxySettlementZone(
@@ -66,6 +67,9 @@ export async function proxySettlementZone(
   // x-qsm-settlement-* 識別 header——即使瀏覽器送來也不轉發。
   const headers = new Headers({ 'x-vercel-protection-bypass': config.bypassSecret })
   if (options.cookie) headers.set('Cookie', options.cookie)
+  // 上游的登入失敗次數限制以來源 IP 計數；經代理後上游只看得到本站的出口 IP，
+  // 必須把真實使用者 IP 另外帶過去（瀏覽器自己送的同名 header 一律被這裡覆蓋）。
+  if (options.clientIp) headers.set('x-qsm-settlement-client-ip', options.clientIp)
   if (options.contentType) headers.set('Content-Type', options.contentType)
   if (options.accept) headers.set('Accept', options.accept)
 
