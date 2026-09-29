@@ -1,30 +1,16 @@
-import { proxySettlementZone } from '@/lib/settlement-zone'
+import { NextResponse } from 'next/server'
 
-// qsm-settlement 的入口頁（basePath 根路徑）。此站不驗證使用者，單純轉發到上游——
-// 上游自己的 Odoo 登入與 session cookie 決定看得到什麼。詳見 lib/settlement-zone.ts。
+// 2026-09-29 下午 Michael 裁定：月結工作台正式入口改回 system.qsm.group/monthly-settlement。
+// 本站曾短暫作為入口，舊連結一律永久轉址到新站。
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
-export async function GET(request: Request): Promise<Response> {
-  return proxySettlementZone('', {
-    cookie: request.headers.get('Cookie'),
-    accept: request.headers.get('Accept'),
-    clientIp: request.headers.get('x-real-ip') ?? request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? null,
-  })
+const SETTLEMENT_ORIGIN = 'https://system.qsm.group/monthly-settlement'
+
+export async function GET(): Promise<Response> {
+  return NextResponse.redirect(SETTLEMENT_ORIGIN, { status: 308, headers: { 'Cache-Control': 'no-store, max-age=0' } })
 }
 
-export async function POST(request: Request): Promise<Response> {
-  const body = await request.arrayBuffer()
-  return proxySettlementZone('', {
-    method: 'POST',
-    body,
-    contentType: request.headers.get('Content-Type'),
-    cookie: request.headers.get('Cookie'),
-    accept: request.headers.get('Accept'),
-    clientIp: request.headers.get('x-real-ip') ?? request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? null,
-  })
-}
-
-export async function HEAD(request: Request): Promise<Response> {
-  return GET(request)
+export async function POST(): Promise<Response> {
+  return NextResponse.redirect(SETTLEMENT_ORIGIN, { status: 308, headers: { 'Cache-Control': 'no-store, max-age=0' } })
 }
