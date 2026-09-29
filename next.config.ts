@@ -2,6 +2,10 @@ import fs from "fs";
 import path from "path";
 import type { NextConfig } from "next";
 
+const SHIFT_BOARD_ORIGIN =
+  "https://shift-board-queen-saiens-materials.vercel.app";
+const SHIFT_BOARD_HOST = "system.saiens.group";
+
 function getSlugsFromDir(dirPath: string): string[] {
   return fs
     .readdirSync(dirPath)
@@ -19,17 +23,57 @@ const JP_SLUGS = getSlugsFromDir(
 
 const nextConfig: NextConfig = {
   async rewrites() {
-    return [
-      // Standalone OUGER architect-facing brand page. Keep the public URL clean
-      // while serving the self-contained document without the Saiens site chrome.
-      { source: "/ouger", destination: "/ouger/index.html" },
-      // Standalone piko Japan partner landing page (same pattern as /ouger).
-      { source: "/project-piko", destination: "/project-piko/index.html" },
-      // 山恩未來說明會（內部簡報頁，meta noindex＋robots disallow；same pattern as /ouger）。
-      { source: "/future", destination: "/future/index.html" },
-      // 山恩業務團隊 2026 H2 策略會議頁（內部簡報頁，same pattern as /future）。
-      { source: "/team-h2", destination: "/team-h2/index.html" },
-    ];
+    return {
+      beforeFiles: [
+        {
+          source: "/taipei-shift",
+          has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
+          destination: `${SHIFT_BOARD_ORIGIN}/`,
+        },
+        {
+          source: "/taipei-shift/:path*",
+          has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
+          destination: `${SHIFT_BOARD_ORIGIN}/:path*`,
+        },
+        // qsm-settlement 代理（work package E）：下面的 shift-board host 級 catch-all
+        // 會吃掉 /qsm-monthly-settlement 這條路徑（包含它 basePath 下的 _next/* 資產），
+        // 讓它落到 shift-board 去，而不是本專案的 route handler。這兩條自我改寫（rewrite
+        // 到自己）沒有實際改變路徑，純粹是利用 beforeFiles 陣列的優先順序，排在
+        // shift-board 的 /_next 與 /:path* 規則之前，讓下面 app/qsm-monthly-settlement/
+        // 底下的 route handler 贏得比對，不被 shift-board 攔截。
+        {
+          source: "/qsm-monthly-settlement",
+          has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
+          destination: "/qsm-monthly-settlement",
+        },
+        {
+          source: "/qsm-monthly-settlement/:path*",
+          has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
+          destination: "/qsm-monthly-settlement/:path*",
+        },
+        {
+          source: "/_next/:path*",
+          has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
+          destination: `${SHIFT_BOARD_ORIGIN}/_next/:path*`,
+        },
+        {
+          source: "/:path*",
+          has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
+          destination: `${SHIFT_BOARD_ORIGIN}/:path*`,
+        },
+      ],
+      afterFiles: [
+        // Standalone OUGER architect-facing brand page. Keep the public URL clean
+        // while serving the self-contained document without the Saiens site chrome.
+        { source: "/ouger", destination: "/ouger/index.html" },
+        // Standalone piko Japan partner landing page (same pattern as /ouger).
+        { source: "/project-piko", destination: "/project-piko/index.html" },
+        // 山恩未來說明會（內部簡報頁，meta noindex＋robots disallow；same pattern as /ouger）。
+        { source: "/future", destination: "/future/index.html" },
+        // 山恩業務團隊 2026 H2 策略會議頁（內部簡報頁，same pattern as /future）。
+        { source: "/team-h2", destination: "/team-h2/index.html" },
+      ],
+    };
   },
   async redirects() {
     return [
@@ -42,6 +86,18 @@ const nextConfig: NextConfig = {
         destination: "https://saiens.tw/:path*",
         permanent: true,
       })),
+      {
+        source: "/",
+        has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
+        destination: "/taipei-shift",
+        permanent: false,
+      },
+      {
+        source: "/login",
+        has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
+        destination: "/taipei-shift/login",
+        permanent: false,
+      },
       // /warranty 現在是保固入口頁（app/warranty/page.tsx），舊的 → 品質保證頁轉址已移除
       // 舊保養指南併入新的清潔使用指南（2026-09-06）；日文版 /japan-maintenance-manual 不動
       { source: "/maintenance-manual", destination: "/warranty/care", permanent: true },
