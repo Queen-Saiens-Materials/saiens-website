@@ -35,31 +35,18 @@ const nextConfig: NextConfig = {
           has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
           destination: `${SHIFT_BOARD_ORIGIN}/:path*`,
         },
-        // qsm-settlement 代理（work package E）：下面的 shift-board host 級 catch-all
-        // 會吃掉 /qsm-monthly-settlement 這條路徑（包含它 basePath 下的 _next/* 資產），
-        // 讓它落到 shift-board 去，而不是本專案的 route handler。這兩條自我改寫（rewrite
-        // 到自己）沒有實際改變路徑，純粹是利用 beforeFiles 陣列的優先順序，排在
-        // shift-board 的 /_next 與 /:path* 規則之前，讓下面 app/qsm-monthly-settlement/
-        // 底下的 route handler 贏得比對，不被 shift-board 攔截。
-        {
-          source: "/qsm-monthly-settlement",
-          has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
-          destination: "/qsm-monthly-settlement",
-        },
-        {
-          source: "/qsm-monthly-settlement/:path*",
-          has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
-          destination: "/qsm-monthly-settlement/:path*",
-        },
         {
           source: "/_next/:path*",
           has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
           destination: `${SHIFT_BOARD_ORIGIN}/_next/:path*`,
         },
+        // shift-board 的 host 級 catch-all；beforeFiles 的 rewrite 不會因前面規則命中而停止，
+        // 所以用 negative lookahead 排除 /qsm-monthly-settlement（含其 basePath 下的 _next 資產），
+        // 讓 app/qsm-monthly-settlement/ 的 route handler（月結工作台代理）接手。
         {
-          source: "/:path*",
+          source: "/:path((?!qsm-monthly-settlement(?:/|$)).*)",
           has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
-          destination: `${SHIFT_BOARD_ORIGIN}/:path*`,
+          destination: `${SHIFT_BOARD_ORIGIN}/:path`,
         },
       ],
       afterFiles: [
