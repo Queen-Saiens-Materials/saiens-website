@@ -91,9 +91,13 @@ export async function proxySettlementZone(
   }
 
   if (upstream.status >= 300 && upstream.status < 400) {
-    const location = upstream.headers.get('Location') ?? ''
-    // 站內相對導向（例如上游登入表單的 303）原樣透傳；絕對網址視為未預期
-    //（bypass 失效被導去 Vercel SSO），不得把 SSO 頁洩漏給使用者
+    const rawLocation = upstream.headers.get('Location') ?? ''
+    // 上游（Next.js）用 request.url 組出的絕對導向會帶自己的部署主機名；
+    // 只要主機是設定的 zone origin 就改回站內相對路徑。其他絕對網址視為未預期
+    //（bypass 失效被導去 Vercel SSO），不得把 SSO 頁洩漏給使用者。
+    const location = rawLocation.startsWith(`${config.origin}/`)
+      ? rawLocation.slice(config.origin.length)
+      : rawLocation
     if (location.startsWith('/') && !location.startsWith('//')) {
       responseHeaders.set('Location', location)
       return new Response(null, { status: upstream.status, headers: responseHeaders })

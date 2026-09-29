@@ -158,6 +158,19 @@ describe('proxySettlementZone', () => {
     expect(res.headers.get('Location')).toBe('/qsm-monthly-settlement/dashboard')
   })
 
+  it('rewrites an absolute redirect on the zone origin to a relative path', async () => {
+    const origin = ENV.QSM_SETTLEMENT_ZONE_ORIGIN as string
+    const fetchImpl = vi.fn().mockResolvedValue(
+      new Response(null, {
+        status: 303,
+        headers: { Location: `${origin}/qsm-monthly-settlement/?auth_error=credentials` },
+      }),
+    )
+    const res = await proxySettlementZone('/api/session', { method: 'POST' }, fetchImpl, ENV)
+    expect(res.status).toBe(303)
+    expect(res.headers.get('Location')).toBe('/qsm-monthly-settlement/?auth_error=credentials')
+  })
+
   it('returns 502 for an absolute (SSO) redirect instead of leaking it', async () => {
     const fetchImpl = vi.fn().mockResolvedValue(
       new Response(null, {
