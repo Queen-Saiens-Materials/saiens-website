@@ -5,6 +5,10 @@ import type { NextConfig } from "next";
 const SHIFT_BOARD_ORIGIN =
   "https://shift-board-queen-saiens-materials.vercel.app";
 const SHIFT_BOARD_HOST = "system.saiens.group";
+// 業務週報（kpi.qsm.group 上的靜態頁＋/am 歷期檢視器＋其 API）改由 system.saiens.group 對外提供。
+// 2026-09-30 Michael 指示；kpi.qsm.group 原網址保留，mini 的 run_weekly.sh 仍部署到那裡。
+const KPI_ORIGIN = "https://kpi.qsm.group";
+const KPI_PATHS = ["am-weekly", "am", "api/report"];
 
 function getSlugsFromDir(dirPath: string): string[] {
   return fs
@@ -40,11 +44,24 @@ const nextConfig: NextConfig = {
           has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
           destination: `${SHIFT_BOARD_ORIGIN}/_next/:path*`,
         },
+        // 業務週報：/am-weekly（本期）、/am（歷期檢視器）、/api/report（歷期資料 API）代理到 kpi.qsm.group。
+        ...KPI_PATHS.flatMap((p) => [
+          {
+            source: `/${p}`,
+            has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
+            destination: `${KPI_ORIGIN}/${p}/`,
+          },
+          {
+            source: `/${p}/:path*`,
+            has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
+            destination: `${KPI_ORIGIN}/${p}/:path*`,
+          },
+        ]),
         // shift-board 的 host 級 catch-all；beforeFiles 的 rewrite 不會因前面規則命中而停止，
-        // 所以用 negative lookahead 排除 /qsm-monthly-settlement（含其 basePath 下的 _next 資產），
+        // 所以用 negative lookahead 排除 /qsm-monthly-settlement（含其 basePath 下的 _next 資產）與業務週報路徑（/am-weekly、/am、/api/report），
         // 讓 app/qsm-monthly-settlement/ 的 route handler（月結工作台代理）接手。
         {
-          source: "/:path((?!qsm-monthly-settlement(?:/|$)).*)",
+          source: "/:path((?!qsm-monthly-settlement(?:/|$)|am-weekly(?:/|$)|am(?:/|$)|api/report(?:/|$)).*)",
           has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
           destination: `${SHIFT_BOARD_ORIGIN}/:path`,
         },
