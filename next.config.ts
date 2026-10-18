@@ -9,6 +9,9 @@ const SHIFT_BOARD_HOST = "system.saiens.group";
 // 2026-09-30 Michael 指示；kpi.qsm.group 原網址保留，mini 的 run_weekly.sh 仍部署到那裡。
 const KPI_ORIGIN = "https://kpi.qsm.group";
 const KPI_PATHS = ["am-weekly", "am", "api/report"];
+// Saiens CS Genius（客服駕駛艙）：Vercel 專案 saiens-cs-genius，basePath /cs-genius。
+// 2026-10-19 Michael 指示上線到 system.saiens.group/cs-genius；該 app 自帶 /cs-genius 前綴，原樣轉發。
+const CS_GENIUS_ORIGIN = "https://saiens-cs-genius.vercel.app";
 
 function getSlugsFromDir(dirPath: string): string[] {
   return fs
@@ -57,11 +60,22 @@ const nextConfig: NextConfig = {
             destination: `${KPI_ORIGIN}/${p}/:path*`,
           },
         ]),
+        // Saiens CS Genius：/cs-genius 與其下所有路徑（含 /cs-genius/_next 資產）原樣轉發。
+        {
+          source: "/cs-genius",
+          has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
+          destination: `${CS_GENIUS_ORIGIN}/cs-genius`,
+        },
+        {
+          source: "/cs-genius/:path*",
+          has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
+          destination: `${CS_GENIUS_ORIGIN}/cs-genius/:path*`,
+        },
         // shift-board 的 host 級 catch-all；beforeFiles 的 rewrite 不會因前面規則命中而停止，
         // 所以用 negative lookahead 排除 /qsm-monthly-settlement（含其 basePath 下的 _next 資產）與業務週報路徑（/am-weekly、/am、/api/report），
         // 讓 app/qsm-monthly-settlement/ 的 route handler（月結工作台代理）接手。
         {
-          source: "/:path((?!qsm-monthly-settlement(?:/|$)|am-weekly(?:/|$)|am(?:/|$)|api/report(?:/|$)).*)",
+          source: "/:path((?!qsm-monthly-settlement(?:/|$)|am-weekly(?:/|$)|am(?:/|$)|api/report(?:/|$)|cs-genius(?:/|$)).*)",
           has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
           destination: `${SHIFT_BOARD_ORIGIN}/:path`,
         },
