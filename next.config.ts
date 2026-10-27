@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import type { NextConfig } from "next";
+import { PROJECT_PAGES } from "./lib/project-pages";
 
 const SHIFT_BOARD_ORIGIN =
   "https://shift-board-queen-saiens-materials.vercel.app";
@@ -90,6 +91,11 @@ const nextConfig: NextConfig = {
         { source: "/future", destination: "/future/index.html" },
         // 山恩業務團隊 2026 H2 策略會議頁（內部簡報頁，same pattern as /future）。
         { source: "/team-h2", destination: "/team-h2/index.html" },
+        // 2026-10-27 自 projects.saiens.group（saiens-projects repo）搬入的內部研究頁，same pattern as /future。
+        ...PROJECT_PAGES.map((slug) => ({
+          source: `/${slug}`,
+          destination: `/${slug}/index.html`,
+        })),
       ],
     };
   },

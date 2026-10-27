@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>預鑄建築事業｜MVP 白話說明——第一步要多少錢？</title>
+<meta name="description" content="把蓋房子變成造車：預鑄建築是什麼、一座廠要多少錢、為什麼我們第一步不蓋廠。非本科背景也能 15 分鐘看懂的白話版。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="預鑄建築事業｜MVP 白話說明">
+<meta property="og:description" content="預鑄是什麼、一座廠要多少錢、為什麼第一步不蓋廠——15 分鐘白話版。">
+<meta property="og:url" content="https://saiens.group/prefab-mvp">
+<meta property="og:image" content="https://saiens.group/prefab-mvp/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" type="image/svg+xml" href="/prefab-mvp/favicon.svg">
+<link rel="apple-touch-icon" href="/prefab-mvp/apple-touch-icon.png">
+<style>
+:root{
+  --text-primary:#302b27; --text-body:#4a443e; --text-secondary:#857f7a;
+  --text-tertiary:#6b655f; --bg-white:#ffffff; --bg-gray:#f5f3f5;
+  --bg-dark:#1b264f; --bg-dark-2:#243158;
+  --text-on-dark:#f5f3f5; --text-on-dark-secondary:rgba(245,243,245,0.72);
+  --accent:#274690; --accent-soft:#576ca8; --border:#ddd8dd;
+  --ease-ui:ease-out; --ease-enter:cubic-bezier(0.16,1,0.3,1);
+  --z-nav:100;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+b,strong{font-weight:600}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans TC",sans-serif;
+  color:var(--text-primary);background:var(--bg-white);
+  font-size:17px;line-height:1.47;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);height:48px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 24px;
+  transition:background 250ms var(--ease-ui),color 250ms var(--ease-ui);
+  background:transparent;color:var(--text-on-dark)}
+.nav.solid{background:rgba(255,255,255,0.8);color:var(--text-primary);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}
+.nav .wordmark{font-size:15px;font-weight:600;letter-spacing:0.08em}
+.nav .tag{font-size:13px;font-weight:500;opacity:0.72;white-space:nowrap}
+
+/* sections */
+.sec{padding:120px 24px}
+.sec-dark{background:var(--bg-dark);color:var(--text-on-dark)}
+.sec-gray{background:var(--bg-gray)}
+.wrap{max-width:980px;margin:0 auto}
+.wrap-narrow{max-width:653px;margin:0 auto}
+.eyebrow{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;
+  color:var(--text-secondary);margin-bottom:16px}
+.sec-dark .eyebrow{color:var(--accent-soft)}
+h1,h2,h3{font-weight:600;letter-spacing:-0.015em;text-wrap:balance}
+h1{font-size:clamp(40px,7vw,72px);line-height:1.08}
+h2{font-size:clamp(32px,5vw,52px);line-height:1.1;margin-bottom:24px}
+h3{font-size:clamp(20px,3vw,26px);line-height:1.2;margin-bottom:12px}
+.lede{font-size:clamp(18px,2.4vw,21px);color:var(--text-secondary);line-height:1.4;margin-bottom:0;max-width:720px}
+.sec-dark .lede{color:var(--text-on-dark-secondary)}
+p.body{color:var(--text-body);margin-bottom:16px;max-width:720px}
+.sec-dark p.body{color:var(--text-on-dark-secondary)}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* hero */
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;
+  background:var(--bg-dark);color:var(--text-on-dark);padding:120px 24px 80px}
+.hero .eyebrow{color:var(--accent-soft)}
+.hero .sub{font-size:clamp(18px,2.6vw,22px);color:var(--text-on-dark-secondary);
+  margin-top:24px;max-width:640px;line-height:1.45}
+.hero .trust{margin-top:48px;display:flex;gap:40px;flex-wrap:wrap}
+.trust .t .v{font-size:clamp(26px,4vw,40px);font-weight:600;letter-spacing:-0.02em}
+.trust .t .l{font-size:13px;color:var(--text-on-dark-secondary);margin-top:4px}
+
+/* stat trio */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px}
+.stat{background:var(--bg-gray);border-radius:18px;padding:32px 24px;text-align:center}
+.sec-dark .stat,.sec-gray .stat{background:var(--bg-white)}
+.sec-dark .stat{background:var(--bg-dark-2)}
+.stat .v{font-size:clamp(30px,4.5vw,48px);font-weight:600;letter-spacing:-0.02em;line-height:1.05}
+.stat .l{font-size:14px;color:var(--text-secondary);margin-top:8px}
+.sec-dark .stat .l{color:var(--text-on-dark-secondary)}
+.stat .s{font-size:12px;color:var(--text-tertiary);margin-top:6px}
+.sec-dark .stat .s{color:rgba(245,243,245,0.5)}
+
+/* cards */
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:48px}
+.card{background:var(--bg-gray);border-radius:18px;padding:32px}
+.sec-gray .card{background:var(--bg-white)}
+.sec-dark .card{background:var(--bg-dark-2)}
+.card h3{margin-bottom:8px}
+.card p{font-size:15px;color:var(--text-body);line-height:1.5}
+.sec-dark .card p{color:var(--text-on-dark-secondary)}
+.card .no{font-size:14px;font-weight:500;color:var(--accent);letter-spacing:0.02em;margin-bottom:12px;display:block}
+.sec-dark .card .no{color:var(--accent-soft)}
+
+/* ladder table */
+.tablewrap{overflow-x:auto;margin-top:48px;border-radius:18px}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:640px;background:var(--bg-white)}
+.sec-dark table{background:var(--bg-dark-2)}
+th{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.05em;
+  color:var(--text-secondary);text-align:left;padding:14px 16px;border-bottom:1px solid var(--border)}
+.sec-dark th{color:var(--text-on-dark-secondary);border-color:rgba(245,243,245,0.18)}
+td{padding:14px 16px;border-bottom:1px solid var(--border);color:var(--text-body);vertical-align:top}
+.sec-dark td{color:var(--text-on-dark-secondary);border-color:rgba(245,243,245,0.18)}
+tr:last-child td{border-bottom:none}
+td .big{font-weight:600;color:var(--text-primary);font-variant-numeric:tabular-nums}
+.sec-dark td .big{color:var(--text-on-dark)}
+td .note{display:block;font-size:12px;color:var(--text-tertiary);margin-top:2px}
+.sec-dark td .note{color:rgba(245,243,245,0.5)}
+
+/* compare rows */
+.vs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:48px}
+.vs .side{border-radius:18px;padding:32px}
+.vs .dead{background:var(--bg-gray)}
+.vs .alive{background:var(--bg-dark);color:var(--text-on-dark)}
+.vs .side h3{margin-bottom:16px}
+.vs .side ul{list-style:none}
+.vs .side li{font-size:15px;line-height:1.5;padding:8px 0 8px 24px;position:relative;color:var(--text-body)}
+.vs .alive li{color:var(--text-on-dark-secondary)}
+.vs .side li::before{content:"—";position:absolute;left:0;color:var(--text-secondary)}
+.vs .alive li::before{color:var(--accent-soft)}
+
+/* tesla map rows */
+.maprow{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:20px 0;border-bottom:1px solid var(--border);align-items:baseline}
+.sec-dark .maprow{border-color:rgba(245,243,245,0.18)}
+.maprow:last-child{border-bottom:none}
+.maprow .from{font-size:15px;color:var(--text-secondary)}
+.sec-dark .maprow .from{color:rgba(245,243,245,0.5)}
+.maprow .to{font-size:16px;font-weight:500;color:var(--text-primary)}
+.sec-dark .maprow .to{color:var(--text-on-dark)}
+
+/* CTA */
+.cta-row{display:flex;align-items:center;gap:24px;margin-top:48px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:980px;
+  padding:12px 22px;font-size:17px;font-weight:500;min-height:44px;text-decoration:none;
+  transition:background-color 250ms var(--ease-ui),color 250ms var(--ease-ui)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#2f54a8}
+.link{color:var(--accent);text-decoration:underline;text-underline-offset:4px;font-weight:500;
+  font-size:17px;min-height:44px;display:inline-flex;align-items:center}
+.sec-dark .link{color:#a9b8e0}
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.sec-dark a:focus-visible{outline-color:#a9b8e0}
+
+/* footnote */
+.foot-note{font-size:13px;color:var(--text-tertiary);max-width:720px;margin-top:48px;line-height:1.6}
+.sec-dark .foot-note{color:rgba(245,243,245,0.5)}
+
+footer{background:var(--bg-gray);padding:48px 24px;font-size:12px;color:var(--text-tertiary);line-height:1.7}
+footer .wrap{max-width:980px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);
+  transition:transform 800ms var(--ease-enter),opacity 450ms ease-out}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+}
+
+/* mobile */
+@media (max-width:734px){
+  .sec{padding:64px 20px}
+  .hero{padding:96px 20px 64px}
+  .stats,.grid2,.vs{grid-template-columns:1fr}
+  .maprow{grid-template-columns:1fr;gap:4px;padding:16px 0}
+  .card,.vs .side,.stat{padding:28px 20px}
+  h2 br{display:none}
+  .tablewrap{overflow-x:visible}
+  table{min-width:0;display:block;background:transparent}
+  thead{display:none}
+  tbody,tr,td{display:block;width:100%}
+  tbody{background:var(--bg-gray);border-radius:18px;padding:8px 20px}
+  .sec-gray tbody{background:var(--bg-white)}
+  tbody tr{padding:16px 0;border-bottom:1px solid var(--border)}
+  tbody tr:last-child{border-bottom:none}
+  td{border-bottom:none;padding:4px 0;text-align:right;white-space:normal;
+    display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+  td:first-child{font-weight:600;color:var(--text-primary);padding-bottom:8px}
+  td[data-l]::before{content:attr(data-l);font-size:13px;color:var(--text-secondary);
+    text-align:left;flex:0 0 auto;font-weight:400}
+  td .note{text-align:right}
+}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <span class="wordmark">SAIENS</span>
+  <span class="tag">預鑄事業研究・內部分享</span>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Prefab MVP・白話版</p>
+    <h1>第一步不是蓋工廠，<br>是證明我們不需要先蓋工廠。</h1>
+    <p class="sub">預鑄建築事業的最小可行版本（MVP），啟動資金 <span class="num">NT$0.8–1.5 億</span>——這一頁用 15 分鐘，把「預鑄是什麼、一座廠要多少錢、為什麼第一步偏偏不蓋廠」講成白話。</p>
+    <div class="trust">
+      <div class="t"><div class="v num">5 份</div><div class="l">國際案例研究打底（2026-08）</div></div>
+      <div class="t"><div class="v num">NT$3–33 億</div><div class="l">一座預鑄廠的真實價格帶</div></div>
+      <div class="t"><div class="v num">US$20 億+</div><div class="l">Katerra 用來教我們的學費</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S1 什麼是預鑄 -->
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow rv">01・預鑄是什麼</p>
+    <h2 class="rv">把工地搬進工廠。</h2>
+    <p class="body rv">傳統蓋房子：工人在戶外現場綁鋼筋、灌混凝土，看天吃飯、看師傅手感。<strong>預鑄（precast）</strong>：把牆板、柱、梁、樓板變成標準零件，在工廠裡像生產線一樣做好，再運到工地用吊車組起來——像組裝一台車，或是放大一萬倍的樂高。</p>
+    <p class="body rv">為什麼值得做？因為工廠能做到工地做不到的三件事：</p>
+    <div class="stats">
+      <div class="stat rv"><div class="v num">-50%</div><div class="l">工期最多縮短</div><div class="s">供應商數據（Elematic）</div></div>
+      <div class="stat rv"><div class="v num">3–7%</div><div class="l">工廠材料損耗（現場 5–10%）</div><div class="s">供應商數據（Elematic）</div></div>
+      <div class="stat rv"><div class="v num">-45%</div><div class="l">混凝土用量最多減少</div><div class="s">以空心板 vs 現澆為例</div></div>
+    </div>
+    <p class="foot-note rv">賣點一個詞：<strong>確定性</strong>。工期準、品質準、成本準——對蓋物流倉庫、科技廠房、資料中心這種「晚一天賠一天」的業主，確定性本身就是錢。</p>
+  </div>
+</section>
+
+<!-- S2 台灣為什麼現在 -->
+<section class="sec sec-gray">
+  <div class="wrap">
+    <p class="eyebrow rv">02・為什麼是現在</p>
+    <h2 class="rv">台灣的需求端，已經排隊排到門外。</h2>
+    <p class="body rv">台灣預鑄的龍頭是潤弘精密（潤泰集團）。看它的公開數字，你會發現這個市場現在最不缺的就是客戶：</p>
+    <div class="stats">
+      <div class="stat rv"><div class="v num">4 倍</div><div class="l">潤弘產能擴充倍數——仍供不應求</div><div class="s">2025-07 法說（自由時報）</div></div>
+      <div class="stat rv"><div class="v num">1,300 億+</div><div class="l">潤弘在手合約（元）</div><div class="s">2026-07 法說（媒體標題級）</div></div>
+      <div class="stat rv"><div class="v num">15–20%</div><div class="l">預鑄占建案總成本比重</div><div class="s">潤弘公開說法</div></div>
+    </div>
+    <p class="body rv" style="margin-top:48px">背後的推力：缺工、工資大漲、台積電與 AI 資料中心建設潮。潤弘 2024 年營收 <span class="num">262.37 億元</span>、毛利率 <span class="num">17.78%</span>——證明這個生意在台灣做得起來。它滿載接不完的單，就是市場留給新進者的空間。</p>
+  </div>
+</section>
+
+<!-- S3 一座廠多少錢 -->
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow rv">03・一座廠要多少錢</p>
+    <h2 class="rv">先看清楚價格帶，<br>再決定要不要買票進場。</h2>
+    <p class="body rv">預鑄設備商全世界都不公開報價（要拿廠房規格去正式詢價），但 2025–2026 年的公開新聞給了我們可靠的量級錨點：</p>
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th>案例</th><th>投資額</th><th>約合台幣</th><th>型態</th></tr></thead>
+        <tbody>
+          <tr><td>Coastal Precast（美國）</td><td data-l="投資額"><span class="big num">US$900 萬</span></td><td data-l="約合台幣"><span class="num">≈3 億</span></td><td data-l="型態">小型衛星廠・70 人</td></tr>
+          <tr><td>Systembau Eder（奧地利）</td><td data-l="投資額"><span class="big num">€1,200 萬</span></td><td data-l="約合台幣"><span class="num">≈4.2 億</span></td><td data-l="型態">全自動牆板廠</td></tr>
+          <tr><td>Lujabetoni（芬蘭）</td><td data-l="投資額"><span class="big num">€2,000 萬</span></td><td data-l="約合台幣"><span class="num">≈7 億</span></td><td data-l="型態">4 條長線台・3 萬 m² 廠房</td></tr>
+          <tr><td>新加坡 ICPH 預鑄樞紐</td><td data-l="投資額"><span class="big num">S$1 億+</span></td><td data-l="約合台幣"><span class="num">≈24 億</span></td><td data-l="型態">政府規格多層自動化廠<span class="note">業者自述可能 30 年才回本</span></td></tr>
+          <tr><td>Fit Precast（美國）</td><td data-l="投資額"><span class="big num">US$1.02 億</span></td><td data-l="約合台幣"><span class="num">≈33 億</span></td><td data-l="型態">大型全新建廠・125 人</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="foot-note rv">匯率以約 33（USD）、35（EUR）、24（SGD）換算取整，僅供量級感。各案產能規格不一，非嚴格可比；新加坡 ICPH 數字為業界普遍引述、未經官方財報驗證。</p>
+    <p class="body rv" style="margin-top:24px">結論：一座像樣的預鑄廠，<strong>入場費 3 億起跳、主流 5–10 億、旗艦 30 億</strong>。這是第二輪融資（A 輪）的事——但在花這筆錢之前，有一課必須先上。</p>
+  </div>
+</section>
+
+<!-- S4 Katerra -->
+<section class="sec sec-dark">
+  <div class="wrap">
+    <p class="eyebrow rv">04・US$20 億的一堂課</p>
+    <h2 class="rv">Katerra：先蓋工廠的人，<br>替我們付清了學費。</h2>
+    <p class="body rv">Katerra 是軟銀投資的美國營建獨角獸，喊的口號跟所有人一樣：「用製造業改造營建業」。它募了 <span class="num">20–30 億美元</span>，蓋了三座大廠（光木構廠就花 <span class="num">1.5 億美元</span>），然後在 2021 年破產。屍檢報告裡最誠實的一句話：<strong>它從頭到尾沒有公開過任何一座工廠的稼動率</strong>——因為工廠先蓋了，訂單一直沒跟上。</p>
+    <div class="vs">
+      <div class="side dead rv">
+        <h3 style="color:var(--text-primary)">先蓋廠的（都死了）</h3>
+        <ul>
+          <li>Katerra——燒 20 億美元+，2021 破產</li>
+          <li>Veev、Blu Homes、Mighty Buildings、Entekra——同期重資產預製新創，全數倒閉</li>
+          <li>新加坡 ICPH——政府保底需求＋補助 70%，仍有業者估 30 年回本、稼動率僅 50–80%</li>
+        </ul>
+      </div>
+      <div class="side alive rv">
+        <h3>先拿訂單的（都活著）</h3>
+        <ul>
+          <li>潤弘——1995 年舊紡織廠改造起家，30 年跟著訂單逐步擴產</li>
+          <li>日本大和、積水——工廠是集團體系一環，segment 利益率 6–15%</li>
+          <li>瑞典 Lindbäcks——單一產品線，擴產 100% 只加 20% 面積人力</li>
+          <li>新一代 AI 營建新創（AUAR、Cuby）——乾脆不自持工廠，賣系統</li>
+        </ul>
+      </div>
+    </div>
+    <p class="body rv" style="margin-top:48px">三個國家的深度研究收斂成同一句話：<strong>工廠是最後蓋的，不是最先蓋的。</strong>需求先、系統先、工廠最後——這就是我們 MVP 的設計原點。</p>
+  </div>
+</section>
+
+<!-- S5 Tesla-Lotus -->
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow rv">05・我們的 Lotus 底盤</p>
+    <h2 class="rv">Tesla 的第一台車，<br>是借別人的底盤造的。</h2>
+    <p class="body rv">2008 年的 Tesla Roadster 用 Lotus 的底盤——不是偷懶，是聰明：先證明「電動車有人買」，再回頭蓋自己的超級工廠。把這個劇本翻譯到預鑄：</p>
+    <div class="wrap-narrow" style="margin:48px auto 0;max-width:820px">
+      <div class="maprow rv"><div class="from">Tesla：Lotus 底盤，不自建車廠</div><div class="to">構件給既有預鑄廠、鋼構廠<strong>代工</strong>——台灣龍頭滿載，二線廠有閒置產能</div></div>
+      <div class="maprow rv"><div class="from">Tesla：自研動力總成＋軟體</div><div class="to">自建 <strong>AI 設計-製造管線</strong>——圖紙自動拆構件、出製造圖、排代工廠生產</div></div>
+      <div class="maprow rv"><div class="from">Tesla：高端小量首發</div><div class="to"><strong>一個旗艦示範案</strong>（物流倉儲/廠房級），拍成教材</div></div>
+      <div class="maprow rv"><div class="from">Tesla：直營、跳過經銷商</div><div class="to">直接面對開發商，賣「工期＋精度＋低碳」的交付結果</div></div>
+    </div>
+    <p class="body rv" style="margin-top:48px">所以 MVP 是一家<strong>「不碰混凝土的預鑄公司」</strong>：10–15 人的工程與 AI 團隊，設計、整合、吊裝管理自己來，製造全代工。代工廠賺加工費，<strong>我們賺兩樣東西：整合的利潤，和每一片構件的數據</strong>。</p>
+  </div>
+</section>
+
+<!-- S6 AI 槓桿 -->
+<section class="sec sec-gray">
+  <div class="wrap">
+    <p class="eyebrow rv">06・AI 為什麼是真槓桿</p>
+    <h2 class="rv">成熟的用買的，<br>空白的自己建。</h2>
+    <p class="body rv">「AI ＋機器人」很容易變口號。我們查清楚了全球現況，把它拆成三層——每一層買或建，界線分明：</p>
+    <div class="grid2" style="grid-template-columns:1fr;max-width:820px">
+      <div class="card rv"><span class="no">L1・用買的｜設計直通產線</span>
+        <h3>歐洲 30 年的成熟貨架</h3>
+        <p>BIM 圖紙直通生產機台（Tekla／Planbar → 產線系統）、自動置模機器人、鋼網焊接機、鋼筋機器人（TyBot 明碼標價 <span class="num">US$425,000</span> 起）——全是可以下訂單的商品。這一層不重新發明，day-1 直接站在貨架上。</p></div>
+      <div class="card rv"><span class="no">L2・自己建｜AI 差異層</span>
+        <h3>全世界都還停在論文的空白區</h3>
+        <p>AI 視覺品檢（研究準確率 96–98%，但無經驗證的商用案例）、AI 生產排程、自動化構件拆圖（DfMA）——查遍全球，這一層還沒有人做出被驗證的產品。這正是山恩 AI 團隊的主場：別人有工廠沒軟體，我們先有軟體。</p></div>
+      <div class="card rv"><span class="no">L3・獨有｜數據飛輪</span>
+        <h3>蓋得越多，報價越準</h3>
+        <p>每片構件的生產、運輸、吊裝數據回流系統——第 10 案的報價比第 1 案準，第 50 案的設計比第 10 案省。Katerra 死因之一是「業務改報價、工程追不上」；我們讓報價由數據生成，業務改不動物理。</p></div>
+    </div>
+    <p class="body rv" style="margin-top:48px">一句話定位：<strong>潤弘是預鑄工法的統包公司；我們是 AI 管線公司，預鑄是它的第一個應用場景。</strong></p>
+  </div>
+</section>
+
+<!-- S7 路線圖 -->
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow rv">07・路線圖</p>
+    <h2 class="rv">每一關賺到證據，<br>才解鎖下一關的資本。</h2>
+    <div class="grid2">
+      <div class="card rv"><span class="no">Stage 0・現在–2026 底｜NT$0</span>
+        <h3>證據期</h3>
+        <p>AI 切片原型（真實圖紙試跑自動拆構件）、示範案意向書、代工產能盤點。零外部資金，成本是時間。<strong>三者齊備才成立公司。</strong></p></div>
+      <div class="card rv"><span class="no">Stage 1・2027｜Seed NT$0.8–1.5 億</span>
+        <h3>Roadster 期（本頁主角）</h3>
+        <p>交付旗艦示範案＋2–3 個跟進案，AI 管線 v1 上線，10–15 人團隊。不買任何重設備。<strong>過關條件：工期實證＋管線重複使用＋在手訂單 ≥ 未來產線產能六成。</strong></p></div>
+      <div class="card rv"><span class="no">Stage 2・2028–29｜A 輪 NT$5–10 億</span>
+        <h3>Model S 期</h3>
+        <p>這時才建產線——而且只做代工廠做不到的：低碳材料構件＋高精度自動化構件。既有廠房改造入門（設備商官方背書的低投資路徑），一般構件持續代工。</p></div>
+      <div class="card rv"><span class="no">Stage 3・2029–31｜B 輪／策略輪</span>
+        <h3>出海期</h3>
+        <p>跟著錨定客戶把系統帶到美國、日本。複製的是「AI 管線＋廠設計＋品管體系」這套系統，不是廠房本身。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S8 錢花在哪 -->
+<section class="sec sec-dark">
+  <div class="wrap">
+    <p class="eyebrow rv">08・所以，第一步要多少錢</p>
+    <h2 class="rv">NT$0.8–1.5 億，三個口袋。</h2>
+    <div class="stats">
+      <div class="stat rv"><div class="v num">50%</div><div class="l">團隊</div><div class="s">10–15 人工程＋AI，18–24 個月</div></div>
+      <div class="stat rv"><div class="v num">20%</div><div class="l">AI 管線 v1</div><div class="s">自建差異層＋採購成熟件</div></div>
+      <div class="stat rv"><div class="v num">30%</div><div class="l">示範案墊資與履約</div><div class="s">代工採購、品管派駐、保險保證</div></div>
+    </div>
+    <p class="body rv" style="margin-top:48px">沒有一毛錢買重設備。花掉這筆錢，換回三樣資產：<strong>一個蓋好的示範案（實證數字）、一條跑通的 AI 管線（可重複使用）、一批排隊的訂單（解鎖建廠）</strong>。到那一天，5–10 億的產線投資就不再是賭注，是履約。</p>
+    <div class="cta-row rv">
+      <a class="btn btn-primary" href="/prefab-mvp-bp/">看完整商業計劃書</a>
+      <a class="link" href="#top" onclick="window.scrollTo({top:0});return false;">回到最上面 ›</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本頁為內部研究分享，基於 2026 年 8 月之公開資訊研究與內部規劃；標示「供應商數據」者為設備商自述、未經第三方驗證。所有金額為量級參考，非要約或承諾。內容涉及之任何第三方公司均為公開資訊研究，不代表已有洽談、合作或承諾。未經同意請勿轉發。</p>
+    <p style="margin-top:8px">Saiens 山恩實業・預鑄事業研究・2026-08-30</p>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+const onScroll=()=>{nav.classList.toggle('solid',window.scrollY>window.innerHeight*0.7)};
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4*40)+'ms';io.observe(el)});
+</script>
+</body>
+</html>

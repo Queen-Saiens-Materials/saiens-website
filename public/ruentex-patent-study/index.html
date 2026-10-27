@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>潤弘精密專利地圖｜山恩內部研究</title>
+<meta property="og:title" content="潤弘精密專利地圖──結構預鑄視角">
+<meta property="og:description" content="466 件盤點＋10 件現役專利請求項深讀：真正的硬牆只有一個工法家族，物流倉儲預鑄是台灣的實質空檔。">
+<meta property="og:image" content="https://saiens.group/ruentex-patent-study/og.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+:root{
+  --text-primary:#302b27;
+  --text-body:#4a443e;
+  --text-secondary:#857f7a;
+  --text-tertiary:#6b655f;
+  --bg-white:#ffffff;
+  --bg-gray:#f5f3f5;
+  --bg-dark:#1b264f;
+  --bg-dark-2:#243158;
+  --text-on-dark:#f5f3f5;
+  --text-on-dark-secondary:rgba(245,243,245,0.72);
+  --text-on-dark-tertiary:rgba(245,243,245,0.5);
+  --accent:#274690;
+  --accent-hover:#2f54a8;
+  --accent-soft:#576ca8;
+  --border:#ddd8dd;
+  --border-on-dark:rgba(245,243,245,0.18);
+  --bar-neutral:#c9c3bd;
+  --radius-card:18px;
+  --radius-media:12px;
+  --z-nav:100;
+  --ease-ui:ease-out;
+  --ease-enter:cubic-bezier(0.16,1,0.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+b,strong{font-weight:600}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans TC",sans-serif;
+  color:var(--text-primary);
+  background:var(--bg-white);
+  font-size:17px;
+  line-height:1.47;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:rgba(39,70,144,0.15)}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:4px}
+a:hover{color:var(--accent-hover)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---- nav ---- */
+nav{
+  position:sticky;top:0;z-index:var(--z-nav);
+  height:48px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;
+  background:rgba(255,255,255,0.8);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+}
+nav .wordmark{font-size:14px;font-weight:500;color:var(--text-primary);text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+nav .links{display:flex;gap:24px}
+nav .links a{font-size:13px;font-weight:500;color:var(--text-secondary);text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+nav .links a:hover{color:var(--text-primary)}
+
+/* ---- shared section rhythm ---- */
+section{padding:120px 24px}
+.container{max-width:980px;margin:0 auto}
+.eyebrow{
+  font-size:13px;font-weight:500;text-transform:uppercase;
+  letter-spacing:0.08em;color:var(--text-secondary);margin-bottom:16px;
+}
+h1{font-size:clamp(40px,7vw,72px);font-weight:600;line-height:1.1;letter-spacing:-0.02em;text-wrap:balance}
+h2{font-size:clamp(30px,4.5vw,48px);font-weight:600;line-height:1.15;letter-spacing:-0.015em;margin-bottom:24px;text-wrap:balance}
+h3{font-size:24px;font-weight:600;line-height:1.25;letter-spacing:-0.01em;margin-bottom:12px}
+.subhead{font-size:21px;line-height:1.4;color:var(--text-secondary);max-width:653px}
+p{color:var(--text-body)}
+.section-dark{background:var(--bg-dark);color:var(--text-on-dark)}
+.section-dark h2,.section-dark h3{color:var(--text-on-dark)}
+.section-dark p{color:var(--text-on-dark-secondary)}
+.section-dark .eyebrow{color:var(--accent-soft)}
+.section-gray{background:var(--bg-gray)}
+.num{white-space:nowrap}
+
+/* ---- hero ---- */
+header.hero{
+  background:var(--bg-dark);color:var(--text-on-dark);
+  padding:140px 24px 120px;text-align:center;
+}
+header.hero .eyebrow{color:var(--accent-soft)}
+header.hero .subhead{color:var(--text-on-dark-secondary);margin:28px auto 0}
+.hero-verdict{
+  margin:48px auto 0;max-width:720px;
+  font-size:clamp(21px,3vw,28px);font-weight:600;line-height:1.35;
+  letter-spacing:-0.01em;color:var(--text-on-dark);
+}
+.hero-meta{margin-top:56px;font-size:13px;color:var(--text-on-dark-tertiary)}
+
+/* ---- stat tiles ---- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:56px}
+.stat{background:var(--bg-gray);border-radius:var(--radius-card);padding:32px 24px;text-align:center}
+.stat .v{font-size:clamp(34px,4vw,48px);font-weight:600;letter-spacing:-0.02em;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat .l{font-size:14px;color:var(--text-secondary);margin-top:8px;line-height:1.35}
+.section-dark .stat{background:var(--bg-dark-2)}
+.section-dark .stat .l{color:var(--text-on-dark-secondary)}
+
+/* ---- bar map ---- */
+.barmap{margin-top:56px;display:flex;flex-direction:column;gap:20px}
+.bar-row{display:grid;grid-template-columns:170px 1fr;gap:16px;align-items:center}
+.bar-row .name{font-size:15px;font-weight:500;text-align:right;line-height:1.3}
+.bar-row .track{display:flex;align-items:center;gap:12px;min-height:28px}
+.bar-row .bar{height:20px;border-radius:0 4px 4px 0;background:var(--bar-neutral);min-width:3px}
+.bar-row .count{font-size:14px;color:var(--text-secondary);font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar-row.focus .bar{background:var(--accent)}
+.bar-row.focus .name,.bar-row.focus .count{color:var(--accent);font-weight:600}
+.bar-note{margin-top:24px;font-size:14px;color:var(--text-tertiary);max-width:720px}
+
+/* ---- timeline waves ---- */
+.waves{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:56px}
+.wave{background:var(--bg-dark-2);border-radius:var(--radius-card);padding:32px 28px}
+.wave .era{font-size:14px;font-weight:500;color:var(--accent-soft);text-transform:uppercase;letter-spacing:0.08em}
+.wave h3{margin-top:12px}
+.wave p{font-size:15px;line-height:1.5;margin-top:8px}
+.wave .tag{display:inline-block;margin-top:16px;font-size:13px;font-weight:500;
+  padding:5px 14px;border-radius:980px;border:1px solid var(--border-on-dark);color:var(--text-on-dark-secondary)}
+.wave .tag.open{border-color:rgba(245,243,245,0.35);color:var(--text-on-dark)}
+.wave .tag.live{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ---- tables ---- */
+.table-wrap{overflow-x:auto;max-width:100%;margin-top:48px;border-radius:var(--radius-media)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;
+  color:var(--text-secondary);text-align:left;padding:12px 16px;border-bottom:1px solid var(--border)}
+td{padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text-body);line-height:1.45}
+td:first-child{font-weight:500;color:var(--text-primary)}
+.risk{display:inline-block;font-size:13px;font-weight:600;padding:3px 12px;border-radius:980px;white-space:nowrap}
+.risk-low{background:var(--bg-gray);color:var(--text-primary)}
+.risk-mid{background:var(--accent);color:#fff}
+.risk-na{background:transparent;color:var(--text-tertiary);border:1px solid var(--border)}
+
+/* ---- moat cards ---- */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:56px}
+.card{background:var(--bg-dark-2);border-radius:var(--radius-card);padding:40px 32px}
+.card .idx{font-size:14px;font-weight:500;color:var(--accent-soft);font-variant-numeric:tabular-nums}
+.card h3{margin-top:12px}
+.card p{font-size:15px;line-height:1.5}
+
+/* ---- action list ---- */
+.actions{margin-top:56px;display:flex;flex-direction:column;gap:0}
+.action{display:grid;grid-template-columns:64px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid var(--border)}
+.action:first-child{border-top:1px solid var(--border)}
+.action .idx{font-size:21px;font-weight:600;color:var(--text-secondary);font-variant-numeric:tabular-nums;letter-spacing:-0.01em}
+.action h3{font-size:19px;margin-bottom:6px}
+.action p{font-size:15px;line-height:1.5}
+.redflag{
+  margin-top:56px;background:var(--bg-dark);color:var(--text-on-dark);
+  border-radius:var(--radius-card);padding:48px 40px;
+}
+.redflag .eyebrow{color:var(--accent-soft);margin-bottom:12px}
+.redflag h3{color:var(--text-on-dark);font-size:24px}
+.redflag p{color:var(--text-on-dark-secondary);font-size:15px;margin-top:10px;max-width:720px}
+
+/* ---- footer ---- */
+footer{background:var(--bg-gray);padding:64px 24px;font-size:12px;color:var(--text-tertiary)}
+footer .container{display:flex;flex-direction:column;gap:16px}
+footer p{color:var(--text-tertiary);font-size:12px;line-height:1.6;overflow-wrap:break-word}
+footer a{color:var(--text-tertiary)}
+
+/* ---- reveal ---- */
+.reveal{opacity:0;transform:translateY(24px);
+  transition:transform 800ms var(--ease-enter),opacity 450ms var(--ease-ui)}
+.reveal.on{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* ---- mobile ---- */
+@media (max-width:734px){
+  section{padding:56px 20px}
+  header.hero{padding:96px 20px 64px}
+  nav .links{display:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .waves{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .bar-row{grid-template-columns:1fr;gap:6px}
+  .bar-row .name{text-align:left}
+  .action{grid-template-columns:40px 1fr;gap:12px;padding:24px 0}
+  .redflag{padding:32px 24px}
+  h2 br{display:none}
+  table thead{display:none}
+  table,table tbody,table tr,table td{display:block;width:100%}
+  table tr{padding:18px 0;border-bottom:1px solid var(--border)}
+  table td{padding:2px 0;border-bottom:none}
+  table td:nth-child(2){margin:4px 0}
+  table td:nth-child(3){font-size:14px;color:var(--text-tertiary)}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="頁內導覽">
+  <a class="wordmark" href="#top">山恩・內部研究</a>
+  <div class="links">
+    <a href="#numbers">數字真相</a>
+    <a href="#map">技術地圖</a>
+    <a href="#claims">請求項判決</a>
+    <a href="#segments">業態評估</a>
+    <a href="#action">行動指南</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="container">
+    <p class="eyebrow">內部研究・2026-08-31・結構預鑄視角 v2・非法律意見</p>
+    <h1>潤弘精密專利地圖</h1>
+    <p class="subhead">「700 項專利」到底是什麼、集中在哪裡、對走結構預鑄的我們真正擋住了什麼——466 件盤點、10 件現役專利請求項逐條深讀的完整答案。</p>
+    <p class="hero-verdict">結論先講：逐條讀完請求項，真正的硬牆只有一個工法家族，而我們的技術路線天然繞開它。物流倉儲預鑄，是台灣的實質空檔。</p>
+    <p class="hero-meta">資料來源：Google Patents 全量抓取＋10 件 claims 全文・潤弘官網與法說・TIPO 法規・30+ 公開來源交叉驗證</p>
+  </div>
+</header>
+
+<main>
+
+<section id="numbers">
+  <div class="container">
+    <p class="eyebrow reveal">01・數字真相</p>
+    <h2 class="reveal">788、753、700、466——<br>哪個才是真的？</h2>
+    <p class="subhead reveal">都是真的，但講的不是同一個池子。媒體口徑混亂的原因：「潤弘公司名下」與「尹衍樑個人名下」是兩個重疊但不同的專利池，且「累計取得」包含大量已失效專利。</p>
+    <div class="stats">
+      <div class="stat reveal"><div class="v">788</div><div class="l">公司自稱累計專利<br>（2025-07 法說口徑）</div></div>
+      <div class="stat reveal"><div class="v">753</div><div class="l">尹衍樑個人名下<br>（跨 19 國，2026-05 辭世）</div></div>
+      <div class="stat reveal"><div class="v">466</div><div class="l">實查公司名下公開號<br>（Google Patents 全量）</div></div>
+      <div class="stat reveal"><div class="v">~80%</div><div class="l">早期新型專利<br>已逾 10 年期限失效</div></div>
+    </div>
+    <p class="bar-note reveal">實查 466 件中：發明 233、新型 233；中國 269、台灣 158、美國 33。同一發明的多國家族成員重複計入，按家族去重後實際發明數明顯更少。「788」是含已失效專利的累計榮譽數字，不是現役武器數。真正要面對的，是 2017 年後約 164 件存續發明——本研究把其中最關鍵的 10 件讀到了請求項層級。</p>
+  </div>
+</section>
+
+<section class="section-gray" id="map">
+  <div class="container">
+    <p class="eyebrow reveal">02・技術地圖</p>
+    <h2 class="reveal">火力集中在結構工程——<br>正是我們要進的領域</h2>
+    <p class="subhead reveal">466 件逐件分群：預鑄構件、鋼筋箍筋、接頭接合、模具設備。這次我們不是繞著走，是要正面理解每一道牆的實際範圍。</p>
+    <div class="barmap reveal" role="img" aria-label="潤弘專利技術分群長條圖：預鑄構件約 156 件、鋼筋箍筋約 68 件、材料配方約 57 件、接頭接合約 33 件、施工吊裝約 29 件、模具模板約 25 件、格子板約 15 件、機電節能約 12 件、衛浴內裝僅 2 至 4 件">
+      <div class="bar-row"><div class="name">預鑄柱樑板牆構件</div><div class="track"><div class="bar" style="width:100%"></div><span class="count">~156 件</span></div></div>
+      <div class="bar-row"><div class="name">鋼筋・多螺旋箍筋</div><div class="track"><div class="bar" style="width:44%"></div><span class="count">~68 件</span></div></div>
+      <div class="bar-row"><div class="name">混凝土材料配方</div><div class="track"><div class="bar" style="width:37%"></div><span class="count">~57 件</span></div></div>
+      <div class="bar-row"><div class="name">梁柱接頭・續接</div><div class="track"><div class="bar" style="width:21%"></div><span class="count">~33 件</span></div></div>
+      <div class="bar-row"><div class="name">施工方法・吊裝</div><div class="track"><div class="bar" style="width:19%"></div><span class="count">~29 件</span></div></div>
+      <div class="bar-row"><div class="name">模具・模板</div><div class="track"><div class="bar" style="width:16%"></div><span class="count">~25 件</span></div></div>
+      <div class="bar-row focus"><div class="name">格子板（科技廠房）</div><div class="track"><div class="bar" style="width:10%"></div><span class="count">~15 件</span></div></div>
+      <div class="bar-row"><div class="name">機電・節能</div><div class="track"><div class="bar" style="width:8%"></div><span class="count">~12 件</span></div></div>
+      <div class="bar-row"><div class="name">衛浴・內裝模組</div><div class="track"><div class="bar" style="width:2.5%"></div><span class="count">僅 2–4 件</span></div></div>
+    </div>
+    <p class="bar-note reveal">藍色列是唯一經請求項深讀後確認的現役硬牆所在：科技廠房格子樓版工法（見第 04 節）。其餘大類看似龐大，但逐條讀請求項後發現——潤弘圈的是「自家的做法」，不是整個預鑄業。最有力的證據：整棟施工方法專利（US10760260B2）保護的正是它自己「預鑄柱＋現場澆梁＋階梯推進」的混合工法，全預鑄路線根本不在其中。</p>
+  </div>
+</section>
+
+<section class="section-dark" id="expiry">
+  <div class="container">
+    <p class="eyebrow reveal">03・到期線</p>
+    <h2 class="reveal">第一代工法已成公版知識，<br>現役高牆守的是科技廠房</h2>
+    <p class="subhead reveal" style="color:var(--text-on-dark-secondary)">專利申請呈兩波：2003–2010 奠基期與 2017 至今的科技廠房期。第一波的牆，今天大多已經不存在了。</p>
+    <div class="waves">
+      <div class="wave reveal">
+        <p class="era">1995–2010・奠基期</p>
+        <h3>潤泰工法第一代</h3>
+        <p>接頭群 TWM 新型全數到期；一筆箍、年年發等 21 項鋼筋工法被尹衍樑主動無償釋出（2008／2010）；格子板第一代、預力預鑄均已期滿。多螺箍美國版 2026 年 10 月到期。</p>
+        <span class="tag open">已到期或已開放——可自由借鑑</span>
+      </div>
+      <div class="wave reveal">
+        <p class="era">2011–2016・低谷</p>
+        <h3>轉型醞釀</h3>
+        <p>六年僅約 52 件申請。重心放在營運複製與中國技術輸出（5 套技術、每套約 RMB <span class="num">3,000</span> 萬）。另一批格子板產品專利的台灣家族只是新型，2027-09～2028-03 陸續到期。</p>
+        <span class="tag">多數將於 2031 年前陸續到期</span>
+      </div>
+      <div class="wave reveal">
+        <p class="era">2017 至今・科技廠房期</p>
+        <h3>現役護城河</h3>
+        <p>約 164 件存續發明：格子板 2.0、二代接合、鋼筋籠自動化設備、BIM，保護至 2037–2045。聽起來嚇人——但請求項逐條讀完後，真正擋路的只有一個工法家族（見下節）。</p>
+        <span class="tag live">存續中——範圍比想像窄得多</span>
+      </div>
+    </div>
+    <p class="bar-note reveal" style="color:var(--text-on-dark-tertiary)">另一個關鍵事實：檢索智慧財產法院與新聞資料庫，找不到潤弘任何一件專利訴訟或警告函紀錄。它的專利策略是防禦、授權變現與開放擴散——不是拿來告人的。</p>
+  </div>
+</section>
+
+<section id="claims">
+  <div class="container">
+    <p class="eyebrow reveal">04・請求項判決</p>
+    <h2 class="reveal">10 件現役關鍵專利，<br>逐條讀完的判決書</h2>
+    <p class="subhead reveal">台灣侵權判斷採全要件原則：缺獨立請求項的任一必要特徵即不侵權。以下 10 件全數取得 claims 全文（美國專利只擋美國，台灣蓋案看 TW 家族）。</p>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th scope="col">專利（TW 家族）</th><th scope="col">判決</th><th scope="col">白話理由</th></tr></thead>
+        <tbody>
+          <tr><td>格子樓版現場澆置工法<br>TWI803435B（至 2042）</td><td><span class="risk risk-mid">唯一硬牆</span></td><td>柱上鋪底模＋雙向預組鋼筋籠＋現場澆置——潤弘科技廠房樓版的現行核心，且 2024–25 仍在增件。接廠房案必須先做 FTO</td></tr>
+          <tr><td>乾式螺栓端板接頭<br>TWI674345B（至 2038）</td><td><span class="risk risk-mid">半堵牆</span></td><td>只擋「柱埋拉力棒＋梁端板螺栓鎖固」這一種接頭；濕式、牛腿、套筒全開放</td></tr>
+          <tr><td>整棟施工方法<br>TWI662172B（至 2038）</td><td><span class="risk risk-low">紙老虎</span></td><td>必要步驟是「吊鋼筋籠＋現場立模澆梁＋階梯推進」——全預鑄梁路線天然缺此步驟，不落入</td></tr>
+          <tr><td>格子板塞件系統<br>TWM561114U（新型）</td><td><span class="risk risk-low">2027-09 到期</span></td><td>塞件是必要元件，不用它就不落入；台灣端只是新型，一年後消失</td></tr>
+          <tr><td>格子板抗剪鋼板<br>TWM558267U（新型）</td><td><span class="risk risk-low">2027-09 到期</span></td><td>極特定的板梁承壓幾何；改牛腿或直接擱置即繞開</td></tr>
+          <tr><td>SRC 十字鋼板接頭<br>TWM565222U（新型）</td><td><span class="risk risk-low">2028-03 到期</span></td><td>RC 全預鑄完全無關；新型行使還須先取得技術報告</td></tr>
+          <tr><td>自動化鋼筋籠<br>TWI743003B（至 2041）</td><td><span class="risk risk-low">窄權利</span></td><td>限定「單一連續彎折＋蓋狀扣合」幾何；傳統綁紮、螺旋箍、焊網籠全不落入</td></tr>
+          <tr><td>半預鑄梁吊具<br>TWI730449B（至 2039）</td><td><span class="risk risk-low">不擋路</span></td><td>只擋該特定勾箍筋吊具；預埋吊環／螺紋吊點是業界標準做法</td></tr>
+          <tr><td>BIM 資訊處理<br>TWI731400B（至 2039）</td><td><span class="risk risk-low">紙老虎</span></td><td>每個獨立項都被「建築能源模擬軟體規則」綁死；我們的 BIM→DfMA→shop drawing 管線用途完全不同，零障礙</td></tr>
+          <tr><td>內部結構施工方法<br>TWI720486B（至 2039）</td><td><span class="risk risk-na">不相交</span></td><td>保護的是住宅浴廁＋樓梯施工順序；物流倉、廠房、資料中心無此序列。舊紅旗解除</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="bar-note reveal">最重要的發現藏在整棟施工方法專利裡：它是潤弘自家「預鑄柱＋場鑄梁」混合工法的忠實寫照——這證明潤弘的專利牆圈的是自己的做法，不是整個預鑄業。侷限：這是 164 件中 10 件關鍵樣本的工程判讀，非法律意見；格子板與接頭子家族仍有未逐件檢視者。</p>
+  </div>
+</section>
+
+<section class="section-gray" id="segments">
+  <div class="container">
+    <p class="eyebrow reveal">05・業態評估</p>
+    <h2 class="reveal">四個業態，<br>四種完全不同的地形</h2>
+    <p class="subhead reveal">結構預鑄不是一個市場，是好幾個。跟隨 ALP 錨定需求的每一個業態，專利地形差異極大——而主計畫選的起點，正好落在最開闊的那塊。</p>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th scope="col">業態</th><th scope="col">專利地形</th><th scope="col">依據</th></tr></thead>
+        <tbody>
+          <tr><td>物流倉儲（Stage 1 起點）</td><td><span class="risk risk-low">實質空檔</span></td><td>雙T板、長線預力、大跨梁、坡道全是數十年公版技術，未發現台灣現役地雷；潤弘查無任何物流倉實績；ALP 自己零專利。台灣可能根本沒人量產雙T板——空檔即機會</td></tr>
+          <tr><td>資料中心</td><td><span class="risk risk-low">接近空白</span></td><td>結構殼體是公版；專利密集在機電模組層（Compass、Schneider，美國）；台灣無在地實績、潤弘缺席</td></tr>
+          <tr><td>科技廠房</td><td><span class="risk risk-mid">帶 FTO 進場</span></td><td>潤弘主戰場＋唯一硬牆（格子樓版工法家族）。不是不能做：走「全預鑄拼板」而非現場澆置，投標前對格子板家族做正式 FTO</td></tr>
+          <tr><td>AI 設計-製造管線（我們的核心層）</td><td><span class="risk risk-low">零障礙</span></td><td>潤弘唯一的 BIM 專利被能源模擬限定綁死；BIM→DfMA 自動化全球仍停在論文層級——空白即護城河機會</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="bar-note reveal">競局補充：德欣（雲林代工老廠）2024 年已被潤泰材以 17.9 億入股收編；根基×日本東方白石的冠和 2027 年才試產且瞄準科技廠房；東和鋼鐵是鋼構替代解不是預鑄同業。物流倉儲預鑄的空檔，目前沒有人在補。</p>
+  </div>
+</section>
+
+<section class="section-dark" id="moat">
+  <div class="container">
+    <p class="eyebrow reveal">06・護城河真相</p>
+    <h2 class="reveal">潤弘真正的壁壘，<br>從來不是那 700 張證書</h2>
+    <p class="subhead reveal" style="color:var(--text-on-dark-secondary)">尹衍樑兩度無償釋出核心鋼筋專利，之後潤弘市佔與獲利反而更強。真正的壁壘有四道——這也是我們要用不同方法攻克的四道。</p>
+    <div class="cards">
+      <div class="card reveal"><p class="idx">01</p><h3>整廠 know-how 與精度</h3><p>「預鑄如果不精密就組裝不起來。」97% 精準度是最低標準，30 年容錯經驗寫不進專利說明書。我們的對策：AI 管線＋構件履歷，把經驗變成數據系統。</p></div>
+      <div class="card reveal"><p class="idx">02</p><h3>產能即門檻</h3><p>全台最大預鑄廠、產能擴 4 倍仍供不應求、在手訂單逾 <span class="num">1,144</span> 億。我們的對策：市場溢出＝代工空間，Stage 1 不自建產能，用別人的閒置產能起步。</p></div>
+      <div class="card reveal"><p class="idx">03</p><h3>客戶認證資格</h3><p>台積電供應鏈資格與「百日完工」實績難以複製。我們的對策：ALP 示範案把 qualification 內部化——業主即股東，第一張履歷不用外部審。</p></div>
+      <div class="card reveal"><p class="idx">04</p><h3>垂直整合一條龍</h3><p>BIM＋自製設備＋生產＋吊裝。專利佈在設備與方法層，保護「工廠怎麼做」。我們的對策：不複製它的整合，先擁有它沒有的層——AI 管線與數據飛輪。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="action">
+  <div class="container">
+    <p class="eyebrow reveal">07・行動指南</p>
+    <h2 class="reveal">迴避設計五條，<br>從第一張圖就內建</h2>
+    <div class="actions">
+      <div class="action reveal"><p class="idx">01</p><div><h3>接合走公版</h3><p>標準灌漿套筒續接＋柱牛腿承壓＋預力梁／雙T板直接擱置——全部是已過期或從未被潤弘圈走的公版技術。第一代潤泰接頭也已全數到期，可自由借鑑。</p></div></div>
+      <div class="action reveal"><p class="idx">02</p><div><h3>梁用全預鑄</h3><p>不採「吊鋼筋籠＋現場立模澆梁」——這一條同時繞開整棟施工方法專利與格子樓版工法專利的方法邏輯。</p></div></div>
+      <div class="action reveal"><p class="idx">03</p><div><h3>吊裝用預埋吊點</h3><p>規定代工廠與吊裝隊使用預埋吊環／螺紋吊點（Peikko、Halfen 類標準品），不用勾箍筋式專用吊具。</p></div></div>
+      <div class="action reveal"><p class="idx">04</p><div><h3>進廠房市場前帶 FTO</h3><p>科技廠房格子樓版走「全預鑄拼板」路線（潤弘第一代拼板專利已到期）；封孔不用 stop-profile 塞件（或等 2027-09 新型到期）；投標前委請專利師對格子板家族（TWI803435B＋TWI898750B＋TWI904904B）逐條比對。</p></div></div>
+      <div class="action reveal"><p class="idx">05</p><div><h3>自己的專利雙軌佈局</h3><p>AI 管線關鍵環節、低碳膠結配方、自有接合細節採「發明＋新型」雙軌申請：新型 10 年先卡位，發明慢審跟上。正式 FTO 委外時一併把尹衍樑個人名下與潤泰各法人納入檢索範圍。</p></div></div>
+    </div>
+    <div class="redflag reveal">
+      <p class="eyebrow">唯一一面紅旗</p>
+      <h3>TWI803435B 格子樓版工法家族（保護至 2042，仍在增件）</h3>
+      <p>柱上現場澆置格子樓版＋雙向預組鋼筋籠——潤弘做科技廠房的現行核心工法，也是 10 件深讀中唯一權期長、範圍實、對應現行主力的硬牆。2024–25 年還在追加新案（TWI898750B、TWI904904B）。物流倉與資料中心完全不受影響；只有投標科技廠房案時，這個家族是必須先請專利師逐條比對的門檻。</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p><strong>研究方法與免責</strong>：本頁為 2026-08-31 基於公開資料的初步掃描（v2 結構預鑄視角），非法律意見、非正式 FTO 檢索。六路並行研究：Google Patents assignee 全量抓取（466 件公開號）、10 件現役關鍵專利 claims 全文深讀、官網年報法說口徑、核心工法深潛、物流倉儲業態掃描、FTO 法律框架。已知缺口：164 件現役發明中格子板與接頭子家族未逐件檢視、尹衍樑個人名下約 753 件未檢索、TIPO 台灣全清單需委外正式檢索、OMEGA 系列營造廠與結構系統未公開。</p>
+    <p>主要來源：Google Patents（10 件 claims 全文）・潤弘官網 rtc.com.tw・潤泰材 rtm.com.tw・永豐金法說整理・TIPO 專利侵權判斷要點・今周刊／udn／CTWANT／工商時報等 30+ 公開來源。完整研究底稿：docs/prefab-research/ruentex-patent-research-2026-08-31.md（claims 原文存 data/claims/）</p>
+    <p>山恩 Saiens・內部文件・請勿外流</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=document.querySelectorAll('.reveal');
+  if(reduce||!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('on')});return;
+  }
+  var seen=new WeakSet();
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting&&!seen.has(en.target)){
+        seen.add(en.target);
+        var siblings=Array.prototype.filter.call(en.target.parentNode.children,function(c){return c.classList&&c.classList.contains('reveal')});
+        var i=siblings.indexOf(en.target);
+        en.target.style.transitionDelay=(Math.max(i,0)*40)+'ms';
+        en.target.classList.add('on');
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:0.12});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>

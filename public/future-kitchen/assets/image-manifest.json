@@ -1,0 +1,36 @@
+{
+  "brand": "Saiens",
+  "style": "photorealistic editorial interior photography, near-monochrome warm neutral palette (warm black, stone grey, off-white, pale sage), soft natural daylight, matte surfaces, calm and quiet, no people, no text, no letters, no logos, no watermark",
+  "images": [
+    {
+      "file": "hero.png",
+      "purpose": "首屏 hero 背景；手機直式裁切後仍要有主體；左下方會疊白色大標，上三分之一保持乾淨暗色天花或牆面",
+      "aspect": "portrait 3:4",
+      "prompt": "Quiet open kitchen seen from the dining table at dusk\nSubject: a long continuous matte stone counter floating on a slim dark steel frame, one bowl and a wooden board on it\nDetails: honed grey stone with faint recycled-aggregate speckle, brushed stainless frame legs, dark warm wall behind, a single warm pendant light off, window light raking from the left\nConstraints: the upper third is a plain dark wall with no objects, no people, no chairs in foreground\nIntent: brand concept page hero, cinematic stillness"
+    },
+    {
+      "file": "section-table.png",
+      "purpose": "「起點」段：廚房與餐桌是一個整體；全幅橫圖，不疊字",
+      "aspect": "landscape 3:2",
+      "prompt": "Wide shot across a dining table toward an open kitchen counter in the same room\nSubject: a long oak dining table meeting the end of a stone kitchen island at the same height, two ceramic cups and a linen cloth on the table\nDetails: morning daylight from a tall window, matte plaster walls in warm off-white, pale sage ceramic, soft shadows\nConstraints: no people, no text, nothing on the walls\nIntent: convey hospitality and the kitchen opening toward the table"
+    },
+    {
+      "file": "section-structure.png",
+      "purpose": "「第零點」段：檯面與桶身分離；深色段落用圖，顯示石面架在鋼骨上、桶身懸在下方留出空隙",
+      "aspect": "landscape 3:2",
+      "prompt": "Close three-quarter view of a kitchen counter construction detail\nSubject: a thick honed grey stone slab resting on a slender brushed stainless steel frame, with a separate matte dark cabinet box hanging beneath it leaving a visible open gap between slab and cabinet\nDetails: raking side light showing the stone edge grain, precise steel joints, the gap in shadow, concrete floor\nConstraints: no people, no text, no appliances, plain dark background\nIntent: explain the separation of worktop and cabinet as a structural idea"
+    },
+    {
+      "file": "section-materials.png",
+      "purpose": "「材料分區」段：三種材料並置的質感特寫，方形，不疊字",
+      "aspect": "square",
+      "prompt": "Top-down macro still life of three material samples laid edge to edge\nSubject: a honed grey recycled-aggregate stone tile, a brushed stainless steel plate, and a pale oak veneer board\nDetails: even soft light, visible stone speckle, fine brushing on the steel, straight wood grain, tiny real imperfections\nConstraints: no text, no labels, no hands, neutral off-white background\nIntent: material honesty, face / bone / body"
+    },
+    {
+      "file": "section-hospitality.png",
+      "purpose": "「開口向餐桌」段：從灶前看出去，看得見餐桌與座位；橫圖，不疊字",
+      "aspect": "landscape 3:2",
+      "prompt": "View from behind the cooktop looking across the kitchen counter toward a dining table with chairs, as the cook would see it\nSubject: the near counter edge in soft focus, the dining table and four chairs in focus beyond, a window at the far end\nDetails: evening light, matte dark cabinetry, stone counter, oak table, plates set but no food\nConstraints: no people, no text, no clutter\nIntent: the cook can see family and guests; the island faces people"
+    }
+  ]
+}

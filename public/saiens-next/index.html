@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>山恩 Saiens｜把「蓋一個家」變成一件可以規模化的事</title>
+<meta name="description" content="山恩實業的前世、今生與下一個十年：分治、股權、AI Native 營運、產品金字塔、美國市場與無人化的想像。本頁為私下分享，未公開索引。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="山恩 Saiens｜把「蓋一個家」變成一件可以規模化的事">
+<meta property="og:description" content="前世、今生與下一個十年。分治、AI Native 營運、美國市場，與 2036 年的那一天。">
+<meta property="og:url" content="https://saiens.group/saiens-next">
+<meta property="og:image" content="https://saiens.group/saiens-next/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="山恩 Saiens｜把「蓋一個家」變成一件可以規模化的事">
+<meta name="twitter:image" content="https://saiens.group/saiens-next/og.png">
+<link rel="icon" type="image/svg+xml" href="/saiens-next/favicon.svg">
+<link rel="apple-touch-icon" href="/saiens-next/apple-touch-icon.png">
+<style>
+:root{
+  --text-primary:#1d1d1f; --text-body:#393c41; --text-secondary:#86868b;
+  --text-tertiary:#6e6e73; --bg-white:#ffffff; --bg-gray:#f5f5f7;
+  --bg-dark:#000000; --text-on-dark:#f5f5f7; --accent:#0071e3;
+  --border:#d2d2d7; --ease:cubic-bezier(0.5,0,0,0.75);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+/* 不設 scroll-behavior:smooth，程式化捲動與輔助技術會追不上實際位置 */
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans TC",sans-serif;
+  color:var(--text-primary);background:var(--bg-white);
+  font-size:17px;line-height:1.47;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;height:48px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;transition:background 330ms var(--ease);
+  background:transparent;color:var(--text-on-dark);
+}
+.nav.solid{
+  background:rgba(22,22,23,0.8);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  backdrop-filter:saturate(180%) blur(20px);
+}
+.nav .wordmark{font-size:17px;font-weight:600;letter-spacing:0.08em}
+.nav .tag{font-size:13px;font-weight:500;color:rgba(245,245,247,0.7);white-space:nowrap}
+
+/* ---------- sections ---------- */
+.sec{padding:120px 24px}
+.sec-dark{background:var(--bg-dark);color:var(--text-on-dark)}
+.sec-gray{background:var(--bg-gray)}
+.wrap{max-width:980px;margin:0 auto}
+.kicker{font-size:14px;font-weight:500;color:var(--accent);margin-bottom:16px;letter-spacing:0.02em}
+.sec-dark .kicker{color:#2997ff}
+h1,h2,h3{font-weight:600;letter-spacing:-0.015em;text-wrap:balance}
+h2{font-size:clamp(32px,5vw,52px);line-height:1.1;margin-bottom:24px}
+h3{font-size:clamp(22px,3vw,27px);margin-bottom:8px}
+.lead{font-size:clamp(19px,2.4vw,24px);color:var(--text-secondary);line-height:1.4;margin-bottom:12px}
+.sec-dark .lead{color:#a1a1a6}
+p.body{font-size:17px;color:var(--text-body);max-width:660px;line-height:1.6}
+.sec-dark p.body{color:#d2d2d7}
+p.body + p.body{margin-top:18px}
+.num{white-space:nowrap}
+strong{font-weight:600}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:100vh;min-height:100svh;background:var(--bg-dark);color:var(--text-on-dark);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:96px 24px 64px;position:relative;
+}
+.hero .kicker{color:#2997ff}
+.hero h1{font-size:clamp(36px,6.6vw,72px);line-height:1.06;letter-spacing:-0.02em;max-width:920px}
+.hero .sub{font-size:clamp(18px,2.5vw,25px);color:#a1a1a6;margin-top:28px;max-width:680px;line-height:1.45}
+.hero .down{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  color:#a1a1a6;font-size:13px;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:6px;
+  padding:12px;min-height:44px;
+}
+.hero .down:after{content:"⌄";font-size:20px;line-height:0.6}
+
+/* ---------- quote ---------- */
+.quote{
+  font-size:clamp(26px,4.4vw,44px);font-weight:600;letter-spacing:-0.015em;
+  line-height:1.25;max-width:880px;margin:0 auto;text-align:center;text-wrap:balance;
+}
+.quote-attr{text-align:center;color:var(--text-secondary);margin-top:24px;font-size:15px;line-height:1.7}
+.sec-dark .quote-attr{color:#a1a1a6}
+
+/* ---------- cards ---------- */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:48px}
+.card{
+  background:var(--bg-gray);border-radius:18px;padding:36px 28px;text-align:left;
+}
+.sec-dark .card{background:#161617}
+.sec-gray .card{background:var(--bg-white)}
+.card .c-step{font-size:13px;font-weight:500;color:var(--accent);margin-bottom:12px}
+.sec-dark .card .c-step{color:#2997ff}
+.card h3{font-size:22px}
+.card p{font-size:15px;color:var(--text-body);line-height:1.55;margin-top:8px}
+.sec-dark .card p{color:#a1a1a6}
+
+/* ---------- spec trio ---------- */
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:56px;text-align:center}
+.spec .n{font-size:clamp(30px,4.6vw,50px);font-weight:600;letter-spacing:-0.02em;line-height:1.1;white-space:nowrap}
+.spec .l{font-size:14px;color:var(--text-secondary);margin-top:10px;line-height:1.4}
+.sec-dark .spec .l{color:#a1a1a6}
+
+/* ---------- rows ---------- */
+.rows{margin-top:44px;max-width:760px}
+.row{
+  display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding:16px 0;border-bottom:1px solid var(--border);
+}
+.sec-dark .row{border-bottom-color:#2c2c2e}
+.row:first-child{border-top:1px solid var(--border)}
+.sec-dark .row:first-child{border-top-color:#2c2c2e}
+.row .k{font-size:16px;color:var(--text-body);flex:1 1 auto}
+.sec-dark .row .k{color:#d2d2d7}
+.row .v{font-size:17px;font-weight:600;white-space:nowrap;text-align:right}
+.row .v small{display:block;font-size:13px;font-weight:400;color:var(--text-secondary);margin-top:2px}
+.sec-dark .row .v small{color:#86868b}
+
+/* ---------- bars ---------- */
+.bars{margin-top:44px;max-width:760px}
+.bar-row{margin-bottom:22px}
+.bar-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
+.bar-y{font-size:15px;color:var(--text-secondary)}
+.sec-dark .bar-y{color:#a1a1a6}
+.bar-v{font-size:17px;font-weight:600;white-space:nowrap}
+.bar-track{height:8px;border-radius:980px;background:var(--border);overflow:hidden}
+.sec-dark .bar-track{background:#2c2c2e}
+.bar-fill{height:100%;border-radius:980px;background:var(--accent);display:block}
+.bar-fill.muted{background:#86868b}
+
+/* ---------- stage steps ---------- */
+.stages{margin-top:48px;border-left:1px solid var(--border);padding-left:32px;max-width:700px}
+.sec-dark .stages{border-left-color:#2c2c2e}
+.st{position:relative;padding-bottom:32px}
+.st:last-child{padding-bottom:0}
+.st:before{
+  content:"";position:absolute;left:-37px;top:7px;width:9px;height:9px;border-radius:50%;
+  background:var(--accent);
+}
+.st .st-no{font-size:14px;font-weight:500;color:var(--accent);margin-bottom:2px}
+.sec-dark .st .st-no{color:#2997ff}
+.st h3{font-size:20px}
+.st p{font-size:15px;color:var(--text-body);margin-top:4px}
+.sec-dark .st p{color:#a1a1a6}
+.rule-note{font-size:14px;color:var(--text-tertiary);margin-top:28px;max-width:700px;line-height:1.7}
+.sec-dark .rule-note{color:#6e6e73}
+
+/* ---------- pyramid ---------- */
+.pyr{margin-top:48px;max-width:760px;display:flex;flex-direction:column;gap:10px}
+.pyr-l{border-radius:14px;padding:24px 26px;background:var(--bg-white)}
+.sec-gray .pyr-l{background:var(--bg-white)}
+.pyr-l .t{font-size:13px;font-weight:500;color:var(--accent);margin-bottom:6px}
+.pyr-l h3{font-size:20px;margin-bottom:4px}
+.pyr-l p{font-size:15px;color:var(--text-body);line-height:1.55}
+.pyr-l:nth-child(2){margin:0 5%}
+.pyr-l:nth-child(3){margin:0 11%}
+
+/* ---------- callout ---------- */
+.callout{
+  margin-top:44px;padding:28px 30px;border-radius:18px;background:var(--bg-gray);
+  max-width:760px;border-left:3px solid var(--accent);
+}
+.sec-dark .callout{background:#161617}
+.sec-gray .callout{background:var(--bg-white)}
+.callout p{font-size:17px;color:var(--text-body);line-height:1.6}
+.sec-dark .callout p{color:#d2d2d7}
+.callout .cl-t{font-size:13px;font-weight:500;color:var(--accent);margin-bottom:8px}
+.sec-dark .callout .cl-t{color:#2997ff}
+
+/* ---------- scene（未來場景敘事） ---------- */
+.scene{max-width:720px;margin-top:56px}
+.scene-step{position:relative;padding:0 0 44px 0}
+.scene-step:last-child{padding-bottom:0}
+.scene-t{font-size:14px;font-weight:500;color:#2997ff;margin-bottom:10px;letter-spacing:0.02em}
+.scene-step p{font-size:clamp(18px,2.1vw,21px);line-height:1.6;color:#d2d2d7}
+.scene-step p strong{color:#f5f5f7}
+
+/* ---------- horizon ---------- */
+.horizon{margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.hz{border-radius:18px;padding:32px 26px;background:var(--bg-gray)}
+.sec-dark .hz{background:#161617}
+.hz .hz-y{font-size:13px;font-weight:500;color:var(--accent);margin-bottom:10px}
+.sec-dark .hz .hz-y{color:#2997ff}
+.hz h3{font-size:21px;margin-bottom:6px}
+.hz p{font-size:15px;color:var(--text-body);line-height:1.55}
+.sec-dark .hz p{color:#a1a1a6}
+
+/* ---------- footer ---------- */
+.footer{background:var(--bg-gray);padding:48px 24px;text-align:center}
+.footer p{font-size:12px;color:var(--text-tertiary);line-height:1.9}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 700ms ease-out,transform 700ms ease-out}
+.reveal.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+/* ---------- mobile ---------- */
+@media (max-width:734px){
+  .sec{padding:64px 20px}
+  .grid3,.grid2,.horizon{grid-template-columns:1fr;margin-top:32px}
+  .specs{grid-template-columns:1fr;gap:32px;margin-top:40px}
+  .card,.hz{padding:28px 22px}
+  .stages{padding-left:24px}
+  .st:before{left:-29px}
+  .row{flex-direction:column;align-items:flex-start;gap:4px}
+  .row .v{text-align:left}
+  .pyr-l:nth-child(2),.pyr-l:nth-child(3){margin:0}
+  .callout{padding:24px 22px}
+  h2 br{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav" aria-label="頁首">
+  <span class="wordmark">SAIENS</span>
+  <span class="tag">山恩 · 2026</span>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div>
+    <div class="kicker">山恩實業 Saiens · 2026</div>
+    <h1>全世界都在蓋房子。<br>沒有人在蓋「家」這件事本身。</h1>
+    <p class="sub">建築業被工業化了，製造業被自動化了，物流業已經關燈。<br>把一個家真正做出來的那一段，還是一群人扛著板材爬樓梯。<br>山恩想把這一段做完。</p>
+  </div>
+  <a class="down" href="#thesis">往下看</a>
+</header>
+
+<main>
+
+<!-- 1. 命題 -->
+<section class="sec" id="thesis">
+  <div class="wrap reveal">
+    <div class="kicker">我們在賭什麼</div>
+    <h2>最後一段路，<br>還沒有人走完。</h2>
+    <p class="lead">從一塊礦石到一個住得舒服的家，這條路有十幾道工序。前面十道都工業化了，最後三道沒有。</p>
+    <p class="body">石材從礦區到工廠，是工業。板材在產線上被切割研磨，是工業。貨櫃跨過太平洋，是工業。可是等它進到一戶人家門口，一切退回二十年前：一位師傅拿捲尺量、憑經驗判斷、用手切、靠肩膀扛。做得好不好，取決於那天他心情如何、身體累不累、有沒有帶對的人來。</p>
+    <p class="body">這條斷裂帶就是我們要蓋的東西。<strong>把「完成一個家」從一門手藝，變成一個可以被複製、被輸出、被規模化的系統。</strong>這件事一旦成立，它就不只在台灣成立。全世界每一個有房子的地方都需要它。</p>
+    <p class="body">我們不會在三年內做完。這是一件要用十年、二十年去蓋的事。所以我們從最扎實的地方開始蓋起。</p>
+    <div class="grid3">
+      <div class="card">
+        <div class="c-step">第一層地基</div>
+        <h3>材料</h3>
+        <p>從石英石檯面到牆面材料，握住實體品質的源頭。控制不了材料的人，控制不了交付。</p>
+      </div>
+      <div class="card">
+        <div class="c-step">第二層地基</div>
+        <h3>方法</h3>
+        <p>七個階段、每一階都有具名責任人。把交付從個人手藝變成組織能力，這是唯一能被複製的東西。</p>
+      </div>
+      <div class="card">
+        <div class="c-step">第三層地基</div>
+        <h3>系統</h3>
+        <p>AI 與 ERP 把後台整個吃掉。人留在只有人能做的地方：判斷、關係、還有審美。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. 前世 -->
+<section class="sec sec-gray" id="origin">
+  <div class="wrap reveal">
+    <div class="kicker">前世</div>
+    <h2>兩代人，<br>一塊石頭。</h2>
+    <p class="lead">故事從基隆港的一間報關行開始。</p>
+    <p class="body">創辦人與股東合資接下一間報關行，看著別人的貨進進出出，看出了陶瓷原物料的商機。他們成立貿易公司，從中國進土、從印度進砂石。最好的那幾年，基隆港的大型散裝船有大約三分之一經他們的手。</p>
+    <p class="body">然後他們決定不再只是搬東西的人。從貿易轉向製造，自己研發陶瓷配方，在台灣龍潭與中國佛山同時設廠。這是第一次把命運握回自己手上。</p>
+    <p class="body">第二代接班之後做了一個很痛的決定：<strong>放棄那條做了將近二十年、始終沒有賺過錢的佛山原物料業務</strong>，把全部力氣壓在石英石上。走的是最難的路線，專攻黑色與灰色系高技術難度板材，在國際中高端市場硬生生站住。</p>
+    <p class="body">再然後，才有山恩。集團第一次擁有自己的品牌與通路，第一次不再是別人的代工廠，第一次可以決定自己要賣給誰、要用什麼方式做生意。</p>
+
+    <div class="callout">
+      <div class="cl-t">山恩誕生的四個原因</div>
+      <p><strong>一、擺脫代工。</strong>不再被大客戶掐住脖子，第一次擁有定價權。<br>
+      <strong>二、品牌防火牆。</strong>法律與財務獨立於工廠，讓品牌可以承擔工廠不能承擔的風險。<br>
+      <strong>三、跳脫組織包袱。</strong>在一張白紙上建一套現代的文化，不用先拆掉舊的。<br>
+      <strong>四、鎖定中高端。</strong>先從美國建立國際知名度，再回頭贏台灣。</p>
+    </div>
+    <p class="rule-note">集團第二代回憶山恩成立那一刻：「山恩成立是我最有感觸的時候。山恩有高度透明的溝通，對我來講是一個 Culture Shock。」<br><br>那一年之後，這家公司的文化只剩三句話：DREAM BIG、WORK SMART、HAVE FUN。</p>
+  </div>
+</section>
+
+<!-- 3. 今生：分治 -->
+<section class="sec" id="split">
+  <div class="wrap reveal">
+    <div class="kicker">今生 · 2026 年 8 月</div>
+    <h2>我們把一家公司，<br>拆成兩家。</h2>
+    <p class="lead">玉禮打產能，山恩打市場。兩邊都變得更像自己。</p>
+    <p class="body">融合了三年之後我們承認一件事：在同一家公司裡，「走量」跟「精緻化」是兩種互相扯後腿的體質。走量要的是效率、標準品、週轉速度；精緻化要的是單案深度、客製能力、慢工。硬綁在一起，兩邊都做不好，而且沒有人知道該怪誰。</p>
+    <p class="body">所以 2026 年 8 月 1 日起我們正式分治。<strong>玉禮承接大板批發、廚具通路、建設專案、全屋定製與家飾</strong>，繼續當那個把東西做出來的人。<strong>山恩只留兩個引擎：設計師專案與一般業主專案</strong>，專心當那個把家交到人手上的人。ERP 也分家，2026 年 10 月 1 日各自上路。</p>
+    <p class="body">這個決定的代價很清楚：山恩交出去的三個引擎，2025 年合計超過 9,000 萬營收。我們知道自己在放棄什麼。</p>
+
+    <div class="rows">
+      <div class="row"><span class="k">分治生效日</span><span class="v">2026-08-01</span></div>
+      <div class="row"><span class="k">ERP 分家切換基準日</span><span class="v">2026-10-01</span></div>
+      <div class="row"><span class="k">山恩雙主引擎</span><span class="v">設計師專案 · 一般業主專案</span></div>
+      <div class="row"><span class="k">Michael 角色</span><span class="v">山恩 Chairman &amp; CEO<small>兼玉禮策略顧問</small></span></div>
+    </div>
+
+    <h3 style="margin-top:72px">股權：把公司交到蓋它的人手上</h3>
+    <p class="body" style="margin-top:12px">分治的另一半是股權。山恩原本由玉禮控股，方向是把控制權交給實際在經營的人。一家要打二十年仗的公司，決定權必須跟責任在同一個地方。</p>
+
+    <div class="rows">
+      <div class="row"><span class="k">現行股權結構</span><span class="v">玉禮 53.50%<small>蜂巢 39.00%＋三位天使各 2.501%</small></span></div>
+      <div class="row"><span class="k">第一階段</span><span class="v">玉禮／經營方 40 / 60<small>共識生效日 2026-08-31</small></span></div>
+      <div class="row"><span class="k">終局方向</span><span class="v">經營方 70%<small>玉禮 30% ＋ 一席董事</small></span></div>
+      <div class="row"><span class="k">計價基準</span><span class="v">2026-07-31 每股淨值<small>不採面額計價</small></span></div>
+    </div>
+    <p class="rule-note">狀態說明：第一階段 40 / 60 目前為雙方口頭共識，書面股權轉讓協議進行中，價金與抵充等實質事項預計 2026 年 12 月落地。此處揭露的是方向與進度，不代表已交割。</p>
+
+    <div class="callout" style="margin-top:48px">
+      <div class="cl-t">關於分治，我們只講一種說法</div>
+      <p>玉禮仍然是山恩最重要的製造後盾，山恩仍然是玉禮最重要的品牌前線。兩家公司分開，是為了各自跑得更快，然後在世界盃的場上會合。<strong>沒有對錯，只是不同。</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 現況數字 -->
+<section class="sec sec-dark" id="numbers">
+  <div class="wrap reveal">
+    <div class="kicker">現況</div>
+    <h2>數字，<br>包括不好看的那些。</h2>
+    <p class="lead">要談十年後的事，得先誠實交代今天站在哪裡。</p>
+
+    <div class="bars">
+      <div class="bar-row">
+        <div class="bar-top"><span class="bar-y">2023 年營業收入</span><span class="bar-v num">122,050,038</span></div>
+        <div class="bar-track"><span class="bar-fill" style="width:64%"></span></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-top"><span class="bar-y">2024 年（1–10 月）</span><span class="bar-v num">157,528,650</span></div>
+        <div class="bar-track"><span class="bar-fill" style="width:83%"></span></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-top"><span class="bar-y">2025 年</span><span class="bar-v num">189,876,268</span></div>
+        <div class="bar-track"><span class="bar-fill" style="width:100%"></span></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-top"><span class="bar-y">2026 年（1–7 月，自結）</span><span class="bar-v num">101,195,899</span></div>
+        <div class="bar-track"><span class="bar-fill muted" style="width:53%"></span></div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:48px">
+      <div class="cl-t">誠實的那一段</div>
+      <p>2025 年營收創了新高，<strong>同一年稅前虧損 9,598,751 元</strong>。原因不複雜也不冤枉：毛利率從 33.3% 掉到 29.7%，而人力與費用是按成長目標配置的。營收的曲線很好看，體質不好看。</p>
+      <p style="margin-top:16px">所以 2026 年我們做的事全部是減法。分治、砍掉不賺錢的引擎、把整個後台交給 AI。<strong>2026 年 7 月，單月稅前淨利今年第一次轉正。</strong>轉正的那個月，公司比一年前小，做的事比一年前少，但每一件都是對的事。</p>
+    </div>
+
+    <div class="specs">
+      <div class="spec"><div class="n num">11 人</div><div class="l">2026 年 10 月穩態編制<br>（8 月為 12 人）</div></div>
+      <div class="spec"><div class="n num">3,000+</div><div class="l">集團服務過的客戶<br>室內設計事務所為第一大客群</div></div>
+      <div class="spec"><div class="n num">近 2,000</div><div class="l">產品品項</div></div>
+    </div>
+
+    <h3 style="margin-top:88px">交付：七個階段，每一階都有名字</h3>
+    <p class="body" style="margin-top:12px">這套流程是山恩最重要的資產。它的價值不在於好看，在於它讓交付品質不再依賴某一個人今天狀態好不好。</p>
+    <div class="stages">
+      <div class="st"><div class="st-no">階段一</div><h3>諮詢</h3><p>需求了解與方案建議</p></div>
+      <div class="st"><div class="st-no">階段二</div><h3>業務</h3><p>客戶管理、報價、專案確認</p></div>
+      <div class="st"><div class="st-no">階段三</div><h3>丈量</h3><p>現場丈量與精準尺寸圖</p></div>
+      <div class="st"><div class="st-no">階段四</div><h3>成型</h3><p>工廠精密加工、按圖製作</p></div>
+      <div class="st"><div class="st-no">階段五</div><h3>安裝</h3><p>現場組裝與精準安裝</p></div>
+      <div class="st"><div class="st-no">階段六</div><h3>驗收</h3><p>品質驗收、確認交付</p></div>
+      <div class="st"><div class="st-no">階段七</div><h3>結案</h3><p>開票、收款、售後啟動</p></div>
+    </div>
+    <p class="rule-note">客戶經理（AM）把關客戶關係與驗收、專案經理（PM）控工程進度、安裝工程師（IE）負責現場交付品質、中控（Central）統籌排程與跨階段品控。<br><br>七個階段可以被寫成程式，可以被交給 agent，可以被複製到另一個國家。一位老師傅的手感不行。這就是我們花力氣把它拆成七段的理由。</p>
+  </div>
+</section>
+
+<!-- 5. AI Native -->
+<section class="sec" id="ai">
+  <div class="wrap reveal">
+    <div class="kicker">組織</div>
+    <h2>整間公司的營運，<br>只需要一個真人。</h2>
+    <p class="lead">這是我們 2026 年 8 月啟動的 30 天轉身計畫的北極星。</p>
+    <p class="body">人事與財務的全部日常，請款、對帳、催收、薪資、請假、報價，由 AI Agent 完成準備工作。真人只做兩件事：<strong>具名審批，與處理例外。</strong></p>
+    <p class="body">這件事的意義不在省人力。它的意義是：當一間公司的後台趨近於零，這間公司的複製成本也趨近於零。今天在台灣跑得動的這套東西，明年可以在加州開一個 instance，後年可以在第三個地方。<strong>我們真正在蓋的不是一家公司，是一套可以複製的作業系統。</strong></p>
+
+    <div class="callout">
+      <div class="cl-t">最重要的一條界線</div>
+      <p>AI Native 的定義在我們這裡很嚴格：<strong>AI 做完 80% 的準備工作，人只做具名審批與例外處理。</strong>它不等於無人自動化，也永遠不會等於。<br><br>
+      所有 agent 的權限鐵律是<strong>只 draft 不 post，只建議不執行</strong>。沒有任何一個 agent 可以自己送出一張單、付一筆錢、或發一封對外的信。這條線劃在這裡，是因為責任必須有人簽名。</p>
+    </div>
+
+    <div class="rows">
+      <div class="row"><span class="k">單人營運模型試點</span><span class="v">2026-09-06</span></div>
+      <div class="row"><span class="k">Odoo 19 新系統切換</span><span class="v">2026-10-01</span></div>
+      <div class="row"><span class="k">拆拐杖、進穩態</span><span class="v">2026 Q4</span></div>
+      <div class="row"><span class="k">人均月營收（現況 → 目標）</span><span class="v">89 萬 → 175 萬</span></div>
+    </div>
+
+    <div class="grid3">
+      <div class="card">
+        <div class="c-step">第一問</div>
+        <h3>AI 能不能解？</h3>
+        <p>能交給 AI 的，就不佔用任何人的時間。</p>
+      </div>
+      <div class="card">
+        <div class="c-step">第二問</div>
+        <h3>能不能自動化？</h3>
+        <p>重複的流程做成系統，標準輸入產生標準輸出。</p>
+      </div>
+      <div class="card">
+        <div class="c-step">第三問</div>
+        <h3>能不能外包？</h3>
+        <p>最後才考慮聘雇。人力配置序：AI First，然後外包，最後才是增員。</p>
+      </div>
+    </div>
+
+    <p class="rule-note">治理一步都不打折：agent 每日自動對帳、稽核紀錄寫一次不可修改保存 24 個月、銀行付款雙授權、異常自動升級到 CEO。財務授權邊界是紅線，AI 不得自主執行財務操作。<br><br>
+    這件事已經改寫了第一個職位。原本的收款行政工作被應收帳款 agent 吸收，那個位置收斂回純客服。這不是預測，是已經發生的事。我們認為接下來十年，每一個產業都會經歷一次這樣的收斂，差別只在誰先做。</p>
+  </div>
+</section>
+
+<!-- 6. 產品金字塔 -->
+<section class="sec sec-gray" id="product">
+  <div class="wrap reveal">
+    <div class="kicker">產品</div>
+    <h2>一戶裝修的預算裡，<br>檯面只佔一成。</h2>
+    <p class="lead">剩下的九成，我們原本一毛都拿不到。</p>
+    <p class="body">這是山恩過去十年最貴的一課。我們花了很大力氣贏得一位業主的信任，然後只賣給他一片檯面，接著把這個客戶還給市場。信任被浪費掉了。</p>
+    <p class="body">所以我們重新設計了產品的長相。<strong>一位客戶進來之後，我們要有能力陪他把整個家做完。</strong></p>
+
+    <div class="pyr">
+      <div class="pyr-l">
+        <div class="t">第一層 · 現金引擎</div>
+        <h3>石英石檯面</h3>
+        <p>贏得第一個信任。Mikado 帝雉石、ETERNOS 永恆石、QJ 闊石，專攻黑灰色系高技術難度板材。這一層負責養活公司。</p>
+      </div>
+      <div class="pyr-l">
+        <div class="t">第二層 · 整個空間</div>
+        <h3>MONTORI 山織石（軟石）</h3>
+        <p>從檯面走上牆。輕量、可彎曲、極度仿真，解掉石材的三個老問題：成本高、施工不易、重量重。主戰場是弧形牆、柱體、電視牆、異形面，以及老屋外牆拉皮。</p>
+      </div>
+      <div class="pyr-l">
+        <div class="t">第三層 · 一個家</div>
+        <h3>COVE Living 石在家居</h3>
+        <p>案子收尾時，讓家一次到位的家飾與家居生活方案。這一層負責讓客戶記得我們。</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="cl-t">下一塊拼圖</div>
+      <p>山恩的永續材料線 nexea 耐稀石，用建築廢料、半導體副產物與報廢光電模組做原料，透過高壓與固化技術做經濟型升級回收。目標市場是美國與日本。<br><br>
+      台灣在 2026 年 6 月 17 日公布施行《資源循環推動法》，循環標誌已經開放申請，政府採購把它列在第一位階。<strong>這是一個十年一次的時間窗，而且它剛剛打開。</strong></p>
+    </div>
+    <p class="rule-note">關於再生材料，一句誠實話：台灣的自有產線設備尚未到位，仍在積極籌備中。現階段供應的軟石為代工產品，我們不會把它宣稱為再生材料。這條界線我們守得很緊，因為 ESG 的信用一旦講混，就再也拿不回來。</p>
+  </div>
+</section>
+
+<!-- 7. 美國 -->
+<section class="sec sec-dark" id="usa">
+  <div class="wrap reveal">
+    <div class="kicker">下一場仗 · 美國</div>
+    <h2>人不先過去，<br>系統先過去。</h2>
+    <p class="lead">WandWorks，台灣山恩 100% 持有的美國子公司，2024 年 9 月成立，南加州廚房翻修。</p>
+    <p class="body">模式很簡單，簡單到有點不像裝修業：<strong>台灣設計、台灣加工、裝櫃出口、赴美安裝，七天完成一間廚房翻新</strong>，含拆除、清運、安裝。沒有展示間，用 AI 虛擬設計與線上丈量取代整間店。</p>
+    <p class="body">客群是千禧世代與 Gen Z 屋主。他們買了一間二手屋，預算有限，但對質感的要求跟父母那一代完全不同。這個區間在美國被在地承包商的報價結構卡死了，南加州一間廚房翻新的均價大約 26,000 美元，而且要等好幾個月。我們用七天做完。</p>
+    <p class="body">這件事真正的意義在於它是一次測試。<strong>如果一套在台灣長出來的作業系統可以在加州跑起來，那它就可以在任何地方跑起來。</strong>美國是第一個海外 instance，不會是最後一個。</p>
+
+    <div class="rows">
+      <div class="row"><span class="k">已簽約／施作累計</span><span class="v num">US$2,839,526</span></div>
+      <div class="row"><span class="k">持股</span><span class="v">台灣山恩 100%</span></div>
+      <div class="row"><span class="k">現階段</span><span class="v">前哨<small>零常駐編制</small></span></div>
+      <div class="row"><span class="k">2027</span><span class="v">燈塔案項目組<small>台灣飛行小組 ＋ 在地安裝夥伴</small></span></div>
+      <div class="row"><span class="k">2028</span><span class="v">微型據點<small>1–2 人 ＋ 完整 agent 幕僚團</small></span></div>
+      <div class="row"><span class="k">2029 起</span><span class="v">在地化擴編</span></div>
+    </div>
+
+    <div class="callout">
+      <div class="cl-t">紀律</div>
+      <p>美國不是去建一個新組織，是把山恩的作業系統開一個海外 instance。<br><br>
+      而且有一條硬規定：<strong>台灣的人均月營收沒達到目標之前，美國不設常駐編制。</strong>先把錢賺出來，再拿自己的錢去擴張。我們不打算融資燒錢買一條成長曲線。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Robotic -->
+<section class="sec" id="robotic">
+  <div class="wrap reveal">
+    <div class="kicker">再下一場 · 想像</div>
+    <h2>裝修，是最後一個<br>沒有被機器人碰過的產業。</h2>
+    <p class="lead">石英石檯面是一個標準的機器人問題：重物、高精度、極度缺工。</p>
+    <p class="body">這三個條件放在一起，在別的產業早就被解掉了。自動倉儲系統在四十米高的無人冷庫裡搬運噸級棧板，精度到毫米，一天二十四小時不休息。造船廠的機械手在焊接十公尺長的鋼板。半導體廠的機台在做奈米級的對位。<strong>技術是現成的，而且成熟得不能再成熟。只是沒有人把它搬進裝修這一行。</strong></p>
+    <p class="body">而這一行正在被人口結構逼到牆角。師傅的平均年齡每年往上走，年輕人不進來，工資年年漲，品質卻沒有變得更穩。這不是一個靠多招人可以解決的問題，因為根本沒有人可以招。</p>
+    <p class="body">所以這件事一定會發生。問題只有兩個：什麼時候，以及由誰做。</p>
+
+    <div class="grid3">
+      <div class="card">
+        <div class="c-step">第一段 · 已經在做</div>
+        <h3>丈量數位化</h3>
+        <p>3D 掃描與 AI 虛擬設計取代人工現場丈量。WandWorks 已經用這套方式在美國接單，整間公司沒有一間展示間。</p>
+      </div>
+      <div class="card">
+        <div class="c-step">第二段 · 有現成載體</div>
+        <h3>加工無人化</h3>
+        <p>CNC 加上機械手。集團在台灣龍潭、高雄與中國三水的既有產線是現成的實驗場，設備投資已經沉在那裡。</p>
+      </div>
+      <div class="card">
+        <div class="c-step">第三段 · 全球未解</div>
+        <h3>安裝機器人化</h3>
+        <p>最難、也最值錢的一段。非結構化環境、每個工地都長得不一樣，全世界還沒有人解掉。誰先解掉，誰重寫這個產業的成本結構。</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="cl-t">終局的樣子</div>
+      <p><strong>區域型的無人石材加工中心。</strong>接單、加工、直送、安裝，一條龍，關燈運轉。<br><br>
+      它需要的能力組合很特別：<strong>不動產、自動化、營運，三者的端到端整合。</strong>單獨會做其中一項的公司很多，三項一起做而且做得起來的，全世界數得出來。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9. 那一天 -->
+<section class="sec sec-dark" id="someday">
+  <div class="wrap reveal">
+    <div class="kicker">我們想看到的那一天</div>
+    <h2>2036 年，<br>某個星期二。</h2>
+    <p class="lead">一位剛買下二手房的年輕人，決定重做他的廚房。</p>
+
+    <div class="scene">
+      <div class="scene-step">
+        <div class="scene-t">上午 9:14</div>
+        <p>他用手機掃了一遍廚房。三十秒後，螢幕上出現這個空間的完整模型，尺寸誤差在兩毫米以內。<strong>沒有人來過他家。</strong></p>
+      </div>
+      <div class="scene-step">
+        <div class="scene-t">上午 9:40</div>
+        <p>他挑了一種石材、一種櫃體、一種把手。系統即時算出價格、工期與碳足跡，並且告訴他這批材料裡有多少比例來自回收的建築廢料與報廢的太陽能板。<strong>他按下確認。</strong></p>
+      </div>
+      <div class="scene-step">
+        <div class="scene-t">同日 10:02</div>
+        <p>訂單直接落進三十公里外的區域加工中心。那裡沒有開燈。機械手取料、切割、研磨、鑽孔、封邊，把成品放進一個排好序的貨架。<strong>整個過程沒有一個人在現場。</strong></p>
+      </div>
+      <div class="scene-step">
+        <div class="scene-t">第三天 上午</div>
+        <p>兩位工程師帶著設備到他家。舊廚房被拆除、清運。新的檯面與櫃體按照模型的順序被送進來，機器負責抬起與定位，人負責判斷與收邊。<strong>沒有人需要用肩膀扛任何一片板材。</strong></p>
+      </div>
+      <div class="scene-step">
+        <div class="scene-t">第三天 傍晚</div>
+        <p>他下班回家，廚房好了。品質跟隔壁棟那間一模一樣，跟大阪、跟洛杉磯那兩間也一模一樣。<strong>因為做出它們的，是同一套系統。</strong></p>
+      </div>
+    </div>
+
+    <p class="rule-note" style="margin-top:56px">這是想像，不是路線圖。我們沒有時程表，沒有預算，沒有對任何人做出承諾。<br><br>
+    把它放在這裡，是因為它解釋了我們今天做的每一件事。<strong>為什麼要握住材料的源頭，為什麼要把流程拆成七個具名的階段，為什麼要先把整個後台交給 AI，為什麼美國要讓系統先過去而不是人先過去。</strong>那些看起來瑣碎的決定，全部指向同一個地方。<br><br>
+    我們知道自己現在離那一天很遠。但我們很確定該往哪個方向走。</p>
+  </div>
+</section>
+
+<!-- 10. 三地平線 -->
+<section class="sec sec-gray" id="horizons">
+  <div class="wrap reveal">
+    <div class="kicker">路徑</div>
+    <h2>三場仗，<br>順序不能跳。</h2>
+    <p class="lead">夢想要有紀律，不然只是願望。</p>
+    <div class="horizon">
+      <div class="hz">
+        <div class="hz-y">2026 – 2027</div>
+        <h3>台灣：把利潤做出來</h3>
+        <p>毛利站回線上、人均月營收從 89 萬走向 175 萬。這一場要的是利潤，因為利潤是後面兩場仗的彈藥。</p>
+      </div>
+      <div class="hz">
+        <div class="hz-y">2027 – 2028</div>
+        <h3>模式：把方法變成資產</h3>
+        <p>從賣材料變成賣解決方案，讓設計師社群的飛輪轉起來。這一場要的是可複製的方法。</p>
+      </div>
+      <div class="hz">
+        <div class="hz-y">2028 起</div>
+        <h3>世界盃：把系統輸出去</h3>
+        <p>設計師聯名整案輸出，南加州是灘頭堡。這一場要的是倍數。</p>
+      </div>
+    </div>
+    <p class="rule-note">鐵律：第一場的利潤養第二場，第二場的方法養第三場。順序不能跳。<br><br>
+    我們不打價格戰，也不追求人數規模。一家十一個人的公司要打世界盃，唯一的路是讓每一個人的產出比同業高好幾倍，而那正是我們現在在做的事。</p>
+  </div>
+</section>
+
+<!-- 11. 如果是永聯 -->
+<section class="sec" id="alp">
+  <div class="wrap reveal">
+    <div class="kicker">一個具體的想像</div>
+    <h2>如果是永聯。</h2>
+    <p class="lead">兩家公司在做同一件事：把一個從來沒被工業化的產業，蓋成基礎設施。</p>
+    <p class="body">永聯把物流從「蓋倉庫」重新定義成「蓋基礎設施」，一路做完買地、開發、系統、營運。山恩想把裝修從「找師傅」重新定義成「一套可交付的系統」，一路做完材料、設計、加工、安裝、售後。<strong>同樣的賭注，不同的垂直，而且兩邊都是別人拆開做、我們整條吃。</strong></p>
+    <p class="body">最像的其實是那句話：台灣有很高比例的倉庫處在非正規的狀態，那不是障礙，是把整個產業正規化的機會。台灣的室內裝修業，正好是一模一樣的處境。</p>
+    <p class="body">以下四件事，是我們看到的可能性。</p>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="c-step">一 · AI 與自動化</div>
+        <h3>倉庫端的缺工，後台端的缺工</h3>
+        <p>永聯已經證明了一件事：重物、高精度、缺工這個組合，可以用自動化解掉，而且可以做到關燈運轉。我們在做的是同一件事的另一半，把整間公司的後台交給 agent，讓營運只需要一個真人。</p>
+        <p>兩邊的技術棧不同，踩到的坑高度重疊：流程要先標準化才能自動化、人的審批關卡不能省、系統要能被稽核。這些經驗可以交換，成本接近於零。</p>
+      </div>
+      <div class="card">
+        <div class="c-step">二 · 中國供應鏈</div>
+        <h3>雙產線，以及去風險化這道題</h3>
+        <p>集團在中國三水有自有工廠，在台灣龍潭與高雄有產線，具備跨境加工與裝櫃出口的完整能力。我們現在正在處理的題目是：<strong>哪些東西必須留在台灣做。</strong></p>
+        <p>再生材料的自有產線我們選擇落在台灣，理由有三個，其中兩個跟市場有關：美國市場需要迴避中國產地，日本的永續標準也在收緊。任何一家要把台灣模式帶去日本、美國的公司，遲早都要回答同一道題。</p>
+      </div>
+      <div class="card">
+        <div class="c-step">三 · 日本</div>
+        <h3>營建成本高漲，正是工業化的入口</h3>
+        <p>日本市場的幾個結構性壓力是公開的：高齡化、司機工時上限、永續標準提高、營建成本高漲。前面三項是物流的題目，最後一項是我們的題目。</p>
+        <p>當一個市場的現場人工貴到某個程度，預製化與工業化裝修就從「比較好」變成「唯一解」。山恩的永續材料線 nexea，目標市場正是美國與日本。如果有一天需要在日本蓋一個好看的、能留住人的空間，那件事我們做得了。</p>
+      </div>
+      <div class="card">
+        <div class="c-step">四 · 美國</div>
+        <h3>我們在南加州先走了一段</h3>
+        <p>永聯的下一個十年裡有美國。我們在南加州已經有一個 100% 持有的載體，做的是廚房翻新：台灣設計、台灣加工、裝櫃出口、赴美安裝，七天完工，累計已簽約與施作約 US$2,839,526。</p>
+        <p>規模跟物流地產差了好幾個量級，但那條路上的每一個坑我們都踩過：出口報關、在地安裝夥伴、州別法規、客戶預期。<strong>這種東西寫在報告裡沒有用，只有走過的人才知道。</strong></p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="cl-t">還有一件小事</div>
+      <p>永聯的園區裡有辦公室、有零售、有共享空間，總部的玻璃隔間、客製家具與牆上的字，是把文化做成看得見的東西。<br><br>
+      「反正錢都要花，為什麼不蓋得漂亮一點。」<strong>那個「漂亮」，剛好是我們在做的事。</strong></p>
+    </div>
+    <p class="rule-note">說明：本節為山恩單方面對合作可能性的想像，基於公開資訊整理，不代表雙方已有任何洽談、協議或承諾。</p>
+  </div>
+</section>
+
+<!-- 12. 收尾 -->
+<section class="sec sec-dark" id="closing" style="padding-top:150px;padding-bottom:150px">
+  <div class="wrap reveal">
+    <p class="quote">山恩現在很小。<br>但方法已經跑起來了。</p>
+    <p class="quote-attr" style="margin-top:40px;font-size:17px;line-height:1.7">一家十一個人的公司，講二十年後的事，聽起來確實有點狂。<br>不過蓋一個要被用到 2060 年的東西，本來就得從很小的地方開始。</p>
+    <p class="quote-attr" style="margin-top:56px">Saiens 山恩實業<br>DREAM BIG · WORK SMART · HAVE FUN</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <p>Saiens 山恩實業 · 內容更新 2026-08-26<br>
+  本頁為私下分享用途，未列入搜尋索引。所載財務與股權資訊為當期內部自結與進行中之協商狀態，非經會計師查核，亦不構成任何要約或投資建議。頁內關於未來市場、技術與自動化的敘述為公司願景與想像，不構成營運目標或財務預測。</p>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var onScroll=function(){ nav.classList.toggle('solid', window.scrollY>40); };
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  // 進場動畫：以「元素頂端進入視窗」為準，逐項開啟。
+  // 不使用 IntersectionObserver 門檻，高於視窗的長區塊會永遠達不到比例門檻。
+  var reveals=[].slice.call(document.querySelectorAll('.reveal'));
+  var tick=function(){
+    var vh=window.innerHeight||document.documentElement.clientHeight;
+    reveals=reveals.filter(function(el){
+      if(el.getBoundingClientRect().top < vh*0.92){ el.classList.add('on'); return false; }
+      return true;
+    });
+    if(!reveals.length){ window.removeEventListener('scroll',tick); window.removeEventListener('resize',tick); }
+  };
+  window.addEventListener('scroll',tick,{passive:true});
+  window.addEventListener('resize',tick,{passive:true});
+  tick();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "brand": "Saiens",
+  "style": "photorealistic editorial interior photography, near-monochrome warm neutral palette (warm black, stone grey, off-white, pale sage), soft natural daylight, matte stone surfaces, calm and quiet, no people, no text, no letters, no logos, no watermark",
+  "images": [
+    {
+      "file": "hero-float.png",
+      "purpose": "首屏 hero；中島檯面在視覺上浮起來，底座為鏡面，映出地板讓結構消失；手機直式裁切後主體仍在中央；上三分之一保持乾淨暗牆",
+      "aspect": "portrait 3:4",
+      "prompt": "Three-quarter view of a kitchen island whose countertop appears to float\nSubject: a single thick continuous honed grey stone slab hovering at counter height; beneath it, instead of visible legs, two slim vertical supports fully clad in flawless polished mirror that reflect the concrete floor and the dark wall so perfectly they almost disappear; a row of low matte dark oak cabinet boxes sits on the floor under the slab with a clean horizontal gap of shadow between slab and boxes\nDetails: the mirror legs show only a faint seam and the reflected floor texture, raking window light from the left, one ceramic bowl on the slab, dark warm plaster wall behind\nConstraints: upper third plain dark wall, no chairs, no appliances, no people\nIntent: brand concept hero, the stone seems weightless, the structure dissolves into reflection"
+    },
+    {
+      "file": "section-float-frame.png",
+      "purpose": "「結構前提」與展覽段：裸結構，石板浮在兩片鏡面柱上，沒有櫃體，看見地板穿過反射；橫圖不疊字",
+      "aspect": "landscape 3:2",
+      "prompt": "Side elevation view of a long stone counter in a bright empty gallery-like room\nSubject: a long honed grey stone slab at standing height, carried by two slim portal legs completely clad in polished mirror, no cabinets, the floor under the slab empty; the mirror legs reflect the concrete floor and pale plaster wall so the slab looks like it is floating with nothing under it\nDetails: a thin brushed stainless beam just visible under the slab edge, soft even daylight from a large window on the left, long soft shadow on the floor, subtle reflection of the window in the mirror legs\nConstraints: nothing on the slab, no furniture, no people\nIntent: the kitchen stripped to structure, structure dissolved by reflection"
+    },
+    {
+      "file": "section-float-detail.png",
+      "purpose": "結構段細部：鏡面柱與地板相接處的特寫，說明鋼骨消失在反射裡；橫圖不疊字",
+      "aspect": "landscape 3:2",
+      "prompt": "Low close-up at floor level of the base of a floating stone kitchen counter\nSubject: one slim vertical support clad in polished mirror meeting a honed concrete floor, the mirror reflecting the floor texture and a sliver of warm window light so the support seems to vanish; above, the underside edge of a thick grey stone slab and a thin brushed stainless beam\nDetails: a few millimetres of shadow where mirror meets floor, soft daylight, shallow depth of field, dark oak cabinet front out of focus to one side\nConstraints: no people, no text, no clutter\nIntent: structural honesty and visual weightlessness in one detail"
+    }
+  ]
+}

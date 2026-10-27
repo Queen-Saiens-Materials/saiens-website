@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>廚房是家的模樣｜Saiens × NOSIGNER 廚具系列開發基礎</title>
+<meta name="description" content="Saiens 與 NOSIGNER 共同開發廚具系列的基礎：進化思考與山恩使命的對接、樑柱板量體分離的結構前提、五個設計面向、市場座標與 2027 台中發佈。">
+<meta property="og:title" content="廚房是家的模樣，而且會跟著人進化｜Saiens × NOSIGNER">
+<meta property="og:description" content="廚具系列開發基礎 v0.2，2026-10-23。">
+<meta property="og:image" content="https://saiens.group/nosigner-saiens-kitchen/img/og.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="/nosigner-saiens-kitchen/img/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/nosigner-saiens-kitchen/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;700&family=Zen+Kaku+Gothic+New:wght@500;700&family=Noto+Sans+TC:wght@500;700&family=Noto+Sans+JP:wght@500;700&family=Noto+Serif+TC:wght@400&family=Noto+Serif+JP:wght@400&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--fg:#fff;--fg2:rgba(255,255,255,.72);--fg3:rgba(255,255,255,.5);--line:rgba(255,255,255,.18);--line2:rgba(255,255,255,.1);--pad:24px;--z-nav:100;
+--font-head:"Jost","Zen Kaku Gothic New","Noto Sans TC","Helvetica Neue",Arial,sans-serif;
+--font-body:"Zen Kaku Gothic New","Noto Sans TC","Helvetica Neue",Arial,sans-serif;
+--font-serif:"Cormorant Garamond",Georgia,serif}
+html[lang="ja"]{--font-body:"Zen Kaku Gothic New","Noto Sans JP","Helvetica Neue",Arial,sans-serif;--font-head:"Jost","Zen Kaku Gothic New","Noto Sans JP",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:64px;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-weight:500;font-size:14px;line-height:1.9;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+img{display:block;max-width:100%}
+h1,h2,h3{margin:0;font-family:var(--font-head);font-weight:700;line-break:strict;text-wrap:balance}
+h1{font-size:clamp(30px,4.2vw,58px);line-height:1.35;letter-spacing:.01em}
+h2{font-size:clamp(24px,3vw,42px);line-height:1.5;letter-spacing:.01em}
+h3{font-size:16px;line-height:1.5;letter-spacing:.02em}
+p{margin:0}
+.ph{display:inline-block}
+.eyebrow{margin:0 0 20px;font-family:var(--font-head);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg)}
+.eyebrow .k{display:inline-block;margin-right:14px;padding-right:14px;border-right:1px solid var(--line)}
+.eyebrow .sub{color:var(--fg3);font-weight:500;letter-spacing:.1em}
+.wrap{padding:clamp(72px,9vw,128px) var(--pad)}
+.inner{max-width:1392px;margin:0 auto}
+section{border-top:1px solid var(--line2)}
+section.hero{border-top:0}
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);margin-bottom:clamp(40px,6vw,72px);align-items:end}
+.intro h2{max-width:640px}
+.intro p{color:var(--fg2);max-width:560px;font-size:13px;line-height:2}
+.intro .eyebrow{grid-column:1/-1;margin-bottom:0}
+.lead{color:var(--fg2);font-size:13px;line-height:2;max-width:560px;margin-top:20px}
+/* header */
+header.top{position:sticky;top:0;z-index:var(--z-nav);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;min-height:60px;padding:0 var(--pad);background:rgba(0,0,0,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+header.top .brand{color:inherit;text-decoration:none;display:flex;align-items:center;gap:14px;font-family:var(--font-head);font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+header.top .brand img{width:96px;height:auto;transform:translateY(2px)}
+header.top .brand .x{color:var(--fg3)}
+.running{display:flex;align-items:baseline;gap:12px;min-width:0;font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg2);overflow:hidden;white-space:nowrap}
+.running b{color:var(--fg);flex:none}
+.running span{overflow:hidden;text-overflow:ellipsis;text-transform:none;letter-spacing:.04em;font-family:var(--font-body);font-weight:500;font-size:13px}
+header.top nav{display:flex;align-items:center;gap:0 2px}
+header.top nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 9px;color:var(--fg2);font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+header.top nav a:hover{color:var(--fg)}
+.lang-btn{display:inline-flex;margin-left:12px;border:1px solid var(--line)}
+.lang-btn button{border:0;background:transparent;color:var(--fg2);padding:0 12px;min-height:36px;cursor:pointer;font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.lang-btn button.on{background:var(--fg);color:#000}
+.menu-btn{display:none;width:44px;height:44px;border:0;background:transparent;padding:10px;cursor:pointer;flex-direction:column;justify-content:center;gap:5px}
+.menu-btn span{display:block;height:1.5px;background:var(--fg);transition:transform .2s,opacity .2s}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+/* hero: full-bleed image with headline bottom-left */
+.hero{position:relative;min-height:calc(100svh - 56px);display:grid;align-items:end;padding:0;overflow:hidden}
+.hero-fig{position:absolute;inset:0;margin:0;grid-area:1/1}
+.hero-fig img{width:100%;height:100%;object-fit:cover;object-position:center 72%;aspect-ratio:auto;max-height:none}
+.hero-fig::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.72) 100%)}
+.hero-copy{grid-area:1/1;align-self:end;position:relative;z-index:1;padding:clamp(40px,6vw,72px) var(--pad) clamp(32px,5vw,56px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:end;width:100%}
+.hero-copy h1{max-width:760px}
+.hero .meta{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--fg2);line-height:1.7}
+.hero .meta b{display:block;color:var(--fg);font-family:var(--font-head);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px}
+/* dictionary block */
+.dict{padding:clamp(56px,7vw,96px) var(--pad);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;border-top:1px solid var(--line2)}
+.dict .word{font-family:var(--font-head);font-weight:700;font-size:clamp(22px,2.6vw,34px);letter-spacing:.06em;text-transform:uppercase;line-height:1.2}
+.dict .ipa{display:block;margin-top:10px;font-family:var(--font-serif);font-weight:400;font-size:17px;letter-spacing:.02em;text-transform:none;color:var(--fg2)}
+.dict ol{margin:0;padding:0;list-style:none;font-size:13px;line-height:2;color:var(--fg2)}
+.dict li{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--line2)}
+.dict li:first-child{border-top:0;padding-top:0}
+.dict li b{color:var(--fg);font-family:var(--font-head);font-weight:700;letter-spacing:.06em}
+.dict li em{font-style:normal;color:var(--fg);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-family:var(--font-head);font-size:11px;margin-right:10px}
+/* quotes */
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line2);border:1px solid var(--line2)}
+.quotes .card{background:#000;padding:36px 32px 32px}
+.quotes .card h3{font-family:var(--font-serif);font-weight:400;font-size:clamp(22px,2.2vw,30px);line-height:1.5;letter-spacing:.01em}
+html[lang="ja"] .quotes .card h3,.quotes .card h3:lang(zh-Hant){font-family:var(--font-serif),"Noto Serif TC","Noto Serif JP",serif}
+.quotes .card p{margin-top:16px;color:var(--fg2);font-size:13px;line-height:1.9}
+/* grids */
+.cols3,.cols2,.points,.steps,.qs,.seq{display:grid;gap:1px;background:var(--line2);border:1px solid var(--line2)}
+.cols3{grid-template-columns:repeat(3,1fr)}.cols2{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(3,1fr);margin-top:40px}
+.card{padding:32px 28px;background:#000}
+.card .num{display:block;margin-bottom:28px;font-family:var(--font-head);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg3)}
+.card h3{margin-bottom:12px}
+.card p{color:var(--fg2);font-size:13px;line-height:1.9}
+.card ul{margin:14px 0 0;padding-left:16px;color:var(--fg2);font-size:13px;line-height:1.9}
+.card li{margin:6px 0}
+.card .tag{display:inline-block;margin-top:20px;padding:4px 10px;border:1px solid var(--line);font-family:var(--font-head);font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg2)}
+.points{grid-template-columns:1fr}
+.points .card.wide{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:40px;align-items:start;padding:40px 28px}
+.points .card.wide .num{margin-bottom:16px}
+.points .card.wide h3{font-size:clamp(20px,2vw,28px);line-height:1.4}
+.claim{margin-top:18px!important;color:var(--fg)!important;font-size:14px!important;font-weight:700;line-height:1.8!important}
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 40px;margin-top:40px}
+.legend div{padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--fg2);line-height:1.9}
+.legend b{display:block;color:var(--fg);font-family:var(--font-head);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+.seq{grid-template-columns:repeat(8,1fr);margin-top:40px}
+.seq div{padding:22px 10px;background:#000;font-size:13px;text-align:center;font-weight:700}
+.seq div span{display:block;color:var(--fg3);font-family:var(--font-head);font-size:10px;letter-spacing:.14em;margin-bottom:10px}
+.seq div.hl{background:var(--fg);color:#000}.seq div.hl span{color:rgba(0,0,0,.55)}
+.qs{counter-reset:q;margin:40px 0 0;padding:0;list-style:none;grid-template-columns:repeat(2,1fr)}
+.qs li{counter-increment:q;padding:28px 28px 28px 68px;position:relative;background:#000;font-size:13px;color:var(--fg2);line-height:1.9}
+.qs li::before{content:counter(q,decimal-leading-zero);position:absolute;left:28px;top:31px;color:var(--fg3);font-family:var(--font-head);font-weight:700;font-size:11px;letter-spacing:.14em}
+.qs b{display:block;color:var(--fg);font-weight:700;margin-bottom:6px;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:13px;line-height:1.8}
+th,td{padding:14px 12px;border-bottom:1px solid var(--line2);vertical-align:top;text-align:left;color:var(--fg2)}
+td:first-child{color:var(--fg);font-weight:700}
+th{font-family:var(--font-head);font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg3);border-bottom:1px solid var(--line)}
+.tbl{overflow-x:auto;max-width:100%;margin-top:40px}.tbl table{min-width:720px}
+.points .card.wide .tbl table{min-width:0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:40px}
+.stats div{padding-top:16px;border-top:1px solid var(--line)}
+.stats b{display:block;font-family:var(--font-head);font-weight:700;font-size:clamp(26px,2.6vw,38px);line-height:1.1;letter-spacing:0;margin-bottom:10px;white-space:nowrap}
+.stats span{font-size:12px;color:var(--fg2);line-height:1.8}
+.note{font-size:12px;color:var(--fg3);margin-top:24px;max-width:760px;line-height:1.9}
+ul.plain{margin:24px 0 0;padding-left:16px;color:var(--fg2);font-size:13px;line-height:1.9}ul.plain li{margin:10px 0}
+/* figures */
+.sec-fig{margin:0 0 clamp(32px,5vw,56px)}
+.sec-fig img{width:100%;height:auto;aspect-ratio:21/9;object-fit:cover}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:start}
+.split .intro{grid-template-columns:1fr;margin-bottom:0;align-items:start}
+.sq-fig,.wide-fig{margin:0}.sq-fig img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}.wide-fig img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.float-block{margin-top:clamp(48px,7vw,88px);padding-top:clamp(40px,6vw,64px);border-top:1px solid var(--line2)}
+.diagram{margin-top:40px;border:1px solid var(--line2);padding:clamp(16px,3vw,32px)}
+.diagram svg{width:100%;height:auto;display:block}
+footer{padding:40px var(--pad) 56px;font-size:11px;color:var(--fg3);border-top:1px solid var(--line2);line-height:1.9;font-family:var(--font-head);letter-spacing:.04em}
+footer p{margin:2px 0}
+html[lang="ja"] .lang-zh{display:none!important}html[lang="zh-Hant"] .lang-ja{display:none!important}
+@media(max-width:1180px){header.top nav a{padding:0 6px;font-size:12px}.running{display:none}}
+@media(max-width:900px){.intro,.split,.hero-copy,.dict{grid-template-columns:1fr}.cols3,.legend,.steps,.stats{grid-template-columns:1fr}.seq{grid-template-columns:repeat(4,1fr)}.points .card.wide{grid-template-columns:1fr}.hero .meta{grid-template-columns:1fr 1fr}}
+@media(max-width:740px){
+  header.top{grid-template-columns:auto 1fr auto;min-height:52px;gap:12px}
+  header.top .brand img{width:76px}.header-x{display:none}.running{display:none}
+  .menu-btn{display:flex;justify-self:end}
+  header.top nav{position:absolute;left:0;right:0;top:100%;display:none;flex-direction:column;align-items:stretch;padding:8px var(--pad) 16px;background:#000;border-top:1px solid var(--line2)}
+  header.top nav.open{display:flex}
+  header.top nav .lang-zh,header.top nav .lang-ja{flex-direction:column;align-items:stretch}
+  header.top nav a{min-height:46px;padding:0 2px;font-size:12px;border-bottom:1px solid var(--line2)}
+  .lang-btn{margin:12px 0 0;align-self:flex-start}
+  .hero{min-height:calc(100svh - 52px)}
+  .cols2,.qs,.quotes{grid-template-columns:1fr}
+  .card,.qs li{padding:22px 18px}.qs li{padding-left:54px}.qs li::before{left:18px;top:25px}
+  .tbl{overflow:visible}.tbl table{min-width:0}.tbl thead{display:none}.tbl tr{display:block;margin-bottom:1px;border:1px solid var(--line2)}.tbl td{display:block;border:0;padding:6px 14px}.tbl td:first-child{padding-top:14px}.tbl td:last-child{padding-bottom:14px}.tbl td::before{content:attr(data-label);display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg3);margin-bottom:1px;font-family:var(--font-head);font-weight:700}
+  .seq div{padding:14px 6px;font-size:12px}
+  h1 br{display:none}
+  .eyebrow .sub{display:block;margin-top:6px}
+  .eyebrow .k{border-right:0;margin-right:0;padding-right:0}
+}
+</style>
+</head>
+<body>
+<header class="top" id="top">
+  <a class="brand" href="#top" aria-label="Saiens × NOSIGNER"><img src="data:image/png;base64,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" alt="Saiens" width="88" height="30"><span class="x header-x">×</span><span class="header-x">NOSIGNER</span></a>
+  <p class="running" id="running" aria-hidden="true"><b>Project</b><span class="lang-zh">廚房是家的模樣，而且會跟著人進化</span><span class="lang-ja">キッチンは家の姿であり、人とともに進化する</span></p>
+  <nav id="site-nav">
+    <span class="lang-zh"><a href="#thesis">命題</a><a href="#match">對照</a><a href="#structure">結構前提</a><a href="#facets">五個面向</a><a href="#air">空氣</a><a href="#market">市場</a><a href="#roles">分工</a><a href="#exhibit">展覽</a><a href="#open">邊界</a></span>
+    <span class="lang-ja"><a href="#thesis-ja">命題</a><a href="#match-ja">対照</a><a href="#structure-ja">構造の前提</a><a href="#facets-ja">五つの観点</a><a href="#air-ja">空気</a><a href="#market-ja">市場</a><a href="#roles-ja">分担</a><a href="#exhibit-ja">展示</a><a href="#open-ja">境界</a></span>
+    <span class="lang-btn" role="group" aria-label="語言 / 言語"><button type="button" id="b-zh" class="on" onclick="setLang('zh-Hant')">中文</button><button type="button" id="b-ja" onclick="setLang('ja')">日本語</button></span>
+  </nav>
+  <button type="button" class="menu-btn" id="menu-btn" aria-label="選單 / メニュー" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+</header>
+<div class="lang-zh">
+
+<section class="hero wrap">
+<div class="hero-copy"><div class="hero-text"><p class="eyebrow"><span class="k">Project</span><span class="sub">Saiens × NOSIGNER · 廚具系列開發基礎 v0.8 · 2026-10-25</span></p>
+  <h1>廚房是家的模樣，<br>而且會跟著人進化</h1>
+  <p class="lead">太刀川英輔說，美是形態與關係的一致，所以沒有設計師比得上生物。山恩說，家是一個人的模樣。這兩句話是同一個命題。這一頁把它展開成一個結構前提、五個設計面向，與一條走到 2027 年台中發佈的路。</p></div>
+  <div class="meta">
+    <div><b>日本</b>NOSIGNER 定義文法與材料敘事</div>
+    <div><b>台灣</b>山恩讀懂人與銷售，玉禮製造與交付</div>
+    <div><b>美國</b>WandWorks 承接加州市場</div>
+    <div><b>發佈</b>2027 台中好感空間展</div>
+  </div>
+</div>
+<figure class="hero-fig"><img src="/nosigner-saiens-kitchen/assets/hero-plinth.jpg" alt="深色木紋中島量體與連續石材檯面，最底部退縮的踢腳板是全鏡面，映出地板，整座中島看起來離地懸浮" width="1200" height="1600" loading="eager" fetchpriority="high"></figure>
+</section>
+
+<section class="dict" aria-label="定義">
+  <div><p class="word">Saiens × NOSIGNER<span class="ipa">/ˈkɪtʃ.ən ˌɛv.əˈluː.ʃən/ noun</span></p></div>
+  <ol>
+    <li><b>1.</b><span><em>Thesis</em>廚房是家的模樣，而且會跟著人進化。形態與關係一致是美；讀懂一個人，讓家長成他的模樣。</span></li>
+    <li><b>2.</b><span><em>System</em>一副不變的ㄇ字型鋼骨，承托整片升降的 nexea 石板；固定的量體落在鏡面基座上，可整箱替換。</span></li>
+    <li><b>3.</b><span><em>Practice</em>日本定義文法，台灣讀懂人與製造，美國承接市場。2027 年於台中好感空間展發佈。</span></li>
+  </ol>
+</section>
+
+<section id="thesis" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">Why</span>命題</p>
+    <h2><span class="ph">兩句話，</span><span class="ph">同一個意思</span></h2>
+    <p>NO-SIGN 設計的是形體背後看不見的關係；山恩不先問「要什麼材料」，先問「你怎麼生活，你想去哪裡」。兩者都把設計的起點從物移到關係。廚房的形，應該是住在裡面的人與生活之間關係的外顯。</p>
+  </div>
+  <div class="cols2 quotes">
+    <div class="card"><span class="num">太刀川英輔</span><h3><span class="ph">形と関係が一致していることが「美しい」のだとすると、</span><span class="ph">生物にかなうデザイナーはいない。</span></h3><p>如果美是形態與關係的一致，那沒有任何設計師比得上生物。</p></div>
+    <div class="card"><span class="num">山恩使命</span><h3>家，是一個人的模樣。</h3><p>讀懂一個人的生活與嚮往，用對的材料和對的設計，讓家長成他的模樣。</p></div>
+  </div>
+  <div class="cols3" style="margin-top:1px">
+    <div class="card"><span class="num">條件</span><h3>進化要有實體機制</h3><p>生物的進化靠不變的基因型與可變的表現型。這個系列靠不變的框架，與可換的板與量體。沒有這個機制，「進化」只是修辭。</p></div>
+    <div class="card"><span class="num">方法</span><h3>變異與選擇</h3><p>太刀川的進化思考在變異（九種操作）與選擇（解剖、系統、生態、予測）之間往返。山恩的愛與律法並行是同一個張力：沒有選擇的變異是噪音，沒有變異的選擇是僵化。</p></div>
+    <div class="card"><span class="num">角色</span><h3>設計師是並肩者</h3><p>太刀川主張設計師摘掉頭銜、連結不同專業者；山恩的使命說一個家不會只靠一種專業長成。系列的交付模式本身就是這個價值。</p></div>
+  </div>
+</section>
+
+<section id="match" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">Why</span>對照 · 進化思考 × 山恩</p>
+    <h2><span class="ph">四層論述，</span><span class="ph">七個對接點</span></h2>
+    <p>把太刀川的論述分成命題、方法、手法、價值四層，與山恩的願景、使命、內核、資產逐層對照，得到七個可以直接寫進系列論述的對接點。</p>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>層</th><th>太刀川英輔</th><th>山恩</th></tr></thead>
+    <tbody>
+      <tr><td data-label="層">命題</td><td data-label="太刀川英輔">NO-SIGN：設計看不見的關係。美是形態與關係的一致。</td><td data-label="山恩">Bless Every Home &amp; Family。家，是一個人的模樣。</td></tr>
+      <tr><td data-label="層">方法</td><td data-label="太刀川英輔">進化思考：變異九型 × 選擇四視角（解剖、系統、生態、予測）。</td><td data-label="山恩">先讀懂人，再規劃家；愛與律法並行。</td></tr>
+      <tr><td data-label="層">手法</td><td data-label="太刀川英輔">因數分解（技術／材料／故事）、可追溯性設計、順應材料原態、定義評價體系而非造型。</td><td data-label="山恩">透明、當責、優化；三材料架構面／骨／體；Odoo 案場資料與 AI。</td></tr>
+      <tr><td data-label="層">價值</td><td data-label="太刀川英輔">當事者視角與共創、設計師是 facilitator、同理心是未來百年社會設計的根本、危機正是創造的時刻。</td><td data-label="山恩">品格六特質：真實、紀律、同理心、慷慨、謙卑、正直。與設計師並肩。</td></tr>
+    </tbody>
+  </table></div>
+  <ol class="qs">
+    <li><b>形與關係一致 ↔ 家是一個人的模樣</b>系列命題層。廚房的形是人與生活之間關係的外顯。</li>
+    <li><b>選擇四視角 ↔ 讀懂一個人的方法</b>解剖＝生活習慣、系統＝家的歷史、生態＝設計師與客人、予測＝嚮往。使命缺的操作方法，用他的語言補上。</li>
+    <li><b>變異 × 選擇 ↔ 愛與律法並行</b>選擇是律法：骨架、尺寸、材料分區。變異是愛：每個家的模樣必須不同。</li>
+    <li><b>進化即適應 ↔ 可變形式</b>框架是基因型，板與量體是表現型，升降與動線是行為適應。五點已用到他九型中的分離、變量、增殖、交換。</li>
+    <li><b>可追溯性設計 ↔ 透明原則</b>他 2025 年後的重心是材料再生與可追溯；山恩把透明列為第一工作原則，玉禮已有第三方查證的溫室氣體盤查。</li>
+    <li><b>因數分解 ↔ 面／骨／體</b>技術＝不鏽鋼骨架，材料＝nexea，故事＝承載主人模樣的量體皮層。分工有結構依據，不是裝飾。</li>
+    <li><b>設計師是 facilitator ↔ 與設計師並肩</b>NOSIGNER 定義文法、山恩讀懂人、設計師做每個家的變異、玉禮製造。四方分工就是這個價值的實踐。</li>
+  </ol>
+</section>
+
+<section id="structure" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">How</span>結構前提</p>
+    <h2><span class="ph">樑、</span><span class="ph">柱、</span><span class="ph">板、</span><span class="ph">量體分離</span></h2>
+    <p>柯比意的新建築五點全部是「框架取代承重牆」這一個結構決定的推論。本系列的唯一結構決定是：檯面不靠桶身承重，桶身不承載檯面。一根ㄇ字型不鏽鋼骨整根托住連續的石板，石板只是鋪在樑上的面，不自己跨距，所以整片升降也不翹曲。量體固定，掛在樑定出的格線上。</p>
+  </div>
+  <figure class="sec-fig"><img src="/nosigner-saiens-kitchen/assets/section-bare-frame.jpg" alt="拿掉櫃體後的廚房骨架：一片石板架在ㄇ字型不鏽鋼骨上，下方完全空著" width="1600" height="1067" loading="lazy"></figure>
+  <div class="diagram" aria-label="樑柱板量體分離示意圖">
+    <svg viewBox="0 0 1200 420" role="img" aria-labelledby="dg-title"><title id="dg-title">ㄇ字型鋼骨托住石板，固定量體懸掛在下方，板升起時露出空隙</title>
+      <g fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2">
+        <rect x="140" y="92" width="920" height="22" fill="#bdbdbb" stroke="none"/>
+        <rect x="150" y="114" width="900" height="16" fill="none"/>
+        <line x1="170" y1="130" x2="170" y2="392"/><line x1="190" y1="130" x2="190" y2="392"/>
+        <line x1="1010" y1="130" x2="1010" y2="392"/><line x1="1030" y1="130" x2="1030" y2="392"/>
+        <rect x="230" y="196" width="240" height="196" fill="#1c1c1c" stroke="rgba(255,255,255,.35)"/>
+        <rect x="490" y="196" width="220" height="196" fill="#1c1c1c" stroke="rgba(255,255,255,.35)"/>
+        <rect x="730" y="196" width="260" height="196" fill="#1c1c1c" stroke="rgba(255,255,255,.35)"/>
+        <line x1="120" y1="392" x2="1080" y2="392"/>
+        <g stroke-dasharray="4 6" stroke="rgba(255,255,255,.45)"><line x1="600" y1="130" x2="600" y2="196"/></g>
+        <g stroke="rgba(255,255,255,.45)"><line x1="110" y1="60" x2="110" y2="190"/><polyline points="104,66 110,60 116,66"/><polyline points="104,184 110,190 116,184"/></g>
+      </g>
+      <g font-family="Jost,Helvetica Neue,Arial,sans-serif" font-size="14" fill="rgba(255,255,255,.65)" letter-spacing="1.5">
+        <text x="140" y="80">板 · nexea 石面，整片升降</text>
+        <text x="860" y="150">樑 · ㄇ字型鋼骨橫段</text>
+        <text x="1045" y="300">柱</text>
+        <text x="230" y="180">空隙 · 瀝水、通風、露出結構</text>
+        <text x="230" y="412">量體 · 固定桶身，掛在格線上，可整箱替換</text>
+      </g>
+    </svg>
+  </div>
+  <div class="legend">
+    <div><b>柱</b>ㄇ字型鋼骨的兩隻腳，內藏升降機構。承重、升降、一輩子不換。</div>
+    <div><b>樑</b>ㄇ字型鋼骨的橫段，整根承接檯面，定出量體的格線，也是管線與通風的走道。</div>
+    <div><b>板</b>nexea 檯面，連續一片，唯一會動的構件。厚度可降到最薄可量產值。</div>
+    <div><b>量體</b>九灃系統板桶身，固定，掛在格線上或落在鏡面基座上。收納與主人的表情，可整箱換、加、移。</div>
+    <div><b>空隙</b>板升起時露出的水平層。暫放與瀝水，讓水氣自然揮發，廚房誠實展示自己的結構。</div>
+    <div><b>格線</b>樑定出的模數是系列唯一的硬規格：量體寬度、深度、懸掛介面、管線走道。</div>
+  </div>
+  <div class="split float-block">
+    <div class="intro">
+      <p class="eyebrow"><span class="k">How</span>太刀川的提案 · 2026-10-23</p>
+      <h2>讓中島浮起來</h2>
+      <p>懸浮感不來自柱，來自基座。量體最底部那一段退縮的踢腳板，也就是平常藏調整腳的地方，整段做成鏡面。鏡面映出地板，地板看起來從中島底下穿過去，整座量體離地浮起。這正好接上白皮書的退縮基座：基座仍退縮、仍藏調整腳，只是材料從深色換成鏡子。與樑柱板分離也相容：板由ㄇ字型鋼骨承托升降，量體落在鏡面基座上，兩種輕盈疊在一起。</p>
+    </div>
+    <figure class="wide-fig"><img src="/nosigner-saiens-kitchen/assets/section-plinth-detail.jpg" alt="中島底部踢腳板全鏡面的低角度特寫，鏡面映出混凝土地板，深色木紋門片像離地懸空" width="1600" height="1067" loading="lazy"></figure>
+  </div>
+  <div class="cols3" style="margin-top:40px">
+    <div class="card"><span class="num">解決一</span><h3>連續石面保住了</h3><p>板是一整片，升降時整片動，石面不必分段。霧面、收斂紋理的連續檯面成立。</p></div>
+    <div class="card"><span class="num">解決二</span><h3>升降有了建築意義</h3><p>板升起時露出框架與一道空隙。那是通風層，也是廚房不掩飾構造的時刻，呼應太刀川順應材料原態的偏好。</p></div>
+    <div class="card"><span class="num">解決三</span><h3>模組化從口號變成格線</h3><p>量體掛在格線上，可整箱換、加、移，框架不動。基因型不變、表現型替換：分離、交換、增殖、欠缺四種變異都在這裡。</p></div>
+  </div>
+</section>
+
+<section id="facets" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">How</span>五個面向</p>
+    <h2><span class="ph">材質、</span><span class="ph">設計、</span><span class="ph">結構、</span><span class="ph">機能、</span><span class="ph">評價</span></h2>
+    <p>每個面向都接到太刀川的一個概念與山恩的一句使命，再落成可操作的設計規則。它們不是五個平行主張，全部是結構前提的推論。</p>
+  </div>
+  <div class="points">
+    <div class="card wide">
+      <div><span class="num">01 · 材質</span><h3>材料有身世</h3><p>太刀川：可追溯性設計、順應材料原態、地域固有脈絡一旦失去不可逆。<br>山恩：對的材質有它該在的位置；透明是第一工作原則。</p><p class="claim"><span class="ph">每一種材料都說得出它為什麼在這裡、</span><span class="ph">從哪裡來、</span><span class="ph">能用多久。</span><span class="ph">材料的誠實比材料的來源更先。</span></p></div>
+      <div><ul>
+        <li>面：霧面、收斂紋理、warm neutral 到 charcoal，不拋光；骨料痕跡讀成身世而非瑕疵。</li>
+        <li>骨：板升起時可見的部位做成完成面，不包覆、不噴漆。</li>
+        <li>體：封邊與板芯誠實，門板只是皮層，允許主人日後替換。</li>
+        <li>三材料各在其位的理由寫成一頁材料分工圖，比照越前漆器的工法圖示。</li>
+        <li>永續先靠長壽與模組化：框架一輩子、皮層可換、不拆廚房。再生與碳足跡是路線圖，不是上市前提。</li>
+      </ul><span class="tag">擬態 · 交換</span></div>
+    </div>
+    <div class="card wide">
+      <div><span class="num">02 · 設計</span><h3>先讀人，再畫圖</h3><p>太刀川：選擇四視角；同理心是未來百年社會設計的根本。<br>山恩：讀懂一個人的生活與嚮往，讓家長成他的模樣。</p><p class="claim"><span class="ph">設計從一份側寫開始，</span><span class="ph">不從型錄開始。</span><span class="ph">量體的皮層是主人的表現型。</span></p></div>
+      <div>
+        <div class="tbl" style="margin-top:0"><table>
+          <thead><tr><th>視角</th><th>問的是</th><th>決定的是</th></tr></thead>
+          <tbody>
+            <tr><td data-label="視角">解剖</td><td data-label="問的是">誰下廚、幾人、菜系、頻率、慣用手</td><td data-label="決定的是">序列配置、升降預設高度、量體分配</td></tr>
+            <tr><td data-label="視角">系統</td><td data-label="問的是">這個家從哪裡來、保留什麼</td><td data-label="決定的是">皮層材質與色彩的原點、保留的舊物</td></tr>
+            <tr><td data-label="視角">生態</td><td data-label="問的是">設計師、常來的客人、社區</td><td data-label="決定的是">開口方向、島的朝向、款待的量</td></tr>
+            <tr><td data-label="視角">予測</td><td data-label="問的是">五年後的生活</td><td data-label="決定的是">預留的格線、可替換的量體、升降範圍</td></tr>
+          </tbody>
+        </table></div>
+        <ul><li>皮層限量：四個材質家族、每家族五色，共 20 色。性格在組合裡表現，不在無限客製裡。</li><li>側寫由設計師做，山恩提供工具與資料，NOSIGNER 定義文法。</li></ul><span class="tag">變異</span>
+      </div>
+    </div>
+    <div class="card wide">
+      <div><span class="num">03 · 結構</span><h3>框架是基因</h3><p>太刀川：因數分解；制約即起點；拆解成部分，逐一追求每個部分的品質。<br>山恩：美學與功能的平衡；紀律，對的材質放在對的位置靠的是紀律不是靈感。</p><p class="claim"><span class="ph">一副框架用一輩子；</span><span class="ph">板與量體隨人生換。</span></p></div>
+      <div><ul>
+        <li>樑定出的格線是系列唯一的硬規格，全部寫進律法。</li>
+        <li>柱的升降行程覆蓋檯高 870 到 950 mm，再往上到備料與站立用餐高度，數字待實驗。</li>
+        <li>框架可拆可運：出口的是框架與量體，不是整組廚房。加州 7 天施工的承諾建在結構上。</li>
+        <li>升降時露出的樑與柱是完成面，不是機構的背面。</li>
+        <li>不鏽鋼骨架由 BELEGA 製作；升降機構另找供應商，兩腳同步不歪斜是第一個工程題。</li>
+      </ul><span class="tag">分離 · 欠缺</span></div>
+    </div>
+    <div class="card wide">
+      <div><span class="num">04 · 機能</span><h3>會進化的廚房</h3><p>太刀川：被給予的適應可疑，自己驗證過的適應才重要。<br>山恩：先問你怎麼生活，你想去哪裡；每週迭代，永遠有更好的做法。</p><p class="claim"><span class="ph">廚房不是交付那天定型，</span><span class="ph">是在使用裡被驗證、</span><span class="ph">被調整。</span></p></div>
+      <div><ul>
+        <li>板的高度隨人、隨菜系、隨階段變化；預設值來自側寫，實際值由主人自己調出來。</li>
+        <li>八段序列：拿取、洗、備、料理、打盤、上桌與款待、清潔、收納，沿格線配置，可因家而異。</li>
+        <li>板升起的空隙是功能層：瀝水、通風、暫放熱鍋。台灣與日本的潮濕洞察在此成為規格。</li>
+        <li>量體內五金可調、層板與拉籃讓水氣揮發，框架的管線走道預留未來設備。</li>
+        <li>火在牆邊，人在中島：料理區靠牆半包覆，罩是料理牆的一段，氣流只有一條往外的路（見「空氣」）。</li>
+      </ul><span class="tag">變量 · 增殖</span></div>
+    </div>
+    <div class="card wide">
+      <div><span class="num">05 · 評價</span><h3>一個廚房讓多少人同時參與</h3><p>太刀川：Fun Kitchen by Cookpad 的 Kitchen Score，定義評價體系而非造型。<br>山恩：Bless Every Home &amp; Family；廚房是凝聚情感與建立連結的地方。</p><p class="claim"><span class="ph">好廚房的標準不是它多漂亮，</span><span class="ph">是它讓多少人同時站進來。</span></p></div>
+      <div><ul>
+        <li>與 NOSIGNER 共同定義評分：同時工作人數、站在灶前能否看見餐桌、上桌動線長度、客人能否參與而不礙事、不同身高的人能否都工作。</li>
+        <li>評分是系列的對外語言，也是從製造者升級為品類定義者的工具。</li>
+        <li>評分同時是設計師的驗收工具，讓祝福可以被量測。</li>
+      </ul><span class="tag">逆轉</span></div>
+    </div>
+  </div>
+  <div class="seq" aria-label="八段料理序列">
+    <div><span>01</span>拿取</div><div><span>02</span>洗</div><div><span>03</span>備</div><div><span>04</span>料理</div><div><span>05</span>打盤</div><div class="hl"><span>06</span>上桌 · 款待</div><div><span>07</span>清潔</div><div><span>08</span>收納</div>
+  </div>
+</section>
+
+<section id="gap" class="wrap">
+  <div class="split">
+    <div class="intro">
+      <p class="eyebrow"><span class="k">How</span>機能 · 空隙</p>
+      <h2><span class="ph">板升起來的時候，</span><span class="ph">廚房多了一層</span></h2>
+      <p>瀝水的碗、剛離火的鍋、需要通風的抹布，都落在板與量體之間。這一層在台灣與日本潮濕的廚房裡是真實的需求，歐洲品牌很少談。它同時讓人看見樑與柱，廚房不掩飾自己是怎麼站起來的。</p>
+    </div>
+    <figure class="sq-fig"><img src="/nosigner-saiens-kitchen/assets/section-lift-gap.jpg" alt="升起的石材檯面與下方櫃體之間的空隙裡，木架上瀝著碗與一只鑄鐵鍋" width="1600" height="1067" loading="lazy"></figure>
+  </div>
+</section>
+
+<section id="air" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">How</span>空氣 · 油煙的路徑</p>
+    <h2><span class="ph">火在牆邊，</span><span class="ph">人在中島</span></h2>
+    <p>中島與餐桌是一個集合體，代表主人與客人的密切關係。要讓這件事成立，油煙必須有一條只往外走的路。油煙是熱羽流，鍋上的熱空氣帶著油霧往上升，邊升邊變粗；罩要在它還細的時候整個收進去。側向氣流超過 0.2 m/s，捕集就開始崩潰。所以灶靠牆、用回歸櫃半包覆、爆炒放後爐，中島不放火，補風從餐桌側低速進入，空氣從人走向火，再從罩離開。</p>
+  </div>
+  <div class="diagram" aria-label="平面氣流示意（1 單位＝1 cm）：L 型料理牆，中島與餐桌連成一線，補風從餐桌側進入流向灶，由罩排出">
+    <svg viewBox="0 0 780 500" role="img" aria-labelledby="af-zh"><title id="af-zh">平面氣流示意（1 單位＝1 cm）：L 型料理牆，中島與餐桌連成一線，補風從餐桌側進入流向灶，由罩排出</title>
+      <defs><marker id="ar-zh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="rgba(255,255,255,.8)"/></marker><marker id="dm-zh" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="rgba(255,255,255,.5)"/></marker></defs>
+      <g fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1">
+        <!-- room shell: back wall + left wall (no windows); right side opens to dining -->
+        <line x1="40" y1="30" x2="760" y2="30" stroke="rgba(255,255,255,.3)"/><line x1="40" y1="30" x2="40" y2="470" stroke="rgba(255,255,255,.3)"/><line x1="40" y1="470" x2="760" y2="470" stroke="rgba(255,255,255,.3)"/>
+        <!-- L counter: back run 4,800 x 600, left return 2,400 x 600 -->
+        <path d="M60,50 L540,50 L540,110 L120,110 L120,290 L60,290 Z" fill="#1c1c1c"/>
+        <!-- hood + cooktop -->
+        <rect x="240" y="50" width="120" height="60" fill="#2c2c2c" stroke="rgba(255,255,255,.6)"/>
+        <circle cx="278" cy="82" r="15" stroke="rgba(255,255,255,.9)"/><circle cx="322" cy="82" r="15" stroke="rgba(255,255,255,.9)"/>
+        <!-- island 2,700 x 1,000 and table 1,800 x 900 in line -->
+        <rect x="225" y="230" width="270" height="100" fill="#bdbdbb" stroke="none"/>
+        <rect x="495" y="235" width="180" height="90" fill="#8f8f8d" stroke="none"/>
+        <rect x="300" y="252" width="60" height="40" fill="none" stroke="rgba(0,0,0,.45)"/>
+        <!-- chairs: three along, one at end -->
+        <rect x="508" y="338" width="45" height="45" stroke="rgba(255,255,255,.45)"/><rect x="563" y="338" width="45" height="45" stroke="rgba(255,255,255,.45)"/><rect x="618" y="338" width="45" height="45" stroke="rgba(255,255,255,.45)"/><rect x="688" y="258" width="45" height="45" stroke="rgba(255,255,255,.45)"/>
+        <!-- supply slot on dining wall -->
+        <rect x="560" y="465" width="60" height="10" fill="#000" stroke="rgba(255,255,255,.8)"/>
+        <!-- airflow -->
+        <g stroke="rgba(255,255,255,.75)" stroke-dasharray="4 5" marker-end="url(#ar-zh)">
+          <path d="M590,463 C590,430 560,410 520,395"/>
+          <path d="M470,395 C430,380 400,360 380,335"/>
+          <path d="M300,228 C300,190 292,150 288,116"/>
+          <path d="M340,228 C340,190 320,150 314,116"/>
+          <path d="M300,50 L300,14"/>
+        </g>
+        <!-- dimensions -->
+        <g stroke="rgba(255,255,255,.5)" marker-start="url(#dm-zh)" marker-end="url(#dm-zh)">
+          <line x1="430" y1="112" x2="430" y2="228"/>
+          <line x1="122" y1="200" x2="223" y2="200"/>
+          <line x1="430" y1="332" x2="430" y2="468"/>
+        </g>
+        <!-- scale bar -->
+        <g stroke="rgba(255,255,255,.5)"><line x1="60" y1="440" x2="160" y2="440"/><line x1="60" y1="436" x2="60" y2="444"/><line x1="160" y1="436" x2="160" y2="444"/></g>
+      </g>
+      <g font-family="Jost,Zen Kaku Gothic New,Noto Sans TC,Helvetica Neue,Arial,sans-serif" font-size="9" fill="rgba(255,255,255,.7)" letter-spacing=".6">
+        <text x="60" y="44">L 型料理牆 · 櫃深 600</text>
+        <text x="368" y="72">深罩＋側板 1,200</text>
+        <text x="368" y="86">後爐 · 爆炒</text>
+        <text x="234" y="246">中島 · H 900 · 2,700 × 1,000</text>
+        <text x="503" y="251" fill="rgba(0,0,0,.75)">餐桌 · H 740 · 1,800 × 900</text>
+        <text x="628" y="485">補風 · 低位低速</text>
+        <text x="306" y="22">排風 · 室外</text>
+        <text x="438" y="174">1,200</text>
+        <text x="172" y="194" text-anchor="middle">1,050</text>
+        <text x="438" y="404">1,400</text>
+        <text transform="translate(52,170) rotate(-90)" text-anchor="middle" fill="rgba(255,255,255,.45)">此面不開窗</text>
+        <text x="400" y="22" fill="rgba(255,255,255,.45)">此面不開窗</text>
+        <text x="150" y="330">側風 < 0.2 m/s</text>
+        <text x="110" y="456" text-anchor="middle" fill="rgba(255,255,255,.45)">1 m</text>
+        <text x="700" y="440" fill="rgba(255,255,255,.45)">餐廳 · 窗</text>
+      </g>
+    </svg>
+  </div>
+  <ol class="qs">
+    <li><b>料理區靠牆，平面以 L 型為基準</b>ㄇ 型三面圍合最利捕集，但中島與餐桌連成一線時，ㄇ 的第三面會擋住餐桌，走道不成立；ㄇ 型保留給餐桌垂直於料理牆的配置。L 型用牆與一側回歸櫃圍出灶間，一字型靠罩的側板補足。爐在後牆正中，爆炒用後爐：同一個罩同一風量，後爐捕集 91%，前爐 62%。灶前走道 1,200，回歸櫃到島 1,050，島後方 1,400。</li>
+    <li><b>罩是量體的一部分</b>深罩加側板，蓋住前爐前緣，比爐面每側寬 75 到 150 mm，底距爐面瓦斯 650 到 750、電磁 600。罩的下緣用 nexea 或不鏽鋼，它是料理牆的一段，不是掛上去的電器。</li>
+    <li><b>中島不放火</b>中島只有水槽與備料。中島罩四面開放，實測捕集從 10% 到 100% 都有；下抽式對前爐與高鍋低於 30%。不把最難的題目放在最重要的位置。</li>
+    <li><b>補風決定方向</b>排風超過約 400 cfm（11 m³/min）必須補等量的風，否則風量崩潰、門難開、熱水器回流。補風從餐桌側低位低速進入並與排油煙機連鎖，空氣走「餐桌、中島、灶、罩、室外」一條路。補風開在爐旁就是製造側風。</li>
+    <li><b>爐區那面牆不開窗</b>門不在爐側，冷氣出風口與吊扇不吹爐區，排風管短直、兩個彎頭以內、出口加防風帽。</li>
+    <li><b>先導案自己量</b>發煙筆看羽流是否全部進罩，PM2.5 計在餐桌位置量爆炒前後濃度，建立這個系列自己的捕集數據。被給予的規格可疑，自己驗證過的才算數。</li>
+  </ol>
+  <p class="note">數據來源：LBNL 住宅排油煙機捕集效率研究、JOEH 側風研究、IRC M1503.6、ASHRAE 62.2、CA Title 24、CNS 3805；部分原始文件尚待逐字複核，數字為設計區間，先導案量測後定案。</p>
+</section>
+
+<section id="market" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">Will</span>市場座標</p>
+    <h2>建築語彙在台灣與美國都有一段空白帶</h2>
+    <p>在美國，「建築師會心動的廚房」沒有低於約 USD 45,000 的選項；在台灣，國產高規與德國進口之間空著一段。系列用同等級的設計語彙、更短的交期與可追溯的材料填這兩段空白。</p>
+  </div>
+  <div class="stats">
+    <div><b>NT$ 100–160 萬</b><span>台灣一套（約 10 延米 L 型加中島，含櫃體、nexea 檯面與安裝，不含家電）。國產高規之上、德國進口之下。</span></div>
+    <div><b>USD 30,000–50,000</b><span>美國一套，同規格。市場上建築式語彙的最低點是 next125 約 44,000。</span></div>
+    <div><b>3–4 週</b><span>台灣交付目標。玉禮標準對紋 7 天、系統櫃體 7 到 10 個工作天；進口品牌 2 到 3 個月。</span></div>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>台灣層級</th><th>每延米</th><th>10 延米一套</th><th>語彙</th></tr></thead>
+    <tbody>
+      <tr><td data-label="台灣層級">國產基本</td><td data-label="每延米">NT$ 40,000</td><td data-label="10 延米一套">約 400,000</td><td data-label="語彙">系統、性價比</td></tr>
+      <tr><td data-label="台灣層級">國產高規</td><td data-label="每延米">NT$ 60,000–80,000</td><td data-label="10 延米一套">600,000–800,000</td><td data-label="語彙">系統、材料升級</td></tr>
+      <tr><td data-label="台灣層級"><b>本系列</b></td><td data-label="每延米"><b>NT$ 100,000–160,000</b></td><td data-label="10 延米一套"><b>1,000,000–1,600,000</b></td><td data-label="語彙"><b>建築語彙、可追溯材料、3 到 4 週交付</b></td></tr>
+      <tr><td data-label="台灣層級">德國進口</td><td data-label="每延米">NT$ 80,000–165,000</td><td data-label="10 延米一套">800,000–1,650,000</td><td data-label="語彙">系統、品牌</td></tr>
+      <tr><td data-label="台灣層級">義大利進口</td><td data-label="每延米">NT$ 165,000–330,000</td><td data-label="10 延米一套">1,650,000–3,300,000</td><td data-label="語彙">建築語彙、簽名</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">台灣分層為 2026 年公開標價與業者概估的彙整，非成交統計；美國分層來自 WandWorks 廚具白皮書 146 個品牌的價格與形式語彙地圖。台灣廚具市場約 NT$ 200 億一年、整體廚房 16 到 18 萬套一年，其中裝修翻新約 7 到 8 萬套，是系列的主要市場。</p>
+</section>
+
+<section id="roles" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">Will</span>分工與階梯</p>
+    <h2><span class="ph">日本創作，</span><span class="ph">台灣讀懂人與製造，</span><span class="ph">美國市場</span></h2>
+    <p>柳宗理與燕三条合作七十年的原型：設計師擁有美學與人因的定義權，製造端擁有材料與量產的品質權。本案是它的跨國升級版，多了一個讀懂人的角色。</p>
+  </div>
+  <div class="cols2">
+    <div class="card"><span class="num">NOSIGNER</span><h3>定義文法與材料敘事</h3><p>系列的設計文法、材料身世的敘事、評價體系。從單一材料共創開始，往廚房標準與第一個系列走。</p></div>
+    <div class="card"><span class="num">山恩 Saiens</span><h3>讀懂人、銷售、驗收</h3><p>側寫工具與案場資料、設計師與業主通路、圖面確認與驗收。簽約主體，材料開發與國際聯名的主導方。</p></div>
+    <div class="card"><span class="num">玉禮 Queen Ceramic</span><h3>製造與工程交付</h3><p>nexea 檯面、骨架與量體的整合、安裝交付。接上全屋定製體系與對山恩的交付工期承諾。</p></div>
+    <div class="card"><span class="num">WandWorks</span><h3>美國市場</h3><p>山恩 100% 子公司，加州廚房翻修。框架與量體以拆裝件出口，現場 7 天施工。</p></div>
+  </div>
+  <div class="steps">
+    <div class="card"><span class="num">第一階段 · 2026 Q4 至 2027</span><h3><span class="ph">單一材料共創，</span><span class="ph">完成一件作品</span></h3><p>以 nexea 與ㄇ字型骨架完成展覽的裸框架與一片板，在山恩台北展間落地，並以先導案驗證升降、側寫與評分。</p></div>
+    <div class="card"><span class="num">第二階段 · 2027 至 2028</span><h3>廚房標準與第一個系列</h3><p>評價體系定稿、量體格線與 20 色皮層定案，台灣設計師通路首發，美國由 WandWorks 承接。</p></div>
+    <div class="card"><span class="num">第三階段 · 2028 起</span><h3>長期設計合作</h3><p>系列延伸至全屋櫃體與器物，日本創作、台灣製造、美國市場的三角持續運作。</p></div>
+  </div>
+</section>
+
+<section id="exhibit" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">Will</span>2027 · 台中好感空間展</p>
+    <h2><span class="ph">展出的不是一套廚房，</span><span class="ph">是一個進化的過程</span></h2>
+    <p>讓觀眾看見結構，而不是看見一個完成的樣品間。五個展項，對應五個面向。</p>
+  </div>
+  <figure class="sec-fig"><img src="/nosigner-saiens-kitchen/assets/section-collective.jpg" alt="同一片石板的兩段高度：近端是中島，遠端降為餐桌並擺著椅子；後方是ㄇ型料理牆與嵌入牆體的深罩" width="1600" height="1067" loading="lazy"></figure>
+  <ol class="qs">
+    <li><b>裸結構</b>一副ㄇ字型骨架，板升到最高，量體拿掉一半，留下的量體落在鏡面基座上。觀眾同時看見廚房的骨與離地的量體。</li>
+    <li><b>同一框架的三種模樣</b>三組不同皮層的量體與三份側寫，說明同一副框架如何長成三個家。</li>
+    <li><b>升降現場</b>板在觀眾面前升降，空隙裡放著瀝水中的鍋與碗。</li>
+    <li><b>材料分工圖</b>一面牆講三材料各在其位的理由。nexea 只講它在這裡做什麼、為什麼霧面。</li>
+    <li><b>評分表</b>觀眾自己算家裡的廚房能讓幾個人同時站進來。</li>
+    <li><b>時程</b>2026 Q4 定概念，2027 Q1 完成一組框架與三組量體。第一階段的那一件作品，就是展覽的裸框架加一片 nexea 板。</li>
+  </ol>
+</section>
+
+<section id="open" class="wrap">
+  <div class="split">
+    <div class="intro">
+      <p class="eyebrow"><span class="k">Will</span>誠實邊界與待解</p>
+      <h2><span class="ph">說得出口的，</span><span class="ph">和還不能說的</span></h2>
+      <p>太刀川極重視可追溯性，被發現包裝故事反而致命。以下是本頁所有主張的邊界。</p>
+      <ul class="plain">
+        <li>nexea 出口版採再生低矽配方，結晶矽檢測已完成，報告整理中；台灣版配方依成本與物性決定，不承諾比例。</li>
+        <li>再生比例與碳足跡數字是路線圖，不是上市前提；永續論述先靠長壽與模組化。</li>
+        <li>JAPANDI 不當標籤。由太刀川定義「好的石材廚房」，比掛零售語彙更有話語權。</li>
+        <li>ㄇ字型鋼骨的截面與跨距、升降機構的負載與雙腳同步、nexea 最薄可量產厚度，是先導案前必須有答案的三個工程題。鏡面踢腳另需驗證：刮傷與清潔、調整腳的檢修方式、鏡面與地板的收邊。</li>
+        <li>中西日檯高差異只有經驗值。第一階段定義實驗，先導案的升降紀錄就是資料。</li>
+        <li>NOSIGNER 量產廚具工業設計實績薄；框架與機構工程由製造端承接，必要時另聘產品設計所。</li>
+      </ul>
+    </div>
+    <figure class="sq-fig"><img src="/nosigner-saiens-kitchen/assets/section-materials.jpg" alt="再生石、不鏽鋼與橡木三種材料樣本並置" width="1200" height="1200" loading="lazy"></figure>
+  </div>
+</section>
+
+<footer>
+  <p>Saiens × NOSIGNER 廚具系列開發基礎 v0.8 · 2026-10-25 · 內部文件，請勿外流。</p>
+  <p>本頁不含商業條件與預算。太刀川英輔語錄取自已公開出處；山恩使命為 2026-09-16 定案文。結構前提與 nexea 口徑依 2026-10-22 裁定。</p>
+</footer>
+</div>
+<div class="lang-ja">
+
+<section class="hero wrap">
+<div class="hero-copy"><div class="hero-text"><p class="eyebrow"><span class="k">Project</span><span class="sub">Saiens × NOSIGNER · キッチンシリーズ開発の基礎 v0.8 · 2026-10-25</span></p>
+  <h1>キッチンは家の姿であり、<br>人とともに進化する</h1>
+  <p class="lead">太刀川英輔は「形と関係が一致していることが美しいのだとすると、生物にかなうデザイナーはいない」と言います。Saiens は「家は、その人の姿である」と言います。この二つは同じ命題です。このページはそれを、一つの構造の前提、五つのデザインの観点、そして 2027 年台中での発表までの道筋に展開します。</p></div>
+  <div class="meta">
+    <div><b>日本</b>NOSIGNER がデザインの文法と素材の物語を定義</div>
+    <div><b>台湾</b>Saiens が人を読み解き販売、Queen Ceramic が製造と納品</div>
+    <div><b>米国</b>WandWorks がカリフォルニア市場を担当</div>
+    <div><b>発表</b>2027 台中「好感空間展」</div>
+  </div>
+</div>
+<figure class="hero-fig"><img src="/nosigner-saiens-kitchen/assets/hero-plinth.jpg" alt="ダークオークのアイランドと連続した石の天板。最下部の引っ込んだ巾木が全面鏡で床を映し、アイランド全体が床から浮いているように見える" width="1200" height="1600" loading="eager" fetchpriority="high"></figure>
+</section>
+
+<section class="dict" aria-label="定義">
+  <div><p class="word">Saiens × NOSIGNER<span class="ipa">/ˈkɪtʃ.ən ˌɛv.əˈluː.ʃən/ noun</span></p></div>
+  <ol>
+    <li><b>1.</b><span><em>Thesis</em>キッチンは家の姿であり、人とともに進化する。形と関係の一致が美であり、人を読み解いて家をその人の姿に育てる。</span></li>
+    <li><b>2.</b><span><em>System</em>変わらない一本の門型鋼フレームが、一枚のまま昇降する nexea の天板を支える。固定されたボリュームは鏡の台座の上に置かれ、箱ごと交換できる。</span></li>
+    <li><b>3.</b><span><em>Practice</em>日本が文法を定義し、台湾が人を読み解き製造し、米国が市場を担う。2027 年、台中「好感空間展」で発表。</span></li>
+  </ol>
+</section>
+
+<section id="thesis-ja" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">Why</span>命題</p>
+    <h2><span class="ph">二つの言葉、</span><span class="ph">一つの意味</span></h2>
+    <p>NO-SIGN がデザインするのは、形の背景にある目に見えない関係です。Saiens は「どの素材が欲しいか」ではなく「どう暮らし、どこへ向かいたいか」を先に問います。どちらもデザインの起点を物から関係へ移しています。キッチンの形は、そこに住む人と暮らしとの関係が外に現れたものであるべきです。</p>
+  </div>
+  <div class="cols2 quotes">
+    <div class="card"><span class="num">太刀川英輔</span><h3><span class="ph">形と関係が一致していることが「美しい」のだとすると、</span><span class="ph">生物にかなうデザイナーはいない。</span></h3><p>美とは形と関係の一致である。ならば、生物に勝るデザイナーはいない。</p></div>
+    <div class="card"><span class="num">Saiens のミッション</span><h3>家は、その人の姿である。</h3><p>その人の暮らしと憧れを読み解き、正しい素材と正しいデザインで、家をその人の姿に育てる。</p></div>
+  </div>
+  <div class="cols3" style="margin-top:1px">
+    <div class="card"><span class="num">条件</span><h3>進化には実体の仕組みが要る</h3><p>生物の進化は、変わらない遺伝子型と変わる表現型によって成り立ちます。このシリーズは、変わらないフレームと、交換できる天板とボリュームによって成り立ちます。その仕組みがなければ「進化」は修辞にすぎません。</p></div>
+    <div class="card"><span class="num">方法</span><h3>変異と選択</h3><p>進化思考は変異（九つの操作）と選択（解剖・系統・生態・予測）の往復です。Saiens の「愛と律法は並び立つ」も同じ緊張関係です。選択のない変異はノイズであり、変異のない選択は硬直です。</p></div>
+    <div class="card"><span class="num">役割</span><h3>デザイナーは並走者</h3><p>太刀川は、デザイナーは肩書きを外し異なる専門家をつなぐ存在だと言います。Saiens のミッションは、家は一つの専門だけでは育たないと言います。このシリーズの供給の形そのものが、この価値の実践です。</p></div>
+  </div>
+</section>
+
+<section id="match-ja" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">Why</span>対照 · 進化思考 × Saiens</p>
+    <h2><span class="ph">四つの層、</span><span class="ph">七つの接点</span></h2>
+    <p>太刀川の言説を命題・方法・手法・価値の四層に分け、Saiens のビジョン・ミッション・核・資産と層ごとに対照すると、シリーズの言説にそのまま書き込める七つの接点が得られます。</p>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>層</th><th>太刀川英輔</th><th>Saiens</th></tr></thead>
+    <tbody>
+      <tr><td data-label="層">命題</td><td data-label="太刀川英輔">NO-SIGN：見えない関係をデザインする。美は形と関係の一致。</td><td data-label="Saiens">Bless Every Home &amp; Family。家は、その人の姿である。</td></tr>
+      <tr><td data-label="層">方法</td><td data-label="太刀川英輔">進化思考：変異の九型 × 選択の四視点（解剖・系統・生態・予測）。</td><td data-label="Saiens">まず人を読み解き、それから家を計画する。愛と律法は並び立つ。</td></tr>
+      <tr><td data-label="層">手法</td><td data-label="太刀川英輔">因数分解（技術／素材／物語）、トレーサビリティ・デザイン、素材の本来の姿に従う、造形ではなく評価体系を定義する。</td><td data-label="Saiens">透明・当事者責任・最適化。面／骨／体の三素材構成。Odoo の現場データと AI。</td></tr>
+      <tr><td data-label="層">価値</td><td data-label="太刀川英輔">当事者の視点と共創、デザイナーはファシリテーター、共感は次の百年の社会デザインの根本、危機は創造の時。</td><td data-label="Saiens">人格の六つの特質：真実・規律・共感・寛容・謙虚・誠実。デザイナーと並走する。</td></tr>
+    </tbody>
+  </table></div>
+  <ol class="qs">
+    <li><b>形と関係の一致 ↔ 家はその人の姿</b>シリーズの命題の層。キッチンの形は、人と暮らしの関係の外的表現である。</li>
+    <li><b>選択の四視点 ↔ 人を読み解く方法</b>解剖＝暮らしの習慣、系統＝家の歴史、生態＝デザイナーと客、予測＝憧れ。ミッションに欠けていた操作方法を、彼自身の言葉で補う。</li>
+    <li><b>変異 × 選択 ↔ 愛と律法</b>選択は律法：フレーム、寸法、素材の分担。変異は愛：家の姿はそれぞれ違わなければならない。</li>
+    <li><b>進化とは適応 ↔ 可変の形</b>フレームは遺伝子型、天板とボリュームは表現型、昇降と動線は行動の適応。五つの提言はすでに九型のうち分離・変量・増殖・交換を使っている。</li>
+    <li><b>トレーサビリティ・デザイン ↔ 透明の原則</b>彼の 2025 年以降の重心は素材の再生と追跡可能性。Saiens は透明を第一の行動原則とし、Queen Ceramic は第三者検証済みの温室効果ガス算定を持つ。</li>
+    <li><b>因数分解 ↔ 面／骨／体</b>技術＝ステンレスのフレーム、素材＝nexea、物語＝住まい手の姿を担うボリュームの表層。分担には構造上の根拠があり、装飾ではない。</li>
+    <li><b>デザイナーはファシリテーター ↔ デザイナーと並走する</b>NOSIGNER が文法を定義し、Saiens が人を読み解き、デザイナーが各家の変異をつくり、Queen Ceramic が製造する。四者の分担がこの価値の実践である。</li>
+  </ol>
+</section>
+
+<section id="structure-ja" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">How</span>構造の前提</p>
+    <h2>梁・柱・床板・ボリュームの分離</h2>
+    <p>コルビュジエの「新しい建築の五つの要点」はすべて、「フレームが耐力壁に代わる」という一つの構造的決定からの帰結です。このシリーズの唯一の構造的決定は、天板はキャビネットに荷重を預けず、キャビネットは天板を支えないこと。一本の門型（コの字型）ステンレスフレームが連続した石の天板を全長で支え、天板は梁の上に置かれた面にすぎないため、一枚のまま昇降しても反りません。ボリュームは固定され、梁が定めるグリッドに掛かります。</p>
+  </div>
+  <figure class="sec-fig"><img src="/nosigner-saiens-kitchen/assets/section-bare-frame.jpg" alt="キャビネットを外したキッチンの骨格：門型ステンレスフレームに載る一枚の石の天板、その下は完全に空いている" width="1600" height="1067" loading="lazy"></figure>
+  <div class="diagram" aria-label="梁・柱・床板・ボリューム分離の図">
+    <svg viewBox="0 0 1200 420" role="img" aria-labelledby="dg-title-ja"><title id="dg-title-ja">門型フレームが石の天板を支え、固定ボリュームがその下に掛かり、天板が上がると隙間が現れる</title>
+      <g fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2">
+        <rect x="140" y="92" width="920" height="22" fill="#bdbdbb" stroke="none"/>
+        <rect x="150" y="114" width="900" height="16" fill="none"/>
+        <line x1="170" y1="130" x2="170" y2="392"/><line x1="190" y1="130" x2="190" y2="392"/>
+        <line x1="1010" y1="130" x2="1010" y2="392"/><line x1="1030" y1="130" x2="1030" y2="392"/>
+        <rect x="230" y="196" width="240" height="196" fill="#1c1c1c" stroke="rgba(255,255,255,.35)"/>
+        <rect x="490" y="196" width="220" height="196" fill="#1c1c1c" stroke="rgba(255,255,255,.35)"/>
+        <rect x="730" y="196" width="260" height="196" fill="#1c1c1c" stroke="rgba(255,255,255,.35)"/>
+        <line x1="120" y1="392" x2="1080" y2="392"/>
+        <g stroke-dasharray="4 6" stroke="rgba(255,255,255,.45)"><line x1="600" y1="130" x2="600" y2="196"/></g>
+        <g stroke="rgba(255,255,255,.45)"><line x1="110" y1="60" x2="110" y2="190"/><polyline points="104,66 110,60 116,66"/><polyline points="104,184 110,190 116,184"/></g>
+      </g>
+      <g font-family="Jost,Helvetica Neue,Arial,sans-serif" font-size="14" fill="rgba(255,255,255,.65)" letter-spacing="1.5">
+        <text x="140" y="80">床板 · nexea の天板、一枚のまま昇降</text>
+        <text x="860" y="150">梁 · 門型フレームの横材</text>
+        <text x="1045" y="300">柱</text>
+        <text x="230" y="180">隙間 · 水切り、換気、構造を見せる</text>
+        <text x="230" y="412">ボリューム · 固定キャビネット、グリッドに掛かり、箱ごと交換可能</text>
+      </g>
+    </svg>
+  </div>
+  <div class="legend">
+    <div><b>柱</b>門型フレームの二本の脚。昇降機構を内蔵。荷重と昇降を担い、一生交換しない。</div>
+    <div><b>梁</b>門型フレームの横材。天板を全長で受け、ボリュームのグリッドを定め、配管と換気の通り道になる。</div>
+    <div><b>床板</b>nexea の天板。連続した一枚で、唯一動く部材。厚みは量産可能な最小値まで下げられる。</div>
+    <div><b>ボリューム</b>JIU FENG のシステムパネルによるキャビネット。固定され、グリッドに掛かるか鏡の台座の上に置く。収納であり住まい手の表情であり、箱ごと交換・追加・移動できる。</div>
+    <div><b>隙間</b>天板が上がると現れる水平の層。仮置きと水切り、湿気を自然に逃がし、キッチンが自らの構造を正直に見せる。</div>
+    <div><b>グリッド</b>梁が定めるモジュールがシリーズ唯一の硬い規格：ボリュームの幅、奥行、吊り金物のインターフェース、配管の通り道。</div>
+  </div>
+  <div class="split float-block">
+    <div class="intro">
+      <p class="eyebrow"><span class="k">How</span>太刀川の提案 · 2026-10-23</p>
+      <h2>アイランドを浮かせる</h2>
+      <p>浮遊感は柱からではなく、台座から生まれます。ボリュームの最下部、引っ込んだ巾木の部分、つまり通常はアジャスター脚を隠す場所を、全面鏡にします。鏡が床を映し、床がアイランドの下を通り抜けているように見え、ボリューム全体が床から浮き上がります。これは白書の「引っ込んだ台座」とそのまま接続します。台座は引っ込んだまま、アジャスター脚を隠したまま、素材だけが濃色から鏡に変わる。梁・柱・床板の分離とも両立します。天板は門型フレームに支えられて昇降し、ボリュームは鏡の台座の上に置かれ、二つの軽さが重なります。</p>
+    </div>
+    <figure class="wide-fig"><img src="/nosigner-saiens-kitchen/assets/section-plinth-detail.jpg" alt="アイランド最下部の全面鏡の巾木をローアングルで捉えたクローズアップ。鏡がコンクリートの床を映し、ダークオークの扉が床から浮いて見える" width="1600" height="1067" loading="lazy"></figure>
+  </div>
+  <div class="cols3" style="margin-top:40px">
+    <div class="card"><span class="num">解決一</span><h3>連続した石の面が守られる</h3><p>天板は一枚で、昇降時も一枚のまま動く。分割の必要がなく、マットで静かな表情の連続した天板が成立する。</p></div>
+    <div class="card"><span class="num">解決二</span><h3>昇降に建築的な意味が生まれる</h3><p>天板が上がるとフレームと一本の隙間が現れる。それは換気の層であり、キッチンが構造を隠さない瞬間でもある。素材の本来の姿に従う太刀川の姿勢と響き合う。</p></div>
+    <div class="card"><span class="num">解決三</span><h3>モジュール化が標語からグリッドになる</h3><p>ボリュームはグリッドに掛かり、箱ごと交換・追加・移動できる。フレームは動かない。遺伝子型は変わらず表現型が入れ替わる。分離・交換・増殖・欠失の四つの変異がここにある。</p></div>
+  </div>
+</section>
+
+<section id="facets-ja" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">How</span>五つの観点</p>
+    <h2><span class="ph">素材、</span><span class="ph">デザイン、</span><span class="ph">構造、</span><span class="ph">機能、</span><span class="ph">評価</span></h2>
+    <p>それぞれの観点が太刀川の一つの概念と Saiens の一つのミッションの言葉につながり、操作可能なデザインルールに落ちます。五つの並列の主張ではなく、すべてが構造の前提からの帰結です。</p>
+  </div>
+  <div class="points">
+    <div class="card wide">
+      <div><span class="num">01 · 素材</span><h3>素材には来歴がある</h3><p>太刀川：トレーサビリティ・デザイン、素材の本来の姿に従う、地域固有の文脈は一度失われたら取り戻せない。<br>Saiens：正しい素材には、あるべき場所がある。透明は第一の行動原則。</p><p class="claim"><span class="ph">どの素材も、</span><span class="ph">なぜここにあるのか、</span><span class="ph">どこから来たのか、</span><span class="ph">どれだけ使えるのかを語れること。</span><span class="ph">素材の正直さは素材の出自より先に来る。</span></p></div>
+      <div><ul>
+        <li>面：マット、抑えた柄、ウォームニュートラルからチャコールまで。磨かない。骨材の痕跡は欠点ではなく来歴として読む。</li>
+        <li>骨：天板が上がったときに見える部分は仕上げ面として扱う。覆わず、塗装しない。</li>
+        <li>体：小口と芯材を正直に。扉は表層にすぎず、住まい手が後から交換できる。</li>
+        <li>三素材がそれぞれの場所にある理由を一枚の「素材分担図」にする。越前漆器の工程ピクトグラムにならう。</li>
+        <li>持続可能性はまず長寿命とモジュール化で：フレームは一生、表層は交換、キッチンは解体しない。再生とカーボンフットプリントはロードマップであり、発売の前提ではない。</li>
+      </ul><span class="tag">擬態 · 交換</span></div>
+    </div>
+    <div class="card wide">
+      <div><span class="num">02 · デザイン</span><h3>まず人を読み、それから描く</h3><p>太刀川：選択の四視点。共感は次の百年の社会デザインの根本。<br>Saiens：その人の暮らしと憧れを読み解き、家をその人の姿に育てる。</p><p class="claim"><span class="ph">デザインはカタログからではなく、</span><span class="ph">一枚のプロフィールから始まる。</span><span class="ph">ボリュームの表層は住まい手の表現型である。</span></p></div>
+      <div>
+        <div class="tbl" style="margin-top:0"><table>
+          <thead><tr><th>視点</th><th>問うこと</th><th>決まること</th></tr></thead>
+          <tbody>
+            <tr><td data-label="視点">解剖</td><td data-label="問うこと">誰が料理するか、人数、料理の系統、頻度、利き手</td><td data-label="決まること">動線の配置、昇降の初期高さ、ボリュームの配分</td></tr>
+            <tr><td data-label="視点">系統</td><td data-label="問うこと">この家はどこから来て、何を残すか</td><td data-label="決まること">表層の素材と色の原点、残す古いもの</td></tr>
+            <tr><td data-label="視点">生態</td><td data-label="問うこと">デザイナー、よく来る客、地域</td><td data-label="決まること">開口の向き、アイランドの向き、もてなしの量</td></tr>
+            <tr><td data-label="視点">予測</td><td data-label="問うこと">五年後の暮らし</td><td data-label="決まること">予備のグリッド、交換可能なボリューム、昇降範囲</td></tr>
+          </tbody>
+        </table></div>
+        <ul><li>表層は限定：四つの素材ファミリー、各五色、計 20 色。個性は組み合わせに現れ、無限のカスタムには現れない。</li><li>プロフィールはデザイナーが作り、Saiens がツールとデータを提供し、NOSIGNER が文法を定義する。</li></ul><span class="tag">変異</span>
+      </div>
+    </div>
+    <div class="card wide">
+      <div><span class="num">03 · 構造</span><h3>フレームは遺伝子</h3><p>太刀川：因数分解。制約は出発点。全体を一度に良くしようとせず、部分に分けて一つずつ質を追う。<br>Saiens：美と機能のバランス。正しい素材を正しい場所に置くのは、ひらめきではなく規律。</p><p class="claim"><span class="ph">一つのフレームを一生使い、</span><span class="ph">天板とボリュームは人生とともに替える。</span></p></div>
+      <div><ul>
+        <li>梁が定めるグリッドがシリーズ唯一の硬い規格であり、すべてを「律法」に書き込む。</li>
+        <li>柱の昇降ストロークは天板高 870〜950 mm を覆い、さらに下ごしらえや立食の高さまで。数値は実験で決める。</li>
+        <li>フレームは分解して運べる。輸出するのはフレームとボリュームであり、組み上がったキッチンではない。カリフォルニアでの 7 日間施工の約束は構造の上に立つ。</li>
+        <li>昇降時に現れる梁と柱は仕上げ面であり、機構の裏側ではない。</li>
+        <li>ステンレスのフレームは BELEGA が製作。昇降機構は別途サプライヤーを探す。二本の脚の同期が最初の工学的課題。</li>
+      </ul><span class="tag">分離 · 欠失</span></div>
+    </div>
+    <div class="card wide">
+      <div><span class="num">04 · 機能</span><h3>進化するキッチン</h3><p>太刀川：「与えられる適応」は怪しい。「自分で確かめた適応」が大事。<br>Saiens：まず「どう暮らし、どこへ向かいたいか」を問う。毎週反復し、常により良いやり方がある。</p><p class="claim"><span class="ph">キッチンは納品の日に完成するのではなく、</span><span class="ph">使うなかで検証され、</span><span class="ph">調整される。</span></p></div>
+      <div><ul>
+        <li>天板の高さは人、料理の系統、工程によって変わる。初期値はプロフィールから、実際の値は住まい手が自分で見つける。</li>
+        <li>八つの工程：取り出す、洗う、仕込む、調理する、盛る、食卓へ運びもてなす、片付ける、しまう。グリッドに沿って配置し、家ごとに変えられる。</li>
+        <li>天板が上がったときの隙間は機能の層：水切り、換気、熱い鍋の仮置き。台湾と日本の湿気への洞察がここで仕様になる。</li>
+        <li>ボリューム内の金物は調整可能、棚とバスケットは湿気を逃がし、フレームの配管スペースは将来の機器を予約する。</li>
+        <li>火は壁に、人はアイランドに：調理ゾーンは壁際で半分囲い、フードは調理壁の一部、空気は外へ向かう一本の道だけを通る（「空気」参照）。</li>
+      </ul><span class="tag">変量 · 増殖</span></div>
+    </div>
+    <div class="card wide">
+      <div><span class="num">05 · 評価</span><h3>一つのキッチンに何人が同時に立てるか</h3><p>太刀川：Fun Kitchen by Cookpad の Kitchen Score。造形ではなく評価体系を定義する。<br>Saiens：Bless Every Home &amp; Family。キッチンは感情が集まり、つながりが生まれる場所。</p><p class="claim"><span class="ph">良いキッチンの基準は美しさではなく、</span><span class="ph">何人が同時にそこに立てるかである。</span></p></div>
+      <div><ul>
+        <li>NOSIGNER と共同で評価を定義する：同時に作業できる人数、コンロの前から食卓が見えるか、配膳の動線の長さ、客が邪魔にならずに参加できるか、身長の違う人が皆働けるか。</li>
+        <li>評価はシリーズの対外的な言語であり、製造者からカテゴリーの定義者へ上がるための道具。</li>
+        <li>評価は同時にデザイナーの検収ツールでもあり、祝福を測れるものにする。</li>
+      </ul><span class="tag">逆転</span></div>
+    </div>
+  </div>
+  <div class="seq" aria-label="八つの調理工程">
+    <div><span>01</span>取り出す</div><div><span>02</span>洗う</div><div><span>03</span>仕込む</div><div><span>04</span>調理</div><div><span>05</span>盛る</div><div class="hl"><span>06</span>食卓へ · もてなし</div><div><span>07</span>片付け</div><div><span>08</span>しまう</div>
+  </div>
+</section>
+
+<section id="gap-ja" class="wrap">
+  <div class="split">
+    <div class="intro">
+      <p class="eyebrow"><span class="k">How</span>機能 · 隙間</p>
+      <h2><span class="ph">天板が上がるとき、</span><span class="ph">キッチンに層が一つ増える</span></h2>
+      <p>水を切る器、火から下ろしたばかりの鍋、風を通したい布巾。それらは天板とボリュームの間に落ち着きます。この層は台湾と日本の湿ったキッチンでは実際の需要であり、ヨーロッパのブランドはほとんど語りません。同時に梁と柱が見え、キッチンは自分がどう立っているかを隠しません。</p>
+    </div>
+    <figure class="sq-fig"><img src="/nosigner-saiens-kitchen/assets/section-lift-gap.jpg" alt="上がった石の天板と下のキャビネットの間の隙間で、木のラックに器と鋳鉄の鍋が水を切っている" width="1600" height="1067" loading="lazy"></figure>
+  </div>
+</section>
+
+<section id="air-ja" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">How</span>空気 · 油煙の経路</p>
+    <h2><span class="ph">火は壁に、</span><span class="ph">人はアイランドに</span></h2>
+    <p>アイランドと食卓はひとつの集合体であり、主人と客の近しい関係を表します。それを成立させるには、油煙が外へ向かうだけの一本の道を持たなければなりません。油煙は熱の上昇流です。鍋の上の熱い空気が油霧を連れて上がり、上がりながら太くなる。フードはまだ細いうちにそれを丸ごと捕らえる必要があります。横風が 0.2 m/s を超えると捕集は崩れ始めます。だからコンロは壁際に、半分囲い、強火は奥のコンロで。アイランドに火は置かず、補気は食卓側から低速で入り、空気は人から火へ、そしてフードから出ていきます。</p>
+  </div>
+  <div class="diagram" aria-label="平面の気流（1 単位＝1 cm）：L 型調理壁、アイランドと食卓は一直線、補気は食卓側から入りコンロへ向かいフードから排出">
+    <svg viewBox="0 0 780 500" role="img" aria-labelledby="af-ja"><title id="af-ja">平面の気流（1 単位＝1 cm）：L 型調理壁、アイランドと食卓は一直線、補気は食卓側から入りコンロへ向かいフードから排出</title>
+      <defs><marker id="ar-ja" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="rgba(255,255,255,.8)"/></marker><marker id="dm-ja" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="rgba(255,255,255,.5)"/></marker></defs>
+      <g fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1">
+        <!-- room shell: back wall + left wall (no windows); right side opens to dining -->
+        <line x1="40" y1="30" x2="760" y2="30" stroke="rgba(255,255,255,.3)"/><line x1="40" y1="30" x2="40" y2="470" stroke="rgba(255,255,255,.3)"/><line x1="40" y1="470" x2="760" y2="470" stroke="rgba(255,255,255,.3)"/>
+        <!-- L counter: back run 4,800 x 600, left return 2,400 x 600 -->
+        <path d="M60,50 L540,50 L540,110 L120,110 L120,290 L60,290 Z" fill="#1c1c1c"/>
+        <!-- hood + cooktop -->
+        <rect x="240" y="50" width="120" height="60" fill="#2c2c2c" stroke="rgba(255,255,255,.6)"/>
+        <circle cx="278" cy="82" r="15" stroke="rgba(255,255,255,.9)"/><circle cx="322" cy="82" r="15" stroke="rgba(255,255,255,.9)"/>
+        <!-- island 2,700 x 1,000 and table 1,800 x 900 in line -->
+        <rect x="225" y="230" width="270" height="100" fill="#bdbdbb" stroke="none"/>
+        <rect x="495" y="235" width="180" height="90" fill="#8f8f8d" stroke="none"/>
+        <rect x="300" y="252" width="60" height="40" fill="none" stroke="rgba(0,0,0,.45)"/>
+        <!-- chairs: three along, one at end -->
+        <rect x="508" y="338" width="45" height="45" stroke="rgba(255,255,255,.45)"/><rect x="563" y="338" width="45" height="45" stroke="rgba(255,255,255,.45)"/><rect x="618" y="338" width="45" height="45" stroke="rgba(255,255,255,.45)"/><rect x="688" y="258" width="45" height="45" stroke="rgba(255,255,255,.45)"/>
+        <!-- supply slot on dining wall -->
+        <rect x="560" y="465" width="60" height="10" fill="#000" stroke="rgba(255,255,255,.8)"/>
+        <!-- airflow -->
+        <g stroke="rgba(255,255,255,.75)" stroke-dasharray="4 5" marker-end="url(#ar-ja)">
+          <path d="M590,463 C590,430 560,410 520,395"/>
+          <path d="M470,395 C430,380 400,360 380,335"/>
+          <path d="M300,228 C300,190 292,150 288,116"/>
+          <path d="M340,228 C340,190 320,150 314,116"/>
+          <path d="M300,50 L300,14"/>
+        </g>
+        <!-- dimensions -->
+        <g stroke="rgba(255,255,255,.5)" marker-start="url(#dm-ja)" marker-end="url(#dm-ja)">
+          <line x1="430" y1="112" x2="430" y2="228"/>
+          <line x1="122" y1="200" x2="223" y2="200"/>
+          <line x1="430" y1="332" x2="430" y2="468"/>
+        </g>
+        <!-- scale bar -->
+        <g stroke="rgba(255,255,255,.5)"><line x1="60" y1="440" x2="160" y2="440"/><line x1="60" y1="436" x2="60" y2="444"/><line x1="160" y1="436" x2="160" y2="444"/></g>
+      </g>
+      <g font-family="Jost,Zen Kaku Gothic New,Noto Sans TC,Helvetica Neue,Arial,sans-serif" font-size="9" fill="rgba(255,255,255,.7)" letter-spacing=".6">
+        <text x="60" y="44">L 型調理壁 · 奥行 600</text>
+        <text x="368" y="72">深型フード＋側板 1,200</text>
+        <text x="368" y="86">奥のコンロ · 強火</text>
+        <text x="234" y="246">アイランド · H 900 · 2,700 × 1,000</text>
+        <text x="503" y="251" fill="rgba(0,0,0,.75)">食卓 · H 740 · 1,800 × 900</text>
+        <text x="628" y="485">補気 · 低位置・低速</text>
+        <text x="306" y="22">排気 · 屋外</text>
+        <text x="438" y="174">1,200</text>
+        <text x="172" y="194" text-anchor="middle">1,050</text>
+        <text x="438" y="404">1,400</text>
+        <text transform="translate(52,170) rotate(-90)" text-anchor="middle" fill="rgba(255,255,255,.45)">この面に窓を開けない</text>
+        <text x="400" y="22" fill="rgba(255,255,255,.45)">この面に窓を開けない</text>
+        <text x="150" y="330">横風 < 0.2 m/s</text>
+        <text x="110" y="456" text-anchor="middle" fill="rgba(255,255,255,.45)">1 m</text>
+        <text x="700" y="440" fill="rgba(255,255,255,.45)">ダイニング · 窓</text>
+      </g>
+    </svg>
+  </div>
+  <ol class="qs">
+    <li><b>調理ゾーンは壁際、平面は L 型を基準に</b>コの字型は三方を囲み捕集には最も有利だが、アイランドと食卓が一直線に並ぶとき、コの字の三辺目が食卓を遮り通路が成立しない。コの字型は食卓が調理壁に直交する配置のために残す。L 型は壁と片側の返しで調理室を囲み、I 型はフードの側板で補う。コンロは奥の壁の中央に、強火は奥のコンロで。同じフード・同じ風量で、奥のコンロの捕集率は 91%、手前は 62%。コンロ前の通路 1,200、返しからアイランドまで 1,050、アイランド背後 1,400。</li>
+    <li><b>フードはボリュームの一部</b>深型フードに側板を付け、手前のコンロの前縁まで覆い、コンロ面より左右各 75〜150 mm 広く、下端はガスで 650〜750、IH で 600 mm。フードの下縁は nexea かステンレスとし、調理壁の一部にする。掛けられた家電ではない。</li>
+    <li><b>アイランドに火を置かない</b>アイランドにはシンクと下ごしらえのみ。アイランドフードは四方が開いており、実測の捕集率は 10% から 100% までばらつく。ダウンドラフトは手前のコンロと高い鍋で 30% 未満。最も難しい課題を最も大切な場所に置かない。</li>
+    <li><b>補気が向きを決める</b>排気が約 400 cfm（11 m³/min）を超えるなら同量の補気が必要。なければ風量が落ち、扉が重くなり、給湯器が逆流する。補気は食卓側から低い位置に低速で入れ、レンジフードと連動させる。空気は「食卓、アイランド、コンロ、フード、屋外」という一本の道を通る。コンロの横に補気を開けるのは横風をつくることと同じ。</li>
+    <li><b>コンロ側の壁に窓を開けない</b>扉はコンロ側に置かない。エアコンの吹き出しとシーリングファンはコンロとフードに向けない。排気ダクトは短く直線で、エルボは二つ以内、出口にはウェザーフード。</li>
+    <li><b>パイロット案件で自分たちが測る</b>スモークペンで上昇流がすべてフードに入るかを見る。PM2.5 計を食卓の位置に置き、強火調理の前後の濃度を測る。このシリーズ自身の捕集データを築く。与えられる適応は怪しい。自分で確かめた適応だけが数えられる。</li>
+  </ol>
+  <p class="note">出典：LBNL 住宅用レンジフード捕集効率研究、JOEH 横風研究、IRC M1503.6、ASHRAE 62.2、CA Title 24、CNS 3805。一部の原文は逐語照合待ち。数値は設計レンジであり、パイロット案件の計測後に確定する。</p>
+</section>
+
+<section id="market-ja" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">Will</span>市場の座標</p>
+    <h2><span class="ph">建築的な語彙には、</span><span class="ph">台湾にも米国にも空白帯がある</span></h2>
+    <p>米国では「建築家が心を動かされるキッチン」に約 USD 45,000 を下回る選択肢がありません。台湾では国産ハイグレードとドイツ輸入の間が空いています。シリーズは同等のデザイン語彙、より短い納期、追跡可能な素材でこの二つの空白を埋めます。</p>
+  </div>
+  <div class="stats">
+    <div><b>NT$ 100〜160 万</b><span>台湾での一式（約 10 m の L 型＋アイランド、キャビネット・nexea 天板・施工込み、家電は含まず）。国産ハイグレードの上、ドイツ輸入の下。</span></div>
+    <div><b>USD 30,000〜50,000</b><span>米国での一式、同仕様。市場で建築的語彙の最低点は next125 の約 44,000。</span></div>
+    <div><b>3〜4 週間</b><span>台湾での納品目標。Queen Ceramic の標準柄合わせ 7 日、システムキャビネット 7〜10 営業日。輸入ブランドは 2〜3 か月。</span></div>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>台湾の階層</th><th>1 m あたり</th><th>10 m 一式</th><th>語彙</th></tr></thead>
+    <tbody>
+      <tr><td data-label="台湾の階層">国産ベーシック</td><td data-label="1 m あたり">NT$ 40,000</td><td data-label="10 m 一式">約 400,000</td><td data-label="語彙">システム、コストパフォーマンス</td></tr>
+      <tr><td data-label="台湾の階層">国産ハイグレード</td><td data-label="1 m あたり">NT$ 60,000〜80,000</td><td data-label="10 m 一式">600,000〜800,000</td><td data-label="語彙">システム、素材のグレードアップ</td></tr>
+      <tr><td data-label="台湾の階層"><b>本シリーズ</b></td><td data-label="1 m あたり"><b>NT$ 100,000〜160,000</b></td><td data-label="10 m 一式"><b>1,000,000〜1,600,000</b></td><td data-label="語彙"><b>建築的語彙、追跡可能な素材、3〜4 週間納品</b></td></tr>
+      <tr><td data-label="台湾の階層">ドイツ輸入</td><td data-label="1 m あたり">NT$ 80,000〜165,000</td><td data-label="10 m 一式">800,000〜1,650,000</td><td data-label="語彙">システム、ブランド</td></tr>
+      <tr><td data-label="台湾の階層">イタリア輸入</td><td data-label="1 m あたり">NT$ 165,000〜330,000</td><td data-label="10 m 一式">1,650,000〜3,300,000</td><td data-label="語彙">建築的語彙、署名</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">台湾の階層は 2026 年の公開価格と業者の概算の集約であり、成約統計ではありません。米国の階層は WandWorks キッチン白書の 146 ブランドによる価格と形式語彙のマップに基づきます。台湾のキッチン市場は年間約 NT$ 200 億、キッチン全体で年間 16〜18 万セット、うちリフォームが約 7〜8 万セットで、シリーズの主な市場です。</p>
+</section>
+
+<section id="roles-ja" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">Will</span>分担とステップ</p>
+    <h2><span class="ph">日本が創作し、</span><span class="ph">台湾が人を読み製造し、</span><span class="ph">米国が市場となる</span></h2>
+    <p>柳宗理と燕三条の七十年にわたる協働が原型です。デザイナーが美学と人間工学の定義権を持ち、製造側が素材と量産の品質権を持つ。本件はその国際版であり、「人を読み解く」役割が一つ加わります。</p>
+  </div>
+  <div class="cols2">
+    <div class="card"><span class="num">NOSIGNER</span><h3>文法と素材の物語を定義する</h3><p>シリーズのデザイン文法、素材の来歴の物語、評価体系。単一素材の共創から始め、キッチンの標準と最初のシリーズへ進む。</p></div>
+    <div class="card"><span class="num">Saiens</span><h3>人を読み解き、販売し、検収する</h3><p>プロフィールのツールと現場データ、デザイナーと施主のチャネル、図面確認と検収。契約主体であり、素材開発と国際コラボレーションの主導者。</p></div>
+    <div class="card"><span class="num">Queen Ceramic（玉禮）</span><h3>製造と施工・納品</h3><p>nexea の天板、フレームとボリュームの統合、施工と納品。全館カスタムの体制と Saiens への納期の約束に接続する。</p></div>
+    <div class="card"><span class="num">WandWorks</span><h3>米国市場</h3><p>Saiens の 100% 子会社、カリフォルニアのキッチンリノベーション。フレームとボリュームをノックダウンで輸出し、現場 7 日間で施工する。</p></div>
+  </div>
+  <div class="steps">
+    <div class="card"><span class="num">第 1 フェーズ · 2026 Q4〜2027</span><h3><span class="ph">単一素材の共創、</span><span class="ph">作品を一点完成させる</span></h3><p>nexea と門型フレームで展示用の裸のフレームと一枚の天板を完成させ、Saiens 台北ショールームに設置。パイロット案件で昇降、プロフィール、評価を検証する。</p></div>
+    <div class="card"><span class="num">第 2 フェーズ · 2027〜2028</span><h3>キッチンの標準と最初のシリーズ</h3><p>評価体系を確定し、ボリュームのグリッドと 20 色の表層を決定。台湾ではデザイナーチャネルから先行展開し、米国は WandWorks が担当する。</p></div>
+    <div class="card"><span class="num">第 3 フェーズ · 2028〜</span><h3>長期的なデザイン協働</h3><p>シリーズを住宅全体の収納と道具へ広げ、日本の創作・台湾の製造・米国の市場という三角形を継続して回す。</p></div>
+  </div>
+</section>
+
+<section id="exhibit-ja" class="wrap">
+  <div class="intro">
+    <p class="eyebrow"><span class="k">Will</span>2027 · 台中「好感空間展」</p>
+    <h2><span class="ph">展示するのは一式のキッチンではなく、</span><span class="ph">進化の過程</span></h2>
+    <p>完成したショールームではなく、構造を見せます。五つの観点に対応する五つの展示項目です。</p>
+  </div>
+  <figure class="sec-fig"><img src="/nosigner-saiens-kitchen/assets/section-collective.jpg" alt="同じ一枚の石の天板の二つの高さ：手前はアイランド、奥は食卓の高さに下がり椅子が並ぶ。背後にはコの字型の調理壁と壁に組み込まれた深型フード" width="1600" height="1067" loading="lazy"></figure>
+  <ol class="qs">
+    <li><b>裸の構造</b>一本の門型フレーム。天板を最上位まで上げ、ボリュームを半分外し、残したボリュームは鏡の台座の上に置く。来場者はキッチンの骨と、床から浮くボリュームを同時に見る。</li>
+    <li><b>同じフレームの三つの姿</b>表層の異なる三組のボリュームと三枚のプロフィールで、同じフレームが三つの家に育つことを示す。</li>
+    <li><b>昇降の実演</b>来場者の前で天板が昇降し、隙間には水を切る鍋と器が置かれている。</li>
+    <li><b>素材分担図</b>一面の壁で三素材がそれぞれの場所にある理由を語る。nexea については、ここで何をするのか、なぜマットなのかだけを語る。</li>
+    <li><b>評価表</b>来場者が自宅のキッチンに何人が同時に立てるかを自分で数える。</li>
+    <li><b>日程</b>2026 Q4 にコンセプト確定、2027 Q1 にフレーム一組とボリューム三組を完成。第 1 フェーズの作品一点が、そのまま展示の裸のフレームと一枚の nexea の天板になる。</li>
+  </ol>
+</section>
+
+<section id="open-ja" class="wrap">
+  <div class="split">
+    <div class="intro">
+      <p class="eyebrow"><span class="k">Will</span>誠実さの境界と未解決</p>
+      <h2><span class="ph">言えること、</span><span class="ph">まだ言えないこと</span></h2>
+      <p>太刀川はトレーサビリティを極めて重視し、物語の粉飾が見つかれば致命的です。以下はこのページのすべての主張の境界です。</p>
+      <ul class="plain">
+        <li>nexea の輸出版は再生・低シリカ配合を採用し、結晶シリカの試験は完了、報告書を整理中。台湾版の配合はコストと物性で決め、比率は約束しない。</li>
+        <li>再生比率とカーボンフットプリントの数値はロードマップであり、発売の前提ではない。持続可能性の言説はまず長寿命とモジュール化による。</li>
+        <li>JAPANDI をラベルにしない。太刀川が「良い石のキッチン」を定義する方が、小売の語彙を掲げるより説得力がある。</li>
+        <li>門型フレームの断面とスパン、昇降機構の荷重と二本脚の同期、nexea の量産可能な最小厚み。パイロット案件の前に答えが要る三つの工学的課題。鏡の巾木についてはさらに、傷と清掃、アジャスター脚の点検方法、鏡と床の納まりを検証する必要がある。</li>
+        <li>中華・洋食・和食の天板高の違いは経験値のみ。第 1 フェーズでは実験を定義し、パイロット案件の昇降記録そのものをデータにする。</li>
+        <li>NOSIGNER の量産キッチンにおける工業デザインの実績は薄い。フレームと機構の工学は製造側が担い、必要ならプロダクトデザイン事務所を別途起用する。</li>
+      </ul>
+    </div>
+    <figure class="sq-fig"><img src="/nosigner-saiens-kitchen/assets/section-materials.jpg" alt="再生石、ステンレス、オークの三つの素材サンプル" width="1200" height="1200" loading="lazy"></figure>
+  </div>
+</section>
+
+<footer>
+  <p>Saiens × NOSIGNER キッチンシリーズ開発の基礎 v0.8 · 2026-10-25 · 社内文書。転送はご遠慮ください。</p>
+  <p>本ページには商業条件と予算を含みません。太刀川英輔の言葉は公開された出典から引用。Saiens のミッションは 2026-09-16 決定版。構造の前提と nexea の表現は 2026-10-22 の決定に基づきます。</p>
+</footer>
+</div>
+<script>
+(function(){var b=document.getElementById("menu-btn"),n=document.getElementById("site-nav");if(!b||!n)return;b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o?"true":"false")});n.addEventListener("click",function(e){if(e.target.tagName==="A"){n.classList.remove("open");b.setAttribute("aria-expanded","false")}});})();
+function setLang(l){document.documentElement.lang=l;var ja=l==='ja';document.getElementById('b-zh').classList.toggle('on',!ja);document.getElementById('b-ja').classList.toggle('on',ja);document.title=ja?'キッチンは家の姿｜Saiens × NOSIGNER キッチンシリーズ開発の基礎':'廚房是家的模樣｜Saiens × NOSIGNER 廚具系列開發基礎';try{localStorage.setItem('nsk-lang',l)}catch(e){}}
+(function(){var q=new URLSearchParams(location.search).get('lang');var s=null;try{s=localStorage.getItem('nsk-lang')}catch(e){}var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||''];var dev=langs.some(function(x){return /^ja\b/i.test(x)})?'ja':'zh-Hant';var l=(q==='ja')?'ja':(q==='zh')?'zh-Hant':(s||dev);if(q==='ja'||q==='zh'){try{localStorage.setItem('nsk-lang',l)}catch(e){}}if(l!=='zh-Hant')setLang(l);})();
+
+(function(){var r=document.getElementById('running');if(!r||!('IntersectionObserver' in window))return;var secs=document.querySelectorAll('section[id]');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var k=e.target.querySelector('.eyebrow .k'),h=e.target.querySelector('h2');if(!k||!h)return;r.innerHTML='<b>'+k.textContent+'</b><span>'+h.textContent+'</span>';});},{rootMargin:'-45% 0px -50% 0px'});secs.forEach(function(x){io.observe(x)});})();
+</script>
+</body>
+</html>

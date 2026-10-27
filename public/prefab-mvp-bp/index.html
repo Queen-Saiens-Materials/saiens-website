@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>預鑄建築事業｜商業計劃書——投資額與用途架構</title>
+<meta name="description" content="預鑄建築事業 Seed 輪商業計劃書：投資額 NT$0.8–1.5 億、資金用途、階段閘門、資本階梯與風險誠實揭露。內部文件，未公開索引。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="預鑄建築事業｜商業計劃書">
+<meta property="og:description" content="Seed NT$0.8–1.5 億：用途架構、階段閘門與資本階梯。">
+<meta property="og:url" content="https://saiens.group/prefab-mvp-bp">
+<meta property="og:image" content="https://saiens.group/prefab-mvp-bp/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" type="image/svg+xml" href="/prefab-mvp-bp/favicon.svg">
+<link rel="apple-touch-icon" href="/prefab-mvp-bp/apple-touch-icon.png">
+<style>
+:root{
+  --text-primary:#302b27; --text-body:#4a443e; --text-secondary:#857f7a;
+  --text-tertiary:#6b655f; --bg-white:#ffffff; --bg-gray:#f5f3f5;
+  --bg-dark:#1b264f; --bg-dark-2:#243158;
+  --text-on-dark:#f5f3f5; --text-on-dark-secondary:rgba(245,243,245,0.72);
+  --accent:#274690; --accent-soft:#576ca8; --border:#ddd8dd;
+  --ease-ui:ease-out; --ease-enter:cubic-bezier(0.16,1,0.3,1);
+  --z-nav:100;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+b,strong{font-weight:600}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans TC",sans-serif;
+  color:var(--text-primary);background:var(--bg-white);
+  font-size:17px;line-height:1.47;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);height:48px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 24px;
+  transition:background 250ms var(--ease-ui),color 250ms var(--ease-ui);
+  background:transparent;color:var(--text-on-dark)}
+.nav.solid{background:rgba(255,255,255,0.8);color:var(--text-primary);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}
+.nav .wordmark{font-size:15px;font-weight:600;letter-spacing:0.08em}
+.nav .tag{font-size:13px;font-weight:500;opacity:0.72;white-space:nowrap}
+
+.sec{padding:120px 24px}
+.sec-dark{background:var(--bg-dark);color:var(--text-on-dark)}
+.sec-gray{background:var(--bg-gray)}
+.wrap{max-width:980px;margin:0 auto}
+.eyebrow{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;
+  color:var(--text-secondary);margin-bottom:16px}
+.sec-dark .eyebrow{color:var(--accent-soft)}
+h1,h2,h3{font-weight:600;letter-spacing:-0.015em;text-wrap:balance}
+h1{font-size:clamp(38px,6.5vw,68px);line-height:1.08}
+h2{font-size:clamp(32px,5vw,52px);line-height:1.1;margin-bottom:24px}
+h3{font-size:clamp(19px,3vw,25px);line-height:1.2;margin-bottom:12px}
+p.body{color:var(--text-body);margin-bottom:16px;max-width:720px}
+.sec-dark p.body{color:var(--text-on-dark-secondary)}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;
+  background:var(--bg-dark);color:var(--text-on-dark);padding:120px 24px 80px}
+.hero .eyebrow{color:var(--accent-soft)}
+.hero .sub{font-size:clamp(18px,2.6vw,22px);color:var(--text-on-dark-secondary);
+  margin-top:24px;max-width:680px;line-height:1.45}
+.hero .trust{margin-top:48px;display:flex;gap:40px;flex-wrap:wrap}
+.trust .t .v{font-size:clamp(26px,4vw,40px);font-weight:600;letter-spacing:-0.02em}
+.trust .t .l{font-size:13px;color:var(--text-on-dark-secondary);margin-top:4px}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px}
+.stat{background:var(--bg-gray);border-radius:18px;padding:32px 24px;text-align:center}
+.sec-gray .stat{background:var(--bg-white)}
+.sec-dark .stat{background:var(--bg-dark-2)}
+.stat .v{font-size:clamp(30px,4.5vw,48px);font-weight:600;letter-spacing:-0.02em;line-height:1.05}
+.stat .l{font-size:14px;color:var(--text-secondary);margin-top:8px}
+.sec-dark .stat .l{color:var(--text-on-dark-secondary)}
+.stat .s{font-size:12px;color:var(--text-tertiary);margin-top:6px}
+.sec-dark .stat .s{color:rgba(245,243,245,0.5)}
+
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:48px}
+.card{background:var(--bg-gray);border-radius:18px;padding:32px}
+.sec-gray .card{background:var(--bg-white)}
+.sec-dark .card{background:var(--bg-dark-2)}
+.card h3{margin-bottom:8px}
+.card p{font-size:15px;color:var(--text-body);line-height:1.5}
+.sec-dark .card p{color:var(--text-on-dark-secondary)}
+.card .no{font-size:14px;font-weight:500;color:var(--accent);letter-spacing:0.02em;margin-bottom:12px;display:block}
+.sec-dark .card .no{color:var(--accent-soft)}
+
+.tablewrap{overflow-x:auto;margin-top:48px;border-radius:18px}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:640px;background:var(--bg-white)}
+.sec-dark table{background:var(--bg-dark-2)}
+.sec-gray table{background:var(--bg-white)}
+th{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.05em;
+  color:var(--text-secondary);text-align:left;padding:14px 16px;border-bottom:1px solid var(--border)}
+.sec-dark th{color:var(--text-on-dark-secondary);border-color:rgba(245,243,245,0.18)}
+td{padding:14px 16px;border-bottom:1px solid var(--border);color:var(--text-body);vertical-align:top}
+.sec-dark td{color:var(--text-on-dark-secondary);border-color:rgba(245,243,245,0.18)}
+tr:last-child td{border-bottom:none}
+td .big{font-weight:600;color:var(--text-primary);font-variant-numeric:tabular-nums}
+.sec-dark td .big{color:var(--text-on-dark)}
+td .note{display:block;font-size:12px;color:var(--text-tertiary);margin-top:2px}
+.sec-dark td .note{color:rgba(245,243,245,0.5)}
+
+/* use-of-funds bars */
+.uof{margin-top:48px;max-width:820px}
+.uof .row{padding:20px 0;border-bottom:1px solid var(--border)}
+.sec-dark .uof .row{border-color:rgba(245,243,245,0.18)}
+.uof .row:last-child{border-bottom:none}
+.uof .head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.uof .name{font-size:17px;font-weight:600}
+.uof .pct{font-size:clamp(22px,3vw,30px);font-weight:600;letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
+.uof .bar{height:6px;border-radius:980px;background:rgba(39,70,144,0.15);margin-top:12px;overflow:hidden}
+.sec-dark .uof .bar{background:rgba(245,243,245,0.15)}
+.uof .bar i{display:block;height:100%;background:var(--accent);border-radius:980px}
+.sec-dark .uof .bar i{background:var(--accent-soft)}
+.uof .desc{font-size:14px;color:var(--text-secondary);margin-top:10px;line-height:1.55;max-width:640px}
+.sec-dark .uof .desc{color:var(--text-on-dark-secondary)}
+
+/* gates timeline */
+.gates{margin-top:48px;max-width:820px}
+.gate{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--border)}
+.sec-gray .gate{border-color:var(--border)}
+.gate:last-child{border-bottom:none}
+.gate .when{font-size:14px;font-weight:500;color:var(--accent);padding-top:2px;font-variant-numeric:tabular-nums}
+.gate h3{margin-bottom:6px}
+.gate p{font-size:15px;color:var(--text-body);line-height:1.55}
+.gate .cond{font-size:13px;color:var(--text-tertiary);margin-top:8px;line-height:1.6}
+
+.cta-row{display:flex;align-items:center;gap:24px;margin-top:48px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:980px;
+  padding:12px 22px;font-size:17px;font-weight:500;min-height:44px;text-decoration:none;
+  transition:background-color 250ms var(--ease-ui),color 250ms var(--ease-ui)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#2f54a8}
+.btn-ghost{background:rgba(255,255,255,0.15);color:var(--text-on-dark);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.btn-ghost:hover{background:rgba(255,255,255,0.25)}
+.link{color:var(--accent);text-decoration:underline;text-underline-offset:4px;font-weight:500;
+  font-size:17px;min-height:44px;display:inline-flex;align-items:center}
+.sec-dark .link{color:#a9b8e0}
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.sec-dark a:focus-visible{outline-color:#a9b8e0}
+
+.foot-note{font-size:13px;color:var(--text-tertiary);max-width:720px;margin-top:48px;line-height:1.6}
+.sec-dark .foot-note{color:rgba(245,243,245,0.5)}
+
+footer{background:var(--bg-gray);padding:48px 24px;font-size:12px;color:var(--text-tertiary);line-height:1.7}
+footer .wrap{max-width:980px}
+
+.rv{opacity:0;transform:translateY(24px);
+  transition:transform 800ms var(--ease-enter),opacity 450ms ease-out}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+}
+
+@media (max-width:734px){
+  .sec{padding:64px 20px}
+  .hero{padding:96px 20px 64px}
+  .stats,.grid2{grid-template-columns:1fr}
+  .gate{grid-template-columns:1fr;gap:6px;padding:20px 0}
+  .card,.stat{padding:28px 20px}
+  h2 br{display:none}
+  .tablewrap{overflow-x:visible}
+  table{min-width:0;display:block;background:transparent}
+  thead{display:none}
+  tbody,tr,td{display:block;width:100%}
+  tbody{background:var(--bg-gray);border-radius:18px;padding:8px 20px}
+  .sec-gray tbody{background:var(--bg-white)}
+  .sec-dark tbody{background:var(--bg-dark-2)}
+  tbody tr{padding:16px 0;border-bottom:1px solid var(--border)}
+  .sec-dark tbody tr{border-color:rgba(245,243,245,0.18)}
+  tbody tr:last-child{border-bottom:none}
+  td{border-bottom:none;padding:4px 0;text-align:right;white-space:normal;
+    display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+  td:first-child{font-weight:600;color:var(--text-primary);padding-bottom:8px}
+  .sec-dark td:first-child{color:var(--text-on-dark)}
+  td[data-l]::before{content:attr(data-l);font-size:13px;color:var(--text-secondary);
+    text-align:left;flex:0 0 auto;font-weight:400}
+  .sec-dark td[data-l]::before{color:var(--text-on-dark-secondary)}
+  td .note{text-align:right}
+}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <span class="wordmark">SAIENS</span>
+  <span class="tag">商業計劃書・機密</span>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Prefab Business Plan・Seed</p>
+    <h1>預鑄建築事業<br>投資額與用途架構</h1>
+    <p class="sub">一家 AI 原生的預鑄整合公司：Seed 輪 <span class="num">NT$0.8–1.5 億</span>，輕資產啟動、證據解鎖資本。本文件說明錢從哪裡進、花到哪裡去、什麼條件下才花下一筆。</p>
+    <div class="trust">
+      <div class="t"><div class="v num">0.8–1.5 億</div><div class="l">Seed 輪（NT$，18–24 個月跑道）</div></div>
+      <div class="t"><div class="v num">0 元</div><div class="l">Seed 期重設備支出</div></div>
+      <div class="t"><div class="v num">4 道</div><div class="l">解鎖 A 輪的證據閘門</div></div>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-ghost" href="/prefab-mvp/">先看白話版 ›</a>
+    </div>
+  </div>
+</section>
+
+<!-- 1 事業定義 -->
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow rv">1・事業定義</p>
+    <h2 class="rv">賣確定性的公司。</h2>
+    <p class="body rv">本事業為<strong>功能性建築（物流倉儲、科技廠房、資料中心）預鑄構件的設計—整合—安裝公司</strong>。收入來自統包構件工程合約：設計拆圖、代工採購、吊裝管理一條龍，賺整合財、不賺製造財。</p>
+    <p class="body rv">單一業態、標準化最高的建築類型——這是從 Katerra 屍檢中學到的第一條天條：<strong>產品線先收斂，再談規模</strong>。</p>
+    <div class="stats">
+      <div class="stat rv"><div class="v num">-50%</div><div class="l">預鑄工期縮短上限</div><div class="s">供應商數據，示範案將實測</div></div>
+      <div class="stat rv"><div class="v num">15–20%</div><div class="l">預鑄占建案總成本</div><div class="s">台灣龍頭公開說法</div></div>
+      <div class="stat rv"><div class="v num">10–15%</div><div class="l">目標毛利率區間</div><div class="s">內部假設，非預測</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 市場 -->
+<section class="sec sec-gray">
+  <div class="wrap">
+    <p class="eyebrow rv">2・市場依據</p>
+    <h2 class="rv">供給滿載的市場，<br>溢出的就是入口。</h2>
+    <p class="body rv">台灣預鑄龍頭產能擴充 4 倍仍供不應求、在手合約逾 <span class="num">1,300 億元</span>（2026-07 法說）；驅動力是缺工、工資上漲與科技廠房／AI 資料中心建設潮。物流地產開發管線的自建需求，則提供了「錨定訂單」的天然場景——同一種建築、重複建造、工期敏感，正是預鑄的理想客戶形態。</p>
+    <p class="body rv">我們不與在位者正面競爭現有產能，而是承接市場溢出，並以 AI 管線與低碳材料建立不同賽道。</p>
+    <p class="foot-note rv">本節市場數字均來自公開報導（法說會轉述）；錨定訂單為規劃中的合作框架，以雙方後續書面意向為準，本文件不預設任何承諾。</p>
+  </div>
+</section>
+
+<!-- 3 差異化 -->
+<section class="sec sec-dark">
+  <div class="wrap">
+    <p class="eyebrow rv">3・差異化</p>
+    <h2 class="rv">Day-1 就走不同的路：<br>AI 是槓桿，不是形容詞。</h2>
+    <div class="grid2" style="grid-template-columns:1fr;max-width:820px">
+      <div class="card rv"><span class="no">L1・採購成熟件</span>
+        <h3>設計直通產線，用買的</h3>
+        <p>BIM→CAD/CAM→產線控制是歐洲預鑄業 30 年成熟標配（逾 200 座廠採用）；置模機器人、鋼網焊接、鋼筋機器人均可直接採購。不重新發明輪子。</p></div>
+      <div class="card rv"><span class="no">L2・自建 AI 差異層</span>
+        <h3>全球空白區，我們的主場</h3>
+        <p>AI 視覺品檢、生產排程優化、自動化構件拆圖（DfMA）——目前全球均停留在論文與廠商宣稱層級，尚無被驗證的商用產品。團隊既有的 AI 工程能力直接對準這個空白。</p></div>
+      <div class="card rv"><span class="no">L3・數據飛輪</span>
+        <h3>每一片構件讓下一片更準</h3>
+        <p>構件履歷＋吊裝數據回流：報價由數據生成，蓋得越多、設計與報價越準。這是隨案量複利的護城河，在位者要跟進得重寫自己的生產系統。</p></div>
+    </div>
+    <p class="body rv" style="margin-top:48px"><strong>與在位者的分界</strong>：他們是預鑄工法的統包公司；我們是 AI 管線公司，預鑄是第一個應用場景。<strong>與 Katerra 的分界</strong>：它同時做全部且重資產先行；我們每階段只擁有一層，先軟後硬。</p>
+  </div>
+</section>
+
+<!-- 4 資金用途 -->
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow rv">4・Seed 輪資金用途</p>
+    <h2 class="rv">NT$0.8–1.5 億，<br>每一塊錢的去向。</h2>
+    <div class="uof">
+      <div class="row rv">
+        <div class="head"><span class="name">團隊（10–15 人）</span><span class="pct num">50%</span></div>
+        <div class="bar"><i style="width:50%"></i></div>
+        <p class="desc">首席 PC 結構工程師、BIM／繪圖 2–3 人（AI 加倍產出）、專案總監＋工程師 2 人、吊裝管理 1–2 人（工班外包）、材料研究 2 人。營運與財務借力既有系統，不重複建置。跑道 18–24 個月。</p>
+      </div>
+      <div class="row rv">
+        <div class="head"><span class="name">AI 設計-製造管線 v1</span><span class="pct num">20%</span></div>
+        <div class="bar"><i style="width:20%"></i></div>
+        <p class="desc">採購成熟件（BIM／CAD 授權與產線介接）＋自建 AI 差異層（構件拆分、shop drawing、代工排程、吊裝模擬、構件履歷）。管線是本事業的「動力總成」。</p>
+      </div>
+      <div class="row rv">
+        <div class="head"><span class="name">示範案墊資與履約</span><span class="pct num">30%</span></div>
+        <div class="bar"><i style="width:30%"></i></div>
+        <p class="desc">代工採購墊資、品管派駐（老師傅監造制度）、履約保證金、工程保險。保險與保證關係自 day-1 建立——Katerra 的最後一根稻草是保證保險斷裂，我們把它列為啟動成本而非風險項。</p>
+      </div>
+    </div>
+    <p class="body rv" style="margin-top:48px"><strong>Seed 期不購置任何重型製造設備。</strong>唯一硬體支出是材料實驗室基本設備（利用既有廠房空間，資本極小）。</p>
+  </div>
+</section>
+
+<!-- 5 資本階梯 -->
+<section class="sec sec-gray">
+  <div class="wrap">
+    <p class="eyebrow rv">5・資本階梯</p>
+    <h2 class="rv">三層資本，<br>每層被證據鎖住。</h2>
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th>輪次</th><th>金額（NT$）</th><th>投向</th><th>解鎖條件</th></tr></thead>
+        <tbody>
+          <tr><td><span class="big">Seed</span><span class="note">2027</span></td><td data-l="金額 NT$"><span class="big num">0.8–1.5 億</span></td><td data-l="投向">團隊＋AI 管線＋示範案（本文件）</td><td data-l="解鎖條件">Stage 0 三證據：示範案書面意向、AI 原型跑通真實構件、公司設立完成</td></tr>
+          <tr><td><span class="big">A 輪</span><span class="note">2028–29</span></td><td data-l="金額 NT$"><span class="big num">5–10 億</span></td><td data-l="投向">差異化產線（低碳構件＋高精度自動化構件），既有廠房改造入門</td><td data-l="解鎖條件">Gate 1 四證據：示範案如期交付＋管線 ≥2 案重複使用＋在手訂單 ≥ 首期產能 60%＋低碳配方實驗室驗證</td></tr>
+          <tr><td><span class="big">B 輪</span><span class="note">2029–31</span></td><td data-l="金額 NT$"><span class="big num">依出海規模</span></td><td data-l="投向">系統輸出（美、日），複製管線與方法、不複製廠房</td><td data-l="解鎖條件">Gate 2：產線稼動達損平＋低碳構件取得驗證與商業訂單＋海外首案時程確定</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="rv" style="margin-top:64px">A 輪量級的國際錨點（2025–2026 公開案例）</h3>
+    <div class="tablewrap rv" style="margin-top:24px">
+      <table>
+        <thead><tr><th>案例</th><th>投資額</th><th>約合 NT$</th><th>型態</th></tr></thead>
+        <tbody>
+          <tr><td>Coastal Precast（美）</td><td data-l="投資額"><span class="big num">US$900 萬</span></td><td data-l="約合 NT$"><span class="num">≈3 億</span></td><td data-l="型態">小型衛星廠・70 人</td></tr>
+          <tr><td>Systembau Eder（奧）</td><td data-l="投資額"><span class="big num">€1,200 萬</span></td><td data-l="約合 NT$"><span class="num">≈4.2 億</span></td><td data-l="型態">全自動牆板廠</td></tr>
+          <tr><td>Lujabetoni（芬）</td><td data-l="投資額"><span class="big num">€2,000 萬</span></td><td data-l="約合 NT$"><span class="num">≈7 億</span></td><td data-l="型態">4 條長線台・30,000 m² 廠房</td></tr>
+          <tr><td>Fit Precast（美）</td><td data-l="投資額"><span class="big num">US$1.02 億</span></td><td data-l="約合 NT$"><span class="num">≈33 億</span></td><td data-l="型態">大型全新建廠・125 人</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="foot-note rv">我們的 A 輪落點取「既有廠房改造＋入門產線型態（設備商官方定位為低投資路徑）＋自動化選配」，土建與設備分屬不同資金來源、兩本帳分開。設備精確報價以正式詢價為準（Seed 期執行，全行業不公開牌價）。匯率以約 33（USD）、35（EUR）換算取整。</p>
+  </div>
+</section>
+
+<!-- 6 里程碑 -->
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow rv">6・里程碑</p>
+    <h2 class="rv">時程表：證據優先，<br>不是日期優先。</h2>
+    <div class="gates">
+      <div class="gate rv"><div class="when num">現在–2026 底</div><div><h3>Stage 0・證據期（NT$0）</h3><p>AI 切片原型以真實圖紙試跑；示範案範圍定義與書面意向；台灣代工產能盤點；設備商正式詢價啟動。</p><p class="cond">未過關就不成立公司——停留不是失敗，是紀律。</p></div></div>
+      <div class="gate rv"><div class="when num">2027</div><div><h3>Stage 1・示範案交付（Seed）</h3><p>旗艦示範案交付＋2–3 個跟進案；AI 管線 v1 上線，每片代工構件數據回流；工期與品質實證數字產出。</p><p class="cond">Gate 1 四條件齊備才建產線。</p></div></div>
+      <div class="gate rv"><div class="when num">2028–29</div><div><h3>Stage 2・差異化產線（A 輪）</h3><p>只做代工廠做不到的兩類構件：低碳材料構件、高精度自動化構件；一般構件持續代工。國際案例顯示設備下訂到量產約 6–12 個月。</p><p class="cond">Gate 2：稼動率達損平＋低碳構件商業訂單＋海外首案時程。</p></div></div>
+      <div class="gate rv"><div class="when num">2029–31</div><div><h3>Stage 3・系統出海（B 輪）</h3><p>跟隨錨定客戶的海外擴張管線輸出整套系統：AI 管線＋廠設計圖譜＋品管體系＋訓練課程。</p><p class="cond">複製的是系統，不是廠房。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 團隊與資源 -->
+<section class="sec sec-gray">
+  <div class="wrap">
+    <p class="eyebrow rv">7・團隊與資源</p>
+    <h2 class="rv">每一方只出最強的資源，<br>在最對的階段進場。</h2>
+    <div class="grid2">
+      <div class="card rv"><span class="no">經營＋系統</span><h3>AI 原生營運團隊</h3><p>既有的 AI agent 工程能力與七階段交付方法論——AI 管線的建造者與整合交付的執行主體。品牌、敘事與融資工程全程自營。</p></div>
+      <div class="card rv"><span class="no">材料科學</span><h3>低碳膠結研發線</h3><p>無機氧化物專業的研發人才與實驗室（利用既有廠房空間、資本極小啟動），對準低碳構件的差異化材料層——ESG 溢價的技術基礎。</p></div>
+      <div class="card rv"><span class="no">場地選項</span><h3>既有工業土地與廠房</h3><p>具環評與工廠身分的既有場址作為 Stage 2 產線候選——相比綠地新建，可節省土地取得與 12–18 個月行政時間。以租賃形式進場、兩本帳分開。</p></div>
+      <div class="card rv"><span class="no">資本＋需求＋網絡</span><h3>錨定投資人（本輪邀請）</h3><p>領投 Seed 輪；其開發管線提供示範案場景、供應鏈網絡提供代工與設計夥伴引薦、海外擴張管線提供 Stage 3 的出海走廊。</p></div>
+    </div>
+    <p class="foot-note rv">關係人交易防火牆：示範案定價由第三方行情驗證、相關決議設迴避條款；製造代工、場地租賃、系統服務各自獨立計價，設治理見證人機制。</p>
+  </div>
+</section>
+
+<!-- 8 風險 -->
+<section class="sec sec-dark">
+  <div class="wrap">
+    <p class="eyebrow rv">8・風險與誠實的未知</p>
+    <h2 class="rv">我們知道自己在賭什麼。</h2>
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th>風險</th><th>本質</th><th>對策</th></tr></thead>
+        <tbody>
+          <tr><td><span class="big">AI 管線做不出來</span></td><td data-l="本質">本案最大的技術假設</td><td data-l="對策">Stage 0 以 72 小時切片先證僞；若不成立，退守人力工程＋整合商路線——事業仍成立，估值邏輯降級</td></tr>
+          <tr><td><span class="big">代工品質</span></td><td data-l="本質">別人的廠、我們的牌</td><td data-l="對策">品管派駐＋構件數位履歷；成本已列入 Seed 預算 30% 口袋</td></tr>
+          <tr><td><span class="big">訂單集中</span></td><td data-l="本質">單一錨定客戶依賴</td><td data-l="對策">Gate 1 明文要求跟進案來自錨定客戶網絡之外的驗證</td></tr>
+          <tr><td><span class="big">在位者跟進</span></td><td data-l="本質">速度優勢是暫時的</td><td data-l="對策">窗口期把速度換成數據累積與客戶綁定；不正面攻擊現有市場</td></tr>
+          <tr><td><span class="big">關鍵人才缺位</span></td><td data-l="本質">PC 工程師稀缺、廠長難尋</td><td data-l="對策">Gate 制天然容納延後；不硬上、不因時程壓力降標</td></tr>
+          <tr><td><span class="big">損平模型未知</span></td><td data-l="本質">整合模式損平案量無公開數據</td><td data-l="對策">示範案本身就是損平模型的實驗——MVP 的交付物之一是這組數字</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="body rv" style="margin-top:48px">以及一條不可協商的原則：<strong>投資資金只進本事業公司（OpCo），不流向任何關係企業</strong>；場地與土建另立資產公司（AssetCo）與銀行融資處理，兩本帳從第一天分開。</p>
+    <div class="cta-row rv">
+      <a class="btn btn-primary" href="/prefab-mvp/">回白話說明頁</a>
+      <a class="link" href="#top" onclick="window.scrollTo({top:0});return false;">回到最上面 ›</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本文件為內部規劃文件與討論基礎，非投資要約、非公開說明書。財務數字除標明公開來源者外均為內部假設與規劃區間，將隨盡職調查與正式詢價更新；「目標毛利率」等項目為假設，非業績預測。涉及之第三方公司內容均基於公開資訊，不代表已有洽談、合作或承諾。未經同意請勿轉發。</p>
+    <p style="margin-top:8px">Saiens 山恩實業・預鑄事業・v1・2026-08-30</p>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+const onScroll=()=>{nav.classList.toggle('solid',window.scrollY>window.innerHeight*0.7)};
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4*40)+'ms';io.observe(el)});
+</script>
+</body>
+</html>
