@@ -1,0 +1,18 @@
+{
+  "brand": "Saiens",
+  "style": "photorealistic editorial interior photography, near-monochrome warm neutral palette (warm black, stone grey, off-white, pale sage), soft natural daylight, matte stone surfaces, calm and quiet, no people, no text, no letters, no logos, no watermark",
+  "images": [
+    {
+      "file": "hero-plinth.png",
+      "purpose": "首屏 hero；中島量體看似懸浮，因為最底部退縮的踢腳板是全鏡面，映出地板；上三分之一保持乾淨暗牆；手機直式裁切後主體仍在中央",
+      "aspect": "portrait 3:4",
+      "prompt": "Three-quarter view of a kitchen island that appears to hover above the floor\nSubject: a long island of matte dark oak cabinet doors under a thick continuous honed grey stone slab; at the very bottom, the recessed toe-kick plinth (about 12 cm tall, set back from the door faces) is clad in flawless polished mirror, so it reflects the concrete floor and the island body seems to float a hand's width above the ground; a slim brushed stainless beam is visible under the slab edge and the slab sits slightly above the cabinets leaving a thin horizontal gap of shadow\nDetails: raking window light from the left across the floor and into the mirror plinth, one ceramic bowl on the slab, dark warm plaster wall behind, no visible legs\nConstraints: upper third plain dark wall, no chairs, no appliances, no people\nIntent: brand concept hero, weightless island, the mirror at the base makes the floor run under it"
+    },
+    {
+      "file": "section-plinth-detail.png",
+      "purpose": "「太刀川的提案」段：踢腳鏡面與地板相接處的低角度特寫，看見地板在鏡面裡延伸，量體像離地；橫圖不疊字",
+      "aspect": "landscape 3:2",
+      "prompt": "Low close-up at floor level of the base of a kitchen island\nSubject: matte dark oak cabinet doors ending about 12 cm above the floor; beneath them, set back a few centimetres, a continuous horizontal band of polished mirror forming the toe-kick plinth, reflecting the honed concrete floor so the cabinets seem to hover; the mirror band meets the floor with only a hairline shadow\nDetails: warm side daylight sliding along the floor into the reflection, shallow depth of field, a faint seam line in the mirror, no feet or hardware visible\nConstraints: no people, no text, no clutter\nIntent: show that the floating effect comes from the mirrored plinth, not from legs"
+    }
+  ]
+}

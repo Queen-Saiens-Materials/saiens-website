@@ -1,0 +1,24 @@
+{
+  "brand": "Saiens",
+  "style": "photorealistic editorial interior photography, near-monochrome warm neutral palette (warm black, stone grey, off-white, pale sage), soft natural daylight, matte surfaces, calm and quiet, no people, no text, no letters, no logos, no watermark",
+  "images": [
+    {
+      "file": "hero-portal.png",
+      "purpose": "首屏 hero；手機直式裁切後主體仍在中央；上三分之一保持乾淨暗牆",
+      "aspect": "portrait 3:4",
+      "prompt": "Three-quarter view of a kitchen island built as architecture\nSubject: a single continuous honed grey stone slab resting on one inverted-U brushed stainless steel portal frame (two slim legs and one long horizontal beam), the slab raised about 20 cm above a row of fixed matte dark oak cabinet boxes so a clean horizontal gap of shadow runs the full length between slab and cabinets\nDetails: the beam visible under the slab edge, concrete floor, dark warm plaster wall, raking window light from the left, one ceramic bowl on the slab\nConstraints: upper third is plain dark wall, no appliances, no chairs\nIntent: brand concept hero showing beam, column, slab and volume as separate parts"
+    },
+    {
+      "file": "section-bare-frame.png",
+      "purpose": "「結構前提」與展覽段：裸框架，板升到最高、量體拿掉，看見廚房的骨；橫圖不疊字",
+      "aspect": "landscape 3:2",
+      "prompt": "Side elevation view of a kitchen counter stripped to its structure in a bright gallery-like room\nSubject: a long honed grey stone slab carried by one inverted-U brushed stainless steel portal frame, no cabinets underneath, the slab at standing-desk height, the floor beneath completely open\nDetails: precise welded steel joints, thin slab edge, soft even daylight from a large window, pale plaster walls, concrete floor, long soft shadow under the slab\nConstraints: nothing on the slab, no furniture, no people\nIntent: the kitchen honestly showing its skeleton, modular frame as a permanent base"
+    },
+    {
+      "file": "section-lift-gap.png",
+      "purpose": "「機能」段：板升起後的空隙當瀝水與通風層；橫圖不疊字",
+      "aspect": "landscape 3:2",
+      "prompt": "Close three-quarter detail of a stone kitchen counter raised above fixed cabinets\nSubject: the horizontal gap between a honed grey stone slab and matte dark cabinet boxes below, inside the gap a wooden drying rack with two ceramic bowls and a cast iron pan resting on the stainless beam\nDetails: warm evening side light entering the gap, water drops on the bowls, brushed steel beam edge, oak cabinet fronts below\nConstraints: no people, no text, no clutter beyond the rack\nIntent: the lifted slab creates a working layer for draining and ventilation"
+    }
+  ]
+}

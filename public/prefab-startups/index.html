@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Prefab 新創研究｜生死名單、財務真相與 Cuby 深潛</title>
+<meta name="description" content="全球工業化營建新創橫掃：20 家公司的募資、財務、策略與生死；唯一有審計財報的 Boxabl；以及 Cuby Factory-as-a-Service 模式深潛。內部研究，未公開索引。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prefab 新創研究｜生死名單與 Cuby 深潛">
+<meta property="og:description" content="20 家新創的募資、財務與生死；Cuby Factory-as-a-Service 模式解剖。">
+<meta property="og:url" content="https://saiens.group/prefab-startups">
+<meta property="og:image" content="https://saiens.group/prefab-startups/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" type="image/svg+xml" href="/prefab-startups/favicon.svg">
+<link rel="apple-touch-icon" href="/prefab-startups/apple-touch-icon.png">
+<style>
+:root{
+  --text-primary:#302b27; --text-body:#4a443e; --text-secondary:#857f7a;
+  --text-tertiary:#6b655f; --bg-white:#ffffff; --bg-gray:#f5f3f5;
+  --bg-dark:#1b264f; --bg-dark-2:#243158;
+  --text-on-dark:#f5f3f5; --text-on-dark-secondary:rgba(245,243,245,0.72);
+  --accent:#274690; --accent-soft:#576ca8; --border:#ddd8dd;
+  --error:#cf3723;
+  --ease-ui:ease-out; --ease-enter:cubic-bezier(0.16,1,0.3,1);
+  --z-nav:100;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+b,strong{font-weight:600}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans TC",sans-serif;
+  color:var(--text-primary);background:var(--bg-white);
+  font-size:17px;line-height:1.47;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);height:48px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 24px;
+  transition:background 250ms var(--ease-ui),color 250ms var(--ease-ui);
+  background:transparent;color:var(--text-on-dark)}
+.nav.solid{background:rgba(255,255,255,0.8);color:var(--text-primary);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}
+.nav .wordmark{font-size:15px;font-weight:600;letter-spacing:0.08em}
+.nav .tag{font-size:13px;font-weight:500;opacity:0.72;white-space:nowrap}
+
+.sec{padding:120px 24px}
+.sec-dark{background:var(--bg-dark);color:var(--text-on-dark)}
+.sec-gray{background:var(--bg-gray)}
+.wrap{max-width:980px;margin:0 auto}
+.eyebrow{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;
+  color:var(--text-secondary);margin-bottom:16px}
+.sec-dark .eyebrow{color:var(--accent-soft)}
+h1,h2,h3{font-weight:600;letter-spacing:-0.015em;text-wrap:balance}
+h1{font-size:clamp(38px,6.5vw,68px);line-height:1.08}
+h2{font-size:clamp(32px,5vw,52px);line-height:1.1;margin-bottom:24px}
+h3{font-size:clamp(19px,3vw,25px);line-height:1.2;margin-bottom:12px}
+p.body{color:var(--text-body);margin-bottom:16px;max-width:720px}
+.sec-dark p.body{color:var(--text-on-dark-secondary)}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;
+  background:var(--bg-dark);color:var(--text-on-dark);padding:120px 24px 80px}
+.hero .eyebrow{color:var(--accent-soft)}
+.hero .sub{font-size:clamp(18px,2.6vw,22px);color:var(--text-on-dark-secondary);
+  margin-top:24px;max-width:680px;line-height:1.45}
+.hero .trust{margin-top:48px;display:flex;gap:40px;flex-wrap:wrap}
+.trust .t .v{font-size:clamp(26px,4vw,40px);font-weight:600;letter-spacing:-0.02em}
+.trust .t .l{font-size:13px;color:var(--text-on-dark-secondary);margin-top:4px}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px}
+.stat{background:var(--bg-gray);border-radius:18px;padding:32px 24px;text-align:center}
+.sec-gray .stat{background:var(--bg-white)}
+.sec-dark .stat{background:var(--bg-dark-2)}
+.stat .v{font-size:clamp(28px,4.2vw,44px);font-weight:600;letter-spacing:-0.02em;line-height:1.05}
+.stat .l{font-size:14px;color:var(--text-secondary);margin-top:8px}
+.sec-dark .stat .l{color:var(--text-on-dark-secondary)}
+.stat .s{font-size:12px;color:var(--text-tertiary);margin-top:6px}
+.sec-dark .stat .s{color:rgba(245,243,245,0.5)}
+
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:48px}
+.card{background:var(--bg-gray);border-radius:18px;padding:32px}
+.sec-gray .card{background:var(--bg-white)}
+.sec-dark .card{background:var(--bg-dark-2)}
+.card h3{margin-bottom:8px}
+.card p{font-size:15px;color:var(--text-body);line-height:1.55}
+.sec-dark .card p{color:var(--text-on-dark-secondary)}
+.card .no{font-size:14px;font-weight:500;color:var(--accent);letter-spacing:0.02em;margin-bottom:12px;display:block}
+.sec-dark .card .no{color:var(--accent-soft)}
+.card .meta{font-size:13px;color:var(--text-tertiary);margin-top:12px;line-height:1.6}
+.sec-dark .card .meta{color:rgba(245,243,245,0.5)}
+
+.tablewrap{overflow-x:auto;margin-top:48px;border-radius:18px}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:680px;background:var(--bg-white)}
+.sec-dark table{background:var(--bg-dark-2)}
+th{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.05em;
+  color:var(--text-secondary);text-align:left;padding:14px 16px;border-bottom:1px solid var(--border)}
+.sec-dark th{color:var(--text-on-dark-secondary);border-color:rgba(245,243,245,0.18)}
+td{padding:14px 16px;border-bottom:1px solid var(--border);color:var(--text-body);vertical-align:top}
+.sec-dark td{color:var(--text-on-dark-secondary);border-color:rgba(245,243,245,0.18)}
+tr:last-child td{border-bottom:none}
+td .big{font-weight:600;color:var(--text-primary);font-variant-numeric:tabular-nums}
+.sec-dark td .big{color:var(--text-on-dark)}
+td .note{display:block;font-size:12px;color:var(--text-tertiary);margin-top:2px}
+.sec-dark td .note{color:rgba(245,243,245,0.5)}
+td .bad{color:var(--error);font-weight:600}
+
+/* flow diagram (Cuby model) */
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px}
+.flow .f{background:var(--bg-dark-2);border-radius:18px;padding:28px 24px}
+.flow .f .who{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-soft);margin-bottom:10px}
+.flow .f .what{font-size:16px;font-weight:600;line-height:1.35}
+.flow .f .amt{font-size:clamp(22px,3vw,30px);font-weight:600;letter-spacing:-0.02em;margin-top:12px;font-variant-numeric:tabular-nums}
+.flow .f .d{font-size:13px;color:var(--text-on-dark-secondary);margin-top:10px;line-height:1.55}
+
+.foot-note{font-size:13px;color:var(--text-tertiary);max-width:720px;margin-top:48px;line-height:1.6}
+.sec-dark .foot-note{color:rgba(245,243,245,0.5)}
+
+.cta-row{display:flex;align-items:center;gap:24px;margin-top:48px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:980px;
+  padding:12px 22px;font-size:17px;font-weight:500;min-height:44px;text-decoration:none;
+  transition:background-color 250ms var(--ease-ui),color 250ms var(--ease-ui)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#2f54a8}
+.link{color:var(--accent);text-decoration:underline;text-underline-offset:4px;font-weight:500;
+  font-size:17px;min-height:44px;display:inline-flex;align-items:center}
+.sec-dark .link{color:#a9b8e0}
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.sec-dark a:focus-visible{outline-color:#a9b8e0}
+
+footer{background:var(--bg-gray);padding:48px 24px;font-size:12px;color:var(--text-tertiary);line-height:1.7}
+footer .wrap{max-width:980px}
+
+.rv{opacity:0;transform:translateY(24px);
+  transition:transform 800ms var(--ease-enter),opacity 450ms ease-out}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+}
+
+@media (max-width:734px){
+  .sec{padding:64px 20px}
+  .hero{padding:96px 20px 64px}
+  .stats,.grid2,.flow{grid-template-columns:1fr}
+  .card,.stat{padding:28px 20px}
+  h2 br{display:none}
+  .tablewrap{overflow-x:visible}
+  table{min-width:0;display:block;background:transparent}
+  thead{display:none}
+  tbody,tr,td{display:block;width:100%}
+  tbody{background:var(--bg-gray);border-radius:18px;padding:8px 20px}
+  .sec-gray tbody{background:var(--bg-white)}
+  .sec-dark tbody{background:var(--bg-dark-2)}
+  tbody tr{padding:16px 0;border-bottom:1px solid var(--border)}
+  .sec-dark tbody tr{border-color:rgba(245,243,245,0.18)}
+  tbody tr:last-child{border-bottom:none}
+  td{border-bottom:none;padding:4px 0;text-align:right;white-space:normal;
+    display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+  td:first-child{font-weight:600;color:var(--text-primary);padding-bottom:8px}
+  .sec-dark td:first-child{color:var(--text-on-dark)}
+  td[data-l]::before{content:attr(data-l);font-size:13px;color:var(--text-secondary);
+    text-align:left;flex:0 0 auto;font-weight:400}
+  .sec-dark td[data-l]::before{color:var(--text-on-dark-secondary)}
+  td .note{text-align:right}
+}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <span class="wordmark">SAIENS</span>
+  <span class="tag">Prefab 新創研究・內部</span>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Startup Landscape・2026-08</p>
+    <h1>Prefab 新創生死簿：<br>錢、模式，與唯一的真財報。</h1>
+    <p class="sub">掃描全球 20 家工業化營建新創的募資、財務、員工、策略與存亡——並對 <strong>Cuby Technologies</strong> 的 Factory-as-a-Service 模式做完整解剖。</p>
+    <div class="trust">
+      <div class="t"><div class="v num">20 家</div><div class="l">存活＋死亡＋轉型全掃描</div></div>
+      <div class="t"><div class="v num">US$3B+</div><div class="l">死亡組累計燒掉的資本</div></div>
+      <div class="t"><div class="v num">1 家</div><div class="l">有審計後真財報（Boxabl）</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S1 地圖 -->
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow rv">01・先看地圖</p>
+    <h2 class="rv">這個行業只有兩條路，<br>生死沿著資產重量分界。</h2>
+    <p class="body rv">把 20 家公司攤開，模式只有兩種：<strong>重資產自營</strong>（自己出錢蓋廠、自己接案）與<strong>輕資產賣系統</strong>（工廠的資本讓別人出，自己賣系統、軟體與抽成）。死亡組幾乎全部來自前者；2022 年後的新一代幾乎全部選擇後者。</p>
+    <div class="grid2">
+      <div class="card rv"><span class="no">路線 A・重資產自營</span>
+        <h3>先蓋廠，再找訂單</h3>
+        <p>Katerra（燒 ~US$20 億）、Veev（~US$6 億）、Entekra（US$4,500 萬）、Prescient（US$1.9 億）、Diamond Age（~US$5,800 萬）——全數陣亡。共同死因：工廠 capex 先於訂單能見度，稼動率跟不上固定成本。</p>
+        <p class="meta">例外倖存者：Intelligent City（溫哥華，mass timber 自營廠）——靠小規模＋政府補助存活；ICON 靠美軍訂單（Fort Bliss US$6,280 萬合約）回穩。</p></div>
+      <div class="card rv"><span class="no">路線 B・輕資產賣系統</span>
+        <h3>工廠的錢讓別人出</h3>
+        <p>Cuby（開發商出資 SPV）、Promise Robotics（Factory-as-a-Service）、AUAR（賣機器人微工廠）、Toggle（機器人預組裝服務）——全數存活且在擴張。共同點：新創只擁有系統與軟體，資本風險轉嫁給最了解在地需求的人。</p>
+        <p class="meta">注意：路線 B 的公司全數尚未證明獲利——存活 ≠ 驗證成功，只是還沒把資本燒完。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S2 CUBY -->
+<section class="sec sec-dark">
+  <div class="wrap">
+    <p class="eyebrow rv">02・深潛主角</p>
+    <h2 class="rv">Cuby：賣的不是房子，<br>是「會生房子的工廠」。</h2>
+    <p class="body rv">紐約新創，創辦人 Oleg Kandrashou（硬體工程）＋ Aleks Gampel（前 WeWork 地產／PE）。累計募資僅約 <span class="num">US$2,340 萬</span>——不到 Katerra 的 1.2%——卻要解 Katerra 沒解開的題。核心設計：<strong>Mobile Micro Factory（MMF）＋ SPV 出資結構</strong>。</p>
+    <div class="flow">
+      <div class="f rv"><div class="who">開發商（出錢方）</div><div class="what">出資成立 SPV、持有工廠</div><div class="amt num">~US$1,000 萬</div><div class="d">建置費 US$650–750 萬＋營運週轉金 US$350 萬；SPV 承擔資本風險，換取在地 10 年的住宅產能與分潤。</div></div>
+      <div class="f rv"><div class="who">Cuby（收錢方）</div><div class="what">建置費＋每戶抽成</div><div class="amt num">10–20%</div><div class="d">前期收 MMF 建置費的毛利，持續收每戶成交價 10–20% 的平台抽成；宣稱單廠 10 年帶來 US$5,000–7,000 萬高毛利營收（前瞻宣稱，非財報）。</div></div>
+      <div class="f rv"><div class="who">工廠（生產方）</div><div class="what">30,000 sq ft・約 200 戶/年</div><div class="amt num">100 人</div><div class="d">約 300 台機具、40 個工站、600 個材料 SKU；現場只需 4 名非技術工人，45–60 天從地基到交屋（150–200 英里服務半徑）。</div></div>
+    </div>
+    <div class="stats">
+      <div class="stat rv"><div class="v num">US$100</div><div class="l">目標每平方英尺成本</div><div class="s">美國首案自 $140 爬坡中；公司宣稱</div></div>
+      <div class="stat rv"><div class="v num">3,300 戶</div><div class="l">內華達開發商綁定管線（10 年）</div><div class="s">首座美國 MMF 目標 2026 Q3 投產</div></div>
+      <div class="stat rv"><div class="v num">~30%</div><div class="l">宣稱製造毛利率</div><div class="s">單一來源，未確認</div></div>
+    </div>
+    <p class="body rv" style="margin-top:48px"><strong>財務真相：私人公司，零已實現財務數字可驗證。</strong>營收、毛利率、淨利率全部未公開；員工約 250 人（單一來源）。所有 US$50–70M/廠的數字都是模型推估。唯一運作中的工廠在白俄羅斯明斯克（R&D 起點），公開紀錄裡只有創辦人自住案例，尚未查到對外部買家的正式交屋。</p>
+    <div class="grid2">
+      <div class="card rv"><span class="no">為什麼值得研究</span>
+        <h3>收費結構是它真正的發明</h3>
+        <p>「建置費＋每戶抽成＋數據」三段式收入，讓 Cuby 不用自己的資本就能複製產能——這與我們「代工廠賺加工費、我們賺整合財與數據」的 MVP 邏輯同構。它驗證的是商業結構，不只是技術。</p></div>
+      <div class="card rv"><span class="no">對台灣的三個保留</span>
+        <h3>不能直接抄的部分</h3>
+        <p>①建築系統是<strong>鋼構框架＋保溫三明治板</strong>，不是預鑄混凝土——與台灣 RC 主流和我們的功能性建築定位不同賽道；②耐震與亞熱帶耐久性完全未經驗證；③公開資訊生態幾乎全是正面軟文（核心深度稿出自其投資人之手），缺獨立負評——資訊本身要打折。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S3 存活組 -->
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow rv">03・存活組</p>
+    <h2 class="rv">還在場上的九家，<br>沒有一家公開過利潤。</h2>
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th>公司</th><th>模式</th><th>累計募資</th><th>員工數</th><th>現況（2026-08）</th></tr></thead>
+        <tbody>
+          <tr><td>Cuby（美）</td><td data-l="模式">MMF＋SPV 抽成</td><td data-l="募資"><span class="big num">US$2,340 萬</span></td><td data-l="員工"><span class="num">~250</span><span class="note">未確認</span></td><td data-l="現況">美國首廠 2026 Q3 目標投產</td></tr>
+          <tr><td>ICON（美）</td><td data-l="模式">3D 列印營建</td><td data-l="募資"><span class="big num">~US$5.07 億</span></td><td data-l="員工"><span class="num">100–619</span><span class="note">口徑分歧</span></td><td data-l="現況">2025 裁員 25%；靠美軍合約回穩（累計政府合約逾 US$3.6 億，公司宣稱）</td></tr>
+          <tr><td>AUAR（英）</td><td data-l="模式">機器人微工廠（木構）</td><td data-l="募資"><span class="big num">£510–770 萬</span></td><td data-l="員工"><span class="num">11–50</span></td><td data-l="現況">比利時／美國商業案 300+ 戶；2026 推中高層系統</td></tr>
+          <tr><td>Promise Robotics（加）</td><td data-l="模式">Factory-as-a-Service</td><td data-l="募資"><span class="big num">US$1,500 萬+</span></td><td data-l="員工">未確認</td><td data-l="現況">卡加利廠 2025-10 全面量產</td></tr>
+          <tr><td>Intelligent City（加）</td><td data-l="模式">Mass timber 自營廠</td><td data-l="募資"><span class="big num">CAD$3,000 萬</span></td><td data-l="員工"><span class="num">~31</span></td><td data-l="現況">獲聯邦補助擴多倫多產能（年產上看 1,000 戶）</td></tr>
+          <tr><td>Toggle（美）</td><td data-l="模式">鋼筋機器人預組裝</td><td data-l="募資"><span class="big num">US$1,500 萬+</span></td><td data-l="員工">未確認</td><td data-l="現況">紐約捷運／橋梁案量產部署中</td></tr>
+          <tr><td>Assembly OSM（美）</td><td data-l="模式">高層模組分散製造</td><td data-l="募資"><span class="big num">US$6,000 萬+</span></td><td data-l="員工">資料庫異常，不採信</td><td data-l="現況">布魯克林／東哈林多案在建</td></tr>
+          <tr><td>Vantem（美）</td><td data-l="模式">節能夾心面板</td><td data-l="募資"><span class="big">未公開</span><span class="note">Gates 旗下 BEV 領投</span></td><td data-l="員工"><span class="num">~55</span></td><td data-l="現況">拉美 300 萬 sq ft 實績；喊 7 年 15 座美國廠（前瞻）</td></tr>
+          <tr><td>Juno（美）</td><td data-l="模式">Mass timber 公寓→轉顧問</td><td data-l="募資"><span class="big num">US$3,150 萬</span></td><td data-l="員工">未確認</td><td data-l="現況">重大轉向：從自營開發轉為業主代表／CM 服務</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="foot-note rv">「營收／毛利率／淨利率」一欄之所以不存在：九家全數未公開，任何流傳數字皆為公司宣稱或推估。這個行業的財務透明度本身就是一個研究發現。</p>
+  </div>
+</section>
+
+<!-- S4 Boxabl -->
+<section class="sec sec-gray">
+  <div class="wrap">
+    <p class="eyebrow rv">04・唯一的真財報</p>
+    <h2 class="rv">Boxabl：當帷幕被法規掀開，<br>裡面是這些數字。</h2>
+    <p class="body rv">Boxabl（拉斯維加斯，摺疊式模組屋「Casita」）因為走 Regulation A 公開募資（股票代碼 BXBL），是全場<strong>唯一被迫公開審計財報</strong>的公司——也因此成為最珍貴的對照組：</p>
+    <div class="stats">
+      <div class="stat rv"><div class="v num">US$151 萬</div><div class="l">FY2025 營收（年減 55%）</div><div class="s">FY2024：US$338 萬</div></div>
+      <div class="stat rv"><div class="v num">US$5,755 萬</div><div class="l">FY2025 淨損</div><div class="s">營收的 38 倍</div></div>
+      <div class="stat rv"><div class="v num">US$7.76 億</div><div class="l">累計虧損</div><div class="s">10-K 揭露 going concern 疑慮</div></div>
+    </div>
+    <p class="body rv" style="margin-top:48px">它曾被炒到約 US$35 億市值。教訓有兩層：①<strong>「工廠蓋好了」與「賣得掉」是兩件事</strong>——Boxabl 的瓶頸是各州模組建築核准與通路，不是產能；②私人同業的華麗敘事，套上審計後可能就是這種樣子。看不到財報的公司，估值敘事一律打折。</p>
+    <p class="foot-note rv">數字取自 FY2025 10-K（2026-03-27 申報）之第三方引述（last10k／stocktitan），SEC 原檔待人工核對；連結已存於研究檔。</p>
+  </div>
+</section>
+
+<!-- S5 死亡組 -->
+<section class="sec sec-dark">
+  <div class="wrap">
+    <p class="eyebrow rv">05・死亡組</p>
+    <h2 class="rv">墓誌銘上寫的都是<br>同一句話。</h2>
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th>公司</th><th>燒掉資本</th><th>結局</th><th>死因一句話</th></tr></thead>
+        <tbody>
+          <tr><td>Katerra</td><td data-l="燒掉"><span class="big num">~US$20 億</span></td><td data-l="結局">2021 Chapter 11</td><td data-l="死因">產能先於需求、混業態、垂直整合過度</td></tr>
+          <tr><td>Veev</td><td data-l="燒掉"><span class="big num">~US$6 億</span></td><td data-l="結局">2023-11 關閉美國實體</td><td data-l="死因">末輪募資臨門取消，燒錢速度超過驗證速度</td></tr>
+          <tr><td>Prescient</td><td data-l="燒掉"><span class="big num">US$1.9 億</span></td><td data-l="結局">2022–23 連環關廠<span class="note">未確認正式破產</span></td><td data-l="死因">多廠固定成本壓垮訂單能見度</td></tr>
+          <tr><td>Diamond Age</td><td data-l="燒掉"><span class="big num">~US$5,800 萬</span><span class="note">另口徑 US$1 億</span></td><td data-l="結局">2024-12 停業，設備拍賣中</td><td data-l="死因">3D 列印住宅募資斷炊</td></tr>
+          <tr><td>Entekra</td><td data-l="燒掉"><span class="big num">US$4,500 萬</span></td><td data-l="結局">2023 清算（影響 240 人）</td><td data-l="死因">建材大廠 LP 控股仍無法規模化</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid2">
+      <div class="card rv"><span class="no">更正・非死亡</span>
+        <h3>兩家「傳聞已死」其實還在</h3>
+        <p><strong>Blu Homes</strong>：2020 年被 Dvele 收購（累計募資約 US$1.8–2.2 億），是退場不是倒閉。<strong>Factory OS</strong>：2024–25 重整更名 Harbinger Homes，2026-07 反而新募 US$5,500 萬（員工約 133 人）——重資產模式的少數重生案例。</p></div>
+      <div class="card rv"><span class="no">共同解剖</span>
+        <h3>死法只有一種</h3>
+        <p>五家死者全是「工廠 capex 先落地、訂單能見度後補」；沒有任何一家死於技術做不出來。這個行業殺死公司的從來不是工程，是<strong>固定成本與需求的時間差</strong>。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S6 啟示 -->
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow rv">06・對我們的意義</p>
+    <h2 class="rv">從 Cuby 帶走結構，<br>不帶走建築系統。</h2>
+    <div class="grid2">
+      <div class="card rv"><span class="no">借鑑 1・收費結構</span>
+        <h3>三段式收入可以移植</h3>
+        <p>Cuby 的「建置費＋每戶抽成＋數據」對應我們的「整合工程費＋系統服務費＋構件數據飛輪」。Stage 3 出海賣「會學習的構件廠」時，Cuby 的 SPV 模式（在地夥伴出資持有、我們收系統費與權利金）是現成的結構範本。</p></div>
+      <div class="card rv"><span class="no">借鑑 2・資本紀律</span>
+        <h3>US$2,340 萬 vs US$20 億</h3>
+        <p>Cuby 用 Katerra 1.2% 的資本走到美國首廠——因為它把重資產全部外部化。這正面驗證我們 Seed NT$0.8–1.5 億「不買重設備」的量級是同代新創的主流打法，不是保守。</p></div>
+      <div class="card rv"><span class="no">警惕 1・存活 ≠ 驗證</span>
+        <h3>路線 B 也還沒人賺錢</h3>
+        <p>輕資產組全數未公開獲利；Cuby 唯一運作中的廠在白俄羅斯、美國首廠還沒投產。我們引用它時的正確說法是「同構的結構性選擇」，不是「已被證明的成功模式」。</p></div>
+      <div class="card rv"><span class="no">警惕 2・賽道不同</span>
+        <h3>我們的物理世界更重</h3>
+        <p>Cuby 做輕鋼構低層住宅（無重吊裝、無養護週期）；我們做功能性建築的預鑄混凝土（重構件、重吊裝、預力養護）。它的「4 名非技術工」神話搬不進 PC 賽道——我們的對應解是 AI 管線＋代工體系，不是複製 MMF。</p></div>
+    </div>
+    <p class="body rv" style="margin-top:48px">一句話總結：<strong>這份生死簿再次確認了 MVP 的兩條天條——資產越輕越活得久、訂單先於產能；而 Cuby 額外教我們第三條：把「別人出資、我們收系統費」寫進出海劇本。</strong></p>
+    <div class="cta-row rv">
+      <a class="btn btn-primary" href="/prefab-mvp-bp/">回商業計劃書</a>
+      <a class="link" href="/prefab-mvp/">MVP 白話說明 ›</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本頁為內部研究，基於 2026 年 8 月之公開資訊；私人公司財務數字多為公司宣稱或第三方推估，標示「未確認」者未經交叉驗證；Boxabl 數字為 SEC 10-K 之第三方引述、原檔待核。本頁非投資建議，對所列公司無任何評價立場；金額換算與彙整可能存在口徑差異。未經同意請勿轉發。</p>
+    <p style="margin-top:8px">Saiens 山恩實業・預鑄事業研究・2026-08-31</p>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+const onScroll=()=>{nav.classList.toggle('solid',window.scrollY>window.innerHeight*0.7)};
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4*40)+'ms';io.observe(el)});
+</script>
+</body>
+</html>

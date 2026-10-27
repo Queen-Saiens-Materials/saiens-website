@@ -1,0 +1,12 @@
+{
+  "brand": "Saiens",
+  "style": "photorealistic editorial interior photography, near-monochrome warm neutral palette (warm black, stone grey, off-white, pale sage), soft natural daylight, matte stone surfaces, calm and quiet, no text, no letters, no logos, no watermark",
+  "images": [
+    {
+      "file": "section-collective.png",
+      "purpose": "「展覽」段與形象主圖：中島與餐桌是同一片石板的兩段高度，灶牆在後（ㄇ型、深罩是量體的一部分），表達主人與客人的集合體；橫圖不疊字",
+      "aspect": "landscape 3:2",
+      "prompt": "Wide eye-level view of an open kitchen conceived as one piece of furniture\nSubject: in the foreground, a single long honed grey stone slab carried by one brushed stainless portal frame; the near two-thirds of the slab sit at counter height as an island with a sink, and the far third of the same continuous slab steps down to dining-table height where three chairs are placed; beneath the island, dark oak cabinet boxes rest on a recessed mirror plinth that reflects the concrete floor so the island appears to float\nBehind: a U-shaped cooking wall in matte dark oak with a stone back panel, a deep stone-clad canopy hood with side panels built into the wall volume above the cooktop, two woks on the back burners\nDetails: warm evening window light from the left, soft shadow under the slab, one ceramic bowl on the island, concrete floor, dark plaster ceiling\nConstraints: no people, no clutter, the cooking wall clearly behind the island with about one and a half metres of floor between them\nIntent: host and guests share one slab; cooking happens at the wall under a hood; island and table are one object at two heights"
+    }
+  ]
+}
