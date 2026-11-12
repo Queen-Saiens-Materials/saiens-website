@@ -9,7 +9,7 @@ const SHIFT_BOARD_HOST = "system.saiens.group";
 // 業務週報（kpi.qsm.group 上的靜態頁＋/am 歷期檢視器＋其 API）改由 system.saiens.group 對外提供。
 // 2026-09-30 Michael 指示；kpi.qsm.group 原網址保留，mini 的 run_weekly.sh 仍部署到那裡。
 const KPI_ORIGIN = "https://kpi.qsm.group";
-const KPI_PATHS = ["am-weekly", "am", "api/report", "2026-q4-commissions"];
+const KPI_PATHS = ["am-weekly", "am", "api/report", "2026-q4-commissions", "2026-q4-commission-admin"];
 // Saiens CS Genius（客服駕駛艙）：Vercel 專案 saiens-cs-genius，basePath /cs-genius。
 // 2026-10-19 Michael 指示上線到 system.saiens.group/cs-genius；該 app 自帶 /cs-genius 前綴，原樣轉發。
 const CS_GENIUS_ORIGIN = "https://saiens-cs-genius.vercel.app";
@@ -76,7 +76,7 @@ const nextConfig: NextConfig = {
         // 所以用 negative lookahead 排除 /qsm-monthly-settlement（含其 basePath 下的 _next 資產）與業務週報路徑（/am-weekly、/am、/api/report），
         // 讓 app/qsm-monthly-settlement/ 的 route handler（月結工作台代理）接手。
         {
-          source: "/:path((?!qsm-monthly-settlement(?:/|$)|am-weekly(?:/|$)|am(?:/|$)|api/report(?:/|$)|2026-q4-commissions(?:/|$)|cs-genius(?:/|$)).*)",
+          source: "/:path((?!qsm-monthly-settlement(?:/|$)|am-weekly(?:/|$)|am(?:/|$)|api/report(?:/|$)|2026-q4-commissions(?:/|$)|2026-q4-commission-admin(?:/|$)|cs-genius(?:/|$)).*)",
           has: [{ type: "host" as const, value: SHIFT_BOARD_HOST }],
           destination: `${SHIFT_BOARD_ORIGIN}/:path`,
         },
